@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--
+  Construction Services - Grade-1 Construction Company
+  Open this file directly via: http://localhost:8080/index.html
+  Or host with: python -m http.server
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Grade-1 Construction Company</title>
+  <meta name="description" content="Explore Grade-1 Construction's comprehensive services including commercial construction, residential renovation, structural engineering, sustainable building, and site development.">
+  <meta name="keywords" content="construction services, commercial construction, residential renovation, structural engineering, sustainable building, site development, 2026">
+  <link rel="canonical" href="https://example.com/index.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Our Services | Grade-1 Construction Company">
+  <meta property="og:description" content="Premium construction services for commercial and residential projects. Expert teams, sustainable solutions, on-time delivery.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/index.html">
+  <meta property="og:image" content="https://example.com/assets/og-services.jpg">
+  
+  <link rel="stylesheet" href="/css/services.css">
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Grade-1 Construction Services",
+    "description": "Comprehensive construction services for 2026",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Service",
+          "name": "Commercial Construction Management",
+          "url": "https://example.com/service-commercial-construction-management-2026.html"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
+          "name": "Residential Renovation & Remodeling",
+          "url": "https://example.com/service-residential-renovation-remodeling-2026.html"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Service",
+          "name": "Structural Engineering & Reinforcement",
+          "url": "https://example.com/service-structural-engineering-reinforcement-2026.html"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Service",
+          "name": "Sustainable Building & Retrofit Solutions",
+          "url": "https://example.com/service-sustainable-building-retrofit-2026.html"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Service",
+          "name": "Site Development & Civil Works",
+          "url": "https://example.com/service-site-development-civil-works-2026.html"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="8" fill="currentColor"/>
+          <path d="M10 30V15L20 8L30 15V30H22V22H18V30H10Z" fill="white"/>
+        </svg>
+        <span>Grade-1</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/index.html" class="nav-link active">Services</a>
+        <a href="#" class="nav-link">Projects</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Contact</a>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1">
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" aria-current="page">Services</span>
+          <meta itemprop="position" content="2">
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">2026 Services</span>
+        <h1 class="hero-title">Building Excellence,<br>Delivering Results</h1>
+        <p class="hero-subtitle">Comprehensive construction solutions tailored to your vision. From concept to completion, we bring expertise, innovation, and reliability to every project.</p>
+      </div>
+    </div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <!-- Sticky Filter Bar -->
+  <div class="filter-bar" id="filterBar">
+    <div class="container filter-bar-inner">
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input 
+          type="search" 
+          class="search-input" 
+          id="searchInput" 
+          placeholder="Search services, tags, areas..."
+          aria-label="Search services"
+        >
+      </div>
+      <div class="filter-controls">
+        <div class="tag-filters" id="tagFilters">
+          <button class="tag-btn active" data-tag="all">All</button>
+          <button class="tag-btn" data-tag="commercial">Commercial</button>
+          <button class="tag-btn" data-tag="residential">Residential</button>
+          <button class="tag-btn" data-tag="engineering">Engineering</button>
+          <button class="tag-btn" data-tag="sustainable">Sustainable</button>
+        </div>
+        <select class="sort-select" id="sortSelect" aria-label="Sort services">
+          <option value="relevance">Sort: Relevance</option>
+          <option value="newest">Sort: Newest</option>
+          <option value="duration">Sort: Duration</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Grid -->
+  <main class="services-section">
+    <div class="container">
+      <div class="services-grid" id="servicesGrid">
+        <!-- Cards injected by JS -->
+      </div>
+      
+      <!-- No Results -->
+      <div class="no-results" id="noResults" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+          <path d="M8 8l6 6M14 8l-6 6"/>
+        </svg>
+        <h3>No services found</h3>
+        <p>Try adjusting your search or filter criteria</p>
+      </div>
+      
+      <!-- Pagination -->
+      <nav class="pagination" id="pagination" aria-label="Services pagination">
+        <!-- Pagination injected by JS -->
+      </nav>
+    </div>
+  </main>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Get in touch with our team for a free consultation and detailed quote.</p>
+        <a href="#" class="btn btn-primary btn-lg">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="/" class="logo footer-logo">
+            <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+              <rect width="40" height="40" rx="8" fill="currentColor"/>
+              <path d="M10 30V15L20 8L30 15V30H22V22H18V30H10Z" fill="white"/>
+            </svg>
+            <span>Grade-1</span>
+          </a>
+          <p class="footer-desc">Building excellence since 1985. Grade-1 Construction delivers quality, safety, and innovation on every project.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/service-commercial-construction-management-2026.html">Commercial Construction</a></li>
+            <li><a href="/service-residential-renovation-remodeling-2026.html">Residential Renovation</a></li>
+            <li><a href="/service-structural-engineering-reinforcement-2026.html">Structural Engineering</a></li>
+            <li><a href="/service-sustainable-building-retrofit-2026.html">Sustainable Building</a></li>
+            <li><a href="/service-site-development-civil-works-2026.html">Site Development</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Projects</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address>
+            <p>123 Construction Way<br>Building City, BC 12345</p>
+            <p><a href="tel:+1234567890">(123) 456-7890</a></p>
+            <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Grade-1 Construction. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/services.js"></script>
+</body>
+</html>
