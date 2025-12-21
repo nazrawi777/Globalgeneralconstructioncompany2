@@ -82,6 +82,7 @@
     <link rel="stylesheet" href="assets/css/nice-select.css" />
     <link rel="stylesheet" href="assets/css/jquery-ui.css" />
     <link rel="stylesheet" href="assets/css/twentytwenty.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/module-css/slider.css" />
     <link rel="stylesheet" href="assets/css/module-css/footer.css" />
     <link rel="stylesheet" href="assets/css/module-css/feature.css" />
@@ -114,122 +115,151 @@
     }
   }
   </script>
+  <style>
+    body {
+      font-family: var(--font-body);
+      background-color: #101116;
+      color: hsl(var(--foreground));
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+  </style>
 </head>
 <body>
 <div class="theme-border-left"></div>
         <div class="theme-border-right"></div>
         <div class="page-wrapper">
-<header class="main-header-two">
-            <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
-            <nav class="main-menu main-menu-two">
-                <div class="main-menu-two__wrapper">
-                    <div class="main-menu-two__wrapper-inner">
-                        <div class="main-menu-two__left">
-                            <div class="main-menu-two__logo">
-                                <a href="index.html">
-                                    <a href="index.html"><img src="assets/images/resources/2.png" alt=""
-                                    style="width: 50%;"></a>
-                                </a>
+            <header class="main-header">
+            <nav class="main-menu">
+                <div class="main-menu__wrapper">
+                    <div class="container">
+                        <div class="main-menu__wrapper-inner">
+                            <div class="main-menu__logo">
+                                
+                                <a href="index.html"><img src="assets/images/resources/2.png" alt=""
+                                    style="width: 90%;"></a>
+                                
                             </div>
-                        </div>
-                        <div class="main-menu-two__right">
-                            <div class="main-menu-two__main-menu-box">
-                                <a href="contact.html#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
-                                <ul class="main-menu__list">
-    <li class="dropdown ">
-        <a href="index.html">Home </a>
-        <ul>
-            <li><a href="index.html">Home One</a></li>
-            <li><a href="index2.html">Home Two</a></li>
-            <li><a href="index3.html">Home Three</a></li>
-            <li><a href="index4.html">Home Four</a></li>
-            <li class="dropdown ">
-                <a href="contact.html#">Header Styles</a>
-                <ul>
-                    <li><a href="index.html">Header One</a></li>
-                    <li><a href="index2.html">Header Two</a></li>
-                    <li><a href="index3.html">Header Three</a></li>
-                    <li><a href="index4.html">Header Four</a></li>
-                </ul>
-            </li>
-            <li class="dropdown ">
-                <a href="contact.html#">One Page Styles</a>
-                <ul>
-                    <li><a href="index-one-page.html">One Page Styles One</a></li>
-                    <li><a href="index2-one-page.html">One Page Styles Two</a></li>
-                    <li><a href="index3-one-page.html">One Page Styles Three</a>
-                    </li>
-                    <li><a href="index4-one-page.html">One Page Styles Four</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li >
-        <a href="about.html">About Us</a>
-    </li>
-    <li class="dropdown ">
-        <a href="contact.html#">Pages</a>
-        <ul>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="team-details.html">Team Details</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-            <li><a href="faq.html">Faq</a></li>
-            <li><a href="404.html">404 Error</a></li>
-            <li><a href="coming-soon.html">Coming Soon</a></li>
-        </ul>
-    </li>
-    <li class="dropdown ">
-        <a href="contact.html#">Services</a>
-        <ul>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="evolve-space-designs.html">Evolve Space Designs</a></li>
-            <li><a href="eden-home-styling.html">Eden Home Styling</a>
-            </li>
-            <li><a href="harmony-interiors.html">Harmony Interiors</a>
-            </li>
-            <li><a href="interior-design.html">Interior Design</a></li>
-            <li><a href="urban-design.html">Urban Design</a>
-            </li>
-            <li><a href="landscape-design.html">Landscape Design</a></li>
-        </ul>
-    </li>
-    <li class="dropdown ">
-        <a href="contact.html#">projects</a>
-        <ul>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="project-details.html">Project Details</a></li>
-        </ul>
-    </li>
-    <li class="dropdown ">
-        <a href="contact.html#">Blog</a>
-        <ul>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="blog-2.html">Blog Style2</a></li>
-            <li><a href="blog-details.html">Blog Details</a></li>
-        </ul>
-    </li>
-    <li  class="current" >
-        <a href="contact.html">Contact</a>
-    </li>
-</ul>
-                            </div>
-                            <div class="main-menu-two__search-and-nav-sidebar-icon">
-                                <a href="contact.html#" class="main-menu-two__search search-toggler"><span
-                                        class="icon-search-interface-symbol"></span></a>
-                                <div class="main-menu-two__nav-sidebar-icon">
-                                    <a class="navSidebar-button" href="contact.html#">
-                                        <span class="icon-text"></span>
-                                    </a>
+                            <div class="main-menu__top">
+                                <div class="main-menu__top-inner">
+                                    <ul class="list-unstyled main-menu__contact-list">
+                                        <li>
+                                            <div class="icon">
+                                                <i class="icon-telephone"></i>
+                                            </div>
+                                            <div class="text">
+                                                <p><a href="tel:15502505260">+1 (550) 250 5260</a></p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="icon">
+                                                <i class="icon-envelope-2"></i>
+                                            </div>
+                                            <div class="text">
+                                                <p><a href="mailto:info@tecture.com">info@tecture.com</a>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="main-menu__top-right">
+                                        <div class="main-menu__top-time">
+                                            <div class="main-menu__top-time-icon">
+                                                <span class="far fa-clock"></span>
+                                            </div>
+                                            <p class="main-menu__top-text">Mon - Fri: 09:00 - 05:00</p>
+                                        </div>
+                                        <div class="main-menu__social">
+                                            <a href="index.html#"><i class="fab fa-twitter"></i></a>
+                                            <a href="index.html#"><i class="fab fa-facebook"></i></a>
+                                            <a href="index.html#"><i class="fab fa-pinterest-p"></i></a>
+                                            <a href="index.html#"><i class="fab fa-instagram"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
-            <div class="stricky-header stricked-menu main-menu main-menu-two">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+                            <div class="main-menu__bottom">
+                                <div class="main-menu__main-menu-box">
+                                    <a href="index.html#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                                    <ul class="main-menu__list">
+                                    <li >
+                                        <a href="index.html">Home</a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="about.html">About  </a>
+                                        <ul>
+                                            <li><a href="about.html">About-us</a></li>
+                                            <li><a href="index2.html">Our Team</a></li>
+                                    </ul>
+                                    </li>
+                                        <li class="dropdown">
+                                        <a href="services.html">Services  </a>
+                                        <ul>
+                                            <li><a href="services.html">Our services</a></li>
+                                            <li><a href="evolve-space-designs.html">Evolve Space Designs</a></li>
+                                            <li><a href="eden-home-styling.html">Eden Home Styling</a>
+                                            </li>
+                                            <li><a href="harmony-interiors.html">Harmony Interiors</a>
+                                            </li>
+                                            <li><a href="interior-design.html">Interior Design</a></li>
+                                            <li><a href="urban-design.html">Urban Design</a>
+                                            </li>
+                                            <li><a href="landscape-design.html">Landscape Design</a></li>
+                                        </ul>
+                                    </li>
+
+                <li class="dropdown ">
+                    <a href="testimonials.html">Pages</a>
+                    <ul>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="team-details.html">Team Details</a></li>
+                        <li><a href="faq.html">Faq</a></li>
+                        <li><a href="404.html">404 Error</a></li>
+                        <li><a href="coming-soon.html">Coming Soon</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown ">
+                    <a href="index.html#">projects</a>
+                    <ul>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="project-details.html">Project Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown ">
+                    <a href="index.html#">Blog</a>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="blog-2.html">Blog Style2</a></li>
+                        <li><a href="blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li >
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+                                            </div>
+
+                                            <div class="main-menu__search-and-btn-box">
+                                                <div class="main-menu__search-box">
+                                                    <a href="index.html#"
+                                                        class="main-menu__search search-toggler icon-search-interface-symbol">
+                                                    </a>
+                                                </div>
+                                                <div class="main-menu__btn-box">
+                                                    <a href="contact.html" class="thm-btn main-menu__btn">
+                                                        Free Quote <span class="icon-up-right-arrow"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+           </header>
+            <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div>
         </div>
 
   
@@ -250,7 +280,9 @@
     
     <!-- Posts Grid -->
     <section class="posts-section">
-      <div class="container">
+        <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
+              
+      <div class="container1">
         <div id="postsGrid" class="posts-grid" role="feed" aria-label="Blog posts">
           <!-- Posts rendered by JS -->
         </div>

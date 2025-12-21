@@ -3,17 +3,17 @@
   --bg-primary: hsl(220, 15%, 8%);
   --bg-secondary: hsl(220, 12%, 12%);
   --bg-card: hsl(220, 10%, 14%);
-  --bg-card-hover: hsl(220, 10%, 18%);
+  --bg-card-hover: hsl(220, 43%, 75%);
   --text-primary: hsl(220, 10%, 92%);
   --text-secondary: hsl(220, 8%, 65%);
   --text-muted: hsl(220, 6%, 45%);
-  --accent: hsl(38, 92%, 50%);
-  --accent-hover: hsl(38, 92%, 60%);
+  --accent: #359df2;
+  --accent-hover: #359df2;
   --accent-muted: hsl(38, 60%, 25%);
   --border: hsl(220, 10%, 20%);
-  --border-light: hsl(220, 10%, 25%);
+  --border-light: #359df2;
   --shadow: 0 4px 24px hsla(0, 0%, 0%, 0.4);
-  --shadow-lg: 0 8px 40px hsla(0, 0%, 0%, 0.5);
+  --shadow-lg: 0 8px 40px hsla(197, 29%, 58%, 0.5);
   --radius: 12px;
   --radius-sm: 8px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -61,10 +61,10 @@ button {
 }
 
 /* Layout */
-.container {
+.container1 {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 44px;
 }
 
 /* Header */
@@ -281,7 +281,7 @@ button {
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 28px;
+  gap: 48px;
 }
 
 /* Post Card */
@@ -993,3 +993,6 @@ kbd {
   
   
 }
+
+
+
