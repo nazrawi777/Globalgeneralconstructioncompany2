@@ -106,7 +106,7 @@
       --card-foreground: 45 20% 95%;
       --muted: 222 30% 15%;
       --muted-foreground: 45 10% 65%;
-      --accent: 38 92% 50%;
+      --accent: 210 87% 58%;
       --accent-foreground: 222 47% 6%;
       --border: 222 30% 18%;
       --ring: 38 92% 50%;
@@ -116,9 +116,16 @@
       --font-body: 'Inter', sans-serif;
       
       --gradient-hero: linear-gradient(180deg, hsl(222 47% 6%) 0%, hsl(222 50% 4%) 100%);
-      --gradient-accent: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(32 95% 44%) 100%);
+      --gradient-accent: linear-gradient(135deg,hsl(210 87% 58%) 0%,hsl(210 87% 58%) 100%);
+
       --glass-bg: hsla(222, 40%, 10%, 0.6);
       --glass-border: hsla(222, 30%, 25%, 0.3);
+    }
+    #hover {
+      background-color: hsl(222, 73%, 87%); /* lighter */
+      height: 43px;
+      border-radius: 3px;
+      color:#1e3cae;
     }
 
     html {
@@ -326,6 +333,7 @@
     .hero-content {
       position: relative;
       z-index: 10;
+      top: 30px;
       text-align: center;
       padding: 1.5rem;
       max-width: 64rem;
@@ -648,7 +656,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.5rem;
-      max-width: 72rem;
+      max-width: 62rem;
       margin: 0 auto;
     }
 
@@ -1372,51 +1380,34 @@
                                     <li class="dropdown">
                                         <a href="about.html">About  </a>
                                         <ul>
-                                            <li><a href="about.html">About-us</a></li>
-                                            <li><a href="index2.html">Our Team</a></li>
+                                            <li><a href="about.html"  id="hover">About-us</a></li>
+                                            <li><a href="ourteam.html">Our Team</a></li>
                                     </ul>
                                     </li>
-                                        <li class="dropdown">
-                                        <a href="services.html">Services  </a>
-                                        <ul>
-                                            <li><a href="services.html">Our services</a></li>
-                                            <li><a href="evolve-space-designs.html">Evolve Space Designs</a></li>
-                                            <li><a href="eden-home-styling.html">Eden Home Styling</a>
-                                            </li>
-                                            <li><a href="harmony-interiors.html">Harmony Interiors</a>
-                                            </li>
-                                            <li><a href="interior-design.html">Interior Design</a></li>
-                                            <li><a href="urban-design.html">Urban Design</a>
-                                            </li>
-                                            <li><a href="landscape-design.html">Landscape Design</a></li>
-                                        </ul>
-                                    </li>
+                                        <li >
+                    <a href="services.html">services</a>
+                </li>
 
                 <li class="dropdown ">
-                    <a href="testimonials.html">Pages</a>
+                    <a href="testimonials.html">Blog</a>
                     <ul>
-                        <li><a href="team.html">Team</a></li>
-                        <li><a href="team-details.html">Team Details</a></li>
-                        <li><a href="faq.html">Faq</a></li>
-                        <li><a href="404.html">404 Error</a></li>
-                        <li><a href="coming-soon.html">Coming Soon</a></li>
+                        <li><a href="blog.html">blog and news</a></li>
+                        <li><a href="team-details.html">Our Projects </a></li>
+                        <li><a href="faq.html">Job Vacancy</a></li>
+                        
                     </ul>
                 </li>
 
                 <li class="dropdown ">
-                    <a href="index.html#">projects</a>
+                    <a href="index.html#">Sisters Company</a>
                     <ul>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="project-details.html">Project Details</a></li>
+                        <li><a href="projects.html">Agricalture</a></li>
+                        <li><a href="project-details.html">Import and Export</a></li>
                     </ul>
                 </li>
-                <li class="dropdown ">
-                    <a href="index.html#">Blog</a>
-                    <ul>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="blog-2.html">Blog Style2</a></li>
-                        <li><a href="blog-details.html">Blog Details</a></li>
-                    </ul>
+                <li>
+                    <a href="jobvacancy.html">Job Vacancy</a>
+                    
                 </li>
                 <li >
                     <a href="contact.html">Contact</a>
@@ -1466,15 +1457,6 @@
       <h1 class="hero-title">
         Building the Future, <span class="gradient-text">Together</span>
       </h1>
-      
-      <p class="hero-subtitle">
-        We're more than a company—we're a movement of innovators, dreamers, and doers united by a singular mission to transform how the world works.
-      </p>
-      
-      <div class="hero-cta">
-        <a href="#company-story" class="btn btn-primary">Explore Our Journey</a>
-        <a href="#footer-cta" class="btn btn-outline">Join Our Team</a>
-      </div>
     </div>
     
     <button class="scroll-indicator" onclick="document.getElementById('company-story').scrollIntoView({behavior: 'smooth'})">
@@ -2268,7 +2250,7 @@
         </div>
         <!-- /.search-popup__content -->
     </div>
-    <!-- /.search-popup -->            <a href="index.html#" data-target="html" class="scroll-to-target scroll-to-top">
+    <!-- /.search-popup -->            <a href="about.html#" data-target="html" class="scroll-to-target scroll-to-top">
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
         <span class="scroll-to-top__text"> Go Back Top</span>
     </a>            <script src="assets/js/jquery-3.6.0.min.js"></script>

@@ -30,7 +30,6 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -206,7 +205,10 @@ button {
 /* Categories */
 .categories-section {
   padding: 40px 0;
+  position: relative;
+  top: 70px;
   border-bottom: 1px solid var(--border);
+  margin-top: 50px;
 }
 
 .categories-header {
@@ -533,7 +535,7 @@ kbd {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: 4px;
-  font-family: monospace;
+  
   font-size: 0.85em;
   margin: 0 2px;
 }

@@ -3,7 +3,20 @@
  * Pure vanilla JS, no frameworks
  */
 
-// Posts data
+/* =========================
+   IMAGE HELPER (accepts external URL or local filename)
+   - No fallback guessing. Use direct Unsplash CDN URLs you provided.
+========================= */
+function resolveThumbnail(thumbnail) {
+  if (!thumbnail) return '';
+  return (typeof thumbnail === 'string' && thumbnail.startsWith('http'))
+    ? thumbnail
+    : `/assets/blog/${thumbnail}`;
+}
+
+/* =========================
+   POSTS DATA (thumbnails updated to the direct images you gave)
+========================= */
 const posts = [
   {
     id: 1,
@@ -32,7 +45,8 @@ const posts = [
     date: '2050-03-15',
     readingTime: 8,
     author: 'Dr. Marcus Chen',
-    thumbnail: 'construction-1.jpg',
+    // chosen from your supplied links (hero-2021)
+    thumbnail: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop',
     mediaType: 'video',
     media: ['construction-1.mp4', 'construction-2.mp4', 'construction-3.mp4']
   },
@@ -60,7 +74,8 @@ const posts = [
     date: '2050-02-28',
     readingTime: 6,
     author: 'Sofia Martinez',
-    thumbnail: 'tech-1.jpg',
+    // chosen from your supplied links (hero-2024/other)
+    thumbnail: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=500&fit=crop',
     mediaType: 'image',
     media: ['tech-1.jpg', 'tech-2.jpg', 'tech-3.jpg', 'tech-4.jpg']
   },
@@ -82,7 +97,8 @@ const posts = [
     date: '2050-02-15',
     readingTime: 7,
     author: 'Dr. Amara Okonkwo',
-    thumbnail: 'sustainability-1.jpg',
+    // chosen from your supplied gallery (gallery 3 or other)
+    thumbnail: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop',
     mediaType: 'video',
     media: ['sustainability-1.mp4', 'sustainability-2.mp4']
   },
@@ -105,7 +121,8 @@ const posts = [
     date: '2050-01-30',
     readingTime: 9,
     author: 'Dr. Henrik van der Berg',
-    thumbnail: 'urbanism-1.jpg',
+    // chosen from your hero-2022 group (water / global expansion)
+    thumbnail: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=500&fit=crop',
     mediaType: 'image',
     media: ['urbanism-1.jpg', 'urbanism-2.jpg', 'urbanism-3.jpg']
   },
@@ -131,7 +148,8 @@ const posts = [
     date: '2050-01-15',
     readingTime: 5,
     author: 'Engineer Rosa Delgado',
-    thumbnail: 'construction-2.jpg',
+    // chosen from your hero-2022 gallery (architecture)
+    thumbnail: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=500&fit=crop',
     mediaType: 'video',
     media: ['construction-4.mp4', 'construction-5.mp4', 'construction-6.mp4']
   },
@@ -153,7 +171,8 @@ const posts = [
     date: '2050-01-08',
     readingTime: 6,
     author: 'Dr. Yuki Tanaka',
-    thumbnail: 'tech-2.jpg',
+    // chosen from your gallery (people / portrait style)
+    thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop',
     mediaType: 'image',
     media: ['tech-5.jpg', 'tech-6.jpg', 'tech-7.jpg', 'tech-8.jpg']
   },
@@ -176,7 +195,8 @@ const posts = [
     date: '2049-12-20',
     readingTime: 7,
     author: 'Urban Planner Marie Dubois',
-    thumbnail: 'urbanism-2.jpg',
+    // chosen from your hero-2024 set (cave/underground-ish)
+    thumbnail: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop',
     mediaType: 'video',
     media: ['urbanism-3.mp4', 'urbanism-4.mp4']
   },
@@ -204,13 +224,16 @@ const posts = [
     date: '2049-12-05',
     readingTime: 8,
     author: 'Dr. Chen Wei',
-    thumbnail: 'sustainability-2.jpg',
+    // reusing a strong sustainability image you provided earlier (if you want a different one, paste it)
+    thumbnail: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=500&fit=crop',
     mediaType: 'image',
     media: ['sustainability-3.jpg', 'sustainability-4.jpg', 'sustainability-5.jpg']
   }
 ];
 
-// Categories
+/* =========================
+   CATEGORIES
+========================= */
 const categories = [
   { id: 'all', name: 'All', count: posts.length },
   { id: 'construction', name: 'Construction', count: posts.filter(p => p.category === 'Construction').length },
@@ -219,14 +242,18 @@ const categories = [
   { id: 'sustainability', name: 'Sustainability', count: posts.filter(p => p.category === 'Sustainability').length }
 ];
 
-// State
+/* =========================
+   STATE
+========================= */
 let currentCategory = 'all';
 let currentSort = 'newest';
 let searchQuery = '';
 let currentPage = 1;
 const postsPerPage = 6;
 
-// DOM Elements
+/* =========================
+   DOM Elements
+========================= */
 const searchInput = document.getElementById('searchInput');
 const sortSelect = document.getElementById('sortSelect');
 const categoriesContainer = document.getElementById('categoriesContainer');
@@ -234,7 +261,9 @@ const postsGrid = document.getElementById('postsGrid');
 const paginationContainer = document.getElementById('paginationContainer');
 const keyboardHint = document.getElementById('keyboardHint');
 
-// Initialize
+/* =========================
+   INIT
+========================= */
 function init() {
   renderCategories();
   renderPosts();
@@ -242,7 +271,9 @@ function init() {
   setupKeyboardShortcuts();
 }
 
-// Render categories
+/* =========================
+   RENDER CATEGORIES
+========================= */
 function renderCategories() {
   if (!categoriesContainer) return;
   
@@ -257,7 +288,9 @@ function renderCategories() {
   `).join('');
 }
 
-// Filter and sort posts
+/* =========================
+   FILTER & SORT
+========================= */
 function getFilteredPosts() {
   let filtered = [...posts];
   
@@ -296,7 +329,9 @@ function getFilteredPosts() {
   return filtered;
 }
 
-// Format date
+/* =========================
+   FORMAT DATE
+========================= */
 function formatDate(dateStr) {
   const date = new Date(dateStr);
   return date.toLocaleDateString('en-US', { 
@@ -306,7 +341,9 @@ function formatDate(dateStr) {
   });
 }
 
-// Render posts
+/* =========================
+   RENDER POSTS (uses resolveThumbnail)
+========================= */
 function renderPosts() {
   if (!postsGrid) return;
   
@@ -330,11 +367,13 @@ function renderPosts() {
     return;
   }
   
-  postsGrid.innerHTML = paginatedPosts.map(post => `
+  postsGrid.innerHTML = paginatedPosts.map(post => {
+    const imgSrc = resolveThumbnail(post.thumbnail);
+    return `
     <article class="post-card" data-post-id="${post.id}">
       <div class="post-thumbnail">
         <img 
-          src="/assets/blog/${post.thumbnail}" 
+          src="${imgSrc}" 
           alt="${post.title}"
           loading="lazy"
           onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 250%22><rect fill=%22%231a1a1f%22 width=%22400%22 height=%22250%22/><text x=%22200%22 y=%22125%22 text-anchor=%22middle%22 fill=%22%23666%22 font-family=%22sans-serif%22>Image</text></svg>'"
@@ -386,12 +425,15 @@ function renderPosts() {
         </div>
       </div>
     </article>
-  `).join('');
+  `;
+  }).join('');
   
   renderPagination(totalPages);
 }
 
-// Render pagination
+/* =========================
+   RENDER PAGINATION
+========================= */
 function renderPagination(totalPages) {
   if (!paginationContainer || totalPages <= 1) {
     if (paginationContainer) paginationContainer.innerHTML = '';
@@ -434,7 +476,9 @@ function renderPagination(totalPages) {
   paginationContainer.innerHTML = buttons.join('');
 }
 
-// Setup event listeners
+/* =========================
+   EVENT LISTENERS
+========================= */
 function setupEventListeners() {
   // Search
   if (searchInput) {
@@ -510,7 +554,9 @@ function setupEventListeners() {
   }
 }
 
-// Keyboard shortcuts
+/* =========================
+   KEYBOARD SHORTCUTS
+========================= */
 function setupKeyboardShortcuts() {
   let hintTimeout;
   
@@ -554,7 +600,9 @@ function setupKeyboardShortcuts() {
   });
 }
 
-// Navigate cards with keyboard
+/* =========================
+   NAVIGATE CARDS
+========================= */
 let focusedCardIndex = -1;
 
 function navigateCards(direction) {
@@ -573,7 +621,9 @@ function navigateCards(direction) {
   });
 }
 
-// Debounce utility
+/* =========================
+   UTILITIES
+========================= */
 function debounce(fn, delay) {
   let timeoutId;
   return function (...args) {
@@ -582,7 +632,6 @@ function debounce(fn, delay) {
   };
 }
 
-// Toast notification
 function showToast(message) {
   let toast = document.getElementById('toast');
   if (!toast) {
@@ -600,14 +649,15 @@ function showToast(message) {
   }, 3000);
 }
 
-// Post page specific functions
+/* =========================
+   POST PAGE HELPERS (carousel, comments, share)
+========================= */
 function initPostPage() {
   setupCarousel();
   setupComments();
   setupShareButtons();
 }
 
-// Carousel
 function setupCarousel() {
   const carousel = document.querySelector('.carousel');
   if (!carousel) return;
@@ -654,7 +704,9 @@ function setupCarousel() {
   });
 }
 
-// Comments (localStorage)
+/* =========================
+   COMMENTS (localStorage)
+========================= */
 function setupComments() {
   const commentsSection = document.querySelector('.comments-section');
   if (!commentsSection) return;
@@ -734,7 +786,9 @@ function setupComments() {
   renderComments();
 }
 
-// Share buttons
+/* =========================
+   SHARE BUTTONS
+========================= */
 function setupShareButtons() {
   const copyBtn = document.querySelector('.copy-link-btn');
   if (copyBtn) {
@@ -779,14 +833,18 @@ function setupShareButtons() {
   });
 }
 
-// Escape HTML
+/* =========================
+   ESCAPE HTML
+========================= */
 function escapeHtml(text) {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
 }
 
-// Initialize based on page type
+/* =========================
+   INIT ON DOM READY
+========================= */
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('postsGrid')) {
     init();
@@ -795,7 +853,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Export for post pages
+/* =========================
+   EXPORTED UTILITIES FOR POST PAGES
+========================= */
 window.blogUtils = {
   posts,
   formatDate,
