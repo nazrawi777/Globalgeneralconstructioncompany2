@@ -4,6 +4,7 @@
  */
 
 // Services Data
+// Services Data (your original 5 + 5 new ones)
 const servicesData = [
   {
     id: 1,
@@ -11,7 +12,7 @@ const servicesData = [
     title: 'Commercial Construction Management',
     description: 'End-to-end project management for commercial construction — on-budget, on-time delivery.',
     tags: ['commercial', 'management', 'project'],
-    year: 2026,
+    year: "🏗️",
     duration: '6-18 months',
     icon: 'building',
     order: 1
@@ -22,7 +23,7 @@ const servicesData = [
     title: 'Residential Renovation & Remodeling',
     description: 'Complete home renovations and modernizations with skilled trades and finishes.',
     tags: ['residential', 'renovation', 'remodeling'],
-    year: 2026,
+    year: "⛑️",
     duration: '2-6 months',
     icon: 'home',
     order: 2
@@ -33,7 +34,7 @@ const servicesData = [
     title: 'Structural Engineering & Reinforcement',
     description: 'Structural analysis and reinforcement solutions for safety and longevity.',
     tags: ['engineering', 'structural', 'safety'],
-    year: 2026,
+    year:"🏢",
     duration: '1-4 months',
     icon: 'structure',
     order: 3
@@ -44,7 +45,7 @@ const servicesData = [
     title: 'Sustainable Building & Retrofit Solutions',
     description: 'Energy-efficient retrofits, insulation, and green building strategies for lower footprints.',
     tags: ['sustainable', 'green', 'energy'],
-    year: 2026,
+    year: "🚧",
     duration: '2-8 months',
     icon: 'leaf',
     order: 4
@@ -55,10 +56,66 @@ const servicesData = [
     title: 'Site Development & Civil Works',
     description: 'Site prep, earthworks, drainage, and infrastructure for new builds and expansions.',
     tags: ['commercial', 'civil', 'infrastructure'],
-    year: 2026,
+    year: "👷",
     duration: '3-12 months',
     icon: 'excavator',
     order: 5
+  },
+  // === New Services Start Here ===
+  {
+    id: 6,
+    slug: 'concrete-foundation-pouring-2026',
+    title: 'Concrete Foundation & Pouring',
+    description: 'Professional concrete mixing, forming, and pouring for strong, durable foundations and slabs.',
+    tags: ['concrete', 'foundation', 'pouring'],
+    year: "🛢️",  // Barrel for concrete/mixer feel
+    duration: '1-3 months',
+    icon: 'concrete-pour',
+    order: 6
+  },
+  {
+    id: 7,
+    slug: 'roofing-installation-waterproofing-2026',
+    title: 'Roofing Installation & Waterproofing',
+    description: 'Expert roofing systems installation, repairs, and waterproofing for long-lasting protection.',
+    tags: ['roofing', 'waterproofing', 'installation'],
+    year: "🏠",  // House with roof emphasis
+    duration: '1-4 months',
+    icon: 'roofing',
+    order: 7
+  },
+  {
+    id: 8,
+    slug: 'electrical-systems-installation-2026',
+    title: 'Electrical Systems Installation',
+    description: 'Complete wiring, lighting, power distribution, and smart systems for safe, efficient buildings.',
+    tags: ['electrical', 'wiring', 'installation'],
+    year: "⚡",
+    duration: '2-5 months',
+    icon: 'electrical',
+    order: 8
+  },
+  {
+    id: 9,
+    slug: 'plumbing-hvac-systems-2026',
+    title: 'Plumbing & HVAC Systems',
+    description: 'Full plumbing, piping, heating, ventilation, and air conditioning installation for comfort and efficiency.',
+    tags: ['plumbing', 'hvac', 'piping'],
+    year: "🔧",
+    duration: '2-6 months',
+    icon: 'plumbing',
+    order: 9
+  },
+  {
+    id: 10,
+    slug: 'interior-finishing-carpentry-2026',
+    title: 'Interior Finishing & Carpentry',
+    description: 'Premium drywall, painting, flooring, trim, and custom carpentry for polished interior spaces.',
+    tags: ['interior', 'finishing', 'carpentry'],
+    year: "🎨",
+    duration: '2-5 months',
+    icon: 'interior-finish',
+    order: 10
   }
 ];
 
@@ -74,7 +131,7 @@ const icons = {
 
 // State
 let currentPage = 1;
-const itemsPerPage = 6;
+const itemsPerPage = 8;
 let filteredServices = [...servicesData];
 let currentFilter = 'all';
 let currentSort = 'relevance';
