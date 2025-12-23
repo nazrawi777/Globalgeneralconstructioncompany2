@@ -1188,7 +1188,7 @@ li {
   justify-content: space-between;
   flex-wrap: wrap;
   background-color: var(--tecture-white);
-  padding: 0 1px 0;
+  padding: 0 18px 0;
 }
 
 .main-menu__main-menu-box {
