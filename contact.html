@@ -21,7 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-
+      <link rel="stylesheet" href="assets/css/contact.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/animate.min.css" />
     <link rel="stylesheet" href="assets/css/custom-animate.css" />
@@ -145,7 +145,7 @@
             </div>
         </div>
     </div>
-            <header class="main-header">
+        <header class="main-header">
            <nav class="main-menu">
                 <div class="main-menu__wrapper">
                     <div class="container">
@@ -262,225 +262,127 @@
             <div class="sticky-header__content"></div>
         </div>
             
-        <section class="page-header">
-            <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
+
+
+          <a href="#main-content" class="sr-only">Skip to main content</a>
+
+  <!-- Hero Section -->
+  <section class="hero" aria-label="Hero section">
+    <div class="hero__bg">
+      <div class="hero__bg-gradient"></div>
+      <div class="hero__bg-image" id="heroBgImage">
+        <img src="assets/images/hero-bg.png" alt="" loading="eager" aria-hidden="true">
+      </div>
+      <div class="hero__bg-orb hero__bg-orb--primary" id="heroOrbPrimary" aria-hidden="true"></div>
+      <div class="hero__bg-orb hero__bg-orb--accent" id="heroOrbAccent" aria-hidden="true"></div>
+      <div class="hero__overlay" id="heroOverlay" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero__content" id="heroContent">
+      <h1 class="hero__title" id="heroTitle"><span class="gradient-text">Get in Touch</span></h1>
+      <p class="hero__subtitle" id="heroSubtitle">We'd love to hear from you. Let's build something amazing together.</p>
+      <div class="hero__scroll-indicator" id="heroScrollIndicator">
+        <p class="hero__scroll-text">Scroll to explore</p>
+        <div class="hero__scroll-mouse"><div class="hero__scroll-dot"></div></div>
+      </div>
+    </div>
+    <div class="hero__bottom-fade" aria-hidden="true"></div>
+  </section>
+
+  <!-- Main Content -->
+  <section id="main-content" class="main-content" aria-label="Contact information and form">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Contact Info -->
+        <div class="contact-info" id="contactInfo">
+          <div class="contact-info__header">
+            <h2 class="contact-info__title">Contact Information</h2>
+            <p class="contact-info__subtitle">Reach out to us through any of these channels.</p>
+          </div>
+
+          <div class="glass-card contact-info__card">
+            <ul class="contact-info__list">
+              <li class="contact-info__item"><a href="https://maps.google.com/?q=500+Innovation+Drive+San+Francisco+CA" class="contact-info__link" target="_blank" rel="noopener noreferrer"><div class="contact-info__content"><div class="contact-info__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="contact-info__text"><p class="contact-info__label">Office Address</p><p class="contact-info__value">500 Innovation Drive, Suite 200, San Francisco, CA 94107</p></div><div class="contact-info__external"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg></div></div></a></li>
+              <div class="contact-info__divider"></div>
+              <li class="contact-info__item"><a href="tel:+14155550123" class="contact-info__link"><div class="contact-info__content"><div class="contact-info__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="contact-info__text"><p class="contact-info__label">Phone</p><p class="contact-info__value">+1 (415) 555-0123</p></div></div></a></li>
+              <div class="contact-info__divider"></div>
+              <li class="contact-info__item"><a href="mailto:hello@nexus.tech" class="contact-info__link"><div class="contact-info__content"><div class="contact-info__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div class="contact-info__text"><p class="contact-info__label">Email</p><p class="contact-info__value">hello@nexus.tech</p></div></div></a></li>
+              <div class="contact-info__divider"></div>
+              <li class="contact-info__item"><div class="contact-info__link" style="cursor:default"><div class="contact-info__content"><div class="contact-info__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="contact-info__text"><p class="contact-info__label">Business Hours</p><p class="contact-info__value">Monday – Friday, 9:00 AM – 6:00 PM PST</p></div></div></div></li>
+            </ul>
+          </div>
+
+          <div class="glass-card contact-info__status">
+            <div class="contact-info__status-content">
+              <div class="contact-info__status-dot"></div>
+              <div><p class="contact-info__status-title">We're open now!</p><p class="contact-info__status-text">Our team typically responds within 2-4 business hours.</p></div>
             </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <div class="page-header__title-box">
-                        <p>Business Models you can Consider</p>
-                        <h3>Contact</h3>
-                    </div>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                            <li><span>/</span></li>
-                            <li>Contact</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Page Header End-->
-        <!--Contact Page Start-->
-        <section class="contact-page">
-            <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
-            <div class="container">
-                <div class="contact-page__inner">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-5">
-                            <div class="contact-page__left">
-                                <div class="contact-page__information">
-                                    <h3 class="contact-page__information-title">Contact Informatlon</h3>
-                                    <ul class="contact-page__information-list list-unstyled">
-                                        <li>
-                                            <div class="icon">
-                                                <span class="icon-pin"></span>
-                                            </div>
-                                            <div class="content">
-                                                <h3>Address</h3>
-                                                <p>7515 Carriage Court, CA, 92236 USA</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <span class="icon-trading"></span>
-                                            </div>
-                                            <div class="content">
-                                                <h3>Contact Namber</h3>
-                                                <p><a href="tel:66561598596969">( 6656) 1598596969</a></p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <span class="icon-envelope-1"></span>
-                                            </div>
-                                            <div class="content">
-                                                <h3>Email Us</h3>
-                                                <p><a href="mailto:shifamoni6790@gmail.com">shifamoni6790@gmail.com</a>
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+          </div>
+        </div>
 
+        <!-- Contact Form -->
+        <div class="contact-form-section" id="contactFormSection">
+          <div class="contact-form__header">
+            <h2 class="contact-form__title">Send Us a Message</h2>
+            <p class="contact-form__subtitle">Fill out the form below and we'll respond within 24 hours.</p>
+          </div>
 
-                        <div class="col-xl-7 col-lg-7">
-                            <div class="contact-page__right">
-                                <h3 class="contact-page__contact-title">Get A Quote</h3>
-                                <form id="contact-form" class="contact-page__form contact-form-validated"
-                                    action="https://tecture-laravel.mnsithub.com/assets/inc/sendemail.php" method="POST">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="contact-page__input-box">
-                                                <input type="text" name="name" placeholder="Your name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="contact-page__input-box">
-                                                <input type="email" name="email" placeholder="Your Email" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="contact-page__input-box">
-                                                <input type="number" placeholder="Mobile" name="phone" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="contact-page__input-box">
-                                                <input type="text" placeholder="Subject" name="subject" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-12">
-                                            <div class="contact-page__input-box text-message-box">
-                                                <textarea name="message" placeholder="Messege" required></textarea>
-                                            </div>
-                                            <div class="contact-page__btn-box">
-                                                <button type="submit" class="thm-btn contact-page__btn"
-                                                    data-loading-text="Please wait...">
-                                                    Get Started
-                                                    <span class="icon-up-right-arrow"></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="result mt-2"></div>
-                                </form>
-                            </div>
-                        </div>
+          <div class="glass-card contact-form__card">
+            <form id="contactForm" class="contact-form" novalidate aria-label="Contact form">
+              <div class="contact-form__honeypot" aria-hidden="true"><label>Leave empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
+              <div class="contact-form__row">
+                <div class="form-field" data-delay="300"><div class="form-field__input-wrapper"><input type="text" id="fullName" name="fullName" class="form-field__input" placeholder=" " required maxlength="100"><label for="fullName" class="form-field__label">Full Name<span class="form-field__required">*</span></label><div class="form-field__underline"></div></div><p class="form-field__error" id="fullNameError" role="alert" aria-live="polite" hidden></p></div>
+                <div class="form-field" data-delay="350"><div class="form-field__input-wrapper"><input type="email" id="email" name="email" class="form-field__input" placeholder=" " required maxlength="255"><label for="email" class="form-field__label">Email Address<span class="form-field__required">*</span></label><div class="form-field__underline"></div></div><p class="form-field__error" id="emailError" role="alert" aria-live="polite" hidden></p></div>
+              </div>
 
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Contact Page End-->
+              <div class="contact-form__row">
+                <div class="form-field" data-delay="400"><div class="form-field__input-wrapper"><input type="tel" id="phone" name="phone" class="form-field__input" placeholder=" " maxlength="20"><label for="phone" class="form-field__label">Phone Number<span class="form-field__optional">(optional)</span></label><div class="form-field__underline"></div></div><p class="form-field__error" id="phoneError" role="alert" aria-live="polite" hidden></p></div>
+                <div class="form-field" data-delay="450"><div class="form-field__input-wrapper"><input type="text" id="subject" name="subject" class="form-field__input" placeholder=" " required maxlength="200"><label for="subject" class="form-field__label">Subject<span class="form-field__required">*</span></label><div class="form-field__underline"></div></div><p class="form-field__error" id="subjectError" role="alert" aria-live="polite" hidden></p></div>
+              </div>
 
-        <!--Contact Info Start-->
-        <section class="contact-info-section">
-            <div class="container">
+              <div class="form-field" data-delay="500"><div class="form-field__input-wrapper"><textarea id="message" name="message" class="form-field__textarea" placeholder=" " required maxlength="5000" rows="5"></textarea><label for="message" class="form-field__label">Message<span class="form-field__required">*</span></label><div class="form-field__underline"></div></div><p class="form-field__error" id="messageError" role="alert" aria-live="polite" hidden></p></div>
 
-                <div class="row">
-                    <div class="col-xl-3">
-                        <div class="single-contact-info-section">
-                            <div class="icon">
-                                <i class=" icon-pin"></i>
-                            </div>
-                            <div class="single-contact-info-section__content">
-                                <div class="text">
-                                    <h3>Location</h3>
-                                    <p>Discover innovation doorstep.</p>
-                                    <p>14 Tottenham Road, United Kingdom</p>
-                                </div>
-                                <div class="btn-box">
-                                    <a href="contact.html#">
-                                        View On Map
-                                        <span class="icon-up-right-arrow"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3">
-                        <div class="single-contact-info-section">
-                            <div class="icon">
-                                <i class="icon-telephone"></i>
-                            </div>
-                            <div class="single-contact-info-section__content">
-                                <div class="text">
-                                    <h3>Telephone</h3>
-                                    <p>Your bridge to hassle-free service.</p>
-                                    <p><a href="tal:12122263126"> 1 212-226-3126</a></p>
-                                </div>
-                                <div class="btn-box">
-                                    <a href="contact.html#">
-                                        Get Call Back
-                                        <span class="icon-up-right-arrow"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3">
-                        <div class="single-contact-info-section">
-                            <div class="icon">
-                                <i class="icon-envelope-2"></i>
-                            </div>
-                            <div class="single-contact-info-section__content">
-                                <div class="text">
-                                    <h3>Your Email</h3>
-                                    <p>Your bridge to hassle-free service.</p>
-                                    <p><a href="mailto:head@transcargo.com">head@transcargo.com</a></p>
-                                </div>
-                                <div class="btn-box">
-                                    <a href="contact.html#">
-                                        Inter Email
-                                        <span class="icon-up-right-arrow"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3">
-                        <div class="single-contact-info-section">
-                            <div class="icon">
-                                <i class="far fa-clock"></i>
-                            </div>
-                            <div class="single-contact-info-section__content">
-                                <div class="text">
-                                    <h3>Off.Hrs</h3>
-                                    <p>Monday-Satday: 9.00 am to 7.30 pm</p>
-                                    <p>Hotline is available 24/7.</p>
-                                </div>
-                                <div class="btn-box">
-                                    <a href="contact.html#">
-                                        Get Call Back
-                                        <span class="icon-up-right-arrow"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              
 
-                </div>
+              <button type="submit" id="submitButton" class="submit-button submit-button--idle">
+                <span class="submit-button__shimmer"></span>
+                <span class="submit-button__content">
+                  <svg class="submit-button__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  <span id="submitButtonText">Send Message</span>
+                </span>
+                <div class="submit-button__confetti" id="confettiContainer"></div>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            </div>
-        </section>
-        <!--Contact Info End-->
+  <!-- Map Section -->
+  <section class="map-section" aria-label="Office location map">
+    <div class="container">
+      <div class="map-section__header" id="mapHeader">
+        <h2 class="map-section__title">Visit Our Office</h2>
+        <p class="map-section__subtitle">We're located in the heart of San Francisco's tech district. Stop by for a coffee!</p>
+      </div>
 
-        <!--Google Map Start-->
-        <section class="google-map-one">
-            <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619:0xba03efb7998eef6d!2sCostco Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd"
-                class="google-map__one" allowfullscreen></iframe>
-
-        </section>
-        <!--Google Map End-->
-
-        <!--Site Footer Start-->
+      <div class="glass-card map-section__card">
+        <div class="map-section__container" id="mapContainer" data-lat="37.7749" data-lng="-122.4194" data-zoom="15" data-title="Nexus Technologies" data-address="500 Innovation Drive, Suite 200, San Francisco, CA 94107">
+          <div class="map-section__loading" id="mapLoading"><div class="map-section__loading-spinner"></div><span class="map-section__loading-text">Loading map...</span></div>
+          <iframe id="mapIframe" class="map-section__iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0977825672876!2d-122.4194!3d37.7749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ2JzI5LjciTiAxMjLCsDI1JzA5LjgiVw!5e0!3m2!1sen!2sus!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Office location" style="display:none;"></iframe>
+        </div>
+        <div class="map-section__footer">
+          <div class="map-section__address">
+            <div class="map-section__address-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><p class="map-section__address-title">Nexus Technologies</p><p class="map-section__address-text">500 Innovation Drive, Suite 200, San Francisco, CA 94107</p></div>
+          </div>
+          <a href="https://maps.google.com/?q=500+Innovation+Drive+San+Francisco+CA" target="_blank" rel="noopener noreferrer" class="map-section__link">Get Directions<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
         
 
     <!--Site Footer Start-->
@@ -707,10 +609,7 @@
 <script src="assets/js/gsap/ScrollTrigger.js"></script>
 <script src="assets/js/gsap/SplitText.js"></script>
 <script src="assets/js/script.js"></script>
-
-
- 
-   
+<script src="assets/js/contact.js"></script>
 <script src="assets/js/ajax-form.js"></script>
  
     </body>
