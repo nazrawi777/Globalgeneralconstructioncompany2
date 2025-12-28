@@ -1,3 +1,20 @@
+@media only screen and (min-width: 1280px) and (max-width: 1499px){
+.main-menu__bottom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: var(--tecture-white);
+  padding: 0 13px 0 !important;
+}
+.main-menu__search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+}
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
     .feature-one__list li .text {
         margin-left: 20px;
