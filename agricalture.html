@@ -37,6 +37,13 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="/blog-style.css">
+  		<link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="assets/css/plugin.min.css">
+		<link rel="stylesheet" href="assets/css/theme-spacing.css">
+		<link rel="stylesheet" href="assets/css/style2.css">
+		<!-- Responsive CSS -->
+		<link rel="stylesheet" href="assets/css/responsive.css">
   
 
 
@@ -107,23 +114,11 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
   <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "2050 Blog",
-    "description": "Explore the future of construction, technology, urbanism, and sustainability in 2050.",
-    "url": "/blog.html",
-    "publisher": {
-      "@type": "Organization",
-      "name": "2050 Blog"
-    }
-  }
-  </script>
+
   <style>
     body {
      
-      background-color: #101116;
+      background-color: white;
       color: hsl(var(--foreground));
       line-height: 1.6;
       overflow-x: hidden;
@@ -260,33 +255,664 @@
 
   
   <main>
-    <!-- Categories -->
-<section class="categories-section">
-      <div class="container1">
-        <div class="categories-header">
-          
-          
-        </div>
-        <div id="categoriesContainer" class="categories-list" role="tablist">
-          <!-- Categories rendered by JS -->
-        </div>
-      </div>
-    </section>
-    
-    <!-- Posts Grid -->
-    <section class="posts-section">
-        <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
-              
-      <div class="container1">
-        <div id="postsGrid" class="posts-grid" role="feed" aria-label="Blog posts">
-          <!-- Posts rendered by JS -->
-        </div>
-        
-        <nav id="paginationContainer" class="pagination" aria-label="Pagination">
-          <!-- Pagination rendered by JS -->
-        </nav>
-      </div>
-    </section>
+				<!-- Start Hero Seciton -->
+				<section id="home" class="atf-slider atf-style1 atf-slider-animation1 home-area">
+					<div class="slick-container" data-autoplay="0" data-loop="1" data-speed="800" data-autoplay-timeout="1000" data-center="0" data-slides-per-view="1">
+						<div class="slick-wrapper">
+							<div class="slick-slide-in">
+								<div class="atf-hero atf-style1 atf-size1 atf-hero-overlay atf-white">
+									<div class="atf-hero-bg atf-dynamic-bg atf-bg" data-src="assets/img/slider/1.jpg"></div>
+									<div class="container">
+										<div class="atf-hero-text">
+											<h1 class="atf-hero-title">
+												Vegetables, Meats<br> Dairy, and Eggs
+											</h1>
+											<div class="atf-hero-subtitle">
+												<p>This includes a wide variety of fruits like berries, apples<br> oranges, bananas, and melons, all grown synthetic.</p>
+											</div>
+											<div class="atf-main-btn"> 
+											<a href="index.html#contact" class="page-scroll atf-themes-btn">Discover More</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="slick-slide-in">
+								<div class="atf-hero atf-style1 atf-size1 atf-hero-overlay atf-white">
+									<div class="atf-hero-bg atf-dynamic-bg atf-bg" data-src="assets/img/slider/2.jpg"></div>
+									<div class="container">
+										<div class="atf-hero-text text-center">
+											<h1 class="atf-hero-title">
+												Health Life for Fruit
+											</h1>
+											<div class="atf-hero-subtitle">
+											<p>This includes a wide variety of fruits like berries, apples<br> oranges, bananas, and melons, all grown synthetic.</p>
+											</div>
+											<div class="atf-main-btn"> 
+												<a href="index.html#about" class="page-scroll atf-themes-btn me-4">Sign Up</a>
+												<a href="index.html#contact" class="page-scroll atf-themes-btn btn-2">Details</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="slick-slide-in">
+								<div class="atf-hero atf-style1 atf-size1 atf-hero-overlay atf-white">
+									<div class="atf-hero-bg atf-dynamic-bg atf-bg" data-src="assets/img/slider/3.jpg"></div>
+									<div class="container">
+										<div class="atf-hero-text text-center">
+											<h1 class="atf-hero-title">
+												Natural Farm House
+											</h1>
+											<div class="atf-hero-subtitle">
+											<p>This includes a wide variety of fruits like berries, apples<br> oranges, bananas, and melons, all grown synthetic.</p>
+											</div>
+											<div class="atf-main-btn"> 
+												<a href="index.html#about" class="page-scroll atf-themes-btn me-4">Sign Up</a>
+												<a href="index.html#contact" class="page-scroll atf-themes-btn btn-2">Details</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!-- .slick-container -->
+					<div class="pagination atf-style2 atf-hidden"></div> <!-- If dont need Pagination then add class .atf-hidden -->
+					<div class="swipe-arrow atf-style2"> <!-- If dont need navigation then add class .atf-hidden -->
+						<div class="slick-arrow-left"><i class="fa fa-chevron-left"></i></div>
+						<div class="slick-arrow-right"><i class="fa fa-chevron-right"></i></div>
+					</div>
+				</section><!-- .atf-slider -->
+				<!-- End Hero Seciton -->
+					
+				
+				<!-- START ABOUT -->
+				<section id="about" class="atf-section-padding">
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col-xl-6 col-12 justify-content-start wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+								<div class="atf-section-title mb-0 text-start">
+									<h5 class="sub-title">Welcome to Warith Company</h5>
+									<h2 class="title">We Provide for Health High Quilty Food in 5 Years.</h2>
+									<p class="description">Organic meats, such as beef, chicken, and pork, are raised on farms that adhere to organic standards, meaning the animals are not fed genetically modified feed and are not treated with antibiotics.</p>
+								</div>
+								
+								<div class="row clearfix mt-25">
+									<div class="col-6">
+										<div class="atf-single-about-list">
+											<h4>Natural Food</h4>
+											<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="atf-single-about-list">
+											<h4>High Quilty Food</h4>
+											<p>They are free from synthetic pesticides and fertilizers types, ensuring genetically. </p>
+										</div>
+									</div>
+									
+									<div class="atf-about-btn mt-25">
+										<a class="atf-themes-btn" href="index.html#">
+											<span>Learn More</span>
+										</a>
+									</div>	
+								</div><!--- END COL -->
+							</div><!--- END COL -->
+						
+							<div class="col-xl-6 col-12 mt-lg-40">
+								<div class="atf-about-inner text-center wow bounceIn" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+									<div class="atf-about-img">
+										<img src="assets/img/about/about.jpg" alt="About">
+									</div>
+								</div>
+							</div><!--- END COL -->
+						</div><!--- END ROW -->
+					</div><!--- END CONTAINER -->
+				</section>
+				<!-- END ABOUT -->
+				
+				<!-- START SERVICE -->
+				<section id="service" class="atf-service-area atf-section-padding grey-bg-1">
+					<div class="container">
+						<div class="row clearfix justify-content-center text-center">
+							<div class="col-lg-6 col-md-8 col-12">
+								<div class="atf-section-title wow zoomIn" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+									<h5>Our Service</h5>
+									<h2 class="title">What We Do in Service</h2>
+									<p>Organic meats, such as beef, chicken, and pork, are raised on farms that adhere to organic standards, meaning the animals</p>
+								</div>
+							</div><!--- END COL -->
+						</div><!--- END ROW -->
+						
+
+						<div class="row">
+							<div class="col-lg-4 col-md-6 col-sm-6 col-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+								<div class="atf-single-service d-block text-start">
+									<div class="atf-service-img">
+										<img src="assets/img/blog/5.jpg" alt="service">	
+									</div>
+									<div class="atf-service-text">
+										<div class="atf-service-content mb-20 d-flex align-items-center">
+											<div class="atf-service-icon mr-15">
+												<i class="fas fa-seedling"></i>
+											</div>
+											<div class="atf-service-title">
+												<h4><a href="index.html#">ORGANIC FOOD</a></h4> 
+											</div>
+										</div>
+										<p class="description">Meaning the animals are not fed genetically modified feed and are not treated with antibiotics</p>
+									</div>
+								</div>
+							</div><!--- END COL -->
+							
+							<div class="col-lg-4 col-md-6 col-sm-6 col-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+								<div class="atf-single-service d-block text-start">
+									<div class="atf-service-img">
+										<img src="assets/img/blog/4.jpg" alt="service">	
+									</div>
+									<div class="atf-service-text">
+										<div class="atf-service-content mb-20 d-flex align-items-center">
+											<div class="atf-service-icon mr-15">
+												<i class="fas fa-pepper-hot"></i>
+											</div>
+											<div class="atf-service-title">
+												<h4><a href="index.html#">FRESH FOOD</a></h4> 
+											</div>
+										</div>
+										<p class="description">Meaning the animals are not fed genetically modified feed and are not treated with antibiotics</p>
+									</div>
+								</div>
+							</div><!--- END COL -->
+							<div class="col-lg-4 col-md-6 col-sm-6 col-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+								<div class="atf-single-service d-block text-start">
+									<div class="atf-service-img">
+										<img src="assets/img/blog/3.jpg" alt="service">	
+									</div>
+									<div class="atf-service-text">
+										<div class="atf-service-content mb-20 d-flex align-items-center">
+											<div class="atf-service-icon mr-15">
+												<i class="fas fa-pepper-hot"></i>
+											</div>
+											<div class="atf-service-title">
+												<h4><a href="index.html#">AGRICULTURE</a></h4> 
+											</div>
+										</div>
+										<p class="description">Meaning the animals are not fed genetically modified feed and are not treated with antibiotics</p>
+									</div>
+								</div>
+							</div><!--- END COL -->
+						</div><!--- END ROW -->
+					</div><!--- END CONTAINER -->
+				</section>
+				<!-- END SERVICE -->
+				
+				
+				<!-- START CHOOSE -->
+				<section id="choose" class="atf-section-padding">
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col-xl-6 col-12">
+								<div class="atf-choose-inner text-center wow bounceIn" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+									<div class="atf-choose-image">
+										<img src="assets/img/about/about.jpg" alt="About">
+									</div>
+								</div>
+							</div><!--- END COL -->
+							
+							<div class="col-xl-6 col-12 mt-lg-40 justify-content-start wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+								<div class="atf-section-title mb-0 text-start">
+									<h5 class="sub-title">Why Choose Us</h5>
+									<h2 class="title">Supply for High Quilty Food proceing to work farmer.</h2>
+								</div>
+								<div class="row clearfix">
+									<div class="atf-choose-content d-flex">
+										<div class="atf-choose-icon">
+											<i class="fas fa-carrot"></i>
+										</div>
+										<div class="atf-choose-title">	
+											<h4 class="title">High Quilty Food</h4>
+											<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+										</div>
+									</div>
+									<div class="atf-choose-content d-flex">
+										<div class="atf-choose-icon">
+											<i class="far fa-lemon"></i>
+										</div>
+										<div class="atf-choose-title">	
+											<h4 class="title">Natural Food</h4>
+											<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+										</div>
+									</div>
+									<div class="atf-choose-content d-flex">
+										<div class="atf-choose-icon">
+											<i class="fas fa-leaf"></i>
+										</div>
+										<div class="atf-choose-title">	
+											<h4 class="title">Fresh Food</h4>
+											<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+										</div>
+									</div>
+								</div><!--- END COL -->
+							</div><!--- END COL -->
+						</div><!--- END ROW -->
+					</div><!--- END CONTAINER -->
+				</section>
+				<!-- END CHOOSE -->
+				
+				
+				<!-- START COMPANY BRAND LOGO  -->
+				<div id="atf-brand-area" class="atf-section-padding grey-bg-4">
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col-lg-12">
+								<div class="atf-brand-active owl-carousel">
+									<a href="index.html#"><img src="assets/img/partner/1.png" alt="image"></a>
+									<a href="index.html#"><img src="assets/img/partner/2.png" alt="image"></a>
+									<a href="index.html#"><img src="assets/img/partner/3.png" alt="image"></a>
+									<a href="index.html#"><img src="assets/img/partner/4.png" alt="image"></a>
+									<a href="index.html#"><img src="assets/img/partner/5.png" alt="image"></a>
+									<a href="index.html#"><img src="assets/img/partner/1.png" alt="image"></a>
+									<a href="index.html#"><img src="assets/img/partner/2.png" alt="image"></a>
+									<a href="index.html#"><img src="assets/img/partner/3.png" alt="image"></a>
+									<a href="index.html#"><img src="assets/img/partner/4.png" alt="image"></a>
+									<a href="index.html#"><img src="assets/img/partner/5.png" alt="image"></a>
+								</div>
+							</div><!-- END COL  -->
+						</div><!--END  ROW  -->
+					</div><!-- END CONTAINER  -->
+				</div>
+				<!-- END COMPANY BRAND LOGO -->		
+				
+				
+				<!-- START product -->
+				<section id="product" class="atf-product-area atf-section-padding grey-bg-4">
+					<div class="container">
+						<div class="row clearfix justify-content-center text-center">
+						<div class="col-lg-6 col-md-8 col-12">
+								<div class="atf-section-title wow zoomIn" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+									<h5>Product</h5>
+									<h2 class="title">Fresh Organic Fruit</h2>
+									<p>Organic meats, such as beef, chicken, and pork, are raised on farms that adhere to organic standards, meaning the animals</p>
+								</div>
+							</div><!--- END COL -->
+						</div><!--- END ROW -->
+
+						<div class="row">
+							<div class="col-lg-12"> 
+								<div id="product-slider" class="atf_owl_nav_slider owl-carousel">
+									<div class="product-grid">
+										<div class="product-image">
+											<a href="index.html#" class="image">
+												<img class="pic-1" src="assets/img/product/1.jpg" alt="">
+											</a>
+											<span class="product-hot-label">hot</span>
+											<a class="add-to-cart" href="index.html#">Add to Cart</a>
+											<ul class="product-links">
+												<li><a href="index.html#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+												<li><a href="index.html#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
+												<li><a href="assets/img/product/1.jpg" data-tip="Quick View" data-rel="lightcase:myCollection"><i class="fa fa-eye"></i></a></li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<span class="product-category"><a href="index.html#">Organic</a></span>
+											<h4 class="title"><a href="index.html#">Fresh Food</a></h4>
+											<div class="price">$85.99 <del class="ms-3">$95.56</del> </div>
+										</div>
+									</div>
+									
+									<div class="product-grid">
+										<div class="product-image">
+											<a href="index.html#" class="image">
+												<img class="pic-1" src="assets/img/product/2.jpg" alt="">
+											</a>
+											<a class="add-to-cart" href="index.html#">Add to Cart</a>
+											<ul class="product-links">
+												<li><a href="index.html#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+												<li><a href="index.html#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
+												<li><a href="assets/img/product/2.jpg" data-tip="Quick View" data-rel="lightcase:myCollection"><i class="fa fa-eye"></i></a></li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<span class="product-category"><a href="index.html#">Fruit</a></span>
+											<h4 class="title"><a href="index.html#">Banana & Pineapple</a></h4>
+											<div class="price">$65.55</div>
+										</div>
+									</div>
+									
+									<div class="product-grid">
+										<div class="product-image">
+											<a href="index.html#" class="image">
+												<img class="pic-1" src="assets/img/product/3.jpg" alt="">
+											</a>
+											<span class="product-hot-label">hot</span>
+											<a class="add-to-cart" href="index.html#">Add to Cart</a>
+											<ul class="product-links">
+												<li><a href="index.html#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+												<li><a href="index.html#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
+												<li><a href="assets/img/product/3.jpg" data-tip="Quick View" data-rel="lightcase:myCollection"><i class="fa fa-eye"></i></a></li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<span class="product-category"><a href="index.html#">Organic</a></span>
+											<h4 class="title"><a href="index.html#">Fresh Vegetables</a></h4>
+											<div class="price">$85.99 <del class="ms-3">$95.56</del> </div>
+										</div>
+									</div>
+									
+									<div class="product-grid">
+										<div class="product-image">
+											<a href="index.html#" class="image">
+												<img class="pic-1" src="assets/img/product/4.jpg" alt="">
+											</a>
+											<a class="add-to-cart" href="index.html#">Add to Cart</a>
+											<ul class="product-links">
+												<li><a href="index.html#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+												<li><a href="index.html#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
+												<li><a href="assets/img/product/4.jpg" data-tip="Quick View" data-rel="lightcase:myCollection"><i class="fa fa-eye"></i></a></li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<span class="product-category"><a href="index.html#">Straberry</a></span>
+											<h4 class="title"><a href="index.html#">Banana & Pineapple</a></h4>
+											<div class="price">$65.55</div>
+										</div>
+									</div>
+									
+									<div class="product-grid">
+										<div class="product-image">
+											<a href="index.html#" class="image">
+												<img class="pic-1" src="assets/img/product/5.jpg" alt="">
+											</a>
+											<span class="product-hot-label">hot</span>
+											<a class="add-to-cart" href="index.html#">Add to Cart</a>
+											<ul class="product-links">
+												<li><a href="index.html#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+												<li><a href="index.html#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
+												<li><a href="assets/img/product/5.jpg" data-tip="Quick View" data-rel="lightcase:myCollection"><i class="fa fa-eye"></i></a></li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<span class="product-category"><a href="index.html#">Organic</a></span>
+											<h4 class="title"><a href="index.html#">Fresh Vegetables</a></h4>
+											<div class="price">$85.99 <del class="ms-3">$95.56</del> </div>
+										</div>
+									</div>
+									
+									<div class="product-grid">
+										<div class="product-image">
+											<a href="index.html#" class="image">
+												<img class="pic-1" src="assets/img/product/2.jpg" alt="">
+											</a>
+											<a class="add-to-cart" href="index.html#">Add to Cart</a>
+											<ul class="product-links">
+												<li><a href="index.html#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+												<li><a href="index.html#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
+												<li><a href="assets/img/product/2.jpg" data-tip="Quick View" data-rel="lightcase:myCollection"><i class="fa fa-eye"></i></a></li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<span class="product-category"><a href="index.html#">Straberry</a></span>
+											<h4 class="title"><a href="index.html#">Banana & Pineapple</a></h4>
+											<div class="price">$65.55</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- END GALLERY -->
+				
+				
+				<!-- START CLASSES -->
+				<section id="project" class="atf-classes-area atf-section-padding">
+					<div class="container">
+						<div class="row clearfix justify-content-center text-center">
+							<div class="col-lg-6 col-md-8 col-12">
+								<div class="atf-section-title wow zoomIn" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+									<h5>Some Project</h5>
+									<h2 class="title">Organic Project</h2>
+									<p>Organic meats, such as beef, chicken, and pork, are raised on farms that adhere to organic standards, meaning the animals</p>
+								</div>
+							</div><!--- END COL -->
+						</div><!--- END ROW -->
+						
+
+						<div class="row justify-content-center text-center mb-60">
+							<div class="col-xl-7 col-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+								<nav>
+									<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+										<a class="nav-item nav-link active" id="nav-about-tab" data-bs-toggle="tab"
+											href="index.html#nav-about" role="tab" aria-controls="nav-about" aria-selected="true">
+											 Fruit
+										</a>
+										<a class="nav-item nav-link" id="nav-skills-tab" data-bs-toggle="tab" href="index.html#nav-skills"
+											role="tab" aria-controls="nav-skills" aria-selected="false">
+											Bananna
+										</a>
+										<a class="nav-item nav-link" id="nav-interview-tab" data-bs-toggle="tab"
+											href="index.html#nav-interview" role="tab"
+											aria-selected="false">
+											Strabrry
+										</a>
+									</div>
+								</nav><!--- END NAV -->
+							</div>
+						</div>
+						
+						<div class="row align-items-center">
+							<div class="col-lg-12 col-12">			
+								<div class="tab-content" id="nav-tabContent">
+									<div class="tab-pane fade show active" id="nav-about" role="tabpanel"
+										aria-labelledby="nav-about-tab">
+										<div class="row">
+											<div class="col-xl-6 col-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+												<div class="atf-pro-project-inner">
+													<div class="atf-project-time d-flex">
+														<div class="atf-project-icon">
+															<i class="far fa-building"></i>
+														</div>
+														<div class="atf-project-title">	
+															<h4 class="title">Natural Food</h4>
+															<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+														</div>
+													</div>
+													<div class="atf-project-time d-flex">
+														<div class="atf-project-icon">
+															<i class="fas fa-leaf"></i>
+														</div>
+														<div class="atf-project-title">	
+															<h4 class="title">High Quilty Food</h4>
+															<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+														</div>
+													</div>
+													<div class="atf-project-time d-flex">
+														<div class="atf-project-icon">
+															<i class="fab fa-apple"></i>
+														</div>
+														<div class="atf-choose-title">	
+															<h4 class="title">Agriculture Product</h4>
+															<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<div class="col-xl-6 col-12 ps-lg-3 mt-lg-40 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+												<div class="atf-project-img">
+													<img src="assets/img/blog/8.jpg" alt="Food">
+													<div class="atf-project-content">
+														<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable meaning.</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div><!--- END TAB -->
+									
+									<div class="tab-pane fade" id="nav-skills" role="tabpanel" aria-labelledby="nav-skills-tab">
+										<div class="row">
+											<div class="col-xl-6 col-12 pe-lg-3 mb-lg-40 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+												<div class="atf-project-img">
+													<img src="assets/img/blog/8.jpg" alt="Food">
+													<div class="atf-project-content">
+														<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable meaning.</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-xl-6 col-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+												<div class="atf-pro-project-inner">
+													<div class="atf-project-time d-flex">
+														<div class="atf-project-icon">
+															<i class="far fa-building"></i>
+														</div>
+														<div class="atf-project-title">	
+															<h4 class="title">Natural Food</h4>
+															<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+														</div>
+													</div>
+													<div class="atf-project-time d-flex">
+														<div class="atf-project-icon">
+															<i class="fas fa-leaf"></i>
+														</div>
+														<div class="atf-project-title">	
+															<h4 class="title">High Quilty Food</h4>
+															<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+														</div>
+													</div>
+													<div class="atf-project-time d-flex">
+														<div class="atf-project-icon">
+															<i class="fab fa-apple"></i>
+														</div>
+														<div class="atf-choose-title">	
+															<h4 class="title">Agriculture Product</h4>
+															<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div><!--- END TAB -->
+
+									<div class="tab-pane fade" id="nav-interview" role="tabpanel" aria-labelledby="nav-interview-tab">
+										<div class="row">
+											<div class="col-xl-6 col-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+												<div class="atf-pro-project-inner">
+													<div class="atf-project-time d-flex">
+														<div class="atf-project-icon">
+															<i class="far fa-building"></i>
+														</div>
+														<div class="atf-project-title">	
+															<h4 class="title">Natural Food</h4>
+															<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+														</div>
+													</div>
+													<div class="atf-project-time d-flex">
+														<div class="atf-project-icon">
+															<i class="fas fa-leaf"></i>
+														</div>
+														<div class="atf-project-title">	
+															<h4 class="title">High Quilty Food</h4>
+															<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+														</div>
+													</div>
+													<div class="atf-project-time d-flex">
+														<div class="atf-project-icon">
+															<i class="fab fa-apple"></i>
+														</div>
+														<div class="atf-choose-title">	
+															<h4 class="title">Agriculture Product</h4>
+															<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable.</p>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<div class="col-xl-6 col-12 ps-lg-3 mt-lg-40 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+												<div class="atf-project-img">
+													<img src="assets/img/blog/7.jpg" alt="Food">
+													<div class="atf-project-content">
+														<p>Organic vegetables encompass leafy greens, root vegetables, and various other vegetable meaning.</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div><!--- END TAB -->
+								</div><!--- END TAB CONTENT -->
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- END CLASSES -->	
+				
+				
+				<!-- START CONTACT -->
+				<section id="contact" class="atf-contact-area atf-section-padding">
+					<div class="container">
+						<div class="row clearfix justify-content-center text-center">
+							<div class="col-lg-6 col-md-8 col-12">
+								<div class="atf-section-title wow zoomIn" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+									<h5>Get In Touch</h5>
+									<h2 class="title">Connected With Us</h2>
+									<p>Organic meats, such as beef, chicken, and pork, are raised on farms that adhere to organic standards, meaning the animals</p>
+								</div>
+							</div><!--- END COL -->
+						</div><!--- END ROW -->
+
+						<div class="row">
+							<div class="col-xl-6 col-12">
+								<form class="atf-contact-form" id="contact-form" action="https://themesfamily.com/tm/warith/mail.php" method="POST">
+									<div class="atf-main-contact">
+										<div class="col-md-12">
+											<div class="form-group">
+												<input id="name" type="text" name="name" placeholder="Your Name" required="required">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<input id="mail" type="email" name="email" placeholder="Your Email" required="required">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<input id="phone" type="number" name="phone" placeholder="Your Phone" required="required">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<textarea id="message" name="message" placeholder="Your Message" rows="4" required="required"></textarea>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="atf-contact-btn">
+												<button type="submit" class="atf-themes-btn w-100">Send Message</button>
+											</div>
+										</div>
+									</div>
+								</form><br>
+								<p class="form-message"></p>
+							</div><!--- END COL -->
+								
+							<div class="col-xl-6 col-12 mt-lg-40">
+								<!-- Google Map start-->
+								<div id="atf-map-area">
+									<iframe
+									  width="100%"
+									  height="450"
+									  style="border:0;"
+									  loading="lazy"
+									  allowfullscreen
+									  referrerpolicy="no-referrer-when-downgrade"
+									  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.738525967308!2d90.35766117596549!3d23.82837728454627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c1270240be1b%3A0x8cc7a7b61f7da624!2sMirpur%2010%20Circle!5e0!3m2!1sen!2sbd!4v1718107336219!5m2!1sen!2sbd">
+									</iframe>
+								</div>
+								<!-- Google Map end -->
+							</div><!--- END COL -->
+						</div><!--- END ROW -->
+					</div><!--- END CONTAINER -->
+				</section>
+				<!-- END CONTACT-->
   </main>
   
   <!--Site Footer Start-->
@@ -507,5 +1133,15 @@
 <script src="assets/js/script.js"></script>
 <script src="assets/js/countdown.min.js"></script>
 <script src="/blog-script.js"></script>
+<script src="assets/js1/jquery.min.js"></script>
+<script src="assets/js1/bootstrap.bundle.min.js"></script>
+<script src="assets/js1/plugin.min.js"></script>
+<script src="assets/js1/form-contact.js"></script>
+<script src="assets/js1/main.js"></script>	
 </body>
 </html>
+
+
+
+
+
