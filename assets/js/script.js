@@ -49,12 +49,24 @@
 
 
 
-  //Main Slider / Banner Carousel
+// Unified Main Slider JS
+$(document).ready(function () {
+
+  // Function to autoplay HTML5 videos inside slider items
+  function playSliderVideo(item) {
+    const video = item.find("video").get(0);
+    if (video) {
+      video.currentTime = 0;
+      video.play();
+    }
+  }
+
+  // Main Slider / Banner Carousel (Videos)
   if ($(".main-slider__carousel").length) {
-    $(".main-slider__carousel").owlCarousel({
+    const mainSlider = $(".main-slider__carousel");
+    
+    mainSlider.owlCarousel({
       loop: true,
-      animateOut: "fadeOut",
-      animateIn: "fadeIn",
       margin: 0,
       nav: true,
       dots: true,
@@ -66,55 +78,57 @@
         '<span class="icon-right-arrow"></span>',
       ],
       responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 1,
-        },
-        800: {
-          items: 1,
-        },
-        992: {
-          items: 1,
-        },
+        0: { items: 1 },
+        600: { items: 1 },
+        800: { items: 1 },
+        992: { items: 1 },
       },
     });
+
+    // Play video when slide changes
+    mainSlider.on("changed.owl.carousel", function (event) {
+      const currentIndex = event.item.index;
+      const currentItem = $(event.target).find(".owl-item").eq(currentIndex).find(".item");
+      playSliderVideo(currentItem);
+    });
+
+    // Play video on first load
+    playSliderVideo(mainSlider.find(".owl-item.active .item"));
   }
 
-
-  //Main Slider Four / Banner Carousel
+  // Main Slider Four / Banner Carousel (Images or optional videos)
   if ($(".main-slider-four__carousel").length) {
-    $(".main-slider-four__carousel").owlCarousel({
+    const sliderFour = $(".main-slider-four__carousel");
+    
+    sliderFour.owlCarousel({
       loop: true,
-      animateOut: "fadeOut",
-      animateIn: "fadeIn",
       margin: 0,
       nav: false,
       dots: false,
       smartSpeed: 500,
       autoplay: true,
       autoplayTimeout: 7000,
-      navText: [
-        '<span class="icon-left-arrow"></span>',
-        '<span class="icon-right-arrow"></span>',
-      ],
       responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 1,
-        },
-        800: {
-          items: 1,
-        },
-        992: {
-          items: 1,
-        },
+        0: { items: 1 },
+        600: { items: 1 },
+        800: { items: 1 },
+        992: { items: 1 },
       },
     });
+
+    // If there are videos in this slider too
+    sliderFour.on("changed.owl.carousel", function (event) {
+      const currentIndex = event.item.index;
+      const currentItem = $(event.target).find(".owl-item").eq(currentIndex).find(".item");
+      playSliderVideo(currentItem);
+    });
+
+    // Play video on first load
+    playSliderVideo(sliderFour.find(".owl-item.active .item"));
   }
+
+});
+
 
 
 
