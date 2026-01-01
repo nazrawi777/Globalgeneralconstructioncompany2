@@ -955,7 +955,7 @@ li {
 }
 
 .main-menu__contact-list li+li {
-  margin-left: 46px;
+  margin-left: 16px;
 }
 
 .main-menu__contact-list li:before {
