@@ -17,14 +17,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: relative;
+    bottom: 2px;
 }
 
-.main-slider__overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 2;
-}
+
 
 
 .main-slider .item {
@@ -369,19 +366,23 @@
     width: 60px;
     height: 60px;
     font-size: 20px !important;
-    color: rgba(var(--tecture-white-rgb), .30) !important;
+    
     opacity: 1;
     margin: 0;
     text-align: center;
     transition: all 500ms ease;
     border-radius: 50%;
+     color: rgba(var(--tecture-white-rgb), 1) !important;
+    border: 2px solid rgba(var(--tecture-white-rgb), 1) !important;
     background-color: transparent !important;
-    border: 2px solid rgba(var(--tecture-white-rgb), .30) !important;
+    
+
 }
 
 .main-slider .owl-theme .owl-nav [class*=owl-]:hover {
+    color: rgba(255, 255, 255, 0.85) !important;
     color: rgba(var(--tecture-white-rgb), 1) !important;
-    border: 2px solid rgba(var(--tecture-white-rgb), 1) !important;
+    border: 2px solid rgba(255, 255, 255, 0.85) !important;
 }
 
 .main-slider .owl-theme .owl-nav [class*=owl-]+[class*=owl-] {

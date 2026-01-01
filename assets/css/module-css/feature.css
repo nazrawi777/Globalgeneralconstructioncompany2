@@ -68,7 +68,7 @@
     right: 0;
     border-radius: 5px;
     height: 100%;
-    background-color: var(--tecture-base);
+    background-color: #359df2;
     -webkit-transition-delay: .1s;
     transition-delay: .1s;
     -webkit-transition-timing-function: ease-in-out;
