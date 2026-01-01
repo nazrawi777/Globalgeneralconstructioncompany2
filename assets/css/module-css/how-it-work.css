@@ -62,7 +62,7 @@
     justify-content: center;
     width: 120px;
     height: 120px;
-    background-color: var(--tecture-base);
+    background-color: #359df2;
     border-radius: 10px;
     z-index: 2;
 }
@@ -76,7 +76,7 @@
     position: relative;
     display: inline-block;
     font-size: 60px;
-    color: #000000;
+    color: #fff;
     transition: all 500ms linear;
     transition-delay: 0.1s;
     transform: scale(1);
@@ -126,7 +126,7 @@
     justify-content: center;
     width: 120px;
     height: 120px;
-    background-color: var(--tecture-base);
+    background-color: #359df2;
     border-radius: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
