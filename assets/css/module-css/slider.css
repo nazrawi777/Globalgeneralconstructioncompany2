@@ -6,7 +6,7 @@
     position: relative;
     background-color: var(--tecture-black);
     overflow: hidden;
-    z-index: 1;             /* NOT 10 */
+    z-index: 1;/* NOT 10 */
 }
 .main-slider__bg-video {
     position: absolute;
@@ -16,7 +16,7 @@
 
 .main-slider__bg-video video {
     width: 100%;
-    height: 100%;
+    height: 120%;
     object-fit: cover;
     position: relative;
     bottom: 2px;
@@ -236,18 +236,10 @@
 /* Glassmorphism background for text content */
 .main-slider__content {
     --radius: 0.75rem;
-   
-    
      align-items: center;     /* Vertical center */
     justify-content: center; /* Horizontal center */
     text-align: center;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius);
     padding: 2.5rem 3rem;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     text-align: center;
     max-width: 90%;
     margin: 0 auto;
@@ -356,7 +348,7 @@
     max-width: 1320px;
     width: 100%;
     position: absolute;
-    bottom: 61px;
+    bottom: 11px;
     left: 0;
     right: 0;
     padding: 0 15px;

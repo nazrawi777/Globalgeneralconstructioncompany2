@@ -6,7 +6,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   background-color: var(--tecture-white);
-  padding: 0 13px 0 !important;
+  padding: 0 27px 0 !important;
 }
 .main-menu__search-box {
   position: relative;

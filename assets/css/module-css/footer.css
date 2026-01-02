@@ -6,7 +6,7 @@
     display: block;
     background-color: var(--tecture-black);
     overflow: hidden;
-    padding-top: 120px;
+    padding-top: 0px;
     z-index: 1;
 }
 

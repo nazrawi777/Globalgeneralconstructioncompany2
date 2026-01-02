@@ -195,6 +195,7 @@
 
 .icon-envelope-1:before {
   content: "\e928";
+
 }
 
 .icon-location:before {
@@ -207,4 +208,6 @@
 
 .icon-envelope-2:before {
   content: "\e92b";
+    position: relative;
+  left: 8px;
 }

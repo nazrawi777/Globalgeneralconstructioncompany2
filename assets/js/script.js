@@ -71,7 +71,7 @@ $(document).ready(function () {
       nav: true,
       dots: true,
       smartSpeed: 500,
-      autoplay: true,
+      autoplay: false,
       autoplayTimeout: 7000,
       navText: [
         '<span class="icon-left-arrow"></span>',

@@ -952,10 +952,12 @@ li {
   position: relative;
   display: flex;
   align-items: center;
+  
 }
 
 .main-menu__contact-list li+li {
-  margin-left: 16px;
+  margin-left: 4px;
+  gap: 10px;
 }
 
 .main-menu__contact-list li:before {
@@ -980,11 +982,11 @@ li {
 
 .main-menu__contact-list li .icon i {
   font-size: 20px;
-  color: var(--tecture-base);
+  color: #359df2;
 }
 
 .main-menu__contact-list li .text {
-  margin-left: 10px;
+  margin-left: 4px;
 }
 
 .main-menu__contact-list li .text p {
@@ -1000,7 +1002,7 @@ li {
 }
 
 .main-menu__contact-list li .text p a:hover {
-  color: var(--tecture-base);
+  color:#359df2;
 }
 
 .main-menu__top-right {
@@ -1188,7 +1190,7 @@ li {
   justify-content: space-between;
   flex-wrap: wrap;
   background-color: var(--tecture-white);
-  padding: 0 18px 0;
+  padding: 0 15px 0;
 }
 
 .main-menu__main-menu-box {
