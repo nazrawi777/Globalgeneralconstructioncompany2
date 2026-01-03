@@ -806,13 +806,22 @@ $(document).ready(function () {
   }
 
   if ($(".search-toggler").length) {
-    $(".search-toggler").on("click", function (e) {
-      e.preventDefault();
-      $(".search-popup").toggleClass("active");
-      $(".mobile-nav__wrapper").removeClass("expanded");
-      $("body").toggleClass("locked");
-    });
-  }
+  $(".search-toggler").on("click", function (e) {
+    const href = $(this).attr("href");
+
+    // If this is a phone link, let it dial
+    if (href && href.startsWith("tel:")) {
+      return true;
+    }
+
+    // Otherwise, it's a real search button
+    e.preventDefault();
+    $(".search-popup").toggleClass("active");
+    $(".mobile-nav__wrapper").removeClass("expanded");
+    $("body").toggleClass("locked");
+  });
+}
+
 
   if ($(".odometer").length) {
     var odo = $(".odometer");
