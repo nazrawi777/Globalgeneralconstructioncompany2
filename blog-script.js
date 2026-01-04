@@ -20,227 +20,208 @@ function resolveThumbnail(thumbnail) {
 const posts = [
   {
     id: 1,
-    slug: 'quantum-foundations-2050',
-    title: 'Quantum-Reinforced Foundations Transform Skyscraper Construction',
-    description: 'Revolutionary quantum-lattice concrete enables buildings to self-heal micro-fractures using embedded nanobots. The technology reduces maintenance costs by 94% while extending structural lifespan to over 500 years. Major cities worldwide are now mandating Q-concrete for all new high-rise developments.',
-    fullContent: `The construction industry has witnessed its most significant breakthrough since the invention of steel reinforcement. Quantum-reinforced foundations, utilizing entangled particle matrices, are revolutionizing how we approach structural engineering in 2050.
+    slug: 'national-palace-restoration-2024',
+    title: 'Restoring the National Palace: Lessons from Phase I',
+    description: 'Detailed case study of the National Palace Phase I restoration covering contract execution, heritage-sensitive quality control, phased handovers, and multi-stakeholder coordination under strict security. Demonstrates how disciplined project management delivered culturally sensitive outcomes on schedule and to client standards.',
+    fullContent: `
+    <h2>Scope & Challenges</h2>
+    <p>Works included fence and site restoration, fountain area pavement repair, retaining wall stabilization and utility building renovations. High security, heritage sensitivity, and phased handovers were critical constraints.</p>
 
-    <h2>The Science Behind Q-Concrete</h2>
-    <p>Unlike traditional concrete that relies purely on chemical bonding, quantum-lattice concrete incorporates billions of nanoscale quantum dots that maintain coherent states even at room temperature. These dots communicate instantaneously across the structure, detecting stress points before visible damage occurs.</p>
-
-    <h3>Self-Healing Capabilities</h3>
-    <p>When micro-fractures begin to form, embedded nanobots—powered by ambient thermal energy—automatically migrate to the affected area. They secrete a bio-mineral compound that not only fills the gap but actually strengthens the surrounding matrix.</p>
-
-    <blockquote>We're not just building structures anymore; we're growing them. — Dr. Helena Vasquez, Lead Researcher at QuantumBuild Labs</blockquote>
-
-    <h2>Economic Impact</h2>
-    <p>The 94% reduction in maintenance costs has made previously unfeasible mega-projects economically viable. The upcoming Transpacific Bridge, connecting Japan to California, would have been impossible without this technology.</p>
-
+    <h3>Key Measures</h3>
     <ul>
-      <li>Initial construction costs: 15% higher than traditional methods</li>
-      <li>Lifetime cost savings: Estimated 400% ROI over 100 years</li>
-      <li>Environmental benefit: 67% less material waste</li>
-    </ul>`,
-    category: 'Construction',
-    date: '2050-03-15',
-    readingTime: 8,
-    author: 'Dr. Marcus Chen',
-    // chosen from your supplied links (hero-2021)
-    thumbnail: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop',
-    mediaType: 'video',
-    media: ['construction-1.mp4', 'construction-2.mp4', 'construction-3.mp4']
-  },
-  {
-    id: 2,
-    slug: 'neural-architecture-ai',
-    title: 'Neural Architecture: When AI Designs Our Living Spaces',
-    description: 'Machine learning algorithms now generate building designs that optimize for human wellbeing metrics we never knew existed. Studies show occupants of AI-designed spaces report 73% higher life satisfaction and 45% improved cognitive performance compared to traditional architecture.',
-    fullContent: `Artificial intelligence has moved beyond assisting architects to becoming the primary creative force in spatial design. Neural architecture systems process millions of biometric data points to create environments that actively enhance human cognition and emotional wellbeing.
-
-    <h2>Beyond Aesthetics</h2>
-    <p>Traditional architecture prioritized visual appeal and functional requirements. Neural architecture systems consider over 2,000 variables including circadian rhythm optimization, acoustic psychology, and even the subtle effects of electromagnetic field patterns on neural activity.</p>
-
-    <h3>Biometric Feedback Loops</h3>
-    <p>Modern buildings equipped with neural architecture continuously adapt. Ceiling heights subtly adjust throughout the day, wall colors shift imperceptibly to match occupant mood states, and ventilation patterns create micro-climates that optimize for the specific activities occurring in each zone.</p>
-
-    <h2>Case Study: The Harmony Complex</h2>
-    <p>Singapore's Harmony Complex, completed in 2049, serves as the flagship example of neural architecture. Its 50,000 residents experience:</p>
-    <ul>
-      <li>31% reduction in stress-related health issues</li>
-      <li>28% improvement in sleep quality</li>
-      <li>45% increase in reported creative output</li>
-    </ul>`,
-    category: 'Technology',
-    date: '2050-02-28',
-    readingTime: 6,
-    author: 'Sofia Martinez',
-    // chosen from your supplied links (hero-2024/other)
-    thumbnail: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=500&fit=crop',
-    mediaType: 'image',
-    media: ['tech-1.jpg', 'tech-2.jpg', 'tech-3.jpg', 'tech-4.jpg']
-  },
-  {
-    id: 3,
-    slug: 'vertical-forests-megacities',
-    title: 'Vertical Forests: How Megacities Achieved Net-Negative Carbon',
-    description: 'The integration of bio-engineered super-trees into urban infrastructure has allowed cities like Neo-Tokyo and Greater Lagos to absorb more carbon than they produce. Each vertical forest tower processes 50,000 tons of CO2 annually while providing habitat for 300+ species.',
-    fullContent: `The vertical forest movement that began in Milan in 2014 has evolved into a cornerstone of urban environmental policy. Today's bio-engineered structures bear little resemblance to their predecessors, incorporating genetic modifications that amplify photosynthetic efficiency by 400%.
-
-    <h2>Engineering Super-Trees</h2>
-    <p>Modern vertical forest trees are marvels of synthetic biology. Their modified chloroplasts capture carbon with unprecedented efficiency, while engineered root systems extract heavy metals and microplastics from urban air and water systems.</p>
-
-    <h3>The Living Building Concept</h3>
-    <p>These aren't buildings with plants attached—they're symbiotic organisms where the botanical and architectural elements are inseparable. The trees provide structural support through their root networks, while the building's systems deliver precisely calibrated nutrients and growth hormones.</p>
-
-    <blockquote>We stopped thinking of buildings as machines and started thinking of them as ecosystems. — Architect Kenji Yamamoto</blockquote>`,
-    category: 'Sustainability',
-    date: '2050-02-15',
-    readingTime: 7,
-    author: 'Dr. Amara Okonkwo',
-    // chosen from your supplied gallery (gallery 3 or other)
-    thumbnail: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop',
-    mediaType: 'video',
-    media: ['sustainability-1.mp4', 'sustainability-2.mp4']
-  },
-  {
-    id: 4,
-    slug: 'floating-districts-rising-seas',
-    title: 'Floating Districts: Urban Planning for Rising Seas',
-    description: 'Coastal cities are deploying modular floating neighborhoods that rise with sea levels while maintaining full utility connectivity. Rotterdam\'s New Venice district now houses 2 million residents on an interconnected network of buoyant platforms spanning 50 square kilometers.',
-    fullContent: `As sea levels rose faster than even pessimistic models predicted, coastal cities faced an existential choice: retreat or adapt. The development of floating district technology has transformed this crisis into an opportunity for radical urban innovation.
-
-    <h2>Modular Aquatic Urbanism</h2>
-    <p>Modern floating districts aren't houseboats—they're fully-featured urban environments built on massive interconnected platforms. Each hexagonal module spans 500 meters and can support buildings up to 40 stories, connected by flexible bridges that accommodate wave motion.</p>
-
-    <h3>Utility Networks</h3>
-    <p>Flexible conduit systems deliver power, water, and data to floating modules through articulated connections that withstand constant movement. Waste processing occurs on-platform using closed-loop bioreactors that convert organic matter into energy and fertilizer.</p>
-
-    <h2>Social Dynamics</h2>
-    <p>Floating communities have developed unique social structures. Platform proximity can be reconfigured, allowing neighborhoods to reorganize based on changing community preferences. This "liquid urbanism" has created unprecedented flexibility in how residents experience city life.</p>`,
-    category: 'Urbanism',
-    date: '2050-01-30',
-    readingTime: 9,
-    author: 'Dr. Henrik van der Berg',
-    // chosen from your hero-2022 group (water / global expansion)
-    thumbnail: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=500&fit=crop',
-    mediaType: 'image',
-    media: ['urbanism-1.jpg', 'urbanism-2.jpg', 'urbanism-3.jpg']
-  },
-  {
-    id: 5,
-    slug: '3d-printed-housing-crisis',
-    title: '3D-Printed Housing Solves the Last Urban Housing Crisis',
-    description: 'Autonomous construction swarms can now print a complete family home in under 4 hours using locally-sourced recycled materials. Housing costs have dropped 89% in participating cities, effectively eliminating homelessness in developed nations by 2048.',
-    fullContent: `The housing affordability crisis that defined the early 21st century has been resolved through a combination of autonomous manufacturing and radical material innovation. What once took months and hundreds of thousands of dollars now requires hours and minimal resources.
-
-    <h2>The Swarm Approach</h2>
-    <p>Rather than single large printers, modern construction uses swarms of thousands of small robots working in parallel. Each unit carries its own material supply and coordinates with others through mesh networking to build structures with atomic precision.</p>
-
-    <h3>Material Revolution</h3>
-    <p>Construction bots use locally-available materials—recycled plastics, agricultural waste, even atmospheric carbon—transformed into structural composites through portable fusion reactors. A home in Mumbai might be built from rice husks, while one in São Paulo uses sugarcane bagasse.</p>
-
-    <ul>
-      <li>Average construction time: 3.7 hours for a 150m² home</li>
-      <li>Material cost: $2,400 USD equivalent</li>
-      <li>Structural lifespan: 200+ years with self-repair capabilities</li>
-    </ul>`,
-    category: 'Construction',
-    date: '2050-01-15',
-    readingTime: 5,
-    author: 'Engineer Rosa Delgado',
-    // chosen from your hero-2022 gallery (architecture)
-    thumbnail: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=500&fit=crop',
-    mediaType: 'video',
-    media: ['construction-4.mp4', 'construction-5.mp4', 'construction-6.mp4']
-  },
-  {
-    id: 6,
-    slug: 'brain-building-interfaces',
-    title: 'Brain-Building Interfaces: Controlling Your Home with Thought',
-    description: 'Non-invasive neural interfaces now allow residents to control every aspect of their living environment through directed intention. Temperature, lighting, entertainment, and even furniture configuration respond to mental commands with 99.7% accuracy.',
-    fullContent: `The dream of thought-controlled environments has become reality through advances in non-invasive brain-computer interfaces. Modern homes equipped with neural mesh technology respond to occupant intentions as naturally as our bodies respond to our thoughts.
-
-    <h2>How It Works</h2>
-    <p>Ultra-sensitive electromagnetic sensors embedded in walls and ceilings detect the unique patterns of neural activity associated with specific intentions. Machine learning systems trained on millions of hours of brain activity data interpret these signals with remarkable accuracy.</p>
-
-    <h3>Beyond Convenience</h3>
-    <p>The implications extend far beyond not having to reach for a light switch. Homes now anticipate needs—preparing coffee before you consciously realize you want it, adjusting room temperature based on approaching fever, or alerting emergency services when detecting stroke signatures.</p>
-
-    <blockquote>The boundary between thought and environment has dissolved. Our homes have become extensions of our minds. — Dr. Yuki Tanaka, Neural Interface Pioneer</blockquote>`,
-    category: 'Technology',
-    date: '2050-01-08',
-    readingTime: 6,
-    author: 'Dr. Yuki Tanaka',
-    // chosen from your gallery (people / portrait style)
-    thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop',
-    mediaType: 'image',
-    media: ['tech-5.jpg', 'tech-6.jpg', 'tech-7.jpg', 'tech-8.jpg']
-  },
-  {
-    id: 7,
-    slug: 'underground-cities-expansion',
-    title: 'Underground Cities: The Next Frontier of Urban Expansion',
-    description: 'With surface land at a premium, cities are expanding downward. Montreal\'s Underground City now extends 12 levels deep, housing 500,000 permanent residents with full-spectrum lighting that perfectly mimics natural daylight cycles.',
-    fullContent: `Subterranean urban development has evolved from emergency shelters and shopping malls into fully-realized cities beneath cities. Modern underground districts offer quality of life that rivals or exceeds surface living, while protecting residents from increasingly extreme weather events.
-
-    <h2>Full-Spectrum Environments</h2>
-    <p>The psychological challenges of underground living have been completely addressed through advanced lighting systems that replicate not just visible light but the full electromagnetic spectrum of natural sunlight. Residents experience normal circadian rhythms and vitamin D synthesis.</p>
-
-    <h3>Climate-Controlled Paradise</h3>
-    <p>Underground environments maintain perfect temperature and air quality regardless of surface conditions. During the extreme heat events of 2047, underground residents remained comfortable while surface temperatures exceeded 55°C.</p>
-
-    <h2>Vertical Neighborhoods</h2>
-    <p>Modern underground cities are organized as vertical neighborhoods, each level with its own character and amenities. Express elevators connect levels in seconds, while spiraling parks provide continuous green space from surface to deepest habitation level.</p>`,
-    category: 'Urbanism',
-    date: '2049-12-20',
-    readingTime: 7,
-    author: 'Urban Planner Marie Dubois',
-    // chosen from your hero-2024 set (cave/underground-ish)
-    thumbnail: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop',
-    mediaType: 'video',
-    media: ['urbanism-3.mp4', 'urbanism-4.mp4']
-  },
-  {
-    id: 8,
-    slug: 'bio-cement-living-materials',
-    title: 'Bio-Cement: Living Materials That Grow Stronger Over Time',
-    description: 'Bacteria-infused building materials continue strengthening for decades after construction. Structures built with bio-cement in 2030 are now 340% stronger than when first constructed, fundamentally changing our understanding of architectural longevity.',
-    fullContent: `Bio-cement represents a paradigm shift in construction materials—structures that are alive and continue developing long after construction crews have departed. This living building approach has rendered obsolete our traditional understanding of structural degradation.
-
-    <h2>The Biology of Building</h2>
-    <p>Bio-cement incorporates engineered bacteria that produce calcium carbonate as a metabolic byproduct. These organisms, dormant in the finished material, activate when micro-cracks form, depositing new mineral and actually strengthening the structure beyond its original capacity.</p>
-
-    <h3>Generational Architecture</h3>
-    <p>Buildings constructed with bio-cement are designed not for decades but for centuries. The Great Library of Alexandria II, opened in 2035, is expected to remain structurally sound for at least 1,000 years without major intervention.</p>
-
-    <ul>
-      <li>Initial strength: Comparable to traditional high-grade concrete</li>
-      <li>20-year strength: 340% of original capacity</li>
-      <li>Projected 100-year strength: 500%+ of original</li>
+      <li>Dedicated heritage liaison for daily approvals</li>
+      <li>Non-destructive testing and documented QA checkpoints</li>
+      <li>Strict site segregation to protect public access</li>
     </ul>
 
-    <blockquote>We're not building for our children anymore—we're building for civilizations that don't exist yet. — Architect Chen Wei</blockquote>`,
-    category: 'Sustainability',
-    date: '2049-12-05',
-    readingTime: 8,
-    author: 'Dr. Chen Wei',
-    // reusing a strong sustainability image you provided earlier (if you want a different one, paste it)
-    thumbnail: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=500&fit=crop',
+    <h2>Outcomes</h2>
+    <p>Project completed with official certificate of satisfactory performance and positive client feedback. Lessons learned improved our approach to complex public projects and informed HSE protocols for future restorations.</p>`,
+    category: 'Projects',
+    date: '2024-07-18',
+    readingTime: 5,
+    author: 'Eng. Kedir Hassen',
+    thumbnail: 'https://i.postimg.cc/FzDp3mLd/Palacio-Nacional-residencia-oficial-do-presidente-da-Etiopia.jpg',
     mediaType: 'image',
-    media: ['sustainability-3.jpg', 'sustainability-4.jpg', 'sustainability-5.jpg']
+    media: ['national-palace-1.jpg']
+  },
+
+  {
+    id: 2,
+    slug: 'bim-surveying-digital-construction-2024',
+    title: 'Digital Construction: BIM, Surveying & Project Controls',
+    description: 'How Building Information Modeling, modern surveying and robust project controls improved schedule predictability, reduced on-site rework and sped up payment verification across multi-site road and building contracts—delivering measurable savings in time and materials.',
+    fullContent: `
+    <h2>What Changed</h2>
+    <p>Centralized models, weekly coordination cycles, and cloud-based documentation reduced RFI turnaround and cut on-site rework.</p>
+
+    <h3>Benefits</h3>
+    <ul>
+      <li>Improved clash detection before construction</li>
+      <li>Faster quantity verification for payments</li>
+      <li>Better coordination between subcontractors and client stakeholders</li>
+    </ul>`,
+    category: 'Technology',
+    date: '2024-10-12',
+    readingTime: 4,
+    author: 'PMO Team - Global General Construction',
+    thumbnail: 'https://i.postimg.cc/N057RgP7/202211.jpg',
+    mediaType: 'image',
+    media: ['bim-1.jpg', 'survey-1.jpg']
+  },
+
+  {
+    id: 3,
+    slug: 'jimma-corridor-green-works-2024',
+    title: 'Jimma Corridor: Walkways, Bike Lanes & Urban Greening',
+    description: 'Comprehensive summary of the Jimma corridor upgrade detailing integrated walkways, dedicated bike lanes, smart pole lighting and urban greening — designed to improve mobility, pedestrian safety and public space usability while lowering long-term maintenance costs.',
+    fullContent: `
+    <h2>Design Approach</h2>
+    <p>Combining durable paving, low-maintenance planting, and LED smart poles allowed long-term cost savings and greater public use.</p>
+
+    <h3>Community Impact</h3>
+    <ul>
+      <li>Safer pedestrian routes and clearer bike lanes</li>
+      <li>Reduced nighttime crime through better lighting</li>
+      <li>Lower maintenance with native plant species</li>
+    </ul>`,
+    category: 'Sustainability',
+    date: '2024-06-05',
+    readingTime: 5,
+    author: 'Project Team - Jimma Works',
+    thumbnail: 'https://i.postimg.cc/HsNFMb5P/corriderjimma.jpg',
+    mediaType: 'image',
+    media: ['jimma-corridor-1.jpg']
+  },
+
+  {
+    id: 4,
+    slug: 'water-infrastructure-resilience-2023',
+    title: 'Construction Resilience: Reservoirs, Pipes and Flood Prevention',
+    description: 'Technical overview of major construction works, covering earthworks, structural concrete, foundations, drainage systems and coordinated site execution methods that improve build quality, reduce delays and ensure long-term performance of infrastructure projects.',
+    fullContent: `
+    <h2>Technical Notes</h2>
+    <p>Coordination with utilities, trenchless pipeline methods where appropriate, and staged reservoir commissioning reduced disruption to local services.</p>
+
+    <h3>Testing & Commissioning</h3>
+    <ul>
+      <li>Hydrostatic testing of mains and laterals</li>
+      <li>Reservoir linings and overflow control checks</li>
+      <li>As-built documentation to handover standards</li>
+    </ul>`,
+    category: 'Water',
+    date: '2024-04-22',
+    readingTime: 6,
+    author: 'Civil Works Team',
+    thumbnail: 'https://i.postimg.cc/prTFMkbK/202512.jpg',
+    mediaType: 'image',
+    media: ['water-works-1.jpg']
+  },
+
+  {
+    id: 5,
+    slug: '2b-g-15-tower-case-study-2024',
+    title: 'High-Rise Delivery: Case Study of a 2B+G+15 Building',
+    description: 'Practical case study on delivering a 2B+G+15 reinforced concrete building in a constrained urban site. Covers program management, logistics, off-site batching, tower crane sequencing and quality checkpoints used to control risk and maintain the critical path.',
+    fullContent: `
+    <h2>Logistics & Staging</h2>
+    <p>Off-site batching, staged deliveries, and tower crane optimization reduced downtime and kept the critical path intact.</p>
+
+    <h3>Quality Control</h3>
+    <ul>
+      <li>Frequent cube testing and mix verification</li>
+      <li>Rebar traceability and bending schedules</li>
+      <li>Facade mockups and acceptance tests</li>
+    </ul>`,
+    category: 'Projects',
+    date: '2024-09-02',
+    readingTime: 7,
+    author: 'Site Engineering Lead',
+    thumbnail: 'https://i.postimg.cc/D086rHdB/Megenagna-Skyline-Addis-Ababa-(2).jpg',
+    mediaType: 'image',
+    media: ['tower-1.jpg', 'concrete-1.jpg']
+  },
+
+  {
+    id: 6,
+    slug: 'hse-best-practices-construction-2024',
+    title: 'HSE: Safety Systems That Keep Sites Productive',
+    description: 'Overview of our HSE framework — from daily toolbox talks and site inductions to permit-to-work procedures and equipment inspections — showing how consistent safety practices reduce incidents, support workforce competence and sustain productivity across projects.',
+    fullContent: `
+    <h2>Practical Interventions</h2>
+    <ul>
+      <li>Daily toolbox talks and documented inductions</li>
+      <li>Permit to work systems for risky tasks</li>
+      <li>Regular equipment inspections and competence checks</li>
+    </ul>
+
+    <h3>Measuring Success</h3>
+    <p>KPIs include lost-time injury frequency, near-miss reporting rates, and timely corrective action closure.</p>`,
+    category: 'Safety',
+    date: '2024-03-10',
+    readingTime: 4,
+    author: 'HSE Manager',
+    thumbnail: 'https://i.postimg.cc/PJxt5Rqh/202312.jpg',
+    mediaType: 'image',
+    media: ['hse-1.jpg']
+  },
+
+  {
+    id: 7,
+    slug: 'earthworks-foundations-best-practices-2024',
+    title: 'Earthworks & Foundations: Efficient Excavation and Soil Management',
+    description: 'Practical guidance on earthworks sequencing, soil classification, stabilization techniques, compaction control and dewatering strategies used on major road and building sites to prevent settlement and protect long-term structural performance.',
+    fullContent: `
+    <h2>Key Practices</h2>
+    <ul>
+      <li>Soil classification and testing before construction</li>
+      <li>Layered compaction with documented density tests</li>
+      <li>Dewatering plans and temporary support systems</li>
+    </ul>`,
+    category: 'Infrastructure',
+    date: '2024-05-28',
+    readingTime: 6,
+    author: 'Geotech Team',
+    thumbnail: 'https://i.postimg.cc/9fQVpkGD/202413.jpg',
+    mediaType: 'image',
+    media: ['earthworks-1.jpg']
+  },
+
+  {
+    id: 8,
+    slug: 'low-carbon-materials-bio-cement-2024',
+    title: 'Low-Carbon Materials: Bio-Cement and Sustainable Mixes',
+    description: 'Review of low-carbon concrete mixes and bio-cement trials that reduce embodied emissions while maintaining durability. Covers trial methodology, performance monitoring and early results relevant to infrastructure and durable works.',
+    fullContent: `
+    <h2>Trials & Results</h2>
+    <ul>
+      <li>Blended cements with supplementary cementitious material (SCMs)</li>
+      <li>Use of recycled aggregates in non-structural elements</li>
+      <li>Monitoring for long-term strength and durability</li>
+    </ul>`,
+    category: 'Sustainability',
+    date: '2024-08-14',
+    readingTime: 5,
+    author: 'Materials Team',
+    thumbnail: 'https://i.postimg.cc/6QbZ66Fd/download-(3).jpg',
+    mediaType: 'image',
+    media: ['materials-1.jpg']
   }
 ];
+
 
 /* =========================
    CATEGORIES
 ========================= */
 const categories = [
   { id: 'all', name: 'All', count: posts.length },
-  { id: 'construction', name: 'Construction', count: posts.filter(p => p.category === 'Construction').length },
+  { id: 'projects', name: 'Projects', count: posts.filter(p => p.category === 'Projects').length },
   { id: 'technology', name: 'Technology', count: posts.filter(p => p.category === 'Technology').length },
-  { id: 'urbanism', name: 'Urbanism', count: posts.filter(p => p.category === 'Urbanism').length },
-  { id: 'sustainability', name: 'Sustainability', count: posts.filter(p => p.category === 'Sustainability').length }
+  { id: 'sustainability', name: 'Sustainability', count: posts.filter(p => p.category === 'Sustainability').length },
+  { id: 'water', name: 'Construction', count: posts.filter(p => p.category === 'Water').length },
+  { id: 'safety', name: 'Safety', count: posts.filter(p => p.category === 'Safety').length },
+  { id: 'infrastructure', name: 'Infrastructure', count: posts.filter(p => p.category === 'Infrastructure').length }
 ];
+
 
 /* =========================
    STATE
@@ -415,13 +396,6 @@ function renderPosts() {
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
-          <a href="/post-${post.slug}.html" class="read-more-link">
-            Read full post
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
         </div>
       </div>
     </article>
