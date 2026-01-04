@@ -45,15 +45,15 @@ body {
 :root {
 	--thm-font: 'Poppins', sans-serif;
 	--thm-base: #e6c510;
-	--thm-color: #27ae60;
-	--thm-black: #22577A;
+	--thm-color: #359df2;
+	--thm-black: #1e3cae;
 	--thm-white: #ffffff;
 	--thm-ase: #dff2d4;
 	--thm-gray: #8e8e8e;
 	--thm-f6: #F1F8FF;
 	--thm-fb: #f6f6f6;
 	--thm-p: #757575;
-	--thm-bg:linear-gradient(#2CC550, #35C296);
+	--thm-bg:linear-gradient(#359df2, #1a6ed8);
 }
 img {
     max-width: 100%;
@@ -1072,7 +1072,7 @@ button, input, textarea:focus {
 .atf-hero.atf-style1 .atf-hero-text.atf-style1 .atf-hero-title {
     font-weight: 400; }
 .atf-hero.atf-style1 .atf-hero-subtitle p {
-	font-size: 18px;
+	font-size: 24px;
 	margin-bottom: 30px;
 }
 .atf-hero.atf-style1 .atf-hero-img {

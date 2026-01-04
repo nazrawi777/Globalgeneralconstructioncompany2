@@ -715,18 +715,35 @@ $(document).ready(function () {
 
 
 
-
-  //=== CountDownTimer===
-  if ($('.coming-soon-countdown').length) {
+//=== CountDownTimer===
+if ($('.coming-soon-countdown').length) {
     $('.coming-soon-countdown').each(function () {
-      var Self = $(this);
-      var countDate = Self.data('countdown-time'); // getting date
+        var Self = $(this);
 
-      Self.countdown(countDate, function (event) {
-        $(this).html('<li> <div class="box"> <span class="days">' + event.strftime('%D') + '</span> <span class="timeRef">days</span> </div> </li> <li> <div class="box"> <span class="hours">' + event.strftime('%H') + '</span> <span class="timeRef clr-1">hrs</span> </div> </li> <li> <div class="box"> <span class="minutes">' + event.strftime('%M') + '</span> <span class="timeRef clr-2">mins</span> </div> </li> <li> <div class="box"> <span class="seconds">' + event.strftime('%S') + '</span> <span class="timeRef clr-3">secs</span> </div> </li>');
-      });
+        // Total seconds for 3 days 10 hours
+        var totalSeconds = 3 * 24 * 3600 + 10 * 3600;
+
+        function updateCountdown() {
+            var days = Math.floor(totalSeconds / (24 * 3600));
+            var hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
+            var minutes = Math.floor((totalSeconds % 3600) / 60);
+            var seconds = totalSeconds % 60;
+
+            Self.html(
+                '<li> <div class="box"> <span class="days">' + days + '</span> <span class="timeRef">days</span> </div> </li>' +
+                '<li> <div class="box"> <span class="hours">' + hours + '</span> <span class="timeRef clr-1">hrs</span> </div> </li>' +
+                '<li> <div class="box"> <span class="minutes">' + minutes + '</span> <span class="timeRef clr-2">mins</span> </div> </li>' +
+                '<li> <div class="box"> <span class="seconds">' + seconds + '</span> <span class="timeRef clr-3">secs</span> </div> </li>'
+            );
+
+            totalSeconds--;
+            if (totalSeconds < 0) clearInterval(interval);
+        }
+
+        updateCountdown(); // initial display
+        var interval = setInterval(updateCountdown, 1000);
     });
-  };
+}
 
 
 

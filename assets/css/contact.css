@@ -97,16 +97,7 @@
   }
 }
 
-/* ==========================================================================
-   Base Styles
-   ========================================================================== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
 
 html {
   scroll-behavior: smooth;
@@ -117,14 +108,6 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }
 
@@ -922,7 +905,7 @@ button {
   background: hsla(60, 100%, 100%, 0.9);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
-  color: var(--foreground);
+  color: #359df2;
   font-size: 1rem;
   font-family: inherit;
   transition: all var(--transition-base);

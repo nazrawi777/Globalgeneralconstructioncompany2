@@ -18,7 +18,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    background-color: var(--tecture-black);
+   
     background-blend-mode: luminosity;
     z-index: -1;
 }
