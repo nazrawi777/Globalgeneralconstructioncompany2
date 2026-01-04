@@ -12,207 +12,213 @@
   // ============================================
   // Sample video URLs for demonstration
   const SAMPLE_VIDEOS = {
-    construction1: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    construction2: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    construction3: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-    timelapse1: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
-    timelapse2: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-    drone1: 'https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
+    construction1: 'https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4',
+    construction2: 'https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4',
+    construction3: 'https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4',
+    timelapse1: 'https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4',
+    timelapse2: 'https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4',
+    drone1: 'https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4',
   };
 
-  const PROJECTS = [
-    {
-      id: '1',
-      title: 'Skyline Tower One',
-      location: 'Dubai, UAE',
-      year: 2024,
-      category: 'high-rise',
-      categoryLabel: 'High-Rise',
-      media: [
-        { id: '1a', type: 'image', src: 'assets/images/skyline-tower.jpg', alt: 'Skyline Tower One - 85-story glass skyscraper with cyan LED accents at night', aspectRatio: 0.8 },
-        { id: '1b', type: 'video', src: SAMPLE_VIDEOS.construction1, thumbnail: 'assets/images/skyline-tower.jpg', alt: 'Skyline Tower construction timelapse', aspectRatio: 1.78 }
-      ]
-    },
-    {
-      id: '2',
-      title: 'Azure Heights Complex',
-      location: 'Singapore',
-      year: 2023,
-      category: 'high-rise',
-      categoryLabel: 'High-Rise',
-      media: [
-        { id: '2a', type: 'video', src: SAMPLE_VIDEOS.timelapse1, thumbnail: 'assets/images/azure-heights.jpg', alt: 'Azure Heights drone flythrough', aspectRatio: 1.78 },
-        { id: '2b', type: 'image', src: 'assets/images/azure-heights.jpg', alt: 'Azure Heights - Modern residential towers with vertical gardens', aspectRatio: 0.8 }
-      ]
-    },
-    {
-      id: '3',
-      title: 'Palm Oasis Villa',
-      location: 'Malibu, USA',
-      year: 2024,
-      category: 'villas-residential',
-      categoryLabel: 'Villas & Residential',
-      media: [
-        { id: '3a', type: 'image', src: 'assets/images/palm-oasis-villa.jpg', alt: 'Palm Oasis Villa - Luxury modern villa with infinity pool', aspectRatio: 1.33 },
-        { id: '3b', type: 'video', src: SAMPLE_VIDEOS.construction2, thumbnail: 'assets/images/palm-oasis-villa.jpg', alt: 'Palm Oasis Villa construction progress', aspectRatio: 1.78 }
-      ]
-    },
-    {
-      id: '4',
-      title: 'Serenity Estate',
-      location: 'Monaco',
-      year: 2023,
-      category: 'villas-residential',
-      categoryLabel: 'Villas & Residential',
-      media: [
-        { id: '4a', type: 'image', src: 'assets/images/serenity-estate.jpg', alt: 'Serenity Estate - Mediterranean luxury mansion', aspectRatio: 1.0 }
-      ]
-    },
-    {
-      id: '5',
-      title: 'Nexus Business Hub',
-      location: 'London, UK',
-      year: 2024,
-      category: 'commercial-offices',
-      categoryLabel: 'Commercial & Offices',
-      media: [
-        { id: '5a', type: 'image', src: 'assets/images/nexus-hub.jpg', alt: 'Nexus Business Hub - Glass office building with green terraces', aspectRatio: 0.8 },
-        { id: '5b', type: 'video', src: SAMPLE_VIDEOS.timelapse2, thumbnail: 'assets/images/nexus-hub.jpg', alt: 'Nexus Hub construction timelapse', aspectRatio: 1.78 }
-      ]
-    },
-    {
-      id: '6',
-      title: 'Tech Park Central',
-      location: 'Berlin, Germany',
-      year: 2022,
-      category: 'commercial-offices',
-      categoryLabel: 'Commercial & Offices',
-      media: [
-        { id: '6a', type: 'video', src: SAMPLE_VIDEOS.construction3, thumbnail: 'assets/images/tech-park.jpg', alt: 'Tech Park Central aerial tour', aspectRatio: 1.78 },
-        { id: '6b', type: 'image', src: 'assets/images/tech-park.jpg', alt: 'Tech Park Central - Industrial modern innovation hub', aspectRatio: 1.33 }
-      ]
-    },
-    {
-      id: '7',
-      title: 'Grand Marina Resort',
-      location: 'Bali, Indonesia',
-      year: 2024,
-      category: 'hospitality-hotels',
-      categoryLabel: 'Hospitality & Hotels',
-      media: [
-        { id: '7a', type: 'image', src: 'assets/images/marina-resort.jpg', alt: 'Grand Marina Resort - Tropical beachfront resort', aspectRatio: 1.33 },
-        { id: '7b', type: 'video', src: SAMPLE_VIDEOS.drone1, thumbnail: 'assets/images/marina-resort.jpg', alt: 'Grand Marina Resort drone tour', aspectRatio: 1.78 }
-      ]
-    },
-    {
-      id: '8',
-      title: 'Alpine Luxury Lodge',
-      location: 'Zermatt, Switzerland',
-      year: 2023,
-      category: 'hospitality-hotels',
-      categoryLabel: 'Hospitality & Hotels',
-      media: [
-        { id: '8a', type: 'image', src: 'assets/images/alpine-lodge.jpg', alt: 'Alpine Luxury Lodge - Swiss chalet with mountain views', aspectRatio: 1.33 }
-      ]
-    },
-    {
-      id: '9',
-      title: 'Metro General Hospital',
-      location: 'Toronto, Canada',
-      year: 2024,
-      category: 'healthcare',
-      categoryLabel: 'Healthcare',
-      media: [
-        { id: '9a', type: 'image', src: 'assets/images/metro-hospital.jpg', alt: 'Metro General Hospital - State-of-the-art medical facility', aspectRatio: 1.33 },
-        { id: '9b', type: 'video', src: SAMPLE_VIDEOS.construction1, thumbnail: 'assets/images/metro-hospital.jpg', alt: 'Metro Hospital construction progress', aspectRatio: 1.78 }
-      ]
-    },
-    {
-      id: '10',
-      title: 'Horizon University Campus',
-      location: 'Sydney, Australia',
-      year: 2023,
-      category: 'education',
-      categoryLabel: 'Education',
-      media: [
-        { id: '10a', type: 'image', src: 'assets/images/horizon-university.jpg', alt: 'Horizon University Campus - Contemporary educational architecture', aspectRatio: 1.33 }
-      ]
-    },
-    {
-      id: '11',
-      title: 'Cross-Bay Bridge',
-      location: 'San Francisco, USA',
-      year: 2024,
-      category: 'infrastructure',
-      categoryLabel: 'Infrastructure',
-      media: [
-        { id: '11a', type: 'video', src: SAMPLE_VIDEOS.timelapse1, thumbnail: 'assets/images/cross-bay-bridge.jpg', alt: 'Cross-Bay Bridge construction timelapse', aspectRatio: 1.78 },
-        { id: '11b', type: 'image', src: 'assets/images/cross-bay-bridge.jpg', alt: 'Cross-Bay Bridge - Cable-stayed bridge at sunset', aspectRatio: 1.6 }
-      ]
-    },
-    {
-      id: '12',
-      title: 'Global Logistics Center',
-      location: 'Rotterdam, Netherlands',
-      year: 2023,
-      category: 'industrial',
-      categoryLabel: 'Industrial',
-      media: [
-        { id: '12a', type: 'image', src: 'assets/images/logistics-center.jpg', alt: 'Global Logistics Center - Automated port facility', aspectRatio: 1.33 },
-        { id: '12b', type: 'video', src: SAMPLE_VIDEOS.construction2, thumbnail: 'assets/images/logistics-center.jpg', alt: 'Logistics Center operations video', aspectRatio: 1.78 }
-      ]
-    },
-    {
-      id: '13',
-      title: 'EcoVerde Headquarters',
-      location: 'Copenhagen, Denmark',
-      year: 2024,
-      category: 'sustainable-green',
-      categoryLabel: 'Sustainable & Green',
-      media: [
-        { id: '13a', type: 'image', src: 'assets/images/ecoverde-hq.jpg', alt: 'EcoVerde Headquarters - Biophilic office building', aspectRatio: 1.0 },
-        { id: '13b', type: 'video', src: SAMPLE_VIDEOS.timelapse2, thumbnail: 'assets/images/ecoverde-hq.jpg', alt: 'EcoVerde sustainable features tour', aspectRatio: 1.78 }
-      ]
-    },
-    {
-      id: '14',
-      title: 'The Helix Tower',
-      location: 'Tokyo, Japan',
-      year: 2024,
-      category: 'iconic-landmark',
-      categoryLabel: 'Iconic & Landmark',
-      featured: true,
-      media: [
-        { id: '14a', type: 'image', src: 'assets/images/helix-tower.jpg', alt: 'The Helix Tower - Twisted spiral skyscraper at night', aspectRatio: 0.7 },
-        { id: '14b', type: 'video', src: SAMPLE_VIDEOS.drone1, thumbnail: 'assets/images/helix-tower.jpg', alt: 'Helix Tower drone showcase', aspectRatio: 1.78 }
-      ]
-    },
-    {
-      id: '15',
-      title: 'Coastal Medical Center',
-      location: 'Miami, USA',
-      year: 2023,
-      category: 'healthcare',
-      categoryLabel: 'Healthcare',
-      media: [
-        { id: '15a', type: 'image', src: 'assets/images/coastal-medical.jpg', alt: 'Coastal Medical Center - Art Deco hospital with ocean view', aspectRatio: 1.33 }
-      ]
-    }
-  ];
+const PROJECTS = [
+  {
+    id: '1',
+    title: '2B+G+15 Tower — Structural Delivery',
+    location: 'Addis Ababa, Ethiopia',
+    year: 2024,
+    category: 'commercial',
+    categoryLabel: 'Commercial & Offices',
+    media: [
+      { id: '1a', type: 'image', src: 'https://i.postimg.cc/D086rHdB/Megenagna_Skyline_Addis_Ababa_(2).jpg', alt: '2B+G+15 tower — structural frame and facade works', aspectRatio: 0.8 },
+      { id: '1b', type: 'image', src: 'https://i.postimg.cc/R0bqjLqz/Addis_Ababa_Ethiopia_(3).jpg', alt: '2B+G+15 tower — structural frame and facade works', aspectRatio: 0.8 },
+      
+      { id: '1c', type: 'video', src: SAMPLE_VIDEOS.construction1, thumbnail: 'assets/images/skyline-tower.jpg', alt: '2B+G+15 tower construction timelapse', aspectRatio: 1.78 }
+    ]
+  },
+  {
+    id: '2',
+    title: 'Shiromeda Commercial Centre — Renovation & Site Works',
+    location: 'Addis Ababa, Ethiopia',
+    year: 2023,
+    category: 'commercial',
+    categoryLabel: 'Commercial & Offices',
+    media: [
+      { id: '2a', type: 'video', src: SAMPLE_VIDEOS.timelapse1, thumbnail: 'https://i.postimg.cc/R0bqjLqz/Addis_Ababa_Ethiopia_(3).jpg', alt: 'Shiromeda commercial centre renovation — drone flythrough', aspectRatio: 1.78 },
+      { id: '2a', type: 'video', src: SAMPLE_VIDEOS.timelapse1, thumbnail: 'https://i.postimg.cc/R0bqjLqz/Addis_Ababa_Ethiopia_(3).jpg', alt: 'Shiromeda commercial centre renovation — drone flythrough', aspectRatio: 1.78 },
+      
+    ]
+  },
+  {
+    id: '3',
+    title: 'Special Forces Dormitory — Structural & Fit-out Works',
+    location: 'Addis Ababa, Ethiopia',
+    year: 2024,
+    category: 'public',
+    categoryLabel: 'Public & Government',
+    media: [
+      { id: '3a', type: 'image', src: 'https://i.postimg.cc/W1VHmJM7/2022.jpg', alt: 'Dormitory building — reinforced concrete and finishing works', aspectRatio: 1.33 },
+      { id: '3b', type: 'video', src: SAMPLE_VIDEOS.construction2, thumbnail: 'https://i.postimg.cc/PJxt5Rqh/202312.jpg', alt: 'Dormitory construction progress timelapse', aspectRatio: 1.78 }
+    ]
+  },
+  {
+    id: '4',
+    title: 'Japanese Garden & Walkway — Restoration and Landscaping',
+    location: 'Addis Ababa, Ethiopia',
+    year: 2023,
+    category: 'sustainable',
+    categoryLabel: 'Sustainable & Green',
+    media: [
+      { id: '4a', type: 'image', src: 'https://i.postimg.cc/d1ZbNcDB/202412.jpg', alt: 'Japanese garden restoration — stonework, planting and walkway detail', aspectRatio: 1.0 }
+    ]
+  },
+  {
+    id: '5',
+    title: 'Office Campus & Service Facilities — Rigid Pavement & Utilities',
+    location: 'Addis Ababa, Ethiopia',
+    year: 2024,
+    category: 'commercial',
+    categoryLabel: 'Commercial & Offices',
+    media: [
+      { id: '5a', type: 'image', src: 'https://i.postimg.cc/4ymQTC7P/NATIONAL_PALACE_(1).jpg', alt: 'Office campus — rigid pavement, landscaping and utility works', aspectRatio: 0.8 },
+      { id: '5b', type: 'video', src: SAMPLE_VIDEOS.timelapse2, thumbnail: 'assets/images/nexus-hub.jpg', alt: 'Office campus construction timelapse', aspectRatio: 1.78 }
+    ]
+  },
+  {
+    id: '6',
+    title: 'Jimma Town Water Supply — Reservoir & Pipeline Works',
+    location: 'Jimma, Ethiopia',
+    year: 2022,
+    category: 'water',
+    categoryLabel: 'Water & Utilities',
+    media: [
+      { id: '6a', type: 'video', src: SAMPLE_VIDEOS.construction3, thumbnail: 'https://i.postimg.cc/qR0sgBG1/photo_2026_01_04_02_13_36.jpg', alt: 'Reservoir and pipeline installation — commissioning sequence', aspectRatio: 1.78 },
+      { id: '6b', type: 'image', src: 'https://i.postimg.cc/pTxfyVB0/photo_2026_01_04_02_13_59.jpg', alt: 'Reservoir construction — concrete lining and inlet works', aspectRatio: 1.33 }
+    ]
+  },
+  {
+    id: '7',
+    title: 'Hassen Garage — Walkway, Bike Lane & Smart Poles (Segment C)',
+    location: 'Jimma, Ethiopia',
+    year: 2024,
+    category: 'sustainable',
+    categoryLabel: 'Sustainable & Green',
+    media: [
+      { id: '7a', type: 'image', src: 'https://i.postimg.cc/JzycFWVL/Forest_(1).jpg', alt: 'Walkway and bike lane installation with smart pole lighting', aspectRatio: 1.33 },
+      {id: '7b', type: 'image', src: 'https://i.postimg.cc/HsNFMb5P/corriderjimma.jpg', alt: 'Walkway and bike lane installation with smart pole lighting', aspectRatio: 1.33 },
+      { id: '7c', type: 'video', src: SAMPLE_VIDEOS.drone1, thumbnail: 'assets/images/marina-resort.jpg', alt: 'Jimma corridor segment drone tour', aspectRatio: 1.78 }
+    ]
+  },
+  {
+    id: '8',
+    title: 'Jimma Corridor Development — Road & Drainage Works',
+    location: 'Jimma, Ethiopia',
+    year: 2023,
+    category: 'infrastructure',
+    categoryLabel: 'Roads & Infrastructure',
+    media: [
+      { id: '8a', type: 'image', src: 'https://i.postimg.cc/HsNFMb5P/corriderjimma.jpg', alt: 'Jimma corridor — road upgrading and drainage construction', aspectRatio: 1.33 },
+      { id: '8b', type: 'image', src: 'https://i.postimg.cc/JzycFWVL/Forest_(1).jpg', alt: 'Jimma corridor — road upgrading and drainage construction', aspectRatio: 1.33 },
+    ]
+  },
+  {
+    id: '9',
+    title: 'National Palace Phase I — Restoration & Public Reopening',
+    location: 'Addis Ababa, Ethiopia',
+    year: 2024,
+    category: 'iconic',
+    categoryLabel: 'Iconic & Landmark',
+    media: [
+      { id: '9a', type: 'image', src: 'https://i.postimg.cc/FzDp3mLd/Palácio_Nacional_residência_oficial_do_presidente_da_Etiópia.jpg', alt: 'National Palace restoration — heritage masonry and pavement works', aspectRatio: 1.33 },
+      { id: '9b', type: 'video', src: SAMPLE_VIDEOS.construction1, thumbnail: 'https://i.postimg.cc/KjKMjsk5/Ethiopia_(1).jpg', alt: 'National Palace restoration timelapse', aspectRatio: 1.78 }
+    ]
+  },
+  {
+    id: '10',
+    title: 'Wolita Damot Sore Health Centre — Administrative & Laboratory Blocks',
+    location: 'Wolita Damot Sore, Ethiopia',
+    year: 2024,
+    category: 'public',
+    categoryLabel: 'Public & Government',
+    media: [
+      { id: '10a', type: 'image', src: 'https://i.postimg.cc/509JsRLw/202314.jpg', alt: 'Health centre — administrative and laboratory block exterior', aspectRatio: 1.33 },
+       { id: '10b', type: 'image', src: 'https://i.postimg.cc/76L656sr/202513.jpg', alt: 'Health centre — administrative and laboratory block exterior', aspectRatio: 1.33 }
+    ]
+  },
+  {
+    id: '11',
+    title: 'Jimma–Agaro–Dedessa Road Upgrading Project',
+    location: 'Jimma–Agaro, Ethiopia',
+    year: 2024,
+    category: 'infrastructure',
+    categoryLabel: 'Roads & Infrastructure',
+    media: [
+      { id: '11a', type: 'video', src: SAMPLE_VIDEOS.timelapse1, thumbnail: 'https://i.postimg.cc/9fQVpkGD/202413.jpg', alt: 'Road upgrading timelapse — pavement and drainage works', aspectRatio: 1.78 },
+      { id: '11b', type: 'image', src: 'https://i.postimg.cc/PJxt5Rqh/202312.jpg', alt: 'Road upgrading — asphalt overlay and culverts', aspectRatio: 1.6 }
+    ]
+  },
+  {
+    id: '12',
+    title: 'Shiromeda Commercial Centre — Fence & Site Works',
+    location: 'Addis Ababa, Ethiopia',
+    year: 2023,
+    category: 'siteworks',
+    categoryLabel: 'Site Works & Finishes',
+    media: [
+      { id: '12a', type: 'image', src: 'https://i.postimg.cc/prTFMkbK/202512.jpg', alt: 'Commercial centre site works — fencing and site preparation', aspectRatio: 1.33 },
+      { id: '12b', type: 'video', src: SAMPLE_VIDEOS.construction2, thumbnail: 'https://i.postimg.cc/hvJHwWjj/2023.jpg', alt: 'Site operations video — site clearance and groundwork', aspectRatio: 1.78 }
+    ]
+  },
+  {
+    id: '13',
+    title: 'Japanese Garden — Landscaping & Walkways',
+    location: 'Addis Ababa, Ethiopia',
+    year: 2024,
+    category: 'sustainable',
+    categoryLabel: 'Sustainable & Green',
+    media: [
+      { id: '13a', type: 'image', src: 'https://i.postimg.cc/bNyy6dHp/202111.jpg', alt: 'Japanese garden landscaping — walkway and planting details', aspectRatio: 1.0 },
+      { id: '13b', type: 'video', src: SAMPLE_VIDEOS.timelapse2, thumbnail: 'https://i.postimg.cc/VN0YpQC4/download_(1).jpg', alt: 'Landscape works timelapse — planting and irrigation', aspectRatio: 1.78 }
+    ]
+  },
+  {
+    id: '14',
+    title: 'Shiromeda Commercial Centre — Renovation (alternate sector)',
+    location: 'Addis Ababa, Ethiopia',
+    year: 2024,
+    category: 'commercial',
+    categoryLabel: 'Commercial & Offices',
+    featured: true,
+    media: [
+      { id: '14a', type: 'image', src: 'https://i.postimg.cc/1RjgNG1b/2025.jpg', alt: 'Commercial renovation — facade and night lighting study', aspectRatio: 0.7 },
+      { id: '14b', type: 'video', src: SAMPLE_VIDEOS.drone1, thumbnail: 'https://i.postimg.cc/X7mPrzvf/2021_(1).png', alt: 'Renovation/lighting drone showcase', aspectRatio: 1.78 }
+    ]
+  },
+  {
+    id: '15',
+    title: 'Shiromeda Commercial Upgrade — Site Finishes',
+    location: 'Addis Ababa, Ethiopia',
+    year: 2023,
+    category: 'siteworks',
+    categoryLabel: 'Site Works & Finishes',
+    media: [
+      { id: '15a', type: 'image', src: 'https://i.postimg.cc/1z2Tq7MZ/2024.jpg', alt: 'Site finishes — paving, landscaping and external works', aspectRatio: 1.33 }
+    ]
+  }
+];
 
-  const CATEGORIES = [
-    { id: 'all', label: 'All' },
-    { id: 'high-rise', label: 'High-Rise Buildings' },
-    { id: 'villas-residential', label: 'Villas & Residential' },
-    { id: 'commercial-offices', label: 'Commercial & Offices' },
-    { id: 'hospitality-hotels', label: 'Hospitality & Hotels' },
-    { id: 'healthcare', label: 'Healthcare' },
-    { id: 'education', label: 'Education' },
-    { id: 'infrastructure', label: 'Infrastructure' },
-    { id: 'industrial', label: 'Industrial' },
-    { id: 'sustainable-green', label: 'Sustainable & Green' },
-    { id: 'iconic-landmark', label: 'Iconic & Landmark' }
-  ];
+
+
+const CATEGORIES = [
+  { id: 'all', label: 'All' },
+  { id: 'public', label: 'Public & Government' },
+  { id: 'infrastructure', label: 'Roads & Infrastructure' },
+  { id: 'water', label: 'Water & Utilities' },
+  { id: 'commercial', label: 'Residential & Dormitories' },
+  { id: 'sustainable', label: 'Sustainable & Green' },
+  { id: 'iconic', label: 'Iconic & Landmark' },
+  { id: 'siteworks', label: 'Site Works & Finishes' }
+];
+
 
   // ============================================
   // State
