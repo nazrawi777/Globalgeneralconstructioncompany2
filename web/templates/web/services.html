@@ -392,7 +392,32 @@ a {
   <main class="services-section">
     <div class="container12">
       <div class="services-grid" id="servicesGrid">
-        <!-- Cards injected by JS -->
+        {% for service in services %}
+        <article class="service-card visible" style="animation-delay: calc({{ forloop.counter0 }} * 0.1s)">
+          <div class="service-card-icon">
+            {% if service.image %}
+            <img src="{{ service.image.url }}" alt="{{ service.title }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
+            {% else %}
+            <i class="{{ service.icon }}"></i>
+            {% endif %}
+          </div>
+          {% if service.badge %}
+          <span class="service-card-year">{{ service.badge }}</span>
+          {% endif %}
+          <h3 class="service-card-title">{{ service.title }}</h3>
+          <p class="service-card-desc">{{ service.description }}</p>
+          {% if service.tags %}
+          <div class="service-card-tags">
+            {% for tag in service.get_tags_list %}
+            <span class="service-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+          <a href="{% url 'contact' %}" class="service-card-cta" aria-label="Contact us about {{ service.title }}">
+            Learn more <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+        {% endfor %}
       </div>
       
       <!-- No Results -->

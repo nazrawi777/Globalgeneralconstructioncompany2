@@ -158,7 +158,7 @@ const nav = document.getElementById('nav');
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
   initEventListeners();
-  renderServices();
+  // renderServices(); // Disabled to prevent overwriting Django-rendered content
   initScrollEffects();
   initIntersectionObserver();
 });
@@ -245,6 +245,12 @@ function filterAndRender() {
 // Render Services
 function renderServices() {
   if (!servicesGrid) return;
+  
+  // If the grid already has content (e.g. from Django), don't overwrite it
+  // unless we are performing a search/filter/sort action.
+  if (servicesGrid.children.length > 0 && searchQuery === '' && currentFilter === 'all' && currentSort === 'relevance') {
+    return;
+  }
 
   const start = (currentPage - 1) * itemsPerPage;
   const end = start + itemsPerPage;

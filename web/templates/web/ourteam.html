@@ -681,7 +681,39 @@
 <script src="{% static 'assets/js/gsap/SplitText.js' %}"></script>
 <script src="{% static 'assets/js/script.js' %}"></script>
 <script src="{% static 'assets/js/countdown.min.js' %}"></script>
-<script src="{% static 'js/team.js' %}"></script>
+    <script>
+        const teamMembers = [
+            {% for member in team_members %}
+            {
+                id: "{{ member.id }}",
+                name: "{{ member.name }}",
+                role: "{{ member.role }}",
+                avatar: "{% if member.image %}{{ member.image.url }}{% endif %}",
+                phone: "",
+                email: "",
+                social: {
+                    facebook: "{{ member.facebook }}",
+                    twitter: "{{ member.twitter }}",
+                    instagram: "{{ member.instagram }}",
+                    linkedin: "{{ member.linkedin }}"
+                }
+            }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+        window.teamData = {
+            company: "Global General Construction",
+            lastUpdated: new Date().toISOString(),
+            orgChart: {
+                id: "root",
+                name: "Global General Construction",
+                role: "Our Team",
+                avatar: "{% static 'assets/images/resources/2.png' %}",
+                children: teamMembers
+            }
+        };
+    </script>
+    <script src="{% static 'js/team.js' %}"></script>
 
 
 

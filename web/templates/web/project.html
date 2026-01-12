@@ -721,6 +721,46 @@
 <script src="{% static 'assets/js/countdown.min.js' %}"></script>
   
   <!-- Scripts -->
+  <script>
+    window.projectsData = [
+        {% for project in projects %}
+        {
+            id: "{{ project.id }}",
+            title: "{{ project.title }}",
+            location: "{{ project.location }}",
+            year: {{ project.year }},
+            category: "{{ project.category }}",
+            categoryLabel: "{{ project.get_category_display }}",
+            media: [
+                {
+                    id: "{{ project.id }}_img",
+                    type: "image",
+                    src: "{% if project.image %}{{ project.image.url }}{% endif %}",
+                    alt: "{{ project.title }}",
+                    aspectRatio: 1.33
+                }
+                {% if project.video %}
+                ,{
+                    id: "{{ project.id }}_vid",
+                    type: "video",
+                    src: "{% if project.video %}{{ project.video.url }}{% endif %}",
+                    thumbnail: "{{ project.image.url }}",
+                    alt: "{{ project.title }} video",
+                    aspectRatio: 1.78
+                }
+                {% endif %}
+            ]
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+
+    window.projectCategories = [
+        { id: 'all', label: 'All' },
+        {% for code, label in category_choices %}
+        { id: "{{ code }}", label: "{{ label }}" }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+  </script>
   <script src="{% static 'assets/js/projects.js' %}"></script>
   
   <!-- No-JS Fallback -->

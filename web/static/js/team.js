@@ -642,13 +642,19 @@
 
   async function init() {
     try {
-      const response = await fetch('data/team.json');
-      if (!response.ok) throw new Error('Failed to load team data');
-      teamData = await response.json();
+      if (window.teamData) {
+        teamData = window.teamData;
+      } else {
+        const response = await fetch('data/team.json');
+        if (!response.ok) throw new Error('Failed to load team data');
+        teamData = await response.json();
+      }
 
       // Update header
       document.querySelector('.header1-title').textContent = teamData.company + ' Organization';
-      elements.lastUpdated.textContent = new Date(teamData.lastUpdated).toLocaleDateString();
+      if (elements.lastUpdated) {
+          elements.lastUpdated.textContent = new Date(teamData.lastUpdated).toLocaleDateString();
+      }
 
       // Initialize expanded nodes
       flattenTree(teamData.orgChart).forEach(m => expandedNodes.add(m.id));
@@ -659,11 +665,13 @@
 
     } catch (error) {
       console.error('Error initializing org chart:', error);
-      elements.chart.innerHTML = `
-        <div style="text-align: center; padding: 2rem;">
-          <p style="color: hsl(var(--muted-foreground));">Failed to load organization chart data.</p>
-        </div>
-      `;
+      if (elements.chart) {
+          elements.chart.innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+              <p style="color: hsl(var(--muted-foreground));">Failed to load organization chart data.</p>
+            </div>
+          `;
+      }
     }
   }
 
