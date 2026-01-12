@@ -67,6 +67,16 @@ urlpatterns = [
         name="project",
     ),
     path(
+        "projects.html",
+        TemplateView.as_view(template_name="web/project.html"),
+        name="projects",
+    ),
+    path(
+        "project-details.html",
+        TemplateView.as_view(template_name="web/404.html"),
+        name="project_details",
+    ),
+    path(
         "services.html",
         TemplateView.as_view(template_name="web/services.html"),
         name="services",

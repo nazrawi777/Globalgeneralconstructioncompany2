@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://example.com/services.html">
   <meta property="og:image" content="https://example.com/assets/og-services.jpg">
   
-  <link rel="stylesheet" href="/css/services.css">
+  <link rel="stylesheet" href="{% static 'css/services.css' %}">
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicons/1.png' %}" />
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicons/1.png' %}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicons/1.png' %}" />
@@ -630,6 +630,6 @@ a {
 <script src="{% static 'assets/js/script.js' %}"></script>
 <script src="{% static 'assets/js/countdown.min.js' %}"></script>
 
-  <script src="/js/services.js"></script>
+  <script src="{% static 'js/services.js' %}"></script>
 </body>
 </html>

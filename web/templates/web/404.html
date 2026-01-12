@@ -123,16 +123,16 @@
         </div>
     </div>
     <!-- End sidebar widget content -->        <header class="main-header-two">
-            <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
+            <div class="section-shape-1" style="background-image: url('{% static "assets/images/shapes/section-shape-1.png" %}');"></div>
             <nav class="main-menu main-menu-two">
                 <div class="main-menu-two__wrapper">
                     <div class="main-menu-two__wrapper-inner">
                         <div class="main-menu-two__left">
                             <div class="main-menu-two__logo">
-                                <a href="index.html">
+
                                     <a href="index.html"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
                                     style="width: 50%;"></a>
-                                </a>
+
                             </div>
                         </div>
                         <div class="main-menu-two__right">
@@ -235,7 +235,7 @@
             <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
         </div><!-- /.stricky-header -->    <!--Page Header Start-->
         <section class="page-header">
-            <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
+            <div class="page-header__bg" style="background-image: url('{% static '/assets/images/backgrounds/page-header-bg.jpg' %}');">
             </div>
             <div class="container">
                 <div class="page-header__inner">
@@ -259,7 +259,7 @@
 
         <!--Error Page Start-->
         <section class="error-page">
-            <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
+            <div class="section-shape-1" style="background-image: url('{% static 'assets/images/shapes/section-shape-1.png' %}');"></div>
             <div class="container">
                 <div class="error-page__inner">
                     <div class="error-page__img">
@@ -301,7 +301,7 @@
                             <div class="footer-widget__column footer-widget__about">
                                 <div class="footer-widget__logo">
                                     <a href="index.html"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
-                                    style="width: 90%;"></a>
+                                    style="width: 90%"></a>
                                 </div>
                                 <p class="footer-widget__about-text">
   We are committed to delivering quality construction services with integrity, innovation, and client satisfaction at the forefront of everything we do.

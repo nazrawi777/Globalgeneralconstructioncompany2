@@ -37,7 +37,7 @@
         rel="stylesheet">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="/blog-style.css">
+  <link rel="stylesheet" href="{% static 'css/blog-style.css' %}">
   
 
 
@@ -276,7 +276,7 @@
     
     <!-- Posts Grid -->
     <section class="posts-section">
-        <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
+        <div class="section-shape-1" style="background-image: url('{% static 'assets/images/shapes/section-shape-1.png' %}');"></div>
               
       <div class="container1">
         <div id="postsGrid" class="posts-grid" role="feed" aria-label="Blog posts">
@@ -508,6 +508,6 @@
 <script src="{% static 'assets/js/gsap/SplitText.js' %}"></script>
 <script src="{% static 'assets/js/script.js' %}"></script>
 <script src="{% static 'assets/js/countdown.min.js' %}"></script>
-<script src="/blog-script.js"></script>
+<script src="{% static 'js/blog-script.js' %}"></script>
 </body>
 </html>
