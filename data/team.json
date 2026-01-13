@@ -1,5 +1,5 @@
 {
-  "company": "Construction Corp",
+  "company": "Global General Construction",
   "lastUpdated": "2025-01-05",
   "orgChart": {
     "id": "pm-001",
@@ -7,7 +7,7 @@
     "role": "Project Manager",
     "phone": "+1 (555) 100-0001",
     "email": "d.mitchell@construction.com",
-    "avatar": "assets/avatars/pm.svg",
+    "avatar": "assets/images/resources/1.png",
     "social": {
       "linkedin": "https://linkedin.com/in/davidmitchell",
       "twitter": "https://twitter.com/dmitchell",
@@ -21,7 +21,7 @@
         "role": "Secretary",
         "phone": "+1 (555) 100-0002",
         "email": "s.johnson@construction.com",
-        "avatar": "assets/avatars/secretary.svg",
+        "avatar": "assets/images/resources/1.png",
         "social": {
           "linkedin": "https://linkedin.com/in/sarahjohnson",
           "twitter": "https://twitter.com/sjohnson"
@@ -33,7 +33,7 @@
             "role": "Construction Engineer",
             "phone": "+1 (555) 200-0001",
             "email": "m.chen@construction.com",
-            "avatar": "assets/avatars/construction.svg",
+            "avatar": "assets/images/resources/1.png",
             "social": {
               "linkedin": "https://linkedin.com/in/michaelchen"
             },
@@ -44,7 +44,7 @@
                 "role": "Road Safety Officer",
                 "phone": "+1 (555) 200-0002",
                 "email": "r.garcia@construction.com",
-                "avatar": "assets/avatars/safety.svg",
+                "avatar": "assets/images/resources/1.png",
                 "social": {
                   "linkedin": "https://linkedin.com/in/robertgarcia"
                 }
@@ -55,7 +55,7 @@
                 "role": "Site Engineer",
                 "phone": "+1 (555) 200-0003",
                 "email": "j.williams@construction.com",
-                "avatar": "assets/avatars/site.svg",
+                "avatar": "assets/images/resources/1.png",
                 "social": {
                   "linkedin": "https://linkedin.com/in/jenniferwilliams"
                 },
@@ -66,7 +66,7 @@
                     "role": "Chief Surveyor",
                     "phone": "+1 (555) 200-0004",
                     "email": "t.brown@construction.com",
-                    "avatar": "assets/avatars/surveyor.svg",
+                    "avatar": "assets/images/resources/1.png",
                     "social": {
                       "linkedin": "https://linkedin.com/in/thomasbrown"
                     }
@@ -77,7 +77,7 @@
                     "role": "Superintendent",
                     "phone": "+1 (555) 200-0005",
                     "email": "a.davis@construction.com",
-                    "avatar": "assets/avatars/superintendent.svg",
+                    "avatar": "assets/images/resources/1.png",
                     "social": {
                       "linkedin": "https://linkedin.com/in/amandadavis"
                     }
@@ -92,7 +92,7 @@
             "role": "Material Engineer",
             "phone": "+1 (555) 300-0001",
             "email": "j.wilson@construction.com",
-            "avatar": "assets/avatars/material.svg",
+            "avatar": "assets/images/resources/1.png",
             "social": {
               "linkedin": "https://linkedin.com/in/jameswilson"
             },
@@ -103,7 +103,7 @@
                 "role": "Laboratory Technician",
                 "phone": "+1 (555) 300-0002",
                 "email": "e.anderson@construction.com",
-                "avatar": "assets/avatars/lab.svg",
+                "avatar": "assets/images/resources/1.png",
                 "social": {
                   "linkedin": "https://linkedin.com/in/emilyanderson"
                 }
@@ -116,7 +116,7 @@
             "role": "Structural Engineer",
             "phone": "+1 (555) 400-0001",
             "email": "c.lee@construction.com",
-            "avatar": "assets/avatars/structural.svg",
+            "avatar": "assets/images/resources/1.png",
             "social": {
               "linkedin": "https://linkedin.com/in/christopherlee"
             },
@@ -127,7 +127,7 @@
                 "role": "Office Engineer",
                 "phone": "+1 (555) 400-0002",
                 "email": "m.taylor@construction.com",
-                "avatar": "assets/avatars/office.svg",
+                "avatar": "assets/images/resources/1.png",
                 "social": {
                   "linkedin": "https://linkedin.com/in/michelletaylor"
                 }
@@ -138,7 +138,7 @@
                 "role": "Surveyor",
                 "phone": "+1 (555) 400-0003",
                 "email": "d.martinez@construction.com",
-                "avatar": "assets/avatars/surveyor2.svg",
+                "avatar": "assets/images/resources/1.png",
                 "social": {
                   "linkedin": "https://linkedin.com/in/danielmartinez"
                 }
@@ -149,7 +149,7 @@
                 "role": "Foreman",
                 "phone": "+1 (555) 400-0004",
                 "email": "k.thompson@construction.com",
-                "avatar": "assets/avatars/foreman.svg",
+                "avatar": "assets/images/resources/1.png",
                 "social": {
                   "linkedin": "https://linkedin.com/in/kevinthompson"
                 }
@@ -162,7 +162,7 @@
             "role": "Supporting Team Lead",
             "phone": "+1 (555) 500-0001",
             "email": "p.white@construction.com",
-            "avatar": "assets/avatars/support.svg",
+            "avatar": "assets/images/resources/1.png",
             "social": {
               "linkedin": "https://linkedin.com/in/patriciawhite"
             },
@@ -173,7 +173,7 @@
                 "role": "Supply and Purchase",
                 "phone": "+1 (555) 500-0002",
                 "email": "r.harris@construction.com",
-                "avatar": "assets/avatars/supply.svg",
+                "avatar": "assets/images/resources/1.png",
                 "social": {
                   "linkedin": "https://linkedin.com/in/richardharris"
                 }
@@ -184,7 +184,7 @@
                 "role": "Finance",
                 "phone": "+1 (555) 500-0003",
                 "email": "n.clark@construction.com",
-                "avatar": "assets/avatars/finance.svg",
+                "avatar": "assets/images/resources/1.png",
                 "social": {
                   "linkedin": "https://linkedin.com/in/nancyclark"
                 }
@@ -195,7 +195,7 @@
                 "role": "Store Keeper",
                 "phone": "+1 (555) 500-0004",
                 "email": "s.lewis@construction.com",
-                "avatar": "assets/avatars/store.svg",
+                "avatar": "assets/images/resources/1.png",
                 "social": {
                   "linkedin": "https://linkedin.com/in/stevenlewis"
                 }
