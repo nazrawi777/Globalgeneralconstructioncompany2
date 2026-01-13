@@ -107,7 +107,7 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: var(--tecture-white);
+    background-color: #1e3cae;
     padding: 0 15px 0 !important;
 }
 
@@ -130,12 +130,7 @@
 }
 
     :root {
-      --background:  linear-gradient(
-  180deg,
-  hsl(207 85% 75%) 0%,
-  hsl(207 85% 70%) 50%,
-  hsl(207 85% 65%) 100%
-);
+     --background: 222 47% 6%;
 
       --foreground: 45 20% 95%;
       --card: 222 40% 8%;
@@ -168,7 +163,17 @@
       --glass-border: hsla(222, 30%, 25%, 0.3);
     }
    
-   
+   .section-shape-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
 
     #hover {
       background-color: hsl(222, 73%, 87%); /* lighter */
@@ -183,15 +188,11 @@
 
     body {
       font-family: var(--font-body);
-      background:  linear-gradient(
-  180deg,
-  hsl(207 85% 75%) 0%,
-  hsl(207 85% 70%) 50%,
-  hsl(207 85% 65%) 100%
-);
       color: hsl(var(--foreground));
       line-height: 1.6;
       overflow-x: hidden;
+      background: hsl(var(--background));
+
     }
 
     /* Typography */
@@ -345,7 +346,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: var(--gradient-hero);
+      
     }
 
 
@@ -1424,43 +1425,6 @@
                                     style="width: 90%;"></a>
                                 
                             </div>
-                            <div class="main-menu__top">
-                                <div class="main-menu__top-inner">
-                                    <ul class="list-unstyled main-menu__contact-list">
-                                        <li>
-                                            <div class="icon">
-                                                <i class="icon-telephone"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p><a href="tel:+251-11-4-62-37-58"> +251-11-4-62-37-58</a></p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <i class="icon-envelope-2"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p><a href="mailto:kedirhass7122@gmail.com">kedirhass7122@gmail.com</a>
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="main-menu__top-right">
-                                        <div class="main-menu__top-time">
-                                            <div class="main-menu__top-time-icon">
-                                                <span class="far fa-clock"></span>
-                                            </div>
-                                            <p class="main-menu__top-text">Mon - Fri: 09:00 - 05:00</p>
-                                        </div>
-                                        <div class="main-menu__social">
-                                            <a href="index.html#"><i class="fab fa-twitter"></i></a>
-                                            <a href="index.html#"><i class="fab fa-facebook"></i></a>
-                                            <a href="index.html#"><i class="fab fa-pinterest-p"></i></a>
-                                            <a href="index.html#"><i class="fab fa-instagram"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="main-menu__bottom">
                                 <div class="main-menu__main-menu-box">
                                     <a href="index.html#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
@@ -1490,9 +1454,9 @@
                 </li>
 
                 <li class="dropdown ">
-                    <a>Sisters Company</a>
+                    <a>Sister Company's</a>
                     <ul>
-                        <li><a href="projects.html">Agriculture</a></li>
+                        <li><a href="Agriculture.html">Agriculture</a></li>
                         <li><a href="project-details.html">Import and Export</a></li>
                     </ul>
                 </li>
@@ -1535,6 +1499,7 @@
 
   <!-- ==================== HERO SECTION ==================== -->
   <section class="hero" id="hero">
+    <div class="section-shape-1" style="background-image: url('https://i.postimg.cc/CL7cZRvP/Gemini-Generated-Image-h4cidbh4cidbh4ci.png');"></div>
     <div class="hero-bg"></div>
     <div class="hero-orb hero-orb-1 animate-float"></div>
     <div class="hero-orb hero-orb-2 animate-float"></div>
@@ -2071,7 +2036,9 @@
 
   <!-- ==================== TESTIMONIALS SECTION ==================== -->
 <section class="testimonials-section" id="testimonials">
+ 
   <div class="container123">
+  
     <div class="testimonials-header reveal">
       <div class="section-badge glass-card">
         <span>Client Recognition</span>

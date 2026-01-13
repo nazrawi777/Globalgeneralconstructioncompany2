@@ -53,8 +53,11 @@ body.locked {
 }
 
 .body-bg-color-1 {
-  position: relative;
-  background-color: #0a0c09;
+  background-image: url('https://i.postimg.cc/HxqBDKYJ/40515512_w11.jpg');
+  background-size: cover;          /* fills screen */
+  background-position: center;     /* center important part */
+  background-repeat: no-repeat;
+  background-attachment: fixed;    /* optional: makes it stay during scroll */
 }
 
 .theme-border-left {
@@ -903,6 +906,7 @@ li {
 .main-menu__wrapper {
   position: relative;
   display: block;
+  background-color: transparent;
   z-index: 1;
 }
 
@@ -1245,7 +1249,7 @@ li {
 
 
 .stricky-header.main-menu {
-  background-color: #fff;
+  background-color: transparent;
 }
 
 

@@ -94,13 +94,45 @@
     <link rel="stylesheet" href="assets/css/module-css/brand.css" />
     <link rel="stylesheet" href="assets/css/module-css/counter.css" />
     <link rel="stylesheet" href="assets/css/module-css/team.css" />
+<style>
+    .bg-layer {
+  position: fixed;
+  inset: 0;
 
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-image: url('https://i.postimg.cc/yNk82pr4/1132763-OQCI430.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+    z-index: 0;
+
+}
+@media only screen and (min-width: 1280px) and (max-width: 1499px) {
+    .main-menu__bottom {
+        position: relative;
+        display: flex
+;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        background-color: #1e3cae;
+        padding: 0 17px 0 !important;
+    }
+    .main-menu__search-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-right: 11px;
+    }
+}
+    </style>
 	</head>
 	<body>
+        <div class="bg-layer"></div>
         <header  class="main-header">
             <nav class="main-menu" style="background-color: transparent !important;">
                 <div class="main-menu__wrapper" style="background-color: transparent !important;">
-                    <div class="container" style="background-color: white !important;">
+                    <div class="container">
                         <div class="main-menu__wrapper-inner">
                             <div class="main-menu__logo">
                                 
@@ -108,43 +140,7 @@
                                     style="width: 90%;"></a>
                                 
                             </div>
-                            <div class="main-menu__top">
-                                <div class="main-menu__top-inner">
-                                    <ul class="list-unstyled main-menu__contact-list">
-                                        <li>
-                                            <div class="icon">
-                                                <i class="icon-telephone"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p><a href="tel:+251-11-4-62-37-58"> +251-11-4-62-37-58</a></p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <i class="icon-envelope-2"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p><a href="mailto:kedirhass7122@gmail.com">kedirhass7122@gmail.com</a>
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="main-menu__top-right">
-                                        <div class="main-menu__top-time">
-                                            <div class="main-menu__top-time-icon">
-                                                <span class="far fa-clock"></span>
-                                            </div>
-                                            <p class="main-menu__top-text">Mon - Fri: 09:00 - 05:00</p>
-                                        </div>
-                                        <div class="main-menu__social">
-                                            <a href="index.html#"><i class="fab fa-twitter"></i></a>
-                                            <a href="index.html#"><i class="fab fa-facebook"></i></a>
-                                            <a href="index.html#"><i class="fab fa-pinterest-p"></i></a>
-                                            <a href="index.html#"><i class="fab fa-instagram"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="main-menu__bottom">
                                 <div class="main-menu__main-menu-box">
                                     <a href="index.html#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
@@ -176,9 +172,9 @@
                 </li>
 
                 <li class="dropdown ">
-                    <a>Sisters Company</a>
+                    <a>Sister Company's</a>
                     <ul>
-                        <li><a href="projects.html">Agriculture</a></li>
+                        <li><a href="Agriculture.html">Agriculture</a></li>
                         <li><a href="project-details.html">Import and Export</a></li>
                     </ul>
                 </li>
@@ -216,25 +212,25 @@
             <div class="stricky-header stricked-menu main-menu">
             <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
         </div>
-    <section class="bg-half d-table w-100" style="background-color: white !important;">
-    <div class="container" style="background-color: white !important;">
-        <div class="row g-4" style="background-color: white !important;">
+    <section class="bg-half d-table w-100" >
+    <div class="container">
+        <div class="row g-4">
             <div class="col-lg-4 col-md-6">
                 <div class="card border-0 shadow rounded p-4 sticky-bar">
                     <img src="assets/images/resources/1.png" class="avatar avatar-medium p-4 rounded-pill shadow bg-white" alt="">
                     
                     <div class="mt-4">
                         <h4 class="title mb-3">Site Engineer</h4>
-                        <p class="para-desc text-muted">
+                        <p class="para-desc text-muted" style="color: white !important;">
                             We are hiring qualified construction professionals for Grade 1 projects.
                             Review project details, responsibilities, and apply directly through this platform.
                         </p>
                         <ul class="list-unstyled mb-0">
-                            <li class="d-inline-flex align-items-center text-muted me-2">
+                            <li class="d-inline-flex align-items-center text-muted me-2" style="color: white !important;">
                                 <i data-feather="layout" class="fea icon-sm text-primary me-1"></i>
                                 ABC Grade 1 Construction PLC
                             </li>
-                            <li class="d-inline-flex align-items-center text-muted">
+                            <li class="d-inline-flex align-items-center text-muted" style="color: white !important;">
                                 <i data-feather="map-pin" class="fea icon-sm text-primary me-1"></i>
                                 Addis Ababa, Ethiopia
                             </li>
@@ -248,83 +244,83 @@
                     <h5 class="mb-0">Job Information:</h5>
 
                     <ul class="list-unstyled mb-0 mt-4">                                
-                        <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+                        <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white" style="background-color:  #1e3cae !important;">
                             <div class="d-flex widget align-items-center">
                                 <i data-feather="user-check" class="fea icon-ex-md me-3"></i>
                                 <div class="flex-1">
-                                    <h6 class="widget-title mb-0">Employment Type:</h6>
-                                    <small class="text-primary mb-0">Full Time</small>
+                                    <h6 class="widget-title mb-0" style="color:#fff !important">Employment Type:</h6>
+                                    <small class="text-primary mb-0" style="color:#fff !important">Full Time</small>
                                 </div>
                             </div>
                         </li>
 
-                        <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+ <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white" style="background-color:  #1e3cae !important;">
                             <div class="d-flex widget align-items-center">
                                 <i data-feather="map-pin" class="fea icon-ex-md me-3"></i>
                                 <div class="flex-1">
                                     <h6 class="widget-title mb-0">Project Location:</h6>
-                                    <small class="text-primary mb-0">Addis Ababa</small>
+                                    <small class="text-primary mb-0" style="color:#fff !important">Addis Ababa</small>
                                 </div>
                             </div>
                         </li>
 
-                        <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+ <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white" style="background-color:  #1e3cae !important;">
                             <div class="d-flex widget align-items-center">
                                 <i data-feather="clock" class="fea icon-ex-md me-3"></i>
                                 <div class="flex-1">
                                     <h6 class="widget-title mb-0">Date Posted:</h6>
-                                    <small class="text-primary mb-0">5th Sep, 2021</small>
+                                    <small class="text-primary mb-0" style="color:#fff !important">5th Sep, 2021</small>
                                 </div>
                             </div>
                         </li>
 
                         <!-- DEADLINE ADDED -->
-                        <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+ <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white" style="background-color:  #1e3cae !important;">
                             <div class="d-flex widget align-items-center">
                                 <i data-feather="calendar" class="fea icon-ex-md me-3"></i>
                                 <div class="flex-1">
                                     <h6 class="widget-title mb-0">Application Deadline:</h6>
-                                    <small class="text-primary mb-0">30th Sep, 2021</small>
+                                    <small class="text-primary mb-0" style="color:#fff !important">30th Sep, 2021</small>
                                 </div>
                             </div>
                         </li>
 
-                        <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+ <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white" style="background-color:  #1e3cae !important;">
                             <div class="d-flex widget align-items-center">
                                 <i data-feather="briefcase" class="fea icon-ex-md me-3"></i>
                                 <div class="flex-1">
                                     <h6 class="widget-title mb-0">Position:</h6>
-                                    <small class="text-primary mb-0">Site Engineer</small>
+                                    <small class="text-primary mb-0" style="color:#fff !important">Site Engineer</small>
                                 </div>
                             </div>
                         </li>
 
-                        <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+ <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white" style="background-color:  #1e3cae !important;">
                             <div class="d-flex widget align-items-center">
                                 <i data-feather="award" class="fea icon-ex-md me-3"></i>
                                 <div class="flex-1">
                                     <h6 class="widget-title mb-0">Experience Required:</h6>
-                                    <small class="text-primary mb-0">3+ Years</small>
+                                    <small class="text-primary mb-0" style="color:#fff !important">3+ Years</small>
                                 </div>
                             </div>
                         </li>
 
-                        <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+ <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white" style="background-color:  #1e3cae !important;">
                             <div class="d-flex widget align-items-center">
                                 <i data-feather="book" class="fea icon-ex-md me-3"></i>
                                 <div class="flex-1">
                                     <h6 class="widget-title mb-0">Qualification:</h6>
-                                    <small class="text-primary mb-0">BSc in Civil Engineering</small>
+                                    <small class="text-primary mb-0" style="color:#fff !important">BSc in Civil Engineering</small>
                                 </div>
                             </div>
                         </li>
 
-                        <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+ <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white" style="background-color:  #1e3cae !important;">
                             <div class="d-flex widget align-items-center">
                                 <i data-feather="dollar-sign" class="fea icon-ex-md me-3"></i>
                                 <div class="flex-1">
                                     <h6 class="widget-title mb-0">Salary:</h6>
-                                    <small class="text-primary mb-0">Negotiable</small>
+                                    <small class="text-primary mb-0" style="color:#fff !important">Negotiable</small>
                                 </div>
                             </div>
                         </li>
@@ -333,31 +329,31 @@
 
                 <div class="mt-4">
                     <h5>Job Description:</h5>
-                    <p class="text-muted">
+                    <p class="text-muted" style="color:#fff !important">
                         The Site Engineer will be responsible for supervising daily construction activities,
                         ensuring work is executed according to drawings, specifications, and safety standards.
                     </p>
 
                     <h5 class="mt-4">Responsibilities and Duties:</h5>
-                    <ul class="list-unstyled">
-                        <li class="text-muted mt-2"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Supervise on-site construction works</li>
-                        <li class="text-muted mt-2"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Coordinate subcontractors and labor teams</li>
-                        <li class="text-muted mt-2"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Ensure material quality and proper usage</li>
-                        <li class="text-muted mt-2"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Maintain daily site reports and documentation</li>
-                        <li class="text-muted mt-2"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Enforce safety regulations on site</li>
+                    <ul class="list-unstyled" style="color:#fff !important">
+                        <li class="text-muted mt-2" style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i style="color:#fff !important">Supervise on-site construction works</li>
+                        <li class="text-muted mt-2" style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Coordinate subcontractors and labor teams</li>
+                        <li class="text-muted mt-2"style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Ensure material quality and proper usage</li>
+                        <li class="text-muted mt-2"style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Maintain daily site reports and documentation</li>
+                        <li class="text-muted mt-2"style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Enforce safety regulations on site</li>
                     </ul>
 
                     <h5 class="mt-4">Required Experience, Skills and Qualifications:</h5>
                     <ul class="list-unstyled">
-                        <li class="text-muted mt-2"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>BSc in Civil Engineering or related field</li>
-                        <li class="text-muted mt-2"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Experience in Grade 1 construction projects</li>
-                        <li class="text-muted mt-2"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Strong knowledge of drawings and BOQs</li>
-                        <li class="text-muted mt-2"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Ability to manage site teams effectively</li>
-                        <li class="text-muted mt-2"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Good communication and reporting skills</li>
+                        <li class="text-muted mt-2"style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>BSc in Civil Engineering or related field</li>
+                        <li class="text-muted mt-2" style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Experience in Grade 1 construction projects</li>
+                        <li class="text-muted mt-2"style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Strong knowledge of drawings and BOQs</li>
+                        <li class="text-muted mt-2"style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Ability to manage site teams effectively</li>
+                        <li class="text-muted mt-2"style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>Good communication and reporting skills</li>
                     </ul>
 
                     <div class="mt-4">
-                        <a href="job-apply.html" class="btn btn-outline-primary">
+                        <a href="job-apply.html" class="btn btn-outline-primary"style="background-color:#fff !important">
                             Apply Now <i class="mdi mdi-send"></i>
                         </a>
                     </div>
