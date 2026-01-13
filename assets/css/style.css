@@ -1189,7 +1189,7 @@ li {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: var(--tecture-white);
+  background-color:#1e3cae;
   padding: 0 15px 0;
 }
 
@@ -1305,7 +1305,7 @@ li {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: var(--tecture-black);
+  color: #e8ecf7;
   font-weight: 700;
   padding-left: 7px;
   padding-right: 7px;
@@ -1320,7 +1320,7 @@ li {
 .main-menu .main-menu__list>li:hover>a,
 .stricky-header .main-menu__list>li.current>a,
 .stricky-header .main-menu__list>li:hover>a {
-  color: var(--tecture-base);
+  color: #7dd3fc;
 }
 
 .main-menu .main-menu__list>li>a::before,
@@ -1328,7 +1328,7 @@ li {
   content: "";
   height: 33px;
   border-radius: 0px;
-  background-color: var(--tecture-base);
+  background-color: rgb(255, 254, 252);
   position: absolute;
   bottom: -3px;
   left: 0px;
@@ -1360,7 +1360,7 @@ li {
   font-family: "Font Awesome 5 Pro";
   content: "\f107";
   font-size: 14px;
-  color: var(--tecture-black);
+  color: #e8ecf7;
   transform: translateY(-50%);
   font-weight: 400;
   -webkit-transition: all 500ms ease;
@@ -1563,7 +1563,7 @@ li {
   position: relative;
   display: inline-block;
   font-size: 20px;
-  color: var(--tecture-base);
+  color: #fff;
   cursor: pointer;
   -webkit-transition: 500ms;
   transition: 500ms;
