@@ -130,12 +130,18 @@
 }
 
     :root {
-      --background: 222 47% 6%;
+      --background:  linear-gradient(
+  180deg,
+  hsl(207 85% 75%) 0%,
+  hsl(207 85% 70%) 50%,
+  hsl(207 85% 65%) 100%
+);
+
       --foreground: 45 20% 95%;
       --card: 222 40% 8%;
       --card-foreground: 45 20% 95%;
       --muted: 222 30% 15%;
-      --muted-foreground: 45 10% 65%;
+      --muted-foreground: #1e3cae;
       --accent-foreground: 222 47% 6%;
       --border: 222 30% 18%;
       --ring: 38 92% 50%;
@@ -144,8 +150,18 @@
       --font-display: 'DM Sans', sans-serif;
       --font-body: 'Inter', sans-serif;
       --accent: 210 87% 58%;
-      
-      --gradient-hero: linear-gradient(180deg, hsl(222 47% 6%) 0%, hsl(222 50% 4%) 100%);
+
+
+--gradient-hero: linear-gradient(
+  180deg,
+  hsl(207 85% 75%) 0%,
+  hsl(207 85% 70%) 50%,
+  hsl(207 85% 65%) 100%
+);
+
+
+
+
       --gradient-accent: linear-gradient(135deg,hsl(210 87% 58%) 0%,hsl(210 87% 58%) 100%);
 
       --glass-bg: hsla(222, 40%, 10%, 0.6);
@@ -167,7 +183,12 @@
 
     body {
       font-family: var(--font-body);
-      background: hsl(var(--background));
+      background:  linear-gradient(
+  180deg,
+  hsl(207 85% 75%) 0%,
+  hsl(207 85% 70%) 50%,
+  hsl(207 85% 65%) 100%
+);
       color: hsl(var(--foreground));
       line-height: 1.6;
       overflow-x: hidden;
@@ -358,9 +379,7 @@
       position: absolute;
       inset: 0;
       opacity: 0.05;
-      background-image: 
-        linear-gradient(hsla(38, 92%, 50%, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, hsla(38, 92%, 50%, 0.3) 1px, transparent 1px);
+     background-color: white;
       background-size: 60px 60px;
     }
 
@@ -530,7 +549,7 @@
       padding: 2rem 2.5rem;
       font-size: 1.5rem;
       font-style: italic;
-      color: hsl(var(--foreground));
+      color: #1e3cae;
       border-left: 4px solid hsl(var(--accent));
     }
 
@@ -541,7 +560,12 @@
       left: 1rem;
       font-size: 5rem;
       font-family: Georgia, serif;
-      color: hsl(var(--accent));
+      color: linear-gradient(
+  180deg,
+  hsl(223 85% 35%) 0%,
+  hsl(223 85% 30%) 50%,
+  hsl(223 85% 25%) 100%
+);
       opacity: 0.3;
       line-height: 1;
     }
