@@ -658,7 +658,7 @@
       teamData = await response.json();
 
       // Update header
-      document.querySelector('.header1-title').textContent = teamData.company + ' Organization';
+      document.querySelector('.header1-title').textContent = teamData.company;
        
       // Initialize expanded nodes
       flattenTree(teamData.orgChart).forEach(m => expandedNodes.add(m.id));

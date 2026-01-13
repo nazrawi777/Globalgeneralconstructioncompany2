@@ -478,7 +478,7 @@ body {
   height: 2.5rem;
   border-radius: 50%;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.2);
+  background: white;
   flex-shrink: 0;
 }
 
