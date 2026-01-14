@@ -129,30 +129,30 @@
 
         /* SLIDER CONTAINER */
         .slider {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-           background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0,0,0,.1);
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 20px; /* Slightly rounder for iOS look */
+    
+    /* 1. Very transparent white (only 15% opacity) */
+    background: rgba(255, 255, 255, 0.30); 
+    
+    /* 2. High blur + Saturation (iPhone secret sauce) */
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    
+    /* 3. The "Edge" - a bright, thin border makes it look like real glass */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.6); /* Highlights the top edge */
 
-            /* soft fade edges */
-            mask-image: linear-gradient(
-                to right,
-                transparent,
-                black 10%,
-                black 90%,
-                transparent
-            );
-            -webkit-mask-image: linear-gradient(
-                to right,
-                transparent,
-                black 10%,
-                black 90%,
-                transparent
-            );
-        }
+    /* 4. Deep, soft shadow */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 
+    /* Your existing mask for the fade effect */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
         /* MOVING TRACK */
         .slider-items {
             display: flex;
