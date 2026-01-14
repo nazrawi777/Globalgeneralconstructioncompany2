@@ -75,7 +75,7 @@
                         <div class="main-menu__wrapper-inner">
                             <div class="main-menu__logo">
                                 
-                                <a href="index.html"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
+                                <a href="{% url 'index' %}"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
                                     style="width: 90%;"></a>
                                 
                             </div>
@@ -108,54 +108,54 @@
                                             <p class="main-menu__top-text">Mon - Fri: 09:00 - 05:00</p>
                                         </div>
                                         <div class="main-menu__social">
-                                            <a href="index.html#"><i class="fab fa-twitter"></i></a>
-                                            <a href="index.html#"><i class="fab fa-facebook"></i></a>
-                                            <a href="index.html#"><i class="fab fa-pinterest-p"></i></a>
-                                            <a href="index.html#"><i class="fab fa-instagram"></i></a>
+                                            <a href="{% url 'index' %}#"><i class="fab fa-twitter"></i></a>
+                                            <a href="{% url 'index' %}#"><i class="fab fa-facebook"></i></a>
+                                            <a href="{% url 'index' %}#"><i class="fab fa-pinterest-p"></i></a>
+                                            <a href="{% url 'index' %}#"><i class="fab fa-instagram"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="main-menu__bottom">
                                 <div class="main-menu__main-menu-box">
-                                    <a href="index.html#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                                    <a href="{% url 'index' %}#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                     <ul class="main-menu__list">
                                     <li >
-                                        <a href="index.html">Home</a>
+                                        <a href="{% url 'index' %}">Home</a>
                                     </li>
                                      <li class="dropdown">
                                         <a>About  </a>
                                         <ul>
-                                            <li><a href="about.html">About-us</a></li>
-                                            <li><a href="ourteam.html">Our Team</a></li>
+                                            <li><a href="{% url 'about' %}">About-us</a></li>
+                                            <li><a href="{% url 'ourteam' %}">Our Team</a></li>
                                     </ul>
                                 </li >
 
                                     <li>
-                                        <a href="services.html">Services</a>
+                                        <a href="{% url 'services' %}">Services</a>
                                     </li>
 
                 <li class="dropdown ">
                     <a>Blog</a>
                     <ul>
-                        <li><a href="blog.html">Blog and News</a></li>
-                        <li><a href="project.html">Our Projects </a></li>
+                        <li><a href="{% url 'blog' %}">Blog and News</a></li>
+                        <li><a href="{% url 'project' %}">Our Projects </a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown ">
                     <a>Sisters Company</a>
                     <ul>
-                        <li><a href="Agriculture.html">Agriculture</a></li>
-                        <li><a href="coming-soon.html">Import and Export</a></li>
+                        <li><a href="{% url 'agriculture' %}">Agriculture</a></li>
+                        <li><a href="{% url 'coming_soon' %}">Import and Export</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="job-list.html">Job Vacancy</a>
+                    <a href="{% url 'job_list' %}">Job Vacancy</a>
                     
                 </li>
                 <li >
-                    <a href="contact.html" id="hover">Contact</a>
+                    <a href="{% url 'contact' %}" id="hover">Contact</a>
                 </li>
             </ul>
                                             </div>
@@ -642,15 +642,15 @@
                     <div class="col-12 mt-4 pt-2">
                         <ul class="pagination justify-content-center mb-0">
                             <li class="page-item">
-                                <a class="page-link" href="candidates.html#" aria-label="Previous">
+                                <a class="page-link" href="{% url 'candidates' %}#" aria-label="Previous">
                                     <span aria-hidden="true"><i class="mdi mdi-chevron-left fs-6"></i></span>
                                 </a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="candidates.html#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="candidates.html#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="candidates.html#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="{% url 'candidates' %}#">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="{% url 'candidates' %}#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="{% url 'candidates' %}#">3</a></li>
                             <li class="page-item">
-                                <a class="page-link" href="candidates.html#" aria-label="Next">
+                                <a class="page-link" href="{% url 'candidates' %}#" aria-label="Next">
                                     <span aria-hidden="true"><i class="mdi mdi-chevron-right fs-6"></i></span>
                                 </a>
                             </li>
@@ -676,7 +676,7 @@
                         <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                             <div class="footer-widget__column footer-widget__about">
                                 <div class="footer-widget__logo">
-                                    <a href="index.html"><img src="{% static 'assets/images/resources/2.png' %}"
+                                    <a href="{% url 'index' %}"><img src="{% static 'assets/images/resources/2.png' %}"
                                             alt=""
                                              style="width: 90%;"></a>
                                 </div>
@@ -685,10 +685,10 @@
 </p>
 
                                 <div class="site-footer__social">
-                                    <a href="index.html#"><i class="fab fa-twitter"></i></a>
-                                    <a href="index.html#"><i class="fab fa-facebook"></i></a>
-                                    <a href="index.html#"><i class="fab fa-pinterest-p"></i></a>
-                                    <a href="index.html#"><i class="fab fa-instagram"></i></a>
+                                    <a href="{% url 'index' %}#"><i class="fab fa-twitter"></i></a>
+                                    <a href="{% url 'index' %}#"><i class="fab fa-facebook"></i></a>
+                                    <a href="{% url 'index' %}#"><i class="fab fa-pinterest-p"></i></a>
+                                    <a href="{% url 'index' %}#"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -699,19 +699,19 @@
                                 </div>
                                 <div class="footer-widget__link-box">
                                     <ul class="footer-widget__link list-unstyled">
-                                        <li><a href="contact.html">Our Support</a></li>
-                                        <li><a href="about.html">System Status</a></li>
-                                        <li><a href="about.html">Knowledge base</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="contact.html">Contact us</a></li>
-                                        <li><a href="contact.html">Write For Us</a></li>
+                                        <li><a href="{% url 'contact' %}">Our Support</a></li>
+                                        <li><a href="{% url 'about' %}">System Status</a></li>
+                                        <li><a href="{% url 'about' %}">Knowledge base</a></li>
+                                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                                        <li><a href="{% url 'contact' %}">Contact us</a></li>
+                                        <li><a href="{% url 'contact' %}">Write For Us</a></li>
                                     </ul>
                                     <ul class="footer-widget__link footer-widget__link-2 list-unstyled">
-                                        <li><a href="about.html">Ebooks</a></li>
-                                        <li><a href="about.html">Cloudways Users</a></li>
-                                        <li><a href="about.html">Group</a></li>
-                                        <li><a href="about.html">Customer Voice</a></li>
-                                        <li><a href="about.html">Properties Right</a></li>
+                                        <li><a href="{% url 'about' %}">Ebooks</a></li>
+                                        <li><a href="{% url 'about' %}">Cloudways Users</a></li>
+                                        <li><a href="{% url 'about' %}">Group</a></li>
+                                        <li><a href="{% url 'about' %}">Customer Voice</a></li>
+                                        <li><a href="{% url 'about' %}">Properties Right</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -723,8 +723,8 @@
                                 </div>
                                 <ul class="footer-widget__link list-unstyled">
                                     <li><a href="harmony-interiors.html">Harmony Interiors</a></li>
-                                    <li><a href="about.html">Amman Rotane Hotel</a></li>
-                                    <li><a href="about.html">European Lard Sration</a></li>
+                                    <li><a href="{% url 'about' %}">Amman Rotane Hotel</a></li>
+                                    <li><a href="{% url 'about' %}">European Lard Sration</a></li>
                                     <li><a href="evolve-space-designs.html">Evolve Space Designs</a></li>
                                     <li><a href="eden-home-styling.html">Eden Home Styling</a></li>
                                     <li><a href="interior-design.html">Interior Design </a></li>
@@ -741,37 +741,37 @@
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="https://i.postimg.cc/sfwgHWgm/pexels-quang-nguyen-vinh-222549-2138126-(1)-(1).jpg" alt="">
-                                            <a href="index.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'index' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="https://i.postimg.cc/BvTqTLzJ/pexels-bltkrn-35368937-(1)-(1).jpg" alt="">
-                                            <a href="index.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'index' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="https://i.postimg.cc/Wz3Tc91Z/pexels-mikebirdy-144632-(1).jpg" alt="">
-                                            <a href="index.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'index' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="https://i.postimg.cc/Y9XBR1f5/pexels-mikegiugliano-2388358-(1).jpg" alt="">
-                                            <a href="index.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'index' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="https://i.postimg.cc/Wz3Tc91Z/pexels-mikebirdy-144632-(1).jpg" alt="">
-                                            <a href="index.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'index' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="https://i.postimg.cc/sfwgHWgm/pexels-quang-nguyen-vinh-222549-2138126-(1)-(1).jpg" alt="">
-                                            <a href="index.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'index' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                 </ul>
@@ -784,11 +784,11 @@
                 <div class="container">
                     <div class="site-footer__bottom-inner">
                         <p class="site-footer__bottom-text">© 2025
-                            Copyright <a href="index.html#">Global General Construction company .</a> | All rights reserved</p>
+                            Copyright <a href="{% url 'index' %}#">Global General Construction company .</a> | All rights reserved</p>
                         <ul class="list-unstyled site-footer__bottom-menu">
-                            <li><a href="about.html">Privacy & Policy</a></li>
-                            <li><a href="about.html">Terms of use</a></li>
-                            <li><a href="about.html">Cookie Policy</a></li>
+                            <li><a href="{% url 'about' %}">Privacy & Policy</a></li>
+                            <li><a href="{% url 'about' %}">Terms of use</a></li>
+                            <li><a href="{% url 'about' %}">Cookie Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -804,7 +804,7 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="index.html" aria-label="logo image"><img src="{% static 'assets/images/resources/2.png' %}" width="150"
+                <a href="{% url 'index' %}" aria-label="logo image"><img src="{% static 'assets/images/resources/2.png' %}" width="150"
                         alt="" /></a>
             </div>
             <!-- /.logo-box -->
@@ -823,10 +823,10 @@
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">
                 <div class="mobile-nav__social">
-                    <a href="index.html#" class="fab fa-twitter"></a>
-                    <a href="index.html#" class="fab fa-facebook-square"></a>
-                    <a href="index.html#" class="fab fa-pinterest-p"></a>
-                    <a href="index.html#" class="fab fa-instagram"></a>
+                    <a href="{% url 'index' %}#" class="fab fa-twitter"></a>
+                    <a href="{% url 'index' %}#" class="fab fa-facebook-square"></a>
+                    <a href="{% url 'index' %}#" class="fab fa-pinterest-p"></a>
+                    <a href="{% url 'index' %}#" class="fab fa-instagram"></a>
                 </div><!-- /.mobile-nav__social -->
             </div><!-- /.mobile-nav__top -->
 
@@ -839,7 +839,7 @@
         <div class="search-popup__overlay search-toggler"></div>
         <!-- /.search-popup__overlay -->
         <div class="search-popup__content">
-            <form action="index.html#">
+            <form action="{% url 'index' %}#">
                 <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
                 <input type="text" id="search" placeholder="Search Here..." />
                 <button type="submit" aria-label="search submit" class="thm-btn">
@@ -849,7 +849,7 @@
         </div>
         <!-- /.search-popup__content -->
     </div>
-    <!-- /.search-popup -->            <a href="index.html#" data-target="html" class="scroll-to-target scroll-to-top">
+    <!-- /.search-popup -->            <a href="{% url 'index' %}#" data-target="html" class="scroll-to-target scroll-to-top">
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
         <span class="scroll-to-top__text"> Go Back Top</span>
     </a>            <script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>

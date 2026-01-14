@@ -13,6 +13,7 @@ from .views import (
     TestimonialListView,
     ContactView,
     TeamListView,
+    JobApplyView,
 )
 
 urlpatterns = [
@@ -40,7 +41,7 @@ urlpatterns = [
     path("contact.html", ContactView.as_view(), name="contact"),
     path(
         "job-apply.html",
-        TemplateView.as_view(template_name="web/job-apply.html"),
+        JobApplyView.as_view(),
         name="job_apply",
     ),
     path("job-detail/<int:pk>/", JobDetailView.as_view(), name="job_detail"),

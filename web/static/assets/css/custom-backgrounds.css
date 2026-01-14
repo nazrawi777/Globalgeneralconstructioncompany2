@@ -1,0 +1,33 @@
+/* Custom background images moved from inline styles to fix pathing and syntax issues */
+
+.bg-slider-1 {
+    background-image: url('../images/resources/slider-1.jpg');
+}
+
+.bg-section-shape-1 {
+    background-image: url('../images/shapes/section-shape-1.png');
+}
+
+.bg-site-footer-shape-1 {
+    background-image: url('../images/shapes/site-footer-shape-1.jpg');
+}
+
+.bg-projects-one-content-shape-1 {
+    background-image: url('../images/shapes/projects-one-content-shape-1.png');
+}
+
+.bg-design-interior-shape-1 {
+    background-image: url('../images/shapes/design-interior-shape-1.png');
+}
+
+.bg-testimonial-two-single-shape-1 {
+    background-image: url('../images/shapes/testimonial-two-single-shape-1.png');
+}
+
+.bg-counter-one-shape-1 {
+    background-image: url('../images/shapes/counter-one-shape-1.png');
+}
+
+.bg-video-one-default {
+    background-image: url('../images/resources/video-one-bg.jpg');
+}

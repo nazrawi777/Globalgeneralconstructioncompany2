@@ -127,3 +127,24 @@ class VideoGalleryItem(models.Model):
 
     def __str__(self):
         return self.title
+
+class JobApplication(models.Model):
+    JOB_TYPE_CHOICES = [
+        ('All Jobs', 'All Jobs'),
+        ('Full Time', 'Full Time'),
+        ('Half Time', 'Half Time'),
+        ('Remote', 'Remote'),
+        ('In Office', 'In Office'),
+    ]
+
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    job_title = models.CharField(max_length=200, blank=True, null=True)
+    job_type = models.CharField(max_length=50, choices=JOB_TYPE_CHOICES, default='All Jobs')
+    description = models.TextField(blank=True, null=True)
+    cv = models.FileField(upload_to='cvs/')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.job_title}"

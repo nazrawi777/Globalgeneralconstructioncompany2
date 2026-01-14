@@ -84,13 +84,13 @@
         <div class="xs-sidebar-widget">
             <div class="sidebar-widget-container">
                 <div class="widget-heading">
-                    <a href="testimonials.html#" class="close-side-widget">X</a>
+                    <a href="{% url 'testimonials' %}#" class="close-side-widget">X</a>
                 </div>
                 <div class="sidebar-textwidget">
                     <div class="sidebar-info-contents">
                         <div class="content-inner">
                             <div class="logo">
-                                <a href="index.html"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
+                                <a href="{% url 'index' %}"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
                                     style="width: 50%;"></a>
                             </div>
                             <div class="content-box">
@@ -129,34 +129,34 @@
                     <div class="main-menu-two__wrapper-inner">
                         <div class="main-menu-two__left">
                             <div class="main-menu-two__logo">
-                                <a href="index.html">
-                                    <a href="index.html"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
+                                <a href="{% url 'index' %}">
+                                    <a href="{% url 'index' %}"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
                                     style="width: 50%;"></a>
                                 </a>
                             </div>
                         </div>
                         <div class="main-menu-two__right">
                             <div class="main-menu-two__main-menu-box">
-                                <a href="testimonials.html#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                                <a href="{% url 'testimonials' %}#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                 <ul class="main-menu__list">
     <li class="dropdown ">
-        <a href="index.html">Home </a>
+        <a href="{% url 'index' %}">Home </a>
         <ul>
-            <li><a href="index.html">Home One</a></li>
+            <li><a href="{% url 'index' %}">Home One</a></li>
             <li><a href="index2.html">Home Two</a></li>
             <li><a href="index3.html">Home Three</a></li>
             <li><a href="index4.html">Home Four</a></li>
             <li class="dropdown ">
-                <a href="testimonials.html#">Header Styles</a>
+                <a href="{% url 'testimonials' %}#">Header Styles</a>
                 <ul>
-                    <li><a href="index.html">Header One</a></li>
+                    <li><a href="{% url 'index' %}">Header One</a></li>
                     <li><a href="index2.html">Header Two</a></li>
                     <li><a href="index3.html">Header Three</a></li>
                     <li><a href="index4.html">Header Four</a></li>
                 </ul>
             </li>
             <li class="dropdown ">
-                <a href="testimonials.html#">One Page Styles</a>
+                <a href="{% url 'testimonials' %}#">One Page Styles</a>
                 <ul>
                     <li><a href="index-one-page.html">One Page Styles One</a></li>
                     <li><a href="index2-one-page.html">One Page Styles Two</a></li>
@@ -169,23 +169,23 @@
         </ul>
     </li>
     <li >
-        <a href="about.html">About Us</a>
+        <a href="{% url 'about' %}">About Us</a>
     </li>
     <li class="dropdown  current ">
-        <a href="testimonials.html#">Pages</a>
+        <a href="{% url 'testimonials' %}#">Pages</a>
         <ul>
             <li><a href="team.html">Team</a></li>
-            <li><a href="team-details.html">Team Details</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="{% url 'ourteam' %}">Team Details</a></li>
+            <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
             <li><a href="faq.html">Faq</a></li>
             <li><a href="404.html">404 Error</a></li>
-            <li><a href="coming-soon.html">Coming Soon</a></li>
+            <li><a href="{% url 'coming_soon' %}">Coming Soon</a></li>
         </ul>
     </li>
     <li class="dropdown ">
-        <a href="testimonials.html#">Services</a>
+        <a href="{% url 'testimonials' %}#">Services</a>
         <ul>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
             <li><a href="evolve-space-designs.html">Evolve Space Designs</a></li>
             <li><a href="eden-home-styling.html">Eden Home Styling</a>
             </li>
@@ -198,30 +198,30 @@
         </ul>
     </li>
     <li class="dropdown ">
-        <a href="testimonials.html#">projects</a>
+        <a href="{% url 'testimonials' %}#">projects</a>
         <ul>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="project-details.html">Project Details</a></li>
+            <li><a href="{% url 'projects' %}">Projects</a></li>
+            <li><a href="{% url 'projects' %}">Project Details</a></li>
         </ul>
     </li>
     <li class="dropdown ">
-        <a href="testimonials.html#">Blog</a>
+        <a href="{% url 'testimonials' %}#">Blog</a>
         <ul>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="{% url 'blog' %}">Blog</a></li>
             <li><a href="blog-2.html">Blog Style2</a></li>
             <li><a href="blog-details.html">Blog Details</a></li>
         </ul>
     </li>
     <li >
-        <a href="contact.html">Contact</a>
+        <a href="{% url 'contact' %}">Contact</a>
     </li>
 </ul>
                             </div>
                             <div class="main-menu-two__search-and-nav-sidebar-icon">
-                                <a href="testimonials.html#" class="main-menu-two__search search-toggler"><span
+                                <a href="{% url 'testimonials' %}#" class="main-menu-two__search search-toggler"><span
                                         class="icon-search-interface-symbol"></span></a>
                                 <div class="main-menu-two__nav-sidebar-icon">
-                                    <a class="navSidebar-button" href="testimonials.html#">
+                                    <a class="navSidebar-button" href="{% url 'testimonials' %}#">
                                         <span class="icon-text"></span>
                                     </a>
                                 </div>
@@ -245,7 +245,7 @@
                     </div>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
-                             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                             <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
                             <li><span>/</span></li>
                             <li>Testimonials</li>
                         </ul>
@@ -323,7 +323,7 @@
                         <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                             <div class="footer-widget__column footer-widget__about">
                                 <div class="footer-widget__logo">
-                                    <a href="index.html"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
+                                    <a href="{% url 'index' %}"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
                                     style="width: 90%;"></a>
                                 </div>
                                 <p class="footer-widget__about-text">
@@ -331,10 +331,10 @@
 </p>
 
                                 <div class="site-footer__social">
-                                    <a href="testimonials.html#"><i class="fab fa-twitter"></i></a>
-                                    <a href="testimonials.html#"><i class="fab fa-facebook"></i></a>
-                                    <a href="testimonials.html#"><i class="fab fa-pinterest-p"></i></a>
-                                    <a href="testimonials.html#"><i class="fab fa-instagram"></i></a>
+                                    <a href="{% url 'testimonials' %}#"><i class="fab fa-twitter"></i></a>
+                                    <a href="{% url 'testimonials' %}#"><i class="fab fa-facebook"></i></a>
+                                    <a href="{% url 'testimonials' %}#"><i class="fab fa-pinterest-p"></i></a>
+                                    <a href="{% url 'testimonials' %}#"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -345,19 +345,19 @@
                                 </div>
                                 <div class="footer-widget__link-box">
                                     <ul class="footer-widget__link list-unstyled">
-                                        <li><a href="contact.html">Our Support</a></li>
-                                        <li><a href="about.html">System Status</a></li>
-                                        <li><a href="about.html">Knowledge base</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="contact.html">Contact us</a></li>
-                                        <li><a href="contact.html">Write For Us</a></li>
+                                        <li><a href="{% url 'contact' %}">Our Support</a></li>
+                                        <li><a href="{% url 'about' %}">System Status</a></li>
+                                        <li><a href="{% url 'about' %}">Knowledge base</a></li>
+                                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                                        <li><a href="{% url 'contact' %}">Contact us</a></li>
+                                        <li><a href="{% url 'contact' %}">Write For Us</a></li>
                                     </ul>
                                     <ul class="footer-widget__link footer-widget__link-2 list-unstyled">
-                                        <li><a href="about.html">Ebooks</a></li>
-                                        <li><a href="about.html">Cloudways Users</a></li>
-                                        <li><a href="about.html">Group</a></li>
-                                        <li><a href="about.html">Customer Voice</a></li>
-                                        <li><a href="about.html">Properties Right</a></li>
+                                        <li><a href="{% url 'about' %}">Ebooks</a></li>
+                                        <li><a href="{% url 'about' %}">Cloudways Users</a></li>
+                                        <li><a href="{% url 'about' %}">Group</a></li>
+                                        <li><a href="{% url 'about' %}">Customer Voice</a></li>
+                                        <li><a href="{% url 'about' %}">Properties Right</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -369,8 +369,8 @@
                                 </div>
                                 <ul class="footer-widget__link list-unstyled">
                                     <li><a href="harmony-interiors.html">Harmony Interiors</a></li>
-                                    <li><a href="about.html">Amman Rotane Hotel</a></li>
-                                    <li><a href="about.html">European Lard Sration</a></li>
+                                    <li><a href="{% url 'about' %}">Amman Rotane Hotel</a></li>
+                                    <li><a href="{% url 'about' %}">European Lard Sration</a></li>
                                     <li><a href="evolve-space-designs.html">Evolve Space Designs</a></li>
                                     <li><a href="eden-home-styling.html">Eden Home Styling</a></li>
                                     <li><a href="interior-design.html">Interior Design </a></li>
@@ -387,37 +387,37 @@
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="{% static 'assets/images/resources/footer-widget-instagram-img-1.jpg' %}" alt="">
-                                            <a href="testimonials.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'testimonials' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="{% static 'assets/images/resources/footer-widget-instagram-img-2.jpg' %}" alt="">
-                                            <a href="testimonials.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'testimonials' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="{% static 'assets/images/resources/footer-widget-instagram-img-3.jpg' %}" alt="">
-                                            <a href="testimonials.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'testimonials' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="{% static 'assets/images/resources/footer-widget-instagram-img-4.jpg' %}" alt="">
-                                            <a href="testimonials.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'testimonials' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="{% static 'assets/images/resources/footer-widget-instagram-img-5.jpg' %}" alt="">
-                                            <a href="testimonials.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'testimonials' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="footer-widget__instagram-img">
                                             <img src="{% static 'assets/images/resources/footer-widget-instagram-img-6.jpg' %}" alt="">
-                                            <a href="testimonials.html#"><span class="fab fa-instagram"></span></a>
+                                            <a href="{% url 'testimonials' %}#"><span class="fab fa-instagram"></span></a>
                                         </div>
                                     </li>
                                 </ul>
@@ -430,11 +430,11 @@
                 <div class="container">
                     <div class="site-footer__bottom-inner">
                         <p class="site-footer__bottom-text">© 2025
-                            Copyright <a href="testimonials.html#">Global General Construction company .</a> | All rights reserved</p>
+                            Copyright <a href="{% url 'testimonials' %}#">Global General Construction company .</a> | All rights reserved</p>
                         <ul class="list-unstyled site-footer__bottom-menu">
-                            <li><a href="about.html">Privacy & Policy</a></li>
-                            <li><a href="about.html">Terms of use</a></li>
-                            <li><a href="about.html">Cookie Policy</a></li>
+                            <li><a href="{% url 'about' %}">Privacy & Policy</a></li>
+                            <li><a href="{% url 'about' %}">Terms of use</a></li>
+                            <li><a href="{% url 'about' %}">Cookie Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -450,7 +450,7 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="index.html" aria-label="logo image"><img src="{% static 'assets/images/resources/logo-4.png' %}" width="150"
+                <a href="{% url 'index' %}" aria-label="logo image"><img src="{% static 'assets/images/resources/logo-4.png' %}" width="150"
                         alt="" /></a>
             </div>
             <!-- /.logo-box -->
@@ -469,10 +469,10 @@
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">
                 <div class="mobile-nav__social">
-                    <a href="testimonials.html#" class="fab fa-twitter"></a>
-                    <a href="testimonials.html#" class="fab fa-facebook-square"></a>
-                    <a href="testimonials.html#" class="fab fa-pinterest-p"></a>
-                    <a href="testimonials.html#" class="fab fa-instagram"></a>
+                    <a href="{% url 'testimonials' %}#" class="fab fa-twitter"></a>
+                    <a href="{% url 'testimonials' %}#" class="fab fa-facebook-square"></a>
+                    <a href="{% url 'testimonials' %}#" class="fab fa-pinterest-p"></a>
+                    <a href="{% url 'testimonials' %}#" class="fab fa-instagram"></a>
                 </div><!-- /.mobile-nav__social -->
             </div><!-- /.mobile-nav__top -->
 
@@ -485,7 +485,7 @@
         <div class="search-popup__overlay search-toggler"></div>
         <!-- /.search-popup__overlay -->
         <div class="search-popup__content">
-            <form action="testimonials.html#">
+            <form action="{% url 'testimonials' %}#">
                 <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
                 <input type="text" id="search" placeholder="Search Here..." />
                 <button type="submit" aria-label="search submit" class="thm-btn">
@@ -495,7 +495,7 @@
         </div>
         <!-- /.search-popup__content -->
     </div>
-    <!-- /.search-popup -->        <a href="testimonials.html#" data-target="html" class="scroll-to-target scroll-to-top">
+    <!-- /.search-popup -->        <a href="{% url 'testimonials' %}#" data-target="html" class="scroll-to-target scroll-to-top">
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
         <span class="scroll-to-top__text"> Go Back Top</span>
     </a>        <script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>

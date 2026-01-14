@@ -80,7 +80,7 @@
                         <div class="main-menu__wrapper-inner">
                             <div class="main-menu__logo">
                                 
-                                <a href="index.html"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
+                                <a href="{% url 'index' %}"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
                                     style="width: 90%;"></a>
                                 
                             </div>
@@ -113,54 +113,54 @@
                                             <p class="main-menu__top-text">Mon - Fri: 09:00 - 05:00</p>
                                         </div>
                                         <div class="main-menu__social">
-                                            <a href="index.html#"><i class="fab fa-twitter"></i></a>
-                                            <a href="index.html#"><i class="fab fa-facebook"></i></a>
-                                            <a href="index.html#"><i class="fab fa-pinterest-p"></i></a>
-                                            <a href="index.html#"><i class="fab fa-instagram"></i></a>
+                                            <a href="{% url 'index' %}#"><i class="fab fa-twitter"></i></a>
+                                            <a href="{% url 'index' %}#"><i class="fab fa-facebook"></i></a>
+                                            <a href="{% url 'index' %}#"><i class="fab fa-pinterest-p"></i></a>
+                                            <a href="{% url 'index' %}#"><i class="fab fa-instagram"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="main-menu__bottom">
                                 <div class="main-menu__main-menu-box">
-                                    <a href="index.html#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                                    <a href="{% url 'index' %}#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                     <ul class="main-menu__list">
                                     <li >
-                                        <a href="index.html">Home</a>
+                                        <a href="{% url 'index' %}">Home</a>
                                     </li>
                                      <li class="dropdown">
                                         <a>About  </a>
                                         <ul>
-                                            <li><a href="about.html">About-us</a></li>
-                                            <li><a href="ourteam.html">Our Team</a></li>
+                                            <li><a href="{% url 'about' %}">About-us</a></li>
+                                            <li><a href="{% url 'ourteam' %}">Our Team</a></li>
                                     </ul>
                                 </li >
 
                                     <li>
-                                        <a href="services.html">Services</a>
+                                        <a href="{% url 'services' %}">Services</a>
                                     </li>
 
                 <li class="dropdown ">
                     <a>Blog</a>
                     <ul>
-                        <li><a href="blog.html">Blog and News</a></li>
-                        <li><a href="project.html">Our Projects </a></li>
+                        <li><a href="{% url 'blog' %}">Blog and News</a></li>
+                        <li><a href="{% url 'project' %}">Our Projects </a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown ">
                     <a>Sisters Company</a>
                     <ul>
-                        <li><a href="Agriculture.html">Agriculture</a></li>
-                        <li><a href="coming-soon.html">Import and Export</a></li>
+                        <li><a href="{% url 'agriculture' %}">Agriculture</a></li>
+                        <li><a href="{% url 'coming_soon' %}">Import and Export</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="job-list.html">Job Vacancy</a>
+                    <a href="{% url 'job_list' %}">Job Vacancy</a>
                     
                 </li>
                 <li >
-                    <a href="contact.html" id="hover">Contact</a>
+                    <a href="{% url 'contact' %}" id="hover">Contact</a>
                 </li>
             </ul>
                                             </div>
@@ -196,7 +196,7 @@
                     <div class="col-lg-4 col-md-5 col-12">
                         <div class="p-4 bg-white rounded shadow-md mx-auto w-100" style="max-width: 400px;">
                             <form>
-                                <a href="index.html"><img src="images/logo-dark.png" class="mb-4 d-block mx-auto" alt=""></a>
+                                <a href="{% url 'index' %}"><img src="images/logo-dark.png" class="mb-4 d-block mx-auto" alt=""></a>
                                 <h6 class="mb-3 text-uppercase fw-semibold">Register your account</h6>
                             
                                 <div class="mb-3">
@@ -216,13 +216,13 @@
                             
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-label form-check-label text-muted" for="flexCheckDefault">I Accept <a href="signup.html#" class="text-primary">Terms And Condition</a></label>
+                                    <label class="form-label form-check-label text-muted" for="flexCheckDefault">I Accept <a href="{% url 'signup' %}#" class="text-primary">Terms And Condition</a></label>
                                 </div>
                 
                                 <button class="btn btn-primary w-100" type="submit">Register</button>
 
                                 <div class="col-12 text-center mt-3">
-                                    <span><span class="text-muted small me-2">Already have an account ? </span> <a href="login.html" class="text-dark fw-semibold small">Sign in</a></span>
+                                    <span><span class="text-muted small me-2">Already have an account ? </span> <a href="{% url 'login' %}" class="text-dark fw-semibold small">Sign in</a></span>
                                 </div><!--end col-->
                             </form>
                         </div>

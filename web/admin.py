@@ -10,6 +10,7 @@ from .models import (
     ChatbotDocument,
     Partner,
     VideoGalleryItem,
+    JobApplication,
 )
 
 # Register your models here.
@@ -23,3 +24,10 @@ admin.site.register(JobVacancy)
 admin.site.register(ChatbotDocument)
 admin.site.register(Partner)
 admin.site.register(VideoGalleryItem)
+
+
+@admin.register(JobApplication)
+class JobApplicationAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "job_title", "job_type", "created_at")
+    list_filter = ("job_type", "created_at")
+    search_fields = ("name", "email", "job_title")

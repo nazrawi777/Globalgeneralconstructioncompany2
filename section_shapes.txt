@@ -1,0 +1,16 @@
+359:            <div class="section-shape-1"
+360:                style="background-image: url('{% static 'assets/images/shapes/section-shape-1.png' %}');"></div>
+402:            <div class="section-shape-1"
+403:                style="background-image: url('{% static 'assets/images/shapes/section-shape-1.png' %}');"></div>
+463:            <div class="section-shape-1"
+464:                style="background-image: url('{% static 'assets/images/shapes/section-shape-1.png' %}');"></div>
+506:            <div class="section-shape-1"
+507:                style="background-image: url('{% static 'assets/images/shapes/section-shape-1.png' %}');"></div>
+546:            <div class="section-shape-1"
+547:                style="background-image: url('{% static 'assets/images/shapes/section-shape-1.png' %}');"></div>
+623:            <div class="section-shape-1"
+624:                style="background-image: url('{% static 'assets/images/shapes/section-shape-1.png' %}');"></div>
+710:            <div class="section-shape-1"
+711:                style="background-image: url('{% static 'assets/images/shapes/section-shape-1.png' %}');"></div>
+880:            <div class="section-shape-1"
+881:                style="background-image: url('{% static 'assets/images/shapes/section-shape-1.png' %}');"></div>
