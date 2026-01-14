@@ -68,6 +68,29 @@
 	</head>
 
 	<body>
+         <div class="preloader"><div class="preloader__image"></div>
+</div>
+    <div class="chat-icon">
+        <button type="button" class="chat-toggler">
+            <i class="fa fa-comment"></i>
+        </button>
+    </div>
+    <!--Chat Popup-->
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Global AI Assistant</h3>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
          <header class="main-header">
            <nav class="main-menu">
                 <div class="main-menu__wrapper">
@@ -144,7 +167,7 @@
                 </li>
 
                 <li class="dropdown ">
-                    <a>Sisters Company</a>
+                    <a>Sister Company's</a>
                     <ul>
                         <li><a href="{% url 'agriculture' %}">Agriculture</a></li>
                         <li><a href="{% url 'coming_soon' %}">Import and Export</a></li>

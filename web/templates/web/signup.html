@@ -65,6 +65,7 @@
 <link rel="stylesheet" href="{% static 'assets/css/module-css/united-kingdom.css' %}">
     <!-- template styles -->
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/chat-bot.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
 	    <link href="{% static 'css/bootstrap.min1.css' %}" type="text/css" rel="stylesheet" />
         <link href="{% static 'css/materialdesignicons.min1.css' %}" rel="stylesheet" type="text/css" />
@@ -73,6 +74,29 @@
     </head>
 
     <body> 
+         <div class="preloader"><div class="preloader__image"></div>
+</div>
+    <div class="chat-icon">
+        <button type="button" class="chat-toggler">
+            <i class="fa fa-comment"></i>
+        </button>
+    </div>
+    <!--Chat Popup-->
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Global AI Assistant</h3>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
          <header class="main-header">
            <nav class="main-menu">
                 <div class="main-menu__wrapper">
@@ -149,7 +173,7 @@
                 </li>
 
                 <li class="dropdown ">
-                    <a>Sisters Company</a>
+                    <a>Sister Company's</a>
                     <ul>
                         <li><a href="{% url 'agriculture' %}">Agriculture</a></li>
                         <li><a href="{% url 'coming_soon' %}">Import and Export</a></li>
@@ -232,6 +256,36 @@
         </section><!--end section-->
         <!-- ENd Hero -->
         <!-- JAVASCRIPT -->
+        <script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/js/jarallax.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.appear.min.js' %}"></script>
+        <script src="{% static 'assets/js/swiper.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.circle-progress.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'assets/js/odometer.min.js' %}"></script>
+        <script src="{% static 'assets/js/wNumb.min.js' %}"></script>
+        <script src="{% static 'assets/js/wow.js' %}"></script>
+        <script src="{% static 'assets/js/isotope.js' %}"></script>
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery-ui.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.circleType.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.lettering.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'assets/js/marquee.min.js' %}"></script>
+        <script src="{% static 'assets/js/countdown.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery-sidebar-content.js' %}"></script>
+        <script src="{% static 'assets/js/twentytwenty.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.event.move.js' %}"></script>
+        <script src="{% static 'assets/js/gsap/gsap.js' %}"></script>
+        <script src="{% static 'assets/js/gsap/ScrollTrigger.js' %}"></script>
+        <script src="{% static 'assets/js/gsap/SplitText.js' %}"></script>
+        <script src="{% static 'assets/js/script.js' %}"></script>
+        <script src="{% static 'assets/js/gemini-chat.js' %}"></script>
+        <script src="{% static 'assets/js/countdown.min.js' %}"></script>
+
         <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
         <script src="{% static 'js/feather.min.js' %}"></script>
 	    <!-- Custom -->

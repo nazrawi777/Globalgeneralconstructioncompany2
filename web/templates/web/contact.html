@@ -60,6 +60,68 @@
     
 <link rel="stylesheet" href="{% static 'assets/css/module-css/contact.css' %}">
 <link rel="stylesheet" href="{% static 'assets/css/module-css/page-header.css' %}">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact || Global General Construction company</title>
+    <!-- favicons Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicons/1.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicons/1.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicons/1.png' %}" />
+                                </div>
+    <link rel="manifest" href="{% static 'assets/images/favicons/site.webmanifest' %}" />
+    <meta name="description" content="tecture Laravel  Template " />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+      <link rel="stylesheet" href="{% static 'assets/css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/custom-animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/swiper.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome-all.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/jarallax.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/odometer.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/twentytwenty.css' %}" />
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/slider.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/feature.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/about.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/sliding-text.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/services.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/projects.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/design-interior.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/testimonial.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/video.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/awards.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/blog.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/brand.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/counter.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/team.css' %}" />
+    
+    
+     
+    
+<link rel="stylesheet" href="{% static 'assets/css/module-css/contact.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/module-css/page-header.css' %}">
 <link rel="stylesheet" href="{% static 'assets/css/module-css/error-page.css' %}">
 <link rel="stylesheet" href="{% static 'assets/css/module-css/google-map.css' %}">
 <link rel="stylesheet" href="{% static 'assets/css/module-css/united-kingdom.css' %}">
@@ -68,15 +130,62 @@
     <!-- template styles -->
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/chat-bot.css' %}" />
+<style>
+#main-content {
+  position: relative; /* important for the pseudo-element */
+  z-index: 0;         /* background sits behind content */
+}
 
+#main-content::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; left:0; right:0; bottom:0 */
+  background-image: url('https://i.postimg.cc/9f33bx9g/44417013_9019786.jpg');
+  background-size: cover;          /* fills container */
+  background-position: center top; /* adjust to show important part */
+  background-repeat: no-repeat;
+  z-index: -1;                     /* behind all content */
+}
+
+/* Optional: add a subtle overlay for text readability */
+#main-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2); /* adjust opacity */
+  z-index: -1;
+}
+
+</style>
 
 </head>
     <body class="body-bg-color-1">
         <div class="preloader">
         <div class="preloader__image"></div>
     </div>
-    <!-- /.preloader -->        <div class="chat-icon"><button type="button" class="chat-toggler"><i class="fa fa-comment"></i></button></div>
+    <!-- /.preloader -->       
+         <div class="chat-icon">
+        <button type="button" class="chat-toggler">
+            <i class="fa fa-comment"></i>
+        </button>
+    </div>
     <!--Chat Popup-->
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Global AI Assistant</h3>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
             <div class="theme-border-left"></div>
         <div class="theme-border-right"></div>
         <div class="page-wrapper">
@@ -200,7 +309,7 @@
                 </li>
 
                 <li class="dropdown ">
-                    <a>Sisters Company</a>
+                    <a>Sister Company's</a>
                     <ul>
                         <li><a href="{% url 'agriculture' %}">Agriculture</a></li>
                         <li><a href="{% url 'coming_soon' %}">Import and Export</a></li>
@@ -272,6 +381,7 @@
   <!-- Main Content -->
 <!-- Main Content -->
 <section id="main-content" class="main-content" aria-label="Contact information and form">
+
   <div class="container">
     <div class="content-grid">
       <!-- Contact Info -->
@@ -646,6 +756,7 @@
 <script src="{% static 'assets/js/gsap/ScrollTrigger.js' %}"></script>
 <script src="{% static 'assets/js/gsap/SplitText.js' %}"></script>
 <script src="{% static 'assets/js/script.js' %}"></script>
+<script src="{% static 'assets/js/gemini-chat.js' %}"></script>
 <script src="{% static 'assets/js/contact.js' %}"></script>
 <script src="{% static 'assets/js/ajax-form.js' %}"></script>
  

@@ -125,6 +125,18 @@
       overflow-x: hidden;
     }
 
+      .bg-layer {
+  position: fixed;
+  inset: 0;
+
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-image: url('https://i.postimg.cc/Hk3mY08N/gradient-blue-abstract-background-smooth-dark-blue-with-black-vignette-studio.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+    z-index: 0;
+
+}
      #hover {
       background-color: hsl(222, 73%, 87%); /* lighter */
       height: 43px;
@@ -138,6 +150,30 @@
   </style>
 </head>
 <body>
+   <div class="preloader"><div class="preloader__image"></div>
+</div>
+    <div class="chat-icon">
+        <button type="button" class="chat-toggler">
+            <i class="fa fa-comment"></i>
+        </button>
+    </div>
+    <!--Chat Popup-->
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Global AI Assistant</h3>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+  <div class="bg-layer"></div>
 <div class="theme-border-left"></div>
         <div class="theme-border-right"></div>
         <div class="page-wrapper">
@@ -217,7 +253,7 @@
                 </li>
 
                 <li class="dropdown ">
-                    <a>Sisters Company</a>
+                    <a>Sister Company's</a>
                     <ul>
                         <li><a href="{% url 'agriculture' %}" id="hover">Agriculture</a></li>
                         <li><a href="{% url 'coming_soon' %}">Import and Export</a></li>

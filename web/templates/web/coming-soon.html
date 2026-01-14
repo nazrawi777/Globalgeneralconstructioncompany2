@@ -64,6 +64,9 @@
     <!-- template styles -->
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+<link rel="stylesheet" href="assets/css/style.css" />
+     <link rel="stylesheet" href="assets/css/chat-bot.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
 
 <style>
      #hover {
@@ -75,11 +78,189 @@
 </style>
 </head>
     <body class="body-bg-color-1">
-        <div class="preloader">
-        <div class="preloader__image"></div>
+        
+         <div class="preloader"><div class="preloader__image"></div>
+</div>
+    <!-- /.preloader -->    
+         <div class="chat-icon">
+        <button type="button" class="chat-toggler">
+            <i class="fa fa-comment"></i>
+        </button>
     </div>
-    <!-- /.preloader -->        <div class="chat-icon"><button type="button" class="chat-toggler"><i class="fa fa-comment"></i></button></div>
     <!--Chat Popup-->
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Global AI Assistant</h3>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+            <div class="theme-border-left"></div>
+        <div class="theme-border-right"></div>
+        <div class="page-wrapper">
+        <!-- Start sidebar widget content -->
+    <div class="xs-sidebar-group info-group info-sidebar">
+        <div class="xs-overlay xs-bg-black"></div>
+        <div class="xs-sidebar-widget">
+            <div class="sidebar-widget-container">
+                <div class="widget-heading">
+                    <a href="{% url 'coming_soon' %}#" class="close-side-widget">X</a>
+                </div>
+                <div class="sidebar-textwidget">
+                    <div class="sidebar-info-contents">
+                        <div class="content-inner">
+                            <div class="logo">
+                                <a href="{% url 'index' %}"><img src="{% static 'assets/images/resources/2.png' %}" alt=""
+                                    style="width: 50%;"></a>
+                            </div>
+                            <div class="content-box">
+                                <h4>About Us</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut
+                                    labore et magna aliqua.</p>
+                            </div>
+                            <div class="form-inner">
+                                <h4>Get a free quote</h4>
+                                <form action="https://tecture-laravel.mnsithub.com/assets/inc/sendemail.php" class="contact-form-validated">
+                                    <div class="form-group">
+                                        <input type="text" name="name" placeholder="Name" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="email" placeholder="Email" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="message" placeholder="Message..." required></textarea>
+                                    </div>
+                                    <div class="form-group message-btn">
+                                        <button type="submit" class="thm-btn form-inner__btn">Submit Now</button>
+                                    </div>
+                                    <div class="result mt-2"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End sidebar widget content -->       
+  <header class="main-header">
+            <nav class="main-menu">
+                <div class="main-menu__wrapper">
+                    <div class="container">
+                        <div class="main-menu__wrapper-inner">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import & Export || Global General Construction Company</title>
+    <!-- favicons Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicons/1.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicons/1.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicons/1.png' %}" />
+                                </div>
+    <link rel="manifest" href="{% static 'assets/images/favicons/site.webmanifest' %}" />
+    <meta name="description" content="tecture Laravel  Template " />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/custom-animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/swiper.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome-all.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/jarallax.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/odometer.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/twentytwenty.css' %}" />
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/slider.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/feature.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/about.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/sliding-text.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/services.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/projects.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/design-interior.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/testimonial.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/video.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/awards.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/blog.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/brand.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/counter.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/team.css' %}" />
+    
+    
+        <link rel="stylesheet" href="{% static 'assets/css/module-css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/page-header.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/error-page.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/module-css/coming-soon.css' %}">
+    
+    <!-- template styles -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+     <link rel="stylesheet" href="{% static 'assets/css/chat-bot.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
+<style>
+     #hover {
+      background-color: hsl(222, 73%, 87%); /* lighter */
+      height: 43px;
+      border-radius: 3px;
+      color:#1e3cae;
+    }
+</style>
+</head>
+    <body class="body-bg-color-1">
+        
+         <div class="preloader"><div class="preloader__image"></div>
+</div>
+    <!-- /.preloader -->    
+         <div class="chat-icon">
+        <button type="button" class="chat-toggler">
+            <i class="fa fa-comment"></i>
+        </button>
+    </div>
+    <!--Chat Popup-->
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Global AI Assistant</h3>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
             <div class="theme-border-left"></div>
         <div class="theme-border-right"></div>
         <div class="page-wrapper">
@@ -199,7 +380,7 @@
                     <a>Blog</a>
                     <ul>
                         <li><a href="{% url 'blog' %}">Blog and News</a></li>
-                        <li><a href="{% url 'ourteam' %}">Our Projects </a></li>
+                        <li><a href="{% url 'project' %}">Our Projects </a></li>
                         
                     
                         
@@ -207,7 +388,7 @@
                 </li>
 
                 <li class="dropdown ">
-                    <a>Sisters Company</a>
+                    <a>Sister Company's</a>
                     <ul>
                         <li><a href="{% url 'agriculture' %}">Agriculture</a></li>
                         <li><a href="{% url 'projects' %}">Import and Export</a></li>
@@ -500,6 +681,7 @@
 <script src="{% static 'assets/js/gsap/ScrollTrigger.js' %}"></script>
 <script src="{% static 'assets/js/gsap/SplitText.js' %}"></script>
 <script src="{% static 'assets/js/script.js' %}"></script>
+<script src="{% static 'assets/js/gemini-chat.js' %}"></script>
 
 
     </body>

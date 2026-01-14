@@ -5,7 +5,7 @@
   let teamData = null;
   let expandedNodes = new Set();
   let highlightedId = null;
-  let currentZoom = 1;
+  let currentZoom = 0.7;
   let isCompact = false;
   let isDragging = false;
   let dragStart = { x: 0, y: 0 };
@@ -309,13 +309,24 @@
   /**
    * Render the entire chart
    */
-  function renderChart() {
-    if (!teamData) return;
-    elements.chart.innerHTML = '';
-    elements.chart.appendChild(createOrgBranch(teamData.orgChart));
-    updateZoom();
-    updateCompactMode();
-  }
+ function renderChart() {
+  if (!teamData) return;
+
+  elements.chart.innerHTML = '';
+  elements.chart.appendChild(createOrgBranch(teamData.orgChart));
+
+  // Set zoom first
+  updateZoom();
+  updateCompactMode();
+
+  // Center chart in container
+  requestAnimationFrame(() => {
+    const container = elements.container;
+    container.scrollLeft = (elements.chart.scrollWidth - container.clientWidth) / 2;
+    container.scrollTop = (elements.chart.scrollHeight - container.clientHeight) / 2;
+  });
+}
+
 
   // ==================== Modal ====================
 
@@ -647,9 +658,8 @@
       teamData = await response.json();
 
       // Update header
-      document.querySelector('.header1-title').textContent = teamData.company + ' Organization';
-      elements.lastUpdated.textContent = new Date(teamData.lastUpdated).toLocaleDateString();
-
+      document.querySelector('.header1-title').textContent = teamData.company;
+       
       // Initialize expanded nodes
       flattenTree(teamData.orgChart).forEach(m => expandedNodes.add(m.id));
 
