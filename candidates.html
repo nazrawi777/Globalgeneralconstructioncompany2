@@ -58,7 +58,8 @@
 <link rel="stylesheet" href="assets/css/module-css/error-page.css">
 <link rel="stylesheet" href="assets/css/module-css/google-map.css">
 <link rel="stylesheet" href="assets/css/module-css/united-kingdom.css">
-    <link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+     <link rel="stylesheet" href="assets/css/chat-bot.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
 	    <link href="css/bootstrap.min1.css" type="text/css" rel="stylesheet" />
         <link href="css/materialdesignicons.min1.css" rel="stylesheet" type="text/css" />
@@ -67,6 +68,29 @@
 	</head>
 
 	<body>
+         <div class="preloader"><div class="preloader__image"></div>
+</div>
+    <div class="chat-icon">
+        <button type="button" class="chat-toggler">
+            <i class="fa fa-comment"></i>
+        </button>
+    </div>
+    <!--Chat Popup-->
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Global AI Assistant</h3>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
          <header class="main-header">
            <nav class="main-menu">
                 <div class="main-menu__wrapper">
@@ -842,6 +866,7 @@
 <script src="assets/js/gsap/ScrollTrigger.js"></script>
 <script src="assets/js/gsap/SplitText.js"></script>
 <script src="assets/js/script.js"></script>
+<script src="assets/js/gemini-chat.js"></script>
 <script src="assets/js/countdown.min.js"></script>
 
         <!-- End -->

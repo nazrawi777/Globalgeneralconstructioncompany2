@@ -61,7 +61,8 @@
     <link rel="stylesheet" href="assets/css/module-css/coming-soon.css">
     
     <!-- template styles -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+     <link rel="stylesheet" href="assets/css/chat-bot.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
 
 <style>
@@ -75,11 +76,30 @@
 </head>
     <body class="body-bg-color-1">
         
-        <div class="preloader">
-        <div class="preloader__image"></div>
+         <div class="preloader"><div class="preloader__image"></div>
+</div>
+    <!-- /.preloader -->    
+         <div class="chat-icon">
+        <button type="button" class="chat-toggler">
+            <i class="fa fa-comment"></i>
+        </button>
     </div>
-    <!-- /.preloader -->        <div class="chat-icon"><button type="button" class="chat-toggler"><i class="fa fa-comment"></i></button></div>
     <!--Chat Popup-->
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Global AI Assistant</h3>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
             <div class="theme-border-left"></div>
         <div class="theme-border-right"></div>
         <div class="page-wrapper">
@@ -464,6 +484,7 @@
 <script src="assets/js/gsap/ScrollTrigger.js"></script>
 <script src="assets/js/gsap/SplitText.js"></script>
 <script src="assets/js/script.js"></script>
+<script src="assets/js/gemini-chat.js"></script>
 
 
     </body>

@@ -44,9 +44,7 @@
 		<link rel="stylesheet" href="assets/css/style2.css">
 		<!-- Responsive CSS -->
 		<link rel="stylesheet" href="assets/css/responsive.css">
-  
-
-
+    <link rel="stylesheet" href="assets/css/chat-bot.css" />
     <link rel="stylesheet" href="assets/css/animate.min.css" />
     <link rel="stylesheet" href="assets/css/custom-animate.css" />
     <link rel="stylesheet" href="assets/css/swiper.min.css" />
@@ -79,7 +77,8 @@
     <link rel="stylesheet" href="assets/css/module-css/before-after.css">
     <link rel="stylesheet" href="assets/css/module-css/how-it-work.css">
 
-    <link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+     <link rel="stylesheet" href="assets/css/chat-bot.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
     <link rel="stylesheet" href="assets/css/animate.min.css" />
     <link rel="stylesheet" href="assets/css/custom-animate.css" />
@@ -111,7 +110,8 @@
     <link rel="stylesheet" href="assets/css/module-css/counter.css" />
     <link rel="stylesheet" href="assets/css/module-css/team.css" />
     <!-- template styles -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+     <link rel="stylesheet" href="assets/css/chat-bot.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
   <!-- JSON-LD -->
 
@@ -149,6 +149,29 @@
   </style>
 </head>
 <body>
+   <div class="preloader"><div class="preloader__image"></div>
+</div>
+    <div class="chat-icon">
+        <button type="button" class="chat-toggler">
+            <i class="fa fa-comment"></i>
+        </button>
+    </div>
+    <!--Chat Popup-->
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Global AI Assistant</h3>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
   <div class="bg-layer"></div>
 <div class="theme-border-left"></div>
         <div class="theme-border-right"></div>
@@ -1166,6 +1189,7 @@
 <script src="assets/js/gsap/ScrollTrigger.js"></script>
 <script src="assets/js/gsap/SplitText.js"></script>
 <script src="assets/js/script.js"></script>
+<script src="assets/js/gemini-chat.js"></script>
 <script src="assets/js/countdown.min.js"></script>
 <script src="/blog-script.js"></script>
 <script src="assets/js1/jquery.min.js"></script>
