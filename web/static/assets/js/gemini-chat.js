@@ -2,54 +2,24 @@
  * Gemini Chat Integration
  */
 
-const GEMINI_API_KEY = 'AIzaSyCL0pOKSv0OZAaD6vUH7XYxX36K5ZDZ5fs';
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY}`;
+// API URL pointing to our Django backend
+const API_URL = '/api/chat/';
 
-// Company Context for AI Assistant
-const COMPANY_CONTEXT = `You are a helpful AI assistant for GLOBAL GENERAL CONSTRUCTION, a Grade-1 general construction company in Ethiopia. 
-Use the following information to answer user queries accurately and professionally.
-
-IMPORTANT: Always provide clean, structured, and well-formatted responses. Use:
-- Bold text for emphasis and headings.
-- Bullet points or numbered lists for lists of services, projects, or features.
-- Clear spacing between sections.
-- Professional tone.
-
-COMPANY OVERVIEW:
-Global General Construction is a Grade-1 general construction company established to deliver high-quality infrastructure and building projects across Ethiopia. The company operates as a general contractor, specializing in road construction, water supply and sewerage systems, building works, and general civil infrastructure projects. Co-founded by Engineer Kedir Hassen, a senior civil engineer with extensive industry experience.
-
-VISION: To be one of the leading and most trusted construction companies in Ethiopia, recognized for quality, innovation, and integrity.
-
-MISSION: To provide efficient, safe, and sustainable construction services that meet our clients' needs and exceed their expectations through continuous improvement, skilled manpower, and modern technology.
-
-CORE VALUES: Integrity, Quality, Safety, Customer Satisfaction, Teamwork.
-
-MAJOR FIELDS OF EXPERTISE:
-- Road construction and rehabilitation
-- Building and structural works
-- Water supply and sewerage systems
-- Drainage and culvert structures
-- Earthworks and site development
-- General civil and infrastructure works
-
-KEY PROJECTS:
-- Restoration of the National Palace Phase I
-- Construction of 2B+G+15 building
-- Jimma corridor development
-- Jimma–Agaro–Dedessa river road upgrading
-- Shiromeda commercial center construction
-- Health center, administrative and laboratory blocks
-
-RESOURCES: Total Staff: 203 (98 Permanent, 105 Temporary). Extensive equipment fleet including excavators, loaders, bulldozers, graders, asphalt pavers, etc.
-
-CONTACT:
-Address: Bole Wello Sefer, Dire Dewa Building, 1st Floor, Addis Ababa, Ethiopia
-Phone: +251-11-4-62-37-58
-Mobile: 0911-29-00-37
-Email: kedirhass7122@gmail.com
-General Manager: Ato Kedir Hassan
-
-Answer questions about the company professionally and helpfully. If asked about something not in this context, politely indicate you can help with company-related inquiries.`;
+// Helper to get CSRF token
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const chatPopup = document.getElementById('chat-popup');
@@ -92,18 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const typingIndicator = showTypingIndicator();
 
         try {
+            const csrftoken = getCookie('csrftoken');
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
                 },
                 body: JSON.stringify({
-                    system_instruction: {
-                        parts: [{ text: COMPANY_CONTEXT }]
-                    },
-                    contents: [{
-                        parts: [{ text: message }]
-                    }]
+                    message: message
                 })
             });
 
@@ -116,26 +83,19 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check for API errors
             if (data.error) {
                 console.error('API Error:', data.error);
-                appendMessage('bot', `Error: ${data.error.message || 'API request failed'}`);
+                appendMessage('bot', `Error: ${data.error}`);
                 return;
             }
 
-            // Parse the response correctly
-            if (data.candidates && data.candidates.length > 0) {
-                const candidate = data.candidates[0];
-                if (candidate.content && candidate.content.parts && candidate.content.parts.length > 0) {
-                    const botResponse = candidate.content.parts[0].text;
-                    appendMessage('bot', botResponse);
-                } else {
-                    console.error('Unexpected response structure:', data);
-                    appendMessage('bot', "I'm sorry, I received an unexpected response format.");
-                }
+            // Display Bot Response
+            if (data.response) {
+                appendMessage('bot', data.response);
             } else {
-                console.error('No candidates in response:', data);
-                appendMessage('bot', "I'm sorry, I couldn't generate a response.");
+                console.error('Unexpected response structure:', data);
+                appendMessage('bot', "I'm sorry, I received an unexpected response format.");
             }
         } catch (error) {
-            console.error('Gemini API Error:', error);
+            console.error('API Request Error:', error);
             typingIndicator.remove();
             appendMessage('bot', "Sorry, something went wrong. Please check the console for details.");
         }
@@ -177,7 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
             messageDiv.textContent = text;
         }
         
+        messageDiv.style.opacity = '0';
         chatMessages.appendChild(messageDiv);
+        
+        // Fade in animation
+        requestAnimationFrame(() => {
+            messageDiv.style.transition = 'opacity 0.3s ease';
+            messageDiv.style.opacity = '1';
+        });
+
         chatMessages.scrollTop = chatMessages.scrollHeight;
     };
 

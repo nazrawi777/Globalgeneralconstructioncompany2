@@ -1,4 +1,11 @@
-from django.views.generic import TemplateView, ListView, DetailView
+from django.shortcuts import render, redirect
+from django.views.generic import TemplateView, ListView, DetailView, View
+from django.contrib import messages
+from django.urls import reverse_lazy
+from django.http import JsonResponse
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+import json
 from .models import (
     HomeSlider,
     Service,
@@ -7,9 +14,14 @@ from .models import (
     Project,
     BlogPost,
     JobVacancy,
+    ChatbotDocument,
     Partner,
     VideoGalleryItem,
+    JobApplication,
+    CompanyStatistic,
 )
+from .forms import JobApplicationForm
+from .chatbot import get_gemini_response
 
 
 class IndexView(TemplateView):
@@ -25,6 +37,7 @@ class IndexView(TemplateView):
         context["testimonials"] = Testimonial.objects.all()
         context["partners"] = Partner.objects.all()
         context["video_gallery"] = VideoGalleryItem.objects.all()
+        context["statistics"] = CompanyStatistic.objects.all()
         return context
 
 
@@ -101,9 +114,6 @@ class TeamListView(ListView):
 
 
 from django.views.generic.edit import FormView
-from django.urls import reverse_lazy
-from django.contrib import messages
-from .forms import JobApplicationForm
 
 
 class JobApplyView(FormView):
@@ -124,3 +134,20 @@ class JobApplyView(FormView):
             "There was an error submitting your application. Please check the form.",
         )
         return super().form_invalid(form)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class ChatBotView(View):
+    def post(self, request, *args, **kwargs):
+        try:
+            data = json.loads(request.body)
+            user_message = data.get('message', '')
+            if not user_message:
+                return JsonResponse({'error': 'No message provided'}, status=400)
+            
+            response_text = get_gemini_response(user_message)
+            return JsonResponse({'response': response_text})
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)

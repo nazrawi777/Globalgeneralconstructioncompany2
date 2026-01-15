@@ -14,6 +14,7 @@ from .views import (
     ContactView,
     TeamListView,
     JobApplyView,
+    ChatBotView,
 )
 
 urlpatterns = [
@@ -68,4 +69,5 @@ urlpatterns = [
     ),
     path("teams.html", TeamListView.as_view(), name="teams"),
     path("testimonials.html", TestimonialListView.as_view(), name="testimonials"),
+    path("api/chat/", ChatBotView.as_view(), name="chat_api"),
 ]

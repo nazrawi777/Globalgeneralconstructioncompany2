@@ -148,3 +148,33 @@ class JobApplication(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.job_title}"
+
+class CompanyStatistic(models.Model):
+    title = models.CharField(max_length=100, help_text="e.g., 'Project Complete'")
+    value = models.CharField(max_length=50, help_text="e.g., '13'")
+    suffix = models.CharField(max_length=10, blank=True, help_text="e.g., '+', '%'")
+    icon_class = models.CharField(max_length=100, blank=True, help_text="e.g., 'icon-scaffolding'")
+    order = models.IntegerField(default=0, help_text="Order to display on the page")
+
+    class Meta:
+        ordering = ['order']
+
+    def __str__(self):
+        return self.title
+
+class ChatBotConfig(models.Model):
+    context = models.TextField(help_text="The system instructions/context for the AI chatbot.")
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Chatbot Configuration"
+        verbose_name_plural = "Chatbot Configuration"
+
+    def __str__(self):
+        return "Chatbot Configuration"
+
+    def save(self, *args, **kwargs):
+        if self.is_active:
+            # Ensure only one config is active
+            ChatBotConfig.objects.filter(is_active=True).exclude(pk=self.pk).update(is_active=False)
+        super().save(*args, **kwargs)

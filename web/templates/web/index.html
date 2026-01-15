@@ -112,13 +112,10 @@
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/custom-backgrounds.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/chat-bot.css' %}" />
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
-
-
-
 
         .logoslide {
             width: 100%;
@@ -196,6 +193,21 @@
     <!-- /.preloader -->
     <div class="chat-icon"><button type="button" class="chat-toggler"><i class="fa fa-comment"></i></button></div>
     <!--Chat Popup-->
+    <div class="chat-popup" id="chat-popup">
+        <div class="chat-header">
+            <h3>Global AI Assistant</h3>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
 
     <div class="theme-border-left"></div>
     <div class="theme-border-right"></div>
@@ -1202,6 +1214,7 @@
     <script src="{% static 'assets/js/gsap/SplitText.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
     <script src="{% static 'assets/js/countdown.min.js' %}"></script>
+    <script src="{% static 'assets/js/gemini-chat.js' %}"></script>
 
 
 

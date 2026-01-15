@@ -11,6 +11,8 @@ from .models import (
     Partner,
     VideoGalleryItem,
     JobApplication,
+    CompanyStatistic,
+    ChatBotConfig,
 )
 
 # Register your models here.
@@ -31,3 +33,14 @@ class JobApplicationAdmin(admin.ModelAdmin):
     list_display = ("name", "email", "job_title", "job_type", "created_at")
     list_filter = ("job_type", "created_at")
     search_fields = ("name", "email", "job_title")
+
+
+@admin.register(CompanyStatistic)
+class CompanyStatisticAdmin(admin.ModelAdmin):
+    list_display = ("title", "value", "suffix", "order")
+    list_editable = ("value", "order")
+
+@admin.register(ChatBotConfig)
+class ChatBotConfigAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'is_active')
+    list_editable = ('is_active',)
