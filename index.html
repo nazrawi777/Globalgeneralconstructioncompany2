@@ -56,6 +56,7 @@
     <link rel="stylesheet" href="assets/css/module-css/team.css" />
     
     
+    
       
    
 <link rel="stylesheet" href="assets/css/module-css/contact.css">
@@ -64,6 +65,8 @@
  
     
     <!-- template styles -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/animate.min.css" />
@@ -96,14 +99,12 @@
     <link rel="stylesheet" href="assets/css/module-css/brand.css" />
     <link rel="stylesheet" href="assets/css/module-css/counter.css" />
     <link rel="stylesheet" href="assets/css/module-css/team.css" />
-    
+    <link rel="stylesheet" href="assets/css/chat-bot.css" />
     
         
     <!-- template styles -->
-<link rel="stylesheet" href="assets/css/style.css" />
-     <link rel="stylesheet" href="assets/css/chat-bot.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
-    <link rel="stylesheet" href="assets/css/chat-bot.css" />
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
@@ -129,30 +130,30 @@
 
         /* SLIDER CONTAINER */
         .slider {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 20px; /* Slightly rounder for iOS look */
-    
-    /* 1. Very transparent white (only 15% opacity) */
-    background: rgba(255, 255, 255, 0.30); 
-    
-    /* 2. High blur + Saturation (iPhone secret sauce) */
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
-    
-    /* 3. The "Edge" - a bright, thin border makes it look like real glass */
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 5%;
-    border-top: 1px solid rgba(255, 255, 255, 0.6); /* Highlights the top edge */
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+           background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0,0,0,.1);
 
-    /* 4. Deep, soft shadow */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            /* soft fade edges */
+            mask-image: linear-gradient(
+                to right,
+                transparent,
+                black 10%,
+                black 90%,
+                transparent
+            );
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent,
+                black 10%,
+                black 90%,
+                transparent
+            );
+        }
 
-    /* Your existing mask for the fade effect */
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
         /* MOVING TRACK */
         .slider-items {
             display: flex;
@@ -183,10 +184,14 @@
 
 </head>
     <body class="body-bg-color-1">
- <div class="preloader"><div class="preloader__image"></div>
-</div>
-    <!-- /.preloader -->
-    <div class="chat-icon">
+        <div class="preloader">
+        <div class="preloader__image"></div>
+    </div>
+    
+        <div class="theme-border-left"></div>
+        <div class="theme-border-right"></div>
+        <div class="page-wrapper">
+                <div class="chat-icon">
         <button type="button" class="chat-toggler">
             <i class="fa fa-comment"></i>
         </button>
@@ -207,10 +212,6 @@
             </button>
         </div>
     </div>
-    
-        <div class="theme-border-left"></div>
-        <div class="theme-border-right"></div>
-        <div class="page-wrapper">
   <header class="main-header">
             <nav class="main-menu">
                 <div class="main-menu__wrapper">
@@ -222,44 +223,7 @@
                                     style="width: 90%;"></a>
                                 
                             </div>
-                        <!--<div class="main-menu__top">
-                                <div class="main-menu__top-inner">
-                                    <ul class="list-unstyled main-menu__contact-list">
-                                        <li>
-                                            <div class="icon">
-                                                <i class="icon-telephone"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p><a href="tel:+251-11-4-62-37-58"> +251-11-4-62-37-58</a></p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <i class="icon-envelope-2"></i>
-                                            </div>
-                                            <div class="text">
-                                                <p><a href="mailto:kedirhass7122@gmail.com">kedirhass7122@gmail.com</a>
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="main-menu__top-right">
-                                        <div class="main-menu__top-time">
-                                            <div class="main-menu__top-time-icon">
-                                                <span class="far fa-clock"></span>
-                                            </div>
-                                            <p class="main-menu__top-text">Mon - Fri: 09:00 - 05:00</p>
-                                        </div>
-                                        <div class="main-menu__social">
-                                            <a href="index.html#"><i class="fab fa-twitter"></i></a>
-                                            <a href="index.html#"><i class="fab fa-facebook"></i></a>
-                                            <a href="index.html#"><i class="fab fa-pinterest-p"></i></a>
-                                            <a href="index.html#"><i class="fab fa-instagram"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        -->
+                       
                             
                         <div class="main-menu__bottom">
                                 <div class="main-menu__main-menu-box">
@@ -272,7 +236,8 @@
                                         <a>About  </a>
                                         <ul>
                                             <li><a href="about.html">About-us</a></li>
-                                            <li><a href="ourteam.html">Our Team</a></li>
+                                             <li><a href="ourteam.html">Our Team</a></li>
+                                            <li><a href="finance.html">Financial Records</a></li>
                                     </ul>
                                     </li>
                                      
@@ -292,7 +257,7 @@
                 </li>
 
                 <li class="dropdown ">
-                    <a>Sister Company's</a>
+                    <a>Sisters Company</a>
                     <ul>
                         <li><a href="Agriculture.html">Agriculture</a></li>
                         <li><a href="coming-soon.html">Import and Export</a></li>
@@ -340,7 +305,7 @@
         <div class="item">
             <div class="main-slider__bg-video">
                 <video class="slider-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-                      <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4" type="video/mp4">
+                      <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4/" type="video/mp4">
                 </video>
             </div>
             <div class="main-slider__overlay" aria-hidden="true"></div>
@@ -361,7 +326,7 @@
         <div class="item">
             <div class="main-slider__bg-video">
                 <video class="slider-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-                    <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4" type="video/mp4">
+                    <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4/" type="video/mp4">
                 </video>
             </div>
             <div class="main-slider__overlay" aria-hidden="true"></div>
@@ -382,7 +347,7 @@
         <div class="item">
             <div class="main-slider__bg-video">
                 <video class="slider-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-                    <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-58.mp4" type="video/mp4">
+                    <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-58.mp4/" type="video/mp4">
                 </video>
             </div>
             <div class="main-slider__overlay" aria-hidden="true"></div>
@@ -403,7 +368,7 @@
          <div class="item">
             <div class="main-slider__bg-video">
                 <video class="slider-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-                      <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-07-22.mp4" type="video/mp4">
+                      <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-07-22.mp4/" type="video/mp4">
                 </video>
             </div>
             <div class="main-slider__overlay" aria-hidden="true"></div>
@@ -424,7 +389,7 @@
         <div class="item">
             <div class="main-slider__bg-video">
                 <video class="slider-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-                    <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-07-28.mp4" type="video/mp4">
+                    <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-07-28.mp4/" type="video/mp4">
                 </video>
             </div>
             <div class="main-slider__overlay" aria-hidden="true"></div>
@@ -445,7 +410,7 @@
         <div class="item">
             <div class="main-slider__bg-video">
                 <video class="slider-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-                    <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-07-43.mp4" type="video/mp4">
+                    <source src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-07-43.mp4/" type="video/mp4">
                 </video>
             </div>
             <div class="main-slider__overlay" aria-hidden="true"></div>
@@ -511,10 +476,10 @@
 </section>
        
   <section class="how-it-work">
-    <div class="section-shape-1" style="background-image: url('https://i.postimg.cc/kGMVX0Q6/2179489-10857.jpg');"></div>
+    <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
     <div class="container">
-        <div class="section-title text-center sec-title-animation animation-style1">
-            <h2 class="section-title__title title-animation">Our Expertise</h2>
+        <div class="section-title1 text-center sec-title-animation animation-style1">
+            <h2 class="section-title1__title title-animation">Our Expertise</h2>
         </div>
         <div class="row">
             <div class="col-xl-4 col-lg-4">
@@ -613,8 +578,8 @@
     <div class="services-three__bg" style="background-image: url(assets/images/shapes/site-footer-shape-1.jpg);"></div>
     <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
     <div class="container">
-        <div class="section-title text-center sec-title-animation animation-style1">
-            <h2 class="section-title__title title-animation">Our Expertise in <br>Construction</h2>
+        <div class="section-title1 text-center sec-title-animation animation-style1">
+            <h2 class="section-title1__title title-animation">Our Expertise in <br>Construction</h2>
         </div>
         <div class="row">
             <!--Services Single Start -->
@@ -701,8 +666,8 @@
     <div class="projects-one__top">
         <div class="container">
             <div class="projects-one__top-inner">
-                <div class="section-title text-left sec-title-animation animation-style2">
-                    <h2 class="section-title__title title-animation" style="position:relative;top: 25px;
+                <div class="section-title1 text-left sec-title-animation animation-style2">
+                    <h2 class="section-title1__title title-animation" style="position:relative;top: 25px;
                     text-align: center; font-size: 35px;">
                         Our Completed Projects
                     </h2>
@@ -836,8 +801,8 @@
 <section class="design-interior">
     <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
     <div class="container">
-        <div class="section-title text-left sec-title-animation animation-style2">
-            <h2 class="section-title__title title-animation">
+        <div class="section-title1 text-left sec-title-animation animation-style2">
+            <h2 class="section-title1__title title-animation">
                 Building Quality Spaces <br>
                 Designed for Modern Living
             </h2>
@@ -915,8 +880,8 @@
  <section class="testimonial-two testimonial-three">
     <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
     <div class="container">
-        <div class="section-title text-center sec-title-animation animation-style1">
-            <h2 class="section-title__title title-animation">
+        <div class="section-title1 text-center sec-title-animation animation-style1">
+            <h2 class="section-title1__title title-animation">
                 What Our Clients Say
             </h2>
         </div>
@@ -1093,8 +1058,8 @@
             <div class="container">
                 <div class="counter-one__inner">
                     <div class="counter-one__title-box" style="display: none;">
-                        <div class="section-title text-left sec-title-animation animation-style1">
-                            <h2 class="section-title__title title-animation">Professional Experience</h2>
+                        <div class="section-title1 text-left sec-title-animation animation-style1">
+                            <h2 class="section-title1__title title-animation">Professional Experience</h2>
                             <div class="counter-one__title-border"></div>
                         </div>
                     </div>
@@ -1228,8 +1193,8 @@
 <section class="awards-one">
     <div class="section-shape-1" style="background-image: url(assets/images/shapes/section-shape-1.png);"></div>
     <div class="container">
-        <div class="section-title text-center sec-title-animation animation-style2">
-            <h2 class="section-title__title title-animation">
+        <div class="section-title1 text-center sec-title-animation animation-style2">
+            <h2 class="section-title1__title title-animation">
                 Our Achievements <br> & Project Milestones
             </h2>
         </div>
@@ -1519,19 +1484,7 @@
         </div>
         <!-- /.mobile-nav__content -->
     </div>
-    <!-- /.mobile-nav__wrapper -->            <div class="search-popup">
-        <div class="search-popup__overlay search-toggler"></div>
-        <!-- /.search-popup__overlay -->
-        <div class="search-popup__content">
-            <form action="index.html#">
-                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-                <input type="text" id="search" placeholder="Search Here..." />
-                <button type="submit" aria-label="search submit" class="thm-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-        </div>
-        <!-- /.search-popup__content -->
+       
     </div>
     <!-- /.search-popup -->            <a href="index.html#" data-target="html" class="scroll-to-target scroll-to-top">
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
@@ -1563,7 +1516,7 @@
 <script src="assets/js/gsap/ScrollTrigger.js"></script>
 <script src="assets/js/gsap/SplitText.js"></script>
 <script src="assets/js/script.js"></script>
-<script src="assets/js/gemini-chat.js"></script>
+<script src="assets/js/countdown.min.js"></script>
 <script src="assets/js/gemini-chat.js"></script>
 
 
