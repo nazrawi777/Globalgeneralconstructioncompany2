@@ -18,16 +18,16 @@ const servicesData = [
     order: 1
   },
   {
-    id: 2,
-    slug: 'residential-renovation-remodeling-2026',
-    title: 'Residential Renovation & Remodeling',
-    description: 'Quality residential upgrades and renovations using local materials and skilled trades. Works include structural repairs, finishes, electrical and plumbing to meet local codes and client requirements.',
-    tags: ['residential', 'renovation', 'finishes'],
-    year: 'Local Works',
-    duration: '2–6 months',
-    icon: 'home',
-    order: 2
-  },
+  id: 2,
+  slug: 'reinnovation-restoration-construction',
+  title: 'Reinnovation and Restoration',
+  description: 'Transformative restoration and modernization services that blend innovative construction techniques with heritage preservation. Our reinnovation approach revitalizes structures while enhancing functionality, sustainability.',
+  tags: ['reinnovation', 'restoration',  'heritage-preservation'],
+  year: '2024-2026',
+  duration: '3–8 months',
+  icon: 'refresh', // or 'renovate', 'building', 'restore'
+  order: 2
+},
   {
     id: 3,
     slug: 'structural-engineering-reinforcement-2026',

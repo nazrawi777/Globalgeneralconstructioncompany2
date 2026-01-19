@@ -354,24 +354,83 @@ function initPrintButton() {
   });
 }
 
-// ============= PROGRESS BARS =============
-function initProgressBars() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const fill = entry.target;
-        const target = fill.dataset.progress;
-        setTimeout(() => {
-          fill.style.width = target + '%';
-        }, 200);
-      }
-    });
-  }, { threshold: 0.1 });
+// ================================
+// GLOBAL INIT
+// ================================
+document.addEventListener('DOMContentLoaded', () => {
+  initProgressBars();
+});
 
-  document.querySelectorAll('.progress-fill, .status-progress-fill').forEach(el => {
-    observer.observe(el);
-  });
+// ================================
+// PROGRESS BARS (SCROLL-ACTIVATED)
+// ================================
+function initProgressBars() {
+  const fills = document.querySelectorAll('.progress-fill, .status-progress-fill');
+
+  if (!fills.length) {
+    console.warn('No progress bars found');
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const fill = entry.target;
+        const target = Number(fill.dataset.progress);
+
+        // Hard validation (silent failures are unacceptable)
+        if (isNaN(target) || target < 0 || target > 100) {
+          console.error('Invalid progress value:', fill);
+          obs.unobserve(fill);
+          return;
+        }
+
+        // Force layout flush (prevents skipped animations)
+        fill.style.width = '0%';
+        fill.offsetWidth;
+
+        // Animate fill
+        fill.style.width = target + '%';
+
+        // Sync percentage text if present
+        const container = fill.closest('.progress-container');
+        const label = container?.querySelector('.progress-text');
+        if (label) animateNumber(label, target);
+
+        // Fire once. No replays. No glitches.
+        obs.unobserve(fill);
+      });
+    },
+    {
+      threshold: 0.3,
+      rootMargin: '0px 0px -40px 0px'
+    }
+  );
+
+  fills.forEach(fill => observer.observe(fill));
 }
+
+// ================================
+// NUMBER ANIMATION (95% counting up)
+// ================================
+function animateNumber(el, target) {
+  let start = 0;
+  const duration = 800;
+  const startTime = performance.now();
+
+  function tick(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const value = Math.floor(progress * target);
+    el.textContent = value + '%';
+
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+}
+
 
 // ============= CHART BARS =============
 function initChartBars() {
@@ -384,3 +443,118 @@ function initChartBars() {
     }, idx * 100 + 300);
   });
 }
+/**
+ * TURNOVER SECTION - STANDALONE JAVASCRIPT
+ * Pixel-identical to React TurnoverChart behavior
+ */
+
+(function() {
+  'use strict';
+
+  // Financial data
+  const financialYears = [
+    { year: '2020/21', turnover: 247500679, formatted: '247,500,679 ETB' },
+    { year: '2021/22', turnover: 258134782, formatted: '258,134,782 ETB' },
+    { year: '2022/23', turnover: 142378986, formatted: '142,378,986 ETB' },
+    { year: '2023/24', turnover: 150345685, formatted: '150,345,685 ETB' },
+    { year: '2024/25', turnover: 1068648056, formatted: '1,068,648,056 ETB' },
+  ];
+
+  // Calculate max turnover for percentage heights
+  const maxTurnover = Math.max(...financialYears.map(y => y.turnover));
+
+  // DOM Elements
+  const tooltip = document.getElementById('turnover-tooltip');
+  const chartArea = document.getElementById('turnover-chart-area');
+  const barGroups = document.querySelectorAll('.turnover-bar-group');
+
+  // Initialize bars with correct heights when visible
+  function initializeBars() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateBars();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (chartArea) {
+      observer.observe(chartArea);
+    }
+  }
+
+  // Animate bars with staggered delay
+  function animateBars() {
+    barGroups.forEach((group, index) => {
+      const bar = group.querySelector('.turnover-bar');
+      const value = parseInt(group.dataset.value, 10);
+      const heightPercent = (value / maxTurnover) * 100;
+      
+      setTimeout(() => {
+        bar.style.height = heightPercent + '%';
+      }, index * 150 + 200);
+    });
+  }
+
+  // Tooltip positioning
+  function showTooltip(event, year, formatted) {
+    const tooltipYear = tooltip.querySelector('.turnover-tooltip-year');
+    const tooltipValue = tooltip.querySelector('.turnover-tooltip-value');
+    
+    tooltipYear.textContent = 'Fiscal Year ' + year;
+    tooltipValue.textContent = formatted;
+    
+    // Position tooltip near cursor
+    const x = event.clientX;
+    const y = event.clientY;
+    
+    tooltip.style.left = (x + 15) + 'px';
+    tooltip.style.top = (y - 60) + 'px';
+    tooltip.classList.add('visible');
+  }
+
+  function hideTooltip() {
+    tooltip.classList.remove('visible');
+  }
+
+  function moveTooltip(event) {
+    if (tooltip.classList.contains('visible')) {
+      tooltip.style.left = (event.clientX - 105) + 'px';
+      tooltip.style.top = (event.clientY - 200) + 'px';
+    }
+  }
+
+  // Event listeners for bars
+  function initializeEventListeners() {
+    barGroups.forEach(group => {
+      const bar = group.querySelector('.turnover-bar');
+      const year = group.dataset.year;
+      const formatted = group.dataset.formatted;
+      
+      bar.addEventListener('mouseenter', (e) => showTooltip(e, year, formatted));
+      bar.addEventListener('mousemove', moveTooltip);
+      bar.addEventListener('mouseleave', hideTooltip);
+      
+      // Touch support
+      bar.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        showTooltip({ clientX: touch.clientX, clientY: touch.clientY }, year, formatted);
+      });
+      bar.addEventListener('touchend', hideTooltip);
+    });
+  }
+
+  // Initialize on DOM ready
+  document.addEventListener('DOMContentLoaded', function() {
+    initializeBars();
+    initializeEventListeners();
+  });
+
+  // Also run if DOM already loaded
+  if (document.readyState !== 'loading') {
+    initializeBars();
+    initializeEventListeners();
+  }
+})();

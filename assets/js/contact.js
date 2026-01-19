@@ -2,9 +2,11 @@
  * Contact Page - Static JavaScript
  * Handles animations, form validation, parallax, and map lazy-loading
  */
-
 (function() {
   'use strict';
+
+  // ✅ EmailJS init (ADD THIS LINE)
+  emailjs.init('Lo7BH8pa2zGUXN2JZ');
 
   // Reduced motion check
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -23,6 +25,7 @@
       timeout = setTimeout(() => fn.apply(this, args), delay);
     };
   }
+
 
   // ==========================================================================
   // Parallax & Scroll Effects
@@ -147,61 +150,86 @@
     const fileInput = $('#file');
     const fileContent = $('#fileContent');
     const fileDropZone = $('#fileDropZone');
+function updateFilePreview() {
+  // Defensive guards: if file input or preview container not present, do nothing.
+  if (!fileContent || !fileInput) {
+    // If either node is missing, ensure nothing thrown and return quietly.
+    return;
+  }
 
-    function updateFilePreview() {
-      const file = fileInput.files[0];
-      if (file) {
-        const sizeMB = (file.size / 1024 / 1024).toFixed(2);
-        fileContent.innerHTML = `
-          <div class="form-field__file-preview">
-            <div class="form-field__file-preview-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-            <div class="form-field__file-info"><p class="form-field__file-name">${file.name}</p><p class="form-field__file-size">${sizeMB} MB</p></div>
-            <button type="button" class="form-field__file-remove" aria-label="Remove file"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg></button>
-          </div>`;
-        const removeBtn = fileContent.querySelector('.form-field__file-remove');
-        if (removeBtn) removeBtn.addEventListener('click', e => { e.stopPropagation(); fileInput.value = ''; updateFilePreview(); });
-      } else {
-        fileContent.innerHTML = `<svg class="form-field__file-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg><p class="form-field__file-text"><span>Click to upload</span> or drag and drop</p>`;
-      }
+  try {
+    const file = fileInput.files && fileInput.files[0];
+    if (file) {
+      const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+      fileContent.innerHTML = `
+        <div class="form-field__file-preview">
+          <div class="form-field__file-preview-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="form-field__file-info">
+            <p class="form-field__file-name">${file.name}</p>
+            <p class="form-field__file-size">${sizeMB} MB</p>
+          </div>
+          <button type="button" class="form-field__file-remove" aria-label="Remove file">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+          </button>
+        </div>`;
+      const removeBtn = fileContent.querySelector('.form-field__file-remove');
+      if (removeBtn) removeBtn.addEventListener('click', e => { e.stopPropagation(); fileInput.value = ''; updateFilePreview(); });
+    } else {
+      // No file selected — show default UI
+      fileContent.innerHTML = `<svg class="form-field__file-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg><p class="form-field__file-text"><span>Click to upload</span> or drag and drop</p>`;
     }
+  } catch (err) {
+    // Never let preview errors break the submit flow — log for debugging
+    console.error('updateFilePreview error:', err);
+    // fallback: clear preview safely
+    if (fileContent) fileContent.innerHTML = '';
+  }
+}
+
 
     if (fileInput) fileInput.addEventListener('change', updateFilePreview);
     if (fileDropZone) {
       fileDropZone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
     }
 
-    // Submit handler
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      
-      // Validate all
-      const isValid = ['fullName', 'email', 'phone', 'subject', 'message'].every(validateField);
-      if (!isValid) return;
+  // ================= EMAILJS SUBMIT HANDLER =================
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-      // Update button state
-      submitButton.className = 'submit-button submit-button--submitting';
-      submitButton.disabled = true;
-      submitButtonText.textContent = 'Sending...';
-      submitButton.querySelector('.submit-button__icon').outerHTML = '<svg class="submit-button__spinner" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>';
+  // Validate all fields
+  const isValid = ['fullName', 'email', 'phone', 'subject', 'message'].every(validateField);
+  if (!isValid) return;
 
-      try {
-        const formData = new FormData(form);
-        const response = await fetch('/api/contact', { method: 'POST', body: formData });
-        
-        if (response.ok) {
-          showSuccess();
-        } else {
-          throw new Error('Server error');
-        }
-      } catch {
-        // Fallback: save to localStorage
-        const data = { fullName: $('#fullName').value, email: $('#email').value, phone: $('#phone').value, subject: $('#subject').value, message: $('#message').value, timestamp: new Date().toISOString() };
-        const submissions = JSON.parse(localStorage.getItem('contact_submissions') || '[]');
-        submissions.push(data);
-        localStorage.setItem('contact_submissions', JSON.stringify(submissions));
-        showSuccess();
-      }
-    });
+  // Button → submitting state (UNCHANGED UX)
+  submitButton.className = 'submit-button submit-button--submitting';
+  submitButton.disabled = true;
+  submitButtonText.textContent = 'Sending...';
+  submitButton.querySelector('.submit-button__icon').outerHTML =
+    '<svg class="submit-button__spinner" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>';
+
+  try {
+    await emailjs.sendForm(
+      'service_l83vk0w',
+      'template_u0ka63m',
+      form,
+      'Lo7BH8pa2zGUXN2JZ'
+    );
+
+    // SUCCESS → keep your animation exactly
+    showSuccess();
+
+  } catch (error) {
+    console.error('EmailJS failed:', error);
+
+    submitButton.className = 'submit-button submit-button--idle';
+    submitButton.disabled = false;
+    submitButtonText.textContent = 'Failed. Try again';
+
+    alert('Message failed to send. Please try again.');
+  }
+});
 
     function showSuccess() {
       submitButton.className = 'submit-button submit-button--success';

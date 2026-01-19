@@ -1,5 +1,6 @@
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
+$ "C:\Users\KIDUS GEBRIEL\AppData\Roaming\Python\Python312\Scripts\livereload.exe" index.html
 ----------------------------------------------------------------
 # Utility
 # Cards
@@ -58,6 +59,9 @@ body.locked {
   background-position: center;     /* center important part */
   background-repeat: no-repeat;
   background-attachment: fixed;    /* optional: makes it stay during scroll */
+}
+.phone-icon1 {
+  transform: rotate(90deg) scale(1) !important;
 }
 
 .theme-border-left {
@@ -239,7 +243,7 @@ li {
 .chat-popup {
   position: fixed;
   left: -100%;
-  bottom: 0px;
+
   width: 350px;
   z-index: 99999;
   visibility: hidden;

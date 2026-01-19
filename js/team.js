@@ -10,7 +10,6 @@
   let isDragging = false;
   let dragStart = { x: 0, y: 0 };
   let scrollStart = { x: 0, y: 0 };
-
   // DOM Elements
   const elements = {
     app: document.getElementById('app'),
@@ -26,7 +25,6 @@
     expandAll: document.getElementById('expand-all'),
     collapseAll: document.getElementById('collapse-all'),
     compactToggle: document.getElementById('compact-toggle'),
-    printBtn: document.getElementById('print-btn'),
     modal: document.getElementById('modal-backdrop'),
     modalClose: document.getElementById('modal-close'),
     modalAvatar: document.getElementById('modal-avatar'),
@@ -42,11 +40,7 @@
     vcardBtn: document.getElementById('vcard-btn')
   };
 
-  // ==================== Utilities ====================
-
-  /**
-   * Flatten org tree to array for searching
-   */
+ 
   function flattenTree(node, result = []) {
     result.push(node);
     if (node.children) {
@@ -55,9 +49,6 @@
     return result;
   }
 
-  /**
-   * Search members by name or role
-   */
   function searchMembers(root, query) {
     const allMembers = flattenTree(root);
     const lowerQuery = query.toLowerCase().trim();
@@ -596,10 +587,7 @@
       updateCompactMode();
     });
 
-    // Print
-    elements.printBtn.addEventListener('click', () => {
-      window.print();
-    });
+
 
     // Drag to pan
     elements.container.addEventListener('mousedown', (e) => {

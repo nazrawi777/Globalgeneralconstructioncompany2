@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://globalgeneralconstructionet.com/sitemap.xml
+Host: globalgeneralconstructionet.com
