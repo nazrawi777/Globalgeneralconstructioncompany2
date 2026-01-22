@@ -1,4 +1,9 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
+from django.http import JsonResponse
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+import json
+from .chatbot import get_gemini_response
 
 
 class IndexView(TemplateView):
@@ -75,3 +80,20 @@ class FinanceView(TemplateView):
 
 class NotFoundView(TemplateView):
     template_name = "web/404.html"
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+class ChatView(View):
+    def post(self, request, *args, **kwargs):
+        try:
+            data = json.loads(request.body)
+            user_message = data.get("message")
+            if not user_message:
+                return JsonResponse({"error": "No message provided"}, status=400)
+
+            response_text = get_gemini_response(user_message)
+            return JsonResponse({"response": response_text})
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)

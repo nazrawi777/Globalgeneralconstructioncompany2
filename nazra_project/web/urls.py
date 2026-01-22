@@ -24,4 +24,5 @@ urlpatterns = [
     path("socialwalfare.html", views.SocialWelfareView.as_view(), name="socialwalfare"),
     path("finance.html", views.FinanceView.as_view(), name="finance"),
     path("404.html", views.NotFoundView.as_view(), name="404"),
+    path("api/chat/", views.ChatView.as_view(), name="chat_api"),
 ]
