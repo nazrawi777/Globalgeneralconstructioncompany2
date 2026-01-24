@@ -1089,9 +1089,7 @@ display: none;
     .footer-widget__instagram {
 display: none;          
     }
-   .hero-bg, .hero-grid, .section-shape-1{
-    max-height: 50vh;
-   }
+
    .hero-content{
     position: relative;
     top: 10px;
