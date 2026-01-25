@@ -1,0 +1,4 @@
+# file: C:\Users\User_2\Desktop\chaos_projects\nazra_pro\frontend\nazra_project\web\templatetags\dynamic_content_tags.py
+# hypothesis_version: 6.150.3
+
+['$', ',', '...', '[-\\s]+', '[^\\w\\s-]', '_', '__float__', 'fab fa-facebook-f', 'fab fa-github', 'fab fa-instagram', 'fab fa-linkedin-in', 'fab fa-twitter', 'fab fa-youtube', 'facebook', 'fas fa-link', 'github', 'img/placeholder.jpg', 'instagram', 'linkedin', 'twitter', 'url', 'youtube']

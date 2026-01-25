@@ -341,8 +341,28 @@
         <!-- Main Sllider Start -->
         <section class="main-slider" aria-label="Global General Construction Hero Slider">
             <div class="main-slider__carousel owl-carousel owl-theme">
+                {% for slider in home_sliders %}
+                <div class="item">
+                    <div class="main-slider__bg-video">
+                        <video class="slider-video" autoplay muted loop playsinline preload="metadata"
+                            aria-hidden="true">
+                            <source src="{{ slider.video.url }}" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="main-slider__overlay" aria-hidden="true"></div>
 
-                <!-- SLIDE 1 -->
+                    <div class="container">
+                        <div class="main-slider__content">
+                            <h1 class="main-slider__title">{{ slider.title }}</h1>
+                            <p class="main-slider__tagline">{{ slider.tagline }}</p>
+                            {% if slider.description %}
+                            <p class="sr-only">{{ slider.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <!-- Fallback Slide -->
                 <div class="item">
                     <div class="main-slider__bg-video">
                         <video class="slider-video" autoplay muted loop playsinline preload="metadata"
@@ -358,7 +378,6 @@
                         <div class="main-slider__content">
                             <h1 class="main-slider__title">Global General Construction</h1>
                             <p class="main-slider__tagline">We turn your dreams into reality</p>
-
                             <p class="sr-only">
                                 Global General Construction is a Grade-1 general construction company in Ethiopia,
                                 delivering high-quality road construction, building works, water supply and sewerage
@@ -367,135 +386,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- SLIDE 2 -->
-                <div class="item">
-                    <div class="main-slider__bg-video">
-                        <video class="slider-video" autoplay muted loop playsinline preload="metadata"
-                            aria-hidden="true">
-                            <source
-                                src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4"
-                                type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="main-slider__overlay" aria-hidden="true"></div>
-
-                    <div class="container">
-                        <div class="main-slider__content">
-                            <h2 class="main-slider__title">Grade-1 General Contractor</h2>
-                            <p class="main-slider__tagline">Specializing in road construction, buildings & water systems
-                            </p>
-
-                            <p class="sr-only">
-                                Leading construction firm in Ethiopia with expertise in roads, buildings, water
-                                infrastructure and civil works.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SLIDE 3 -->
-                <div class="item">
-                    <div class="main-slider__bg-video">
-                        <video class="slider-video" autoplay muted loop playsinline preload="metadata"
-                            aria-hidden="true">
-                            <source
-                                src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-58.mp4"
-                                type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="main-slider__overlay" aria-hidden="true"></div>
-
-                    <div class="container">
-                        <div class="main-slider__content">
-                            <h2 class="main-slider__title">Committed to Excellence</h2>
-                            <p class="main-slider__tagline">High-quality, safe & sustainable infrastructure</p>
-
-                            <p class="sr-only">
-                                Global General Construction delivers projects with integrity, innovation, safety and
-                                customer satisfaction.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="item">
-                    <div class="main-slider__bg-video">
-                        <video class="slider-video" autoplay muted loop playsinline preload="metadata"
-                            aria-hidden="true">
-                            <source
-                                src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-07-22.mp4"
-                                type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="main-slider__overlay" aria-hidden="true"></div>
-
-                    <div class="container">
-                        <div class="main-slider__content">
-                            <h1 class="main-slider__title">Global General Construction</h1>
-                            <p class="main-slider__tagline">We turn your dreams into reality</p>
-
-                            <p class="sr-only">
-                                Global General Construction is a Grade-1 general construction company in Ethiopia,
-                                delivering high-quality road construction, building works, water supply and sewerage
-                                systems.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SLIDE 2 -->
-                <div class="item">
-                    <div class="main-slider__bg-video">
-                        <video class="slider-video" autoplay muted loop playsinline preload="metadata"
-                            aria-hidden="true">
-                            <source
-                                src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-07-28.mp4"
-                                type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="main-slider__overlay" aria-hidden="true"></div>
-
-                    <div class="container">
-                        <div class="main-slider__content">
-                            <h2 class="main-slider__title">Grade-1 General Contractor</h2>
-                            <p class="main-slider__tagline">Specializing in road construction, buildings & water systems
-                            </p>
-
-                            <p class="sr-only">
-                                Leading construction firm in Ethiopia with expertise in roads, buildings, water
-                                infrastructure and civil works.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SLIDE 3 -->
-                <div class="item">
-                    <div class="main-slider__bg-video">
-                        <video class="slider-video" autoplay muted loop playsinline preload="metadata"
-                            aria-hidden="true">
-                            <source
-                                src="https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-07-43.mp4"
-                                type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="main-slider__overlay" aria-hidden="true"></div>
-
-                    <div class="container">
-                        <div class="main-slider__content">
-                            <h2 class="main-slider__title">Committed to Excellence</h2>
-                            <p class="main-slider__tagline">High-quality, safe & sustainable infrastructure</p>
-
-                            <p class="sr-only">
-                                Global General Construction delivers projects with integrity, innovation, safety and
-                                customer satisfaction.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </section>
 
@@ -657,82 +548,102 @@
                     <h2 class="section-title__title title-animation">Our Expertise in <br>Construction</h2>
                 </div>
                 <div class="row">
+                    {% load dynamic_content_tags %}
+                    {% for service in services %}
                     <!--Services Single Start -->
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="{{ forloop.counter|add:0 }}00ms">
+                        <div class="services-three__single">
+                            <div class="services-three__icon">
+                                <span class="{{ service.icon|default:'icon-workstations' }}"></span>
+                            </div>
+                            <h3 class="services-three__title">
+                                <a href="services.html">{{ service.title }}</a>
+                            </h3>
+                            <div class="services-three__img">
+                                <img src="{{ service.image|default_image:'web/assets/img/services/default-service.jpg' }}" alt="{{ service.title }}">
+                            </div>
+                            <p class="services-three__text">{{ service.description|truncate_words_html:20 }}</p>
+                            {% if service.badge %}
+                            <div class="services-three__badge">
+                                <span class="badge">{{ service.badge }}</span>
+                            </div>
+                            {% endif %}
+                            {% if service.tags %}
+                            <div class="services-three__tags">
+                                {% for tag in service.tags|format_tags %}
+                                <span class="tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            <div class="services-three__arrow">
+                                <a href="services.html"><span class="icon-up-right-arrow-1"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Services Single End -->
+                    {% empty %}
+                    <!-- Fallback content when no services are available -->
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
                         <div class="services-three__single">
                             <div class="services-three__icon">
                                 <span class="icon-staircase"></span>
                             </div>
-                            <h3 class="services-three__title"><a href="#">Road Construction <br> & Rehabilitation</a>
-                            </h3>
+                            <h3 class="services-three__title"><a href="services.html">Road Construction <br> & Rehabilitation</a></h3>
                             <div class="services-three__img">
-                                <img src="https://i.postimg.cc/YqhxQY2T/Forest-(1).jpg" alt="">
+                                <img src="https://i.postimg.cc/YqhxQY2T/Forest-(1).jpg" alt="Road Construction">
                             </div>
-                            <p class="services-three__text">Expertise in constructing and rehabilitating roads to ensure
-                                safety and durability.</p>
+                            <p class="services-three__text">Expertise in constructing and rehabilitating roads to ensure safety and durability.</p>
                             <div class="services-three__arrow">
-                                <a href="#"><span class="icon-up-right-arrow-1"></span></a>
+                                <a href="services.html"><span class="icon-up-right-arrow-1"></span></a>
                             </div>
                         </div>
                     </div>
-                    <!--Services Single End -->
-
-                    <!--Services Single Start -->
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="300ms">
                         <div class="services-three__single">
                             <div class="services-three__icon">
                                 <span class="icon-workstations"></span>
                             </div>
-                            <h3 class="services-three__title"><a href="#">Building Works <br> & Structures</a></h3>
+                            <h3 class="services-three__title"><a href="services.html">Building Works <br> & Structures</a></h3>
                             <div class="services-three__img">
-                                <img src="https://i.postimg.cc/3xL41bLJ/202312-(1).jpg" alt="Road construction work">
+                                <img src="https://i.postimg.cc/3xL41bLJ/202312-(1).jpg" alt="Building Works">
                             </div>
-                            <p class="services-three__text">Construction of residential, commercial, and institutional
-                                buildings with precision and quality.</p>
+                            <p class="services-three__text">Construction of residential, commercial, and institutional buildings with precision and quality.</p>
                             <div class="services-three__arrow">
-                                <a href="#"><span class="icon-up-right-arrow-1"></span></a>
+                                <a href="services.html"><span class="icon-up-right-arrow-1"></span></a>
                             </div>
                         </div>
                     </div>
-                    <!--Services Single End -->
-
-                    <!--Services Single Start -->
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="600ms">
                         <div class="services-three__single">
                             <div class="services-three__icon">
                                 <span class="icon-plant"></span>
                             </div>
-                            <h3 class="services-three__title"><a href="#">Water Supply <br> & Sewerage Systems</a></h3>
+                            <h3 class="services-three__title"><a href="services.html">Water Supply <br> & Sewerage Systems</a></h3>
                             <div class="services-three__img">
-                                <img src="https://i.postimg.cc/J4cpZ1rc/pexels-bltkrn-35368937-(1).jpg" alt="">
+                                <img src="https://i.postimg.cc/J4cpZ1rc/pexels-bltkrn-35368937-(1).jpg" alt="Water Supply">
                             </div>
-                            <p class="services-three__text">Design and installation of reliable water supply and
-                                sewerage infrastructure.</p>
+                            <p class="services-three__text">Design and installation of reliable water supply and sewerage infrastructure.</p>
                             <div class="services-three__arrow">
-                                <a href="#"><span class="icon-up-right-arrow-1"></span></a>
+                                <a href="services.html"><span class="icon-up-right-arrow-1"></span></a>
                             </div>
                         </div>
                     </div>
-                    <!--Services Single End -->
-
-                    <!--Services Single Start -->
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="800ms">
                         <div class="services-three__single">
                             <div class="services-three__icon">
                                 <span class="icon-vacuum-cleaner"></span>
                             </div>
-                            <h3 class="services-three__title"><a href="#">Landscaping <br> & Site Development</a></h3>
+                            <h3 class="services-three__title"><a href="services.html">Landscaping <br> & Site Development</a></h3>
                             <div class="services-three__img">
-                                <img src="https://i.postimg.cc/TwfzPC6Z/photo-2026-01-04-02-13-36-(1).jpg" alt="">
+                                <img src="https://i.postimg.cc/TwfzPC6Z/photo-2026-01-04-02-13-36-(1).jpg" alt="Landscaping">
                             </div>
-                            <p class="services-three__text">Site preparation, landscaping, and earthworks executed with
-                                professional expertise.</p>
+                            <p class="services-three__text">Site preparation, landscaping, and earthworks executed with professional expertise.</p>
                             <div class="services-three__arrow">
-                                <a href="#"><span class="icon-up-right-arrow-1"></span></a>
+                                <a href="services.html"><span class="icon-up-right-arrow-1"></span></a>
                             </div>
                         </div>
                     </div>
-                    <!--Services Single End -->
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -991,182 +902,94 @@
                         What Our Clients Say
                     </h2>
                 </div>
-                <div class="testimonial-two__bottom">
-                    <div class="testimonial-two__carousel owl-carousel owl-theme thm-owl__carousel">
+          {% load static %}
+{% load dynamic_content_tags %}
 
-                        <div class="item">
-                            <div class="testimonial-two__single">
-                                <div class="testimonial-two__single-shape-1"
-                                    style="background-image: url(assets/images/shapes/testimonial-two-single-shape-1.png);">
-                                </div>
-                                <div class="testimonial-two__img">
-                                    <img src="{% static 'web/assets/images/resources/1.png' %}" alt="">
-                                </div>
-                                <div class="testimonial-two__shape-1">
-                                    <img src="{% static 'web/assets/images/shapes/testimonial-two-shape-1.png' %}"
-                                        alt="">
-                                </div>
-                                <ul class="testimonial-two__ratting list-unstyled">
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                </ul>
-                                <h3 class="testimonial-two__name"><a href="about.html">Michael Angenla</a></h3>
-                                <p class="testimonial-two__sub-title">Project Manager</p>
-                                <p class="testimonial-two__text">
-                                    Global General Construction delivered our project on schedule with strong
-                                    coordination and clear communication throughout. Their team handled site challenges
-                                    professionally and maintained high construction standards from start to finish.
-                                </p>
-                            </div>
-                        </div>
+<div class="testimonial-two__bottom">
+    <div class="testimonial-two__carousel owl-carousel owl-theme thm-owl__carousel">
 
-                        <div class="item">
-                            <div class="testimonial-two__single">
-                                <div class="testimonial-two__single-shape-1"
-                                    style="background-image: url(assets/images/shapes/testimonial-two-single-shape-1.png);">
-                                </div>
-                                <div class="testimonial-two__img">
-                                    <img src="{% static 'web/assets/images/resources/1.png' %}" alt="">
-                                </div>
-                                <div class="testimonial-two__shape-1">
-                                    <img src="{% static 'web/assets/images/shapes/testimonial-two-shape-1.png' %}"
-                                        alt="">
-                                </div>
-                                <ul class="testimonial-two__ratting list-unstyled">
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                </ul>
-                                <h3 class="testimonial-two__name"><a href="about.html">Brenda Gregory</a></h3>
-                                <p class="testimonial-two__sub-title">Business Owner</p>
-                                <p class="testimonial-two__text">
-                                    From planning to execution, the team showed professionalism and attention to detail.
-                                    The final result met our expectations and was completed with a strong focus on
-                                    safety and quality.
-                                </p>
-                            </div>
-                        </div>
+        {% for testimonial in testimonials %}
+        <div class="item">
+            <div class="testimonial-two__single">
 
-                        <div class="item">
-                            <div class="testimonial-two__single">
-                                <div class="testimonial-two__single-shape-1"
-                                    style="background-image: url(assets/images/shapes/testimonial-two-single-shape-1.png);">
-                                </div>
-                                <div class="testimonial-two__img">
-                                    <img src="{% static 'web/assets/images/resources/1.png' %}" alt="">
-                                </div>
-                                <div class="testimonial-two__shape-1">
-                                    <img src="{% static 'web/assets/images/shapes/testimonial-two-shape-1.png' %}"
-                                        alt="">
-                                </div>
-                                <ul class="testimonial-two__ratting list-unstyled">
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                </ul>
-                                <h3 class="testimonial-two__name"><a href="about.html">Edward Monroe</a></h3>
-                                <p class="testimonial-two__sub-title">Site Engineer</p>
-                                <p class="testimonial-two__text">
-                                    The workmanship and material quality were consistently high. Global General
-                                    Construction followed specifications closely and maintained excellent coordination
-                                    across all construction phases.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-two__single">
-                                <div class="testimonial-two__single-shape-1"
-                                    style="background-image: url(assets/images/shapes/testimonial-two-single-shape-1.png);">
-                                </div>
-                                <div class="testimonial-two__img">
-                                    <img src="{% static 'web/assets/images/resources/1.png' %}" alt="">
-                                </div>
-                                <div class="testimonial-two__shape-1">
-                                    <img src="{% static 'web/assets/images/shapes/testimonial-two-shape-1.png' %}"
-                                        alt="">
-                                </div>
-                                <ul class="testimonial-two__ratting list-unstyled">
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                </ul>
-                                <h3 class="testimonial-two__name"><a href="about.html">Alisa Brown</a></h3>
-                                <p class="testimonial-two__sub-title">Project Coordinator</p>
-                                <p class="testimonial-two__text">
-                                    Their team was reliable, responsive, and well-organized on site. Progress updates
-                                    were clear, and all work was completed according to the agreed scope.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="testimonial-two__single">
-                                <div class="testimonial-two__single-shape-1"
-                                    style="background-image: url(assets/images/shapes/testimonial-two-single-shape-1.png);">
-                                </div>
-                                <div class="testimonial-two__img">
-                                    <img src="{% static 'web/assets/images/resources/1.png' %}" alt="">
-                                </div>
-                                <div class="testimonial-two__shape-1">
-                                    <img src="{% static 'web/assets/images/shapes/testimonial-two-shape-1.png' %}"
-                                        alt="">
-                                </div>
-                                <ul class="testimonial-two__ratting list-unstyled">
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                </ul>
-                                <h3 class="testimonial-two__name"><a href="about.html">Brenda Heyden</a></h3>
-                                <p class="testimonial-two__sub-title">Property Developer</p>
-                                <p class="testimonial-two__text">
-                                    We appreciated their structured approach and commitment to deadlines. The project
-                                    was completed efficiently without compromising construction quality.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="testimonial-two__single">
-                                <div class="testimonial-two__single-shape-1"
-                                    style="background-image: url(assets/images/shapes/testimonial-two-single-shape-1.png);">
-                                </div>
-                                <div class="testimonial-two__img">
-                                    <img src="{% static 'web/assets/images/resources/1.png' %}" alt="">
-                                </div>
-                                <div class="testimonial-two__shape-1">
-                                    <img src="{% static 'web/assets/images/shapes/testimonial-two-shape-1.png' %}"
-                                        alt="">
-                                </div>
-                                <ul class="testimonial-two__ratting list-unstyled">
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                    <li><span class="icon-pointed-star"></span></li>
-                                </ul>
-                                <h3 class="testimonial-two__name"><a href="about.html">Kark Edward</a></h3>
-                                <p class="testimonial-two__sub-title">Construction Consultant</p>
-                                <p class="testimonial-two__text">
-                                    Global General Construction demonstrated solid technical capability and site
-                                    discipline. Their experience shows in the way they manage resources and deliver
-                                    consistent results.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="testimonial-two__single-shape-1"
+                    style="background-image: url({% static 'web/assets/images/shapes/testimonial-two-single-shape-1.png' %});">
                 </div>
+
+                <div class="testimonial-two__img">
+                    <img src="{% static 'web/assets/images/resources/1.png' %}"
+                         alt="{{ testimonial.name }}">
+                </div>
+
+                <div class="testimonial-two__shape-1">
+                    <img src="{% static 'web/assets/images/shapes/testimonial-two-shape-1.png' %}" alt="">
+                </div>
+
+                <ul class="testimonial-two__ratting list-unstyled">
+                    {% for i in "12345" %}
+                        <li>
+                            <span class="icon-pointed-star {% if forloop.counter > testimonial.rating %}inactive{% endif %}"></span>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <h3 class="testimonial-two__name">
+                    <a href="about.html">{{ testimonial.client_name }}</a>
+                </h3>
+
+                <p class="testimonial-two__sub-title">{{ testimonial.client_role }}</p>
+
+                <p class="testimonial-two__text">
+                    {{ testimonial.review }}
+                </p>
+
+            </div>
+        </div>
+        {% empty %}
+
+        <!-- Fallback testimonial -->
+        <div class="item">
+            <div class="testimonial-two__single">
+
+                <div class="testimonial-two__single-shape-1"
+                    style="background-image: url({% static 'web/assets/images/shapes/testimonial-two-single-shape-1.png' %});">
+                </div>
+
+                <div class="testimonial-two__img">
+                    <img src="{% static 'web/assets/images/resources/1.png' %}" alt="">
+                </div>
+
+                <div class="testimonial-two__shape-1">
+                    <img src="{% static 'web/assets/images/shapes/testimonial-two-shape-1.png' %}" alt="">
+                </div>
+
+                <ul class="testimonial-two__ratting list-unstyled">
+                    <li><span class="icon-pointed-star"></span></li>
+                    <li><span class="icon-pointed-star"></span></li>
+                    <li><span class="icon-pointed-star"></span></li>
+                    <li><span class="icon-pointed-star"></span></li>
+                    <li><span class="icon-pointed-star"></span></li>
+                </ul>
+
+                <h3 class="testimonial-two__name">
+                    <a href="about.html">Michael Angenla</a>
+                </h3>
+
+                <p class="testimonial-two__sub-title">Project Manager</p>
+
+                <p class="testimonial-two__text">
+                    Global General Construction delivered our project on schedule with strong coordination and clear communication.
+                </p>
+
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+
             </div>
         </section>
 
@@ -1188,6 +1011,18 @@
                         </div>
                     </div>
                     <ul class="list-unstyled counter-one__list">
+                        {% for stat in company_statistics %}
+                        <li class="wow fadeInLeft" data-wow-delay="{{ forloop.counter }}00ms">
+                            <div class="counter-one__single">
+                                <div class="counter-one__counter-box">
+                                    <h3 class="odometer" data-count="{{ stat.value }}">00</h3>
+                                    <span class="counter-one__counter-letter">{{ stat.suffix }}</span>
+                                    <span class="counter-one__counter-plus"> </span>
+                                </div>
+                                <p class="counter-one__counter-text">{{ stat.title }}</p>
+                            </div>
+                        </li>
+                        {% empty %}
                         <li class="wow fadeInLeft" data-wow-delay="100ms">
                             <div class="counter-one__single">
                                 <div class="counter-one__counter-box">
@@ -1228,6 +1063,7 @@
                                 <p class="counter-one__counter-text">Success Rating</p>
                             </div>
                         </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

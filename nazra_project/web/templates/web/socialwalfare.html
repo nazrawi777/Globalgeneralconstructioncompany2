@@ -314,30 +314,55 @@
 
   <main>
     <!-- Media Mosaic Section -->
-    <section id="mosaic" class="section mosaic-section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h1 class="section-title">Building Communities, Changing Lives</h1>
-          <p class="section-subtitle">Witness the impact of our social welfare initiatives through the stories and
-            moments we've captured.</p>
-        </div>
+   <section id="mosaic" class="section mosaic-section">
+  <div class="container">
 
-        <!-- Filter Chips -->
-        <div class="filter-chips fade-in">
-          <button class="filter-chip active" data-filter="all">All</button>
-          <button class="filter-chip" data-filter="philanthropy">Philanthropy</button>
-          <button class="filter-chip" data-filter="housing">Housing</button>
-          <button class="filter-chip" data-filter="education">Education</button>
-          <button class="filter-chip" data-filter="football-club">Football Club</button>
-          <button class="filter-chip" data-filter="events">Events</button>
-        </div>
+    <div class="section-header fade-in">
+      <h1 class="section-title">Building Communities, Changing Lives</h1>
+      <p class="section-subtitle">
+        Witness the impact of our social welfare initiatives through the stories and
+        moments we've captured.
+      </p>
+    </div>
 
-        <!-- Masonry Grid -->
-        <div class="masonry-grid" id="mosaic-grid">
-          <!-- Items will be populated by JS -->
+    <!-- Filter Chips -->
+    <div class="filter-chips fade-in">
+      <button class="filter-chip active" data-filter="all">All</button>
+
+      {% for category in categories %}
+        <button class="filter-chip" data-filter="{{ category }}">
+          {{ category|title|cut:"-" }}
+        </button>
+      {% endfor %}
+    </div>
+
+    <!-- Masonry Grid -->
+    <div class="masonry-grid" id="mosaic-grid">
+      {% comment %}
+      We don’t need to render items here; your JS will populate them dynamically.
+      But if you want to render a few static items to show immediately, you can loop over your Django context:
+      {% endcomment %}
+      {% for item in media_items %}
+        <div class="media-card" data-category="{{ item.category }}" data-id="{{ item.id }}">
+          <img src="{{ item.thumbnail }}" alt="{{ item.title }}" loading="lazy">
+          <div class="media-card-overlay">
+            <span class="media-card-category">{{ item.category }}</span>
+            <h3 class="media-card-title">{{ item.title }}</h3>
+            <span class="media-card-action">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              View
+            </span>
+          </div>
         </div>
-      </div>
-    </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 
     <!-- Featured Carousel Section -->
     <section class="section carousel-section">
@@ -930,6 +955,7 @@
   <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
   <span class="scroll-to-top__text"> Go Back Top</span>
 </a>
+
 <script src="{% static 'web/assets/js/jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'web/assets/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'web/assets/js/jarallax.min.js' %}"></script>
@@ -958,7 +984,7 @@
 <script src="{% static 'web/assets/js/gsap/SplitText.js' %}"></script>
 <script src="{% static 'web/assets/js/script.js' %}"></script>
 <script src="{% static 'web/assets/js/gemini-chat.js' %}"></script>
-<script src="{% static 'web/js/socialwalfare.js' %}"></script>
+<!-- <script src="{% static 'web/js/socialwalfare.js' %}"></script> -->
 </body>
 
 </html>

@@ -1,0 +1,4 @@
+# file: C:\Users\User_2\Desktop\chaos_projects\nazra_pro\frontend\nazra_project\web\admin.py
+# hypothesis_version: 6.150.3
+
+['__str__', 'created_at', 'email', 'is_active', 'job_title', 'job_type', 'name', 'order', 'suffix', 'title', 'value']

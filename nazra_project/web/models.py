@@ -1,4 +1,6 @@
 from django.db import models
+from django.db import models
+from django.utils.text import slugify
 
 class HomeSlider(models.Model):
     title = models.CharField(max_length=200)
@@ -85,19 +87,58 @@ class BlogPost(models.Model):
         return self.title
 
 class JobVacancy(models.Model):
-    TYPE_CHOICES = [
-        ('Permanent', 'Permanent'),
-        ('Temporary', 'Temporary'),
-        ('Contract', 'Contract'),
-        ('On-site', 'On-site'),
-        ('Shift Work', 'Shift Work'),
+    JOB_TYPE_CHOICES = [
+        ('All Jobs', 'All Jobs'),
+        ('Full Time', 'Full Time'),
+        ('Half Time', 'Half Time'),
+        ('Remote', 'Remote'),
+        ('In Office', 'In Office'),
     ]
+    
+    DESIGNATION_CHOICES = [
+        ('Web Designer', 'Web Designer'),
+        ('Web Developer', 'Web Developer'),
+        ('UI / UX Designer', 'UI / UX Designer'),
+    ]
+
+    SALARY_TYPE_CHOICES = [
+        ('Hourly', 'Hourly'),
+        ('Monthly', 'Monthly'),
+    ]
+
+    INDUSTRY_CHOICES = [
+        ('Banking', 'Banking'),
+        ('Biotechnology', 'Biotechnology'),
+        ('Aviation', 'Aviation'),
+    ]
+
+    COUNTRY_CHOICES = [
+        ('USA', 'USA'),
+        ('Canada', 'Canada'),
+        ('China', 'China'),
+    ]
+
+    STATE_CHOICES = [
+        ('California', 'California'),
+        ('Texas', 'Texas'),
+        ('Florida', 'Florida'),
+    ]
+
     title = models.CharField(max_length=200)
-    type = models.CharField(max_length=50, choices=TYPE_CHOICES)
-    location = models.CharField(max_length=200)
-    salary_range = models.CharField(max_length=100)
-    posted_date = models.DateField(auto_now_add=True)
     description = models.TextField()
+    designation = models.CharField(max_length=100, choices=DESIGNATION_CHOICES, default='Web Developer')
+    job_type = models.CharField(max_length=50, choices=JOB_TYPE_CHOICES, default='Full Time')
+    salary_type = models.CharField(max_length=50, choices=SALARY_TYPE_CHOICES, default='Monthly')
+    min_salary = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    max_salary = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    skills = models.CharField(max_length=200, help_text="e.g., Web Developer")
+    qualifications = models.CharField(max_length=200)
+    experience = models.CharField(max_length=100)
+    industry = models.CharField(max_length=100, choices=INDUSTRY_CHOICES, default='Banking')
+    address = models.CharField(max_length=200)
+    country = models.CharField(max_length=100, choices=COUNTRY_CHOICES, default='USA')
+    state = models.CharField(max_length=100, choices=STATE_CHOICES, default='California')
+    posted_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.title
@@ -142,6 +183,7 @@ class JobApplication(models.Model):
     job_type = models.CharField(max_length=50, choices=JOB_TYPE_CHOICES, default='All Jobs')
     description = models.TextField(blank=True, null=True)
     cv = models.FileField(upload_to='cvs/')
+    accepted_terms = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -176,3 +218,66 @@ class ChatBotConfig(models.Model):
             # Ensure only one config is active
             ChatBotConfig.objects.filter(is_active=True).exclude(pk=self.pk).update(is_active=False)
         super().save(*args, **kwargs)
+
+class MediaMosaicItem(models.Model):
+    MEDIA_TYPE_CHOICES = (
+        ("image", "Image"),
+        ("video", "Video"),
+    )
+
+    type = models.CharField(
+        max_length=20,
+        choices=MEDIA_TYPE_CHOICES,
+        default="image",
+    )
+
+    # Main media file
+    src = models.FileField(
+        upload_to="media_mosaic/",
+        help_text="Upload image or video file"
+    )
+
+    # Thumbnail ONLY for videos
+    thumbnail = models.ImageField(
+        upload_to="media_mosaic/thumbnails/",
+        blank=True,
+        null=True,
+        help_text="Required for videos only"
+    )
+
+    title = models.CharField(max_length=200)
+
+    category = models.CharField(
+        max_length=100,
+        help_text="e.g. education, housing, football-club"
+    )
+
+    description = models.TextField(blank=True)
+
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["order", "-created_at"]
+        verbose_name = "Media Mosaic Item"
+        verbose_name_plural = "Media Mosaic Items"
+
+    def save(self, *args, **kwargs):
+        if self.category:
+            self.category = slugify(self.category)
+        super().save(*args, **kwargs)
+
+    def clean(self):
+        """
+        Enforce rules:
+        - image → no thumbnail required
+        - video → thumbnail REQUIRED
+        """
+        from django.core.exceptions import ValidationError
+
+        if self.type == "video" and not self.thumbnail:
+            raise ValidationError("Thumbnail is required for video items.")
+
+    def __str__(self):
+        return f"{self.title} ({self.type})"

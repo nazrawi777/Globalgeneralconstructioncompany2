@@ -308,20 +308,20 @@
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Job Title :</label>
-                                        <input name="subject" id="subject2" class="form-control" placeholder="Title :">
+                                        <input name="title" id="subject2" class="form-control" placeholder="Title :">
                                     </div>
                                 </div><!--end col-->
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Description :</label>
-                                        <textarea name="comments" id="comments2" rows="4" class="form-control"
+                                        <textarea name="description" id="comments2" rows="4" class="form-control"
                                             placeholder="Describe the job :"></textarea>
                                     </div>
                                 </div><!--end col-->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Job Type:</label>
-                                        <select class="form-control form-select" id="Type">
+                                        <select class="form-control form-select" name="designation" id="Type">
                                             <option value="WD">Web Designer</option>
                                             <option value="WD">Web Developer</option>
                                             <option value="UI">UI / UX Desinger</option>
@@ -332,7 +332,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Job Categories:</label>
-                                        <select class="form-control form-select" id="Categories">
+                                        <select class="form-control form-select" name="job_type" id="Categories">
                                             <option>All Jobs</option>
                                             <option>Full Time</option>
                                             <option>Half Time</option>
@@ -345,7 +345,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Salary:</label>
-                                        <select class="form-control form-select" id="Salary">
+                                        <select class="form-control form-select" name="salary_type" id="Salary">
                                             <option value="HOURL">Hourly</option>
                                             <option value="MONTH">Monthly</option>
                                         </select>
@@ -357,7 +357,7 @@
                                         <label class="form-label small fw-bold d-none"></label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text border" id="basic-addon1">$</span>
-                                            <input type="number" class="form-control" min="1" max="1000"
+                                            <input type="number" class="form-control" min="1" max="1000" name="min_salary"
                                                 placeholder="Min" id="MIn" aria-describedby="inputGroupPrepend"
                                                 required>
                                         </div>
@@ -369,7 +369,7 @@
                                         <label class="form-label small fw-bold d-none"></label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text border" id="basic-addon1">$</span>
-                                            <input type="number" class="form-control" min="1" max="1000"
+                                            <input type="number" class="form-control" min="1" max="1000" name="max_salary"
                                                 placeholder="Max" id="Max" aria-describedby="inputGroupPrepend"
                                                 required>
                                         </div>
@@ -382,7 +382,7 @@
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Skills:</label>
-                                        <input name="name" id="skills" type="text" class="form-control"
+                                        <input name="skills" id="skills" type="text" class="form-control"
                                             placeholder="Web Developer">
                                     </div>
                                 </div><!--end col-->
@@ -390,7 +390,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Qualifications:</label>
-                                        <input name="name" id="Qualifications" type="text" class="form-control"
+                                        <input name="qualifications" id="Qualifications" type="text" class="form-control"
                                             placeholder="Qualifications">
                                     </div>
                                 </div><!--end col-->
@@ -398,7 +398,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Experience:</label>
-                                        <input name="name" id="Experience" type="text" class="form-control"
+                                        <input name="experience" id="Experience" type="text" class="form-control"
                                             placeholder="Experience">
                                     </div>
                                 </div><!--end col-->
@@ -406,7 +406,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Industry:</label>
-                                        <select class="form-control form-select" id="Industry">
+                                        <select class="form-control form-select" name="industry" id="Industry">
                                             <option value="BANK">Banking</option>
                                             <option value="BIO">Biotechnology</option>
                                             <option value="AVI">Aviation</option>
@@ -420,7 +420,7 @@
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Address:</label>
-                                        <input name="name" id="Address" type="text" class="form-control"
+                                        <input name="address" id="Address" type="text" class="form-control"
                                             placeholder="Address">
                                     </div>
                                 </div><!--end col-->
@@ -428,7 +428,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Country:</label>
-                                        <select class="form-control form-select" id="Country">
+                                        <select class="form-control form-select" name="country" id="Country">
                                             <option value="USA">USA</option>
                                             <option value="CAD">Canada</option>
                                             <option value="CHINA">China</option>
@@ -439,7 +439,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">State:</label>
-                                        <select class="form-control form-select" id="State">
+                                        <select class="form-control form-select" name="state" id="State">
                                             <option value="CAL">California</option>
                                             <option value="TEX">Texas</option>
                                             <option value="FLOR">Florida</option>

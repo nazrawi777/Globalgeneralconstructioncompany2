@@ -1,0 +1,4 @@
+# file: C:\Users\User_2\Desktop\chaos_projects\nazra_pro\frontend\nazra_project\web\urls.py
+# hypothesis_version: 6.150.3
+
+['404', '404.html', 'Agriculture.html', 'about', 'about.html', 'agriculture', 'api/chat/', 'blog', 'blog.html', 'candidates', 'candidates.html', 'chat_api', 'coming-soon.html', 'coming_soon', 'contact', 'contact.html', 'finance', 'finance.html', 'index', 'index.html', 'index_html', 'job-apply.html', 'job-detail.html', 'job-list.html', 'job-post.html', 'job_apply', 'job_detail', 'job_list', 'job_post', 'login', 'login.html', 'ourteam', 'ourteam.html', 'project', 'project.html', 'services', 'services.html', 'signup', 'signup.html', 'socialwalfare', 'socialwalfare.html', 'web']
