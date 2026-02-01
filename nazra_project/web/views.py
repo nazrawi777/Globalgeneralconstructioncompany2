@@ -25,6 +25,7 @@ from .models import (
     FinanceProject,
     FinancialMetrics,
     PortfolioStatus,
+    SocialWelfareStory,
 )
 from django.views.generic import ListView
 from django.db.models import Q

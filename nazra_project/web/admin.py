@@ -18,6 +18,7 @@ from .models import (
     FinanceProject,
     FinancialMetrics,
     PortfolioStatus,
+    SocialWelfareStory,
 )
 from django.utils.html import format_html
 
@@ -100,6 +101,26 @@ class MediaMosaicItemAdmin(admin.ModelAdmin):
         return "—"
 
     preview.short_description = "Preview"
+
+
+    preview.short_description = "Preview"
+
+
+@admin.register(SocialWelfareStory)
+class SocialWelfareStoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'is_active', 'order', 'created_at')
+    list_filter = ('is_active',)
+    search_fields = ('title', 'summary')
+    list_editable = ('is_active', 'order')
+    ordering = ('order', '-created_at')
+    fieldsets = (
+        ('Story Information', {
+            'fields': ('title', 'summary', 'image', 'link')
+        }),
+        ('Display Settings', {
+            'fields': ('is_active', 'order')
+        }),
+    )
 
 
 @admin.register(FiscalYear)

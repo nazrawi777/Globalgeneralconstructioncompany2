@@ -283,6 +283,27 @@ class MediaMosaicItem(models.Model):
         return f"{self.title} ({self.type})"
 
 
+class SocialWelfareStory(models.Model):
+    """Represents a story for the social welfare carousel."""
+    title = models.CharField(max_length=200)
+    summary = models.TextField(help_text="A brief summary of the story.")
+    image = models.ImageField(upload_to='social_welfare/stories/', help_text="Image for the carousel slide.")
+    link = models.URLField(max_length=500, blank=True, help_text="Optional link to the full story.")
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Social Welfare Story"
+        verbose_name_plural = "Social Welfare Stories"
+
+    def __str__(self):
+        return self.title
+
+
+
 class FiscalYear(models.Model):
     """Represents a fiscal year with annual turnover"""
     year = models.CharField(max_length=20, unique=True, help_text="e.g., '2020/21'")

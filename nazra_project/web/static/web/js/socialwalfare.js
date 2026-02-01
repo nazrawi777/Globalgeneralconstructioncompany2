@@ -7,10 +7,8 @@
 // ========================================
 
 const mosaicItems = JSON.parse(
-  document.getElementById("media-items-data").textContent,
+  JSON.parse(document.getElementById("media-items-data").textContent),
 );
-
-console.log(mosaicItems);
 
 const carouselStories = mosaicItems.filter((item) => item.type === "image");
 
@@ -20,6 +18,7 @@ const carouselStories = mosaicItems.filter((item) => item.type === "image");
 
 let currentMosaicFilter = "all";
 let currentCarouselIndex = 0;
+
 let carouselInterval = null;
 let lightboxItems = [];
 let lightboxIndex = 0;

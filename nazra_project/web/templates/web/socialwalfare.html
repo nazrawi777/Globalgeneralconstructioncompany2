@@ -983,14 +983,16 @@
 <script src="{% static 'web/assets/js/gsap/SplitText.js' %}"></script>
 <script src="{% static 'web/assets/js/script.js' %}"></script>
 <script src="{% static 'web/assets/js/gemini-chat.js' %}"></script>
+{{ media_items_json|json_script:"media-items-data" }}
+
+
   <script src="{% static 'web/js/socialwalfare.js' %}"></script>
-  <script id="media-items-data" type="application/json">
-    {{ medi_items_json|safe }}
-  </script>
-<script>
+<script defer>
+
+  //console.log(JSON.parse('{{ medi_items_json|safe }}'))
+  console.log(mediaItemsData);
   
-  console.log(mosaicItems)
-</script>
+  </script>
 </body>
 
 </html>
