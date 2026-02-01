@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.views.generic import TemplateView, View
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
@@ -20,7 +21,13 @@ from .models import (
     Partner,
     CompanyStatistic,
     ChatBotConfig,
+    FiscalYear,
+    FinanceProject,
+    FinancialMetrics,
+    PortfolioStatus,
 )
+from django.views.generic import ListView
+from django.db.models import Q
 
 logger = logging.getLogger(__name__)
 
@@ -132,7 +139,7 @@ class ComingSoonView(TemplateView):
 class ContactView(TemplateView):
     template_name = "web/contact.html"
 
-
+""" 
 class JobApplyView(BaseDynamicView):
     template_name = "web/job-apply.html"
 
@@ -187,7 +194,63 @@ class JobApplyView(BaseDynamicView):
             logger.error(f"Error saving job application: {e}")
             return JsonResponse({"error": "Internal server error"}, status=500)
 
+ """
 
+class JobApplyView(View):
+    template_name = "web/job-apply.html"
+
+    def get(self, request, *args, **kwargs):
+        job_id = request.GET.get("job_id")
+        selected_job = None
+        if job_id:
+            selected_job = JobVacancy.objects.filter(pk=job_id).first()
+
+        context = {
+            "selected_job": selected_job,
+            "job_vacancies": JobVacancy.objects.all(),
+            "job_types": JobVacancy.JOB_TYPE_CHOICES,
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        try:
+            name = request.POST.get("name")
+            email = request.POST.get("email")
+            phone = request.POST.get("phone")
+            job_title = request.POST.get("job_title")
+            job_type = request.POST.get("job_type", "All Jobs")
+            description = request.POST.get("description")
+            cv = request.FILES.get("cv")
+            accepted_terms = request.POST.get("accepted_terms") == "on"
+
+            # Validation
+            if not all([name, email, phone, job_title, cv]):
+                return JsonResponse({"success": False, "message": "Please fill all required fields."})
+
+            # Save application
+            application = JobApplication.objects.create(
+                name=name,
+                email=email,
+                phone=phone,
+                job_title=job_title,
+                job_type=job_type,
+                description=description,
+                cv=cv,
+                accepted_terms=accepted_terms,
+            )
+
+            return JsonResponse({
+                "success": True,
+                "message": f"Thank you {name}! Your application for '{job_title}' has been submitted successfully.",
+                "application_id": application.id,
+            })
+
+        except Exception as e:
+            logger.error(f"Error saving job application: {e}")
+            return JsonResponse({
+                "success": False,
+                "message": "An unexpected error occurred. Please try again later."
+            })
 class JobDetailView(BaseDynamicView):
     template_name = "web/job-detail.html"
 
@@ -208,7 +271,7 @@ class JobDetailView(BaseDynamicView):
             "job_vacancy": None,
         }
 
-
+""" 
 class JobListView(BaseDynamicView):
     template_name = "web/job-list.html"
 
@@ -251,6 +314,79 @@ class JobListView(BaseDynamicView):
             "locations": [],
         }
 
+ """
+
+
+class JobListView(ListView):
+    template_name = "web/job-list.html"
+    context_object_name = "job_vacancies"
+    paginate_by = 10
+
+    def get_queryset(self):
+        qs = JobVacancy.objects.all().order_by("-posted_date")
+
+        s = self.request.GET.get("s")
+        job_type = self.request.GET.get("job_type")
+        location = self.request.GET.get("location")
+
+        if s:
+            qs = qs.filter(
+                Q(title__icontains=s) |
+                Q(description__icontains=s) |
+                Q(skills__icontains=s)
+            )
+
+        if job_type:
+            qs = qs.filter(job_type=job_type)
+
+        if location:
+            qs = qs.filter(address__icontains=location)
+
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["job_types"] = JobVacancy.JOB_TYPE_CHOICES
+        context["locations"] = (
+            JobVacancy.objects.values_list("address", flat=True).distinct()
+        )
+        return context
+
+
+class JobListView(ListView):
+    template_name = "web/job-list.html"
+    context_object_name = "job_vacancies"
+    paginate_by = 10
+
+    def get_queryset(self):
+        qs = JobVacancy.objects.all().order_by("-posted_date")
+
+        s = self.request.GET.get("s")
+        job_type = self.request.GET.get("job_type")
+        location = self.request.GET.get("location")
+
+        if s:
+            qs = qs.filter(
+                Q(title__icontains=s) |
+                Q(description__icontains=s) |
+                Q(skills__icontains=s)
+            )
+
+        if job_type:
+            qs = qs.filter(job_type=job_type)
+
+        if location:
+            qs = qs.filter(address__icontains=location)
+
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["job_types"] = JobVacancy.JOB_TYPE_CHOICES
+        context["locations"] = (
+            JobVacancy.objects.values_list("address", flat=True).distinct()
+        )
+        return context
 
 class JobPostView(TemplateView):
     template_name = "web/job-post.html"
@@ -368,7 +504,7 @@ class ProjectView(BaseDynamicView):
 
             projects_with_media.append(project_data)
 
-        context["projects_json"] = projects_w
+        context["projects_json"] = projects_with_media
 
 
 class ServicesView(BaseDynamicView):
@@ -435,8 +571,71 @@ class SocialWelfareView(TemplateView):
         return context
 
 
-class FinanceView(TemplateView):
+class FinanceView(BaseDynamicView):
     template_name = "web/finance.html"
+
+    def get_dynamic_context(self):
+        """Provide finance-specific context data"""
+        context = {}
+        
+        # Get fiscal years ordered by display order
+        context["fiscal_years"] = safe_model_query(FiscalYear, is_active=True).order_by('order', '-year')
+        
+        # Get all finance projects
+        context["finance_projects"] = safe_model_query(FinanceProject).order_by('fiscal_year__order', 'order', '-value')
+        
+        # Get outstanding projects (for sidebar)
+        context["outstanding_projects"] = safe_model_query(FinanceProject, is_outstanding=True).order_by('-value')
+        
+        # Get financial metrics (overview stats)
+        metrics = safe_model_query(FinancialMetrics, is_active=True).first()
+        context["financial_metrics"] = metrics
+        
+        # Get portfolio status
+        portfolio_status = safe_model_query(PortfolioStatus, is_active=True).first()
+        context["portfolio_status"] = portfolio_status
+        
+        # Prepare data for JavaScript
+        financial_years_data = []
+        for fy in context["fiscal_years"]:
+            financial_years_data.append({
+                'year': fy.year,
+                'turnover': float(fy.turnover),
+                'formatted': fy.formatted_turnover(),
+            })
+        
+        projects_data = []
+        for project in context["finance_projects"]:
+            projects_data.append({
+                'id': f'project-{project.id}',
+                'title': project.title,
+                'description': project.description,
+                'value': float(project.value),
+                'formattedValue': project.formatted_value(),
+                'contractDate': project.contract_date,
+                'status': project.status,
+                'progress': project.progress,
+                'client': project.client,
+                'isOutstanding': project.is_outstanding,
+                'fiscalYear': project.fiscal_year.year if project.fiscal_year else None,
+            })
+        
+        context["financial_years_json"] = json.dumps(financial_years_data, cls=DjangoJSONEncoder)
+        context["projects_json"] = json.dumps(projects_data, cls=DjangoJSONEncoder)
+        
+        return context
+
+    def get_fallback_context(self):
+        """Provide fallback context when dynamic context fails"""
+        return {
+            "fiscal_years": FiscalYear.objects.none(),
+            "finance_projects": FinanceProject.objects.none(),
+            "outstanding_projects": FinanceProject.objects.none(),
+            "financial_metrics": None,
+            "portfolio_status": None,
+            "financial_years_json": "[]",
+            "projects_json": "[]",
+        }
 
 
 class NotFoundView(TemplateView):

@@ -257,95 +257,109 @@
     <div class="stricky-header stricked-menu main-menu">
         <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
     </div>
-    <section class="section bg-light" style="background-color: transparent !important;">
-        <div class="container" id="joblistwidth">
-            <div class="row justify-content-center">
-                <div class="col-lg-7 col-md-7">
-                    <div class="card border-0">
-                        <form class="rounded shadow p-4">
-                            <div class="row">
-                                <div class="col-12" style="background-color: #fff !important;">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-semibold">Your Name :<span
-                                                class="text-danger">*</span></label>
-                                        <input name="name" id="name2" type="text" class="form-control"
-                                            placeholder="First Name :">
+   {% load static %}
+   
+   <section class="section bg-light" style="background-color: transparent !important;">
+       <div class="container" id="joblistwidth">
+           <div class="row justify-content-center">
+               <div class="col-lg-7 col-md-7">
+                   <div class="card border-0">
+                       <div id="form-feedback" class="mb-3" ></div>
+                       <form id="job-apply-form"  class="rounded shadow p-4" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+
+                            <!-- Name -->
+                            <div class="col-12" style="background-color: #fff !important;">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Your Name :<span class="text-danger">*</span></label>
+                                    <input name="name" type="text" class="form-control" placeholder="First Name :" required>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-12" style="background-color: #fff !important;">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Your Email :<span class="text-danger">*</span></label>
+                                    <input name="email" type="email" class="form-control" placeholder="Your email :" required>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="col-12" style="background-color: #fff !important;">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Your Phone no. :<span class="text-danger">*</span></label>
+                                    <input name="phone" type="tel" class="form-control" placeholder="Your phone no. :" required>
+                                </div>
+                            </div>
+
+                            <!-- Job Title -->
+                            <div class="col-12" style="background-color: #fff !important;">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Job Title :</label>
+                                    <input name="job_title" type="text" class="form-control"
+                                        value="{{ job_vacancy.title|default_if_none:'' }}"
+                                        placeholder="Title :">
+                                </div>
+                            </div>
+
+                            <!-- Job Type -->
+                            <div class="col-12" style="background-color: #fff !important;">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Types of jobs :</label>
+                                    <select class="form-control form-select" name="job_type">
+                                        <option value="">Select Job Type</option>
+                                        {% for key, value in job_vacancy.JOB_TYPE_CHOICES %}
+                                            <option value="{{ key }}" {% if job_vacancy.job_type == key %}selected{% endif %}>
+                                                {{ value }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="col-12" style="background-color: #fff !important;">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Description :</label>
+                                    <textarea name="description" rows="4" class="form-control"
+                                        placeholder="Describe the job :">{{ job_vacancy.description|default_if_none:'' }}</textarea>
+                                </div>
+                            </div>
+
+                            <!-- Upload CV -->
+                            <div class="col-12" style="background-color: #fff !important;">
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label fw-semibold">Upload Your CV / Resume :</label>
+                                    <input class="form-control" type="file" name="cv" id="formFile">
+                                </div>
+                            </div>
+
+                            <!-- Terms -->
+                            <div class="col-12" style="background-color: #fff !important;">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="terms" required>
+                                        <label class="form-check-label">I Accept <a href="{% url 'web:job_list' %}" class="text-primary">Terms And Condition</a></label>
                                     </div>
-                                </div><!--end col-->
-                                <div class="col-12" style="background-color: #fff !important;">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-semibold">Your Email :<span
-                                                class="text-danger">*</span></label>
-                                        <input name="email" id="email2" type="email" class="form-control"
-                                            placeholder="Your email :">
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-12" style="background-color: #fff !important;">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-semibold">Your Phone no. :<span
-                                                class="text-danger">*</span></label>
-                                        <input name="phone" id="number2" type="number" class="form-control"
-                                            placeholder="Your phone no. :">
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-12" style="background-color: #fff !important;">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-semibold">Job Title :</label>
-                                        <input name="job_title" id="subject2" class="form-control"
-                                            placeholder="Title :">
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-12" style="background-color: #fff !important;">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-semibold">Types of jobs :</label>
-                                        <select class="form-control form-select" name="job_type" id="Sortbylist-Shop">
-                                            <option>All Jobs</option>
-                                            <option>Full Time</option>
-                                            <option>Half Time</option>
-                                            <option>Remote</option>
-                                            <option>In Office</option>
-                                        </select>
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-12" style="background-color: #fff !important;">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-semibold">Description :</label>
-                                        <textarea name="description" id="comments2" rows="4" class="form-control"
-                                            placeholder="Describe the job :"></textarea>
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-12" style="background-color: #fff !important;">
-                                    <div class="mb-3">
-                                        <label for="formFile" class="form-label fw-semibold">Upload Your Cv / Resume
-                                            :</label>
-                                        <input class="form-control" type="file" name="cv" id="formFile">
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-12" style="background-color: #fff !important;">
-                                    <div class="mb-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">I Accept <a
-                                                    href="job-apply.html#" class="text-primary">Terms And
-                                                    Condition</a></label>
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                            </div><!--end row-->
-                            <div class="row">
-                                <div class="col-12" style="background-color: #fff !important;">
-                                    <input type="submit" id="submit2" name="send" class="submitBnt btn btn-primary"
-                                        value="Apply Now">
-                                </div><!--end col-->
-                            </div><!--end row-->
-                        </form><!--end form-->
-                    </div><!--end custom-form-->
-                </div>
-            </div>
-        </div><!--end container-->
-    </section><!--end section-->
-    <!-- Job apply form End -->
+                                </div>
+                            </div>
+
+                        </div><!--end row-->
+
+                        <!-- Submit -->
+                        <div class="row">
+                            <div class="col-12" style="background-color: #fff !important;">
+                                <input type="submit" class="submitBnt btn btn-primary w-100" value="Apply Now">
+                            </div>
+                        </div>
+                    </form><!--end form-->
+                </div><!--end card-->
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!--end container-->
+</section><!--end section-->
+
 
 
     <footer class="site-footer">
@@ -574,6 +588,37 @@
     <!-- Custom -->
     <script src="{% static 'web/js/plugins.init.js' %}"></script>
     <script src="{% static 'web/js/app.js' %}"></script>
+    <script>
+document.getElementById("job-apply-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let form = e.target;
+    let formData = new FormData(form);
+    let feedbackDiv = document.getElementById("form-feedback");
+
+    fetch("{% url 'web:job_apply' %}", {
+        method: "POST",
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            feedbackDiv.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+            form.reset();
+        } else {
+            feedbackDiv.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        feedbackDiv.innerHTML = `<div class="alert alert-danger">An error occurred. Please try again.</div>`;
+    });
+});
+</script>
+
 </body>
 
 </html>

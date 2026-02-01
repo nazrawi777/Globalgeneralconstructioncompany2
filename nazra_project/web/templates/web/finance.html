@@ -375,8 +375,12 @@
                 <polyline points="16 7 22 7 22 13" />
               </svg>
             </div>
-            <p class="hero-stat-value stat-value text-gradient">1.07B ETB</p>
-            <p class="hero-stat-label">2024/25 Turnover</p>
+            <p class="hero-stat-value stat-value text-gradient">
+              {% if financial_metrics %}{{ financial_metrics.formatted_turnover }}{% else %}1.07B ETB{% endif %}
+            </p>
+            <p class="hero-stat-label">
+              {% if financial_metrics %}{{ financial_metrics.current_turnover_year }} Turnover{% else %}2024/25 Turnover{% endif %}
+            </p>
           </div>
           <div class="hero-stat glass-panel">
             <div class="hero-stat-icon text-accent">
@@ -391,7 +395,7 @@
                 <path d="M10 18h4" />
               </svg>
             </div>
-            <p class="hero-stat-value stat-value">11</p>
+            <p class="hero-stat-value stat-value">{% if financial_metrics %}{{ financial_metrics.total_projects }}{% else %}11{% endif %}</p>
             <p class="hero-stat-label">Total Projects</p>
           </div>
           <div class="hero-stat glass-panel">
@@ -403,7 +407,9 @@
                 <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
               </svg>
             </div>
-            <p class="hero-stat-value stat-value">2.57B ETB</p>
+            <p class="hero-stat-value stat-value">
+              {% if financial_metrics %}{{ financial_metrics.formatted_portfolio_value }}{% else %}2.57B ETB{% endif %}
+            </p>
             <p class="hero-stat-label">Portfolio Value</p>
           </div>
         </div>
@@ -438,9 +444,15 @@
                 <polyline points="16 7 22 7 22 13" />
               </svg>
             </div>
-            <p class="highlight-value stat-value">1.07B ETB</p>
-            <p class="highlight-label">FY 2024/25 Turnover</p>
-            <p class="highlight-subtext">+610.8% YoY Growth</p>
+            <p class="highlight-value stat-value">
+              {% if financial_metrics %}{{ financial_metrics.formatted_turnover }}{% else %}1.07B ETB{% endif %}
+            </p>
+            <p class="highlight-label">
+              FY {% if financial_metrics %}{{ financial_metrics.current_turnover_year }}{% else %}2024/25{% endif %} Turnover
+            </p>
+            <p class="highlight-subtext">
+              {% if financial_metrics and financial_metrics.yoy_growth %}+{{ financial_metrics.yoy_growth }}% YoY Growth{% else %}+610.8% YoY Growth{% endif %}
+            </p>
           </div>
 
           <div class="highlight-card glass-panel animate-on-scroll" style="border-color: hsl(42 85% 55% / 0.3);">
@@ -453,9 +465,13 @@
                 <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
               </svg>
             </div>
-            <p class="highlight-value stat-value">2.57B ETB</p>
+            <p class="highlight-value stat-value">
+              {% if financial_metrics %}{{ financial_metrics.formatted_portfolio_value }}{% else %}2.57B ETB{% endif %}
+            </p>
             <p class="highlight-label">Total Portfolio Value</p>
-            <p class="highlight-subtext">11 Projects</p>
+            <p class="highlight-subtext">
+              {% if financial_metrics %}{{ financial_metrics.total_projects }} Projects{% else %}11 Projects{% endif %}
+            </p>
           </div>
 
           <div class="highlight-card glass-panel animate-on-scroll" style="border-color: hsl(150 60% 40% / 0.3);">
@@ -467,7 +483,9 @@
                 <path d="m9 12 2 2 4-4" />
               </svg>
             </div>
-            <p class="highlight-value stat-value">7</p>
+            <p class="highlight-value stat-value">
+              {% if financial_metrics %}{{ financial_metrics.completed_projects }}{% else %}7{% endif %}
+            </p>
             <p class="highlight-label">Completed Projects</p>
             <p class="highlight-subtext">Successfully Delivered</p>
           </div>
@@ -481,7 +499,9 @@
                 <polyline points="12 6 12 12 16 14" />
               </svg>
             </div>
-            <p class="highlight-value stat-value">4</p>
+            <p class="highlight-value stat-value">
+              {% if financial_metrics %}{{ financial_metrics.active_works }}{% else %}4{% endif %}
+            </p>
             <p class="highlight-label">Active Works</p>
             <p class="highlight-subtext">In Progress</p>
           </div>
@@ -537,40 +557,22 @@
 
               <!-- Bars Container -->
               <div class="turnover-bars-wrapper">
-                <!-- Bar 1: 2020/21 -->
-                <div class="turnover-bar-group" data-year="2020/21" data-value="247500679"
-                  data-formatted="247,500,679 ETB">
+                {% for fiscal_year in fiscal_years %}
+                <div class="turnover-bar-group" 
+                     data-year="{{ fiscal_year.year }}" 
+                     data-value="{{ fiscal_year.turnover }}"
+                     data-formatted="{{ fiscal_year.formatted_turnover }}">
+                  <div class="turnover-bar {% if forloop.last %}turnover-bar-primary{% else %}turnover-bar-muted{% endif %}" 
+                       id="bar-{{ fiscal_year.year|slugify }}"></div>
+                  <span class="turnover-x-label">{{ fiscal_year.year }}</span>
+                </div>
+                {% empty %}
+                <!-- Fallback bars if no fiscal years -->
+                <div class="turnover-bar-group" data-year="2020/21" data-value="247500679" data-formatted="247,500,679 ETB">
                   <div class="turnover-bar turnover-bar-muted" id="bar-2020"></div>
                   <span class="turnover-x-label">2020/21</span>
                 </div>
-
-                <!-- Bar 2: 2021/22 -->
-                <div class="turnover-bar-group" data-year="2021/22" data-value="258134782"
-                  data-formatted="258,134,782 ETB">
-                  <div class="turnover-bar turnover-bar-muted" id="bar-2021"></div>
-                  <span class="turnover-x-label">2021/22</span>
-                </div>
-
-                <!-- Bar 3: 2022/23 -->
-                <div class="turnover-bar-group" data-year="2022/23" data-value="142378986"
-                  data-formatted="142,378,986 ETB">
-                  <div class="turnover-bar turnover-bar-muted" id="bar-2022"></div>
-                  <span class="turnover-x-label">2022/23</span>
-                </div>
-
-                <!-- Bar 4: 2023/24 -->
-                <div class="turnover-bar-group" data-year="2023/24" data-value="150345685"
-                  data-formatted="150,345,685 ETB">
-                  <div class="turnover-bar turnover-bar-muted" id="bar-2023"></div>
-                  <span class="turnover-x-label">2023/24</span>
-                </div>
-
-                <!-- Bar 5: 2024/25 (Primary/Highlighted) -->
-                <div class="turnover-bar-group" data-year="2024/25" data-value="1068648056"
-                  data-formatted="1,068,648,056 ETB">
-                  <div class="turnover-bar turnover-bar-primary" id="bar-2024"></div>
-                  <span class="turnover-x-label">2024/25</span>
-                </div>
+                {% endfor %}
               </div>
             </div>
           </div>
@@ -585,8 +587,12 @@
           <div class="turnover-footer">
             <div class="turnover-footer-stats">
               <div class="turnover-base-year">
-                <span class="turnover-stat-label">Base Year (FY 2020/21): </span>
-                <span class="turnover-stat-value">247,500,679 ETB</span>
+                <span class="turnover-stat-label">
+                  Base Year (FY {% if fiscal_years %}{{ fiscal_years.first.year }}{% else %}2020/21{% endif %}): 
+                </span>
+                <span class="turnover-stat-value">
+                  {% if fiscal_years %}{{ fiscal_years.first.formatted_turnover }}{% else %}247,500,679 ETB{% endif %}
+                </span>
               </div>
               <div class="turnover-growth">
                 <svg class="turnover-growth-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -595,7 +601,16 @@
                   <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
                   <polyline points="16 7 22 7 22 13"></polyline>
                 </svg>
-                <span>332% Growth Over Period</span>
+                <span>
+                  {% if fiscal_years and fiscal_years.count > 1 %}
+                    {% with first=fiscal_years.first last=fiscal_years.last %}
+                      {% widthratio last.turnover first.turnover 100 as growth %}
+                      {{ growth|add:"-100"|floatformat:0 }}% Growth Over Period
+                    {% endwith %}
+                  {% else %}
+                    332% Growth Over Period
+                  {% endif %}
+                </span>
               </div>
             </div>
             <p class="turnover-footer-note">
@@ -630,29 +645,25 @@
           <!-- Outstanding Works Sidebar -->
           <div class="outstanding-sidebar animate-on-scroll">
             <div class="outstanding-sticky">
-              <div class="outstanding-panel glass-panel">
+                <div class="outstanding-panel glass-panel">
                 <h4 class="outstanding-title">Outstanding Works</h4>
                 <div>
+                  {% for project in outstanding_projects %}
                   <div class="outstanding-item">
-                    <p class="outstanding-item-title">Palace Rigid Pavement & Drainage Works</p>
-                    <p class="outstanding-item-value stat-value font-mono">1,300,945,000 ETB</p>
+                    <p class="outstanding-item-title">{{ project.title }}</p>
+                    <p class="outstanding-item-value stat-value font-mono">{{ project.formatted_value }}</p>
                     <div class="progress-container">
                       <div class="progress-bar">
-                        <div class="progress-fill" data-progress="95" style="width: 0%;"></div>
+                        <div class="progress-fill" data-progress="{{ project.progress }}" style="width: 0%;"></div>
                       </div>
-                      <span class="progress-text">95%</span>
+                      <span class="progress-text">{{ project.progress }}%</span>
                     </div>
                   </div>
+                  {% empty %}
                   <div class="outstanding-item">
-                    <p class="outstanding-item-title">Jimma Road Corridor Segment C</p>
-                    <p class="outstanding-item-value stat-value font-mono">108,840,001.82 ETB</p>
-                    <div class="progress-container">
-                      <div class="progress-bar">
-                        <div class="progress-fill" data-progress="90" style="width: 0%;"></div>
-                      </div>
-                      <span class="progress-text">90%</span>
-                    </div>
+                    <p class="outstanding-item-title">No outstanding works</p>
                   </div>
+                  {% endfor %}
                 </div>
               </div>
             </div>
@@ -676,11 +687,9 @@
               </button>
 
               <div class="nav-dots">
-                <button class="nav-dot active" aria-label="Go to page 1"></button>
-                <button class="nav-dot" aria-label="Go to page 2"></button>
-                <button class="nav-dot" aria-label="Go to page 3"></button>
-                <button class="nav-dot" aria-label="Go to page 4"></button>
-                <button class="nav-dot" aria-label="Go to page 5"></button>
+                {% for fiscal_year in fiscal_years %}
+                <button class="nav-dot {% if forloop.first %}active{% endif %}" aria-label="Go to page {{ forloop.counter }}"></button>
+                {% endfor %}
               </div>
 
               <button id="next-btn" class="nav-button glass-panel" aria-label="Next page">
@@ -711,7 +720,9 @@
               <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
               <path d="M22 12A10 10 0 0 0 12 2v10z" />
             </svg>
-            <h2 class="section-title1">Portfolio Status as of June 2024</h2>
+            <h2 class="section-title1">
+              Portfolio Status as of {% if portfolio_status %}{{ portfolio_status.snapshot_date|date:"F Y" }}{% else %}June 2024{% endif %}
+            </h2>
           </div>
           <span class="turnover-badge">Archived Snapshot</span>
         </div>
@@ -728,14 +739,22 @@
                 </svg>
                 <span>Completed</span>
               </div>
-              <span class="status-card-count text-mosaic-complete">7</span>
+              <span class="status-card-count text-mosaic-complete">
+                {% if portfolio_status %}{{ portfolio_status.completed_count }}{% else %}7{% endif %}
+              </span>
             </div>
             <div class="status-progress">
-              <div class="status-progress-fill bg-mosaic-complete" data-progress="64" style="width: 0%;"></div>
+              <div class="status-progress-fill bg-mosaic-complete" 
+                   data-progress="{% if portfolio_status %}{{ portfolio_status.get_completed_percentage }}{% else %}64{% endif %}" 
+                   style="width: 0%;"></div>
             </div>
             <div class="status-card-footer">
-              <span class="text-muted-foreground">64% of projects</span>
-              <span class="font-mono">929.3M ETB</span>
+              <span class="text-muted-foreground">
+                {% if portfolio_status %}{{ portfolio_status.get_completed_percentage }}{% else %}64{% endif %}% of projects
+              </span>
+              <span class="font-mono">
+                {% if portfolio_status %}{{ portfolio_status.formatted_completed_value }}{% else %}929.3M ETB{% endif %}
+              </span>
             </div>
           </div>
 
@@ -750,14 +769,22 @@
                 </svg>
                 <span>Ongoing</span>
               </div>
-              <span class="status-card-count text-mosaic-ongoing">2</span>
+              <span class="status-card-count text-mosaic-ongoing">
+                {% if portfolio_status %}{{ portfolio_status.ongoing_count }}{% else %}2{% endif %}
+              </span>
             </div>
             <div class="status-progress">
-              <div class="status-progress-fill bg-mosaic-ongoing" data-progress="18" style="width: 0%;"></div>
+              <div class="status-progress-fill bg-mosaic-ongoing" 
+                   data-progress="{% if portfolio_status %}{{ portfolio_status.get_ongoing_percentage }}{% else %}18{% endif %}" 
+                   style="width: 0%;"></div>
             </div>
             <div class="status-card-footer">
-              <span class="text-muted-foreground">18% of projects</span>
-              <span class="font-mono">236.5M ETB</span>
+              <span class="text-muted-foreground">
+                {% if portfolio_status %}{{ portfolio_status.get_ongoing_percentage }}{% else %}18{% endif %}% of projects
+              </span>
+              <span class="font-mono">
+                {% if portfolio_status %}{{ portfolio_status.formatted_ongoing_value }}{% else %}236.5M ETB{% endif %}
+              </span>
             </div>
           </div>
 
@@ -773,14 +800,22 @@
                 </svg>
                 <span>Priority Works</span>
               </div>
-              <span class="status-card-count text-mosaic-priority">2</span>
+              <span class="status-card-count text-mosaic-priority">
+                {% if portfolio_status %}{{ portfolio_status.priority_count }}{% else %}2{% endif %}
+              </span>
             </div>
             <div class="status-progress">
-              <div class="status-progress-fill bg-mosaic-priority" data-progress="18" style="width: 0%;"></div>
+              <div class="status-progress-fill bg-mosaic-priority" 
+                   data-progress="{% if portfolio_status %}{{ portfolio_status.get_priority_percentage }}{% else %}18{% endif %}" 
+                   style="width: 0%;"></div>
             </div>
             <div class="status-card-footer">
-              <span class="text-muted-foreground">18% of projects</span>
-              <span class="font-mono">1.41B ETB</span>
+              <span class="text-muted-foreground">
+                {% if portfolio_status %}{{ portfolio_status.get_priority_percentage }}{% else %}18{% endif %}% of projects
+              </span>
+              <span class="font-mono">
+                {% if portfolio_status %}{{ portfolio_status.formatted_priority_value }}{% else %}1.41B ETB{% endif %}
+              </span>
             </div>
           </div>
         </div>
@@ -788,12 +823,23 @@
         <div class="summary-bar glass-panel animate-on-scroll">
           <div class="summary-bar-header">
             <span class="text-muted-foreground">Total Portfolio Value (as recorded)</span>
-            <span class="font-mono" style="font-weight: 600;">2.57B ETB</span>
+            <span class="font-mono" style="font-weight: 600;">
+              {% if portfolio_status %}{{ portfolio_status.formatted_total_value }}{% else %}2.57B ETB{% endif %}
+            </span>
           </div>
           <div class="summary-bar-visual">
+            {% if portfolio_status %}
+            <div class="summary-bar-segment bg-mosaic-complete" 
+                 style="width: {% widthratio portfolio_status.completed_value portfolio_status.total_value 100 %}%;"></div>
+            <div class="summary-bar-segment bg-mosaic-ongoing" 
+                 style="width: {% widthratio portfolio_status.ongoing_value portfolio_status.total_value 100 %}%;"></div>
+            <div class="summary-bar-segment bg-mosaic-priority" 
+                 style="width: {% widthratio portfolio_status.priority_value portfolio_status.total_value 100 %}%;"></div>
+            {% else %}
             <div class="summary-bar-segment bg-mosaic-complete" style="width: 36%;"></div>
             <div class="summary-bar-segment bg-mosaic-ongoing" style="width: 9%;"></div>
             <div class="summary-bar-segment bg-mosaic-priority" style="width: 55%;"></div>
+            {% endif %}
           </div>
           <p class="summary-note">
             This snapshot reflects the portfolio composition at the stated date and serves as a permanent historical
@@ -1153,6 +1199,14 @@
   <script src="{% static 'web/assets/js/script.js' %}"></script>
   <script src="{% static 'web/assets/js/countdown.min.js' %}"></script>
   <script src="{% static 'web/assets/js/gemini-chat.js' %}"></script>
+  
+  <!-- Pass Django data to JavaScript -->
+  <script>
+    // Financial data from Django
+    window.financialYearsData = {{ financial_years_json|safe }};
+    window.projectsData = {{ projects_json|safe }};
+  </script>
+  
   <script src="{% static 'web/js/final.js' %}"></script>
 </body>
 

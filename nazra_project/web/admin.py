@@ -14,6 +14,10 @@ from .models import (
     CompanyStatistic,
     ChatBotConfig,
     MediaMosaicItem,
+    FiscalYear,
+    FinanceProject,
+    FinancialMetrics,
+    PortfolioStatus,
 )
 from django.utils.html import format_html
 
@@ -35,6 +39,8 @@ class JobApplicationAdmin(admin.ModelAdmin):
     list_display = ("name", "email", "job_title", "job_type", "created_at")
     list_filter = ("job_type", "created_at")
     search_fields = ("name", "email", "job_title")
+
+    
 
 
 @admin.register(CompanyStatistic)
@@ -94,3 +100,96 @@ class MediaMosaicItemAdmin(admin.ModelAdmin):
         return "—"
 
     preview.short_description = "Preview"
+
+
+@admin.register(FiscalYear)
+class FiscalYearAdmin(admin.ModelAdmin):
+    list_display = ('year', 'turnover', 'formatted_turnover', 'is_active', 'order')
+    list_filter = ('is_active',)
+    search_fields = ('year',)
+    list_editable = ('is_active', 'order')
+    ordering = ('order', '-year')
+    fieldsets = (
+        ('Fiscal Year Information', {
+            'fields': ('year', 'turnover', 'year_start', 'year_end')
+        }),
+        ('Display Settings', {
+            'fields': ('is_active', 'order')
+        }),
+    )
+
+
+@admin.register(FinanceProject)
+class FinanceProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'client', 'status', 'formatted_value', 'progress', 'is_outstanding', 'fiscal_year', 'order')
+    list_editable = ('status', 'progress', 'is_outstanding', 'order', 'formatted_value')
+    list_filter = ('status', 'is_outstanding', 'fiscal_year')
+    search_fields = ('title', 'client', 'description')
+    list_editable = ('status', 'progress', 'is_outstanding', 'order')
+    ordering = ('fiscal_year__order', 'order', '-value')
+    fieldsets = (
+        ('Project Information', {
+            'fields': ('title', 'description', 'client', 'contract_date')
+        }),
+        ('Financial Details', {
+            'fields': ('value', 'status', 'progress', 'fiscal_year')
+        }),
+        ('Display Settings', {
+            'fields': ('is_outstanding', 'order')
+        }),
+    )
+
+
+@admin.register(FinancialMetrics)
+class FinancialMetricsAdmin(admin.ModelAdmin):
+    list_display = ('current_turnover_year', 'formatted_turnover', 'total_projects', 'formatted_portfolio_value', 'is_active', 'updated_at')
+    list_filter = ('is_active',)
+    list_editable = ('is_active',)
+    fieldsets = (
+        ('Current Fiscal Year', {
+            'fields': ('current_turnover_year', 'current_turnover', 'yoy_growth')
+        }),
+        ('Project Metrics', {
+            'fields': ('total_projects', 'completed_projects', 'active_works')
+        }),
+        ('Portfolio Value', {
+            'fields': ('portfolio_value',)
+        }),
+        ('Display Settings', {
+            'fields': ('is_active',)
+        }),
+    )
+
+    def has_add_permission(self, request):
+        # Allow only one active metrics set
+        if FinancialMetrics.objects.filter(is_active=True).exists() and not FinancialMetrics.objects.filter(is_active=True, pk=request.resolver_match.kwargs.get('object_id')).exists():
+            return super().has_add_permission(request)
+        return super().has_add_permission(request)
+
+
+@admin.register(PortfolioStatus)
+class PortfolioStatusAdmin(admin.ModelAdmin):
+    list_display = ('snapshot_date', 'completed_count', 'ongoing_count', 'priority_count', 'formatted_total_value', 'is_active', 'updated_at')
+    list_filter = ('is_active', 'snapshot_date')
+    list_editable = ('is_active',)
+    ordering = ('-snapshot_date',)
+    fieldsets = (
+        ('Snapshot Information', {
+            'fields': ('snapshot_date',)
+        }),
+        ('Completed Projects', {
+            'fields': ('completed_count', 'completed_value')
+        }),
+        ('Ongoing Projects', {
+            'fields': ('ongoing_count', 'ongoing_value')
+        }),
+        ('Priority Projects', {
+            'fields': ('priority_count', 'priority_value')
+        }),
+        ('Total Portfolio', {
+            'fields': ('total_value',)
+        }),
+        ('Display Settings', {
+            'fields': ('is_active',)
+        }),
+    )
