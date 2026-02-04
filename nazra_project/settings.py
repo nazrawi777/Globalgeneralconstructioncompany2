@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
-
+os.environ['DJANGO_SETTINGS_MODULE'] = 'nazra_project.settings'
 # Application definition
 
 INSTALLED_APPS = [
