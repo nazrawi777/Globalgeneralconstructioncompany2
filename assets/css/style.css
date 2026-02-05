@@ -1276,7 +1276,7 @@ li {
   justify-content: space-between;
   flex-wrap: wrap;
   background-color:#1e3cae;
-  padding: 0 15px 0;
+  padding: 0 9px 0;
 }
 
 .main-menu__main-menu-box {
@@ -1289,7 +1289,7 @@ li {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  padding: 9px 0;
+  padding: 1px 0;
 }
 
 .main-menu__search-box {
@@ -1297,6 +1297,10 @@ li {
   display: flex;
   align-items: center;
   margin-right: 25px;
+}
+#iconic{
+  position: relative;
+  right: 15px;
 }
 
 .main-menu__search {
@@ -2967,7 +2971,9 @@ li {
 .welcome-style1__img .img2:hover::before {
   opacity: .50;
 }
-
+#iconic {
+    color:white !important;
+}
 .welcome-style1__img .img2 img {
   width: 100%;
   transform: scale3d(1, 1, 1);
@@ -3294,7 +3300,6 @@ li {
     height: 100%;
     object-fit: cover;
 }
-
 
 
 

@@ -205,6 +205,48 @@ const posts = [
     thumbnail: 'https://i.postimg.cc/6QbZ66Fd/download-(3).jpg',
     mediaType: 'image',
     media: ['materials-1.jpg']
+  },
+  {
+    id: 9,
+    category: 'ourteam',
+    date: '2024-08-14',
+    readingTime: 5,
+    author: 'Materials Team',
+    thumbnail: 'https://i.postimg.cc/CxLY92Tk/photo_2026_01_30_22_44_32.jpg',
+    mediaType: 'image',
+    media: ['materials-1.jpg']
+  },
+
+
+  {
+    id: 10,
+    category: 'ourteam',
+    date: '2024-08-14',
+    readingTime: 5,
+    author: 'Materials Team',
+    thumbnail: 'https://i.postimg.cc/L8zf0nSn/0E7A2284.jpg',
+    mediaType: 'image',
+    media: ['materials-1.jpg']
+  },
+   {
+    id: 10,
+    category: 'ourteam',
+    date: '2024-08-14',
+    readingTime: 5,
+    author: 'Materials Team',
+    thumbnail: 'https://i.postimg.cc/6QbZ66Fd/download-(3).jpg',
+    mediaType: 'image',
+    media: ['materials-1.jpg']
+  },
+   {
+    id: 10,
+    category: 'ourteam',
+    date: '2024-08-14',
+    readingTime: 5,
+    author: 'Materials Team',
+    thumbnail: 'https://i.postimg.cc/xCxzB152/0E7A2421.jpg',
+    mediaType: 'image',
+    media: ['materials-1.jpg']
   }
 ];
 
@@ -219,7 +261,8 @@ const categories = [
   { id: 'sustainability', name: 'Sustainability', count: posts.filter(p => p.category === 'Sustainability').length },
   { id: 'water', name: 'Construction', count: posts.filter(p => p.category === 'Water').length },
   { id: 'safety', name: 'Safety', count: posts.filter(p => p.category === 'Safety').length },
-  { id: 'infrastructure', name: 'Infrastructure', count: posts.filter(p => p.category === 'Infrastructure').length }
+  { id: 'infrastructure', name: 'Infrastructure', count: posts.filter(p => p.category === 'Infrastructure').length },
+    { id: 'ourteam', name: 'OurTeam', count: posts.filter(p => p.category.toLowerCase() === 'ourteam').length }
 ];
 
 

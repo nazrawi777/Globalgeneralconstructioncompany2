@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 	    <link href="css/bootstrap.min1.css" type="text/css" rel="stylesheet" />
         <link href="css/tobii.min1.css" rel="stylesheet" type="text/css" />
         <link href="css/choices.min1.css" rel="stylesheet" />
         <link href="css/materialdesignicons.min1.css" rel="stylesheet" type="text/css" />
 	    <link href="css/style.min1.css" rel="stylesheet" type="text/css" id="theme-opt" />
-           
+           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- favicons Icons -->
     <link rel="icon" href="https://globalgeneralconstructionet.com/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="https://globalgeneralconstructionet.com/favicon.ico" type="image/x-icon">
@@ -119,6 +121,25 @@
     }
 }
 
+@media (min-width: 1024px) {
+  .testimonial-card {
+    flex: 0 0 calc((100% / 3) - (1.5rem * 2 / 3));
+
+  }
+  .main-menu__search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: -12px !important;
+  left: -19px;
+}
+#iconic {
+    position: relative;
+    right: -5px !important;
+    color: white ;
+}
+}
+
 
     </style>
 	 
@@ -209,6 +230,9 @@
                 <li >
                     <a href="contact.html">Contact</a>
                 </li>
+                      <a href="login.html">
+        <i class="fa-solid fa-user" id="iconic"></i>
+    </a>
             </ul>
                                             </div>
                                            <div class="main-menu__search-and-btn-box">

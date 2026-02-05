@@ -87,7 +87,7 @@
     <link rel="stylesheet" href="assets/css/module-css/slider.css" />
     <link rel="stylesheet" href="assets/css/module-css/footer.css" />
     <link rel="stylesheet" href="assets/css/module-css/feature.css" />
-    <link rel="stylesheet" href="assets/css/module-css/about.css" />
+    <link rel="stylesheet" href="assets/css/module-css/about.css=?v=173954435242867" />
     <link rel="stylesheet" href="assets/css/module-css/sliding-text.css" />
     <link rel="stylesheet" href="assets/css/module-css/services.css" />
     <link rel="stylesheet" href="assets/css/module-css/projects.css" />
@@ -98,7 +98,8 @@
     <link rel="stylesheet" href="assets/css/module-css/blog.css" />
     <link rel="stylesheet" href="assets/css/module-css/brand.css" />
     <link rel="stylesheet" href="assets/css/module-css/counter.css" />
-    <link rel="stylesheet" href="assets/css/module-css/team.css?v=173943524011" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/module-css/team.css?v=1713943524011" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
   <style>
@@ -111,7 +112,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     background-color: #1e3cae;
-    padding: 0 15px 0 !important;
+    padding: 0 1px 0 !important;
 }
 
 .main-menu__top-inner {
@@ -1237,7 +1238,19 @@
 @media (min-width: 1024px) {
   .testimonial-card {
     flex: 0 0 calc((100% / 3) - (1.5rem * 2 / 3));
+
   }
+  .main-menu__search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: -12px;
+  left: -19px;
+}
+#iconic {
+    position: relative;
+    right: 19px;
+}
 }
 
 /* ==================== CARD INTERNALS ==================== */
@@ -1532,6 +1545,10 @@
                 <li >
                     <a href="contact.html">Contact</a>
                 </li>
+                <li>
+    <a href="login.html">
+        <i class="fa-solid fa-user" id="iconic"></i>
+    </a>
             </ul>
                                             </div>
 

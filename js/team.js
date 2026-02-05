@@ -5,7 +5,7 @@
   let teamData = null;
   let expandedNodes = new Set();
   let highlightedId = null;
-  let currentZoom = 0.7;
+  let currentZoom = 0.6;
   let isCompact = false;
   let isDragging = false;
   let dragStart = { x: 0, y: 0 };

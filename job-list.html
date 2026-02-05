@@ -16,6 +16,7 @@
   <meta property="og:description" content="View job vacancies at Global General Construction Company across Ethiopia.">
   <meta property="og:image" content="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
   <meta property="og:url" content="https://globalgeneralconstructionet.com/job-list.html">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <meta name="twitter:card" content="summary_large_image">
     <!-- favicons Icons -->
@@ -131,6 +132,25 @@
     display: flex;
     left: 4px;
     align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .testimonial-card {
+    flex: 0 0 calc((100% / 3) - (1.5rem * 2 / 3));
+
+  }
+  .main-menu__search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: -12px !important;
+  left: -19px;
+}
+#iconic {
+    position: relative;
+    right: -5px !important;
+    color: white !important;
+}
 }
 .main-menu__top-inner {
     position: relative;
@@ -283,6 +303,10 @@ a {
                 <li >
                     <a href="contact.html">Contact</a>
                 </li>
+                                <a href="login.html">
+        <i class="fa-solid fa-user" id="iconic"></i>
+    </a>
+            </ul>
             </ul>
                                             </div>
                                            <div class="main-menu__search-and-btn-box">
