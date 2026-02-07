@@ -105,7 +105,7 @@
     <link href="{% static 'web/css/materialdesignicons.min1.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'web/css/style.min1.css' %}" rel="stylesheet" type="text/css" id="theme-opt" />
     <style>
-        .bg-layer {
+            .bg-layer {
   position: fixed;
   inset: 0;
 
@@ -132,27 +132,38 @@
         position: relative;
         display: flex;
         align-items: center;
-        margin-right: 11px;
+        
+        
     }
+ 
 }
+
 
 @media (min-width: 1024px) {
   .testimonial-card {
     flex: 0 0 calc((100% / 3) - (1.5rem * 2 / 3));
 
   }
-  .main-menu__search-box {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-right: -12px !important;
-  left: 5px;
+         .main-menu__search-and-btn-box {
+        position: relative;
+        display: flex
+;
+        align-items: center;
+        flex-wrap: wrap;
+        right: 10px;}
+            .main-menu__search-box {
+        position: relative;
+        display: flex
+;
+        align-items: center;
+        margin-right: -6px;
+
 }
-#iconic {
+   #iconic {
     position: relative;
-    right: -5px !important;
-    color: white !important;
+    right: -2px !important;
 }
+    
 }
     </style>
 
