@@ -8,9 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FINANCIAL RECORDS || Global General Construction company</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aVS+DV+kNRTKjhoTShW3v9uB3xGz8v2example"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description"
     content="Financial records and reports from Global General Construction Company. Access audited statements, annual reports and transparency documents for our Ethiopia operations.">
@@ -111,113 +112,93 @@
   <link rel="stylesheet" href="{% static 'web/assets/css/module-css/brand.css' %}" />
   <link rel="stylesheet" href="{% static 'web/assets/css/module-css/counter.css' %}" />
   <link rel="stylesheet" href="{% static 'web/assets/css/module-css/team.css' %}" />
-  <link rel="stylesheet" href="{% static 'web/assets/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'web/assets/css/style.css?v=173924352487' %}" />
   <link rel="stylesheet" href="{% static 'web/assets/css/responsive.css' %}" />
-  <link rel="stylesheet" href="{% static 'web/css/finance.css' %}">
+  <link rel="stylesheet" href="{% static 'web/css/finance.css?v=1739343352487' %}">
   <style>
-    .bg-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      /* make it cover the container */
-      height: 100%;
-      /* make it cover the container */
-      z-index: 0;
-      /* behind content */
-      background-image: url('https://i.postimg.cc/SsVGn5dR/153698511-a7395e40-2054-4147-8314-728e940a8063.jpg');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-      content: "";
-      /* optional, not really needed for div */
-    }
-
-    #hover {
-      background-color: hsl(222, 73%, 87%);
-      /* lighter */
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;         /* make it cover the container */
+  height: 100%;        /* make it cover the container */
+  z-index: 0;          /* behind content */
+  background-image: url('https://i.postimg.cc/SsVGn5dR/153698511-a7395e40-2054-4147-8314-728e940a8063.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  content: ""; /* optional, not really needed for div */
+}
+ #hover {
+      background-color: hsl(222, 73%, 87%); /* lighter */
       height: 43px;
       border-radius: 3px;
-      color: #1e3cae;
+      color:#1e3cae;
     }
+.bg-layer1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;         /* make it cover the container */
+  height: 100%;        /* make it cover the container */
+  z-index: 0;          /* behind content */
+  background-image: url('https://i.postimg.cc/SsVGn5dR/153698511-a7395e40-2054-4147-8314-728e940a8063.jpg');
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+  content: ""; /* optional, not really needed for div */
+}
+.bg-layer13{
+  position: absolute;
+  inset: 0;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-image: url('https://i.postimg.cc/9f33bx9g/44417013_9019786.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+    z-index: 0;
+    content: "";
 
-    .bg-layer1 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      /* make it cover the container */
-      height: 100%;
-      /* make it cover the container */
-      z-index: 0;
-      /* behind content */
-      background-image: url('https://i.postimg.cc/SsVGn5dR/153698511-a7395e40-2054-4147-8314-728e940a8063.jpg');
-      background-size: cover;
-      background-position: left;
-      background-repeat: no-repeat;
-      content: "";
-      /* optional, not really needed for div */
-    }
+}
+.bg-layer14{
+  position: absolute;
+  inset: 0;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-image: url('https://i.postimg.cc/HxqBDKYJ/40515512_w11.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+    z-index: 0;
+    content: "";
 
-    .bg-layer13 {
-      position: absolute;
-      inset: 0;
-      background-position: center top;
-      background-repeat: no-repeat;
-      background-image: url('https://i.postimg.cc/9f33bx9g/44417013_9019786.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      z-index: 0;
-      content: "";
-
-    }
-
-    .bg-layer14 {
-      position: absolute;
-      inset: 0;
-      background-position: center top;
-      background-repeat: no-repeat;
-      background-image: url('https://i.postimg.cc/HxqBDKYJ/40515512_w11.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      z-index: 0;
-      content: "";
-
-    }
+}
 
 
 
-    #main-content {
-      position: relative;
-      /* important for the pseudo-element */
-      z-index: 0;
-      /* background sits behind content */
-    }
+#main-content {
+  position: relative; /* important for the pseudo-element */
+  z-index: 0;         /* background sits behind content */
+}
 
-    #main-content::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      /* top:0; left:0; right:0; bottom:0 */
-      background-image: url('https://i.postimg.cc/kGMVX0Q6/2179489_10857.jpg');
-      background-size: cover;
-      /* fills container */
-      background-position: center top;
-      /* adjust to show important part */
-      background-repeat: no-repeat;
-      z-index: -1;
-      /* behind all content */
-    }
+#main-content::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; left:0; right:0; bottom:0 */
+  background-image: url('https://i.postimg.cc/kGMVX0Q6/2179489_10857.jpg');
+  background-size: cover;          /* fills container */
+  background-position: center top; /* adjust to show important part */
+  background-repeat: no-repeat;
+  z-index: -1;                     /* behind all content */
+}
 
-    /* Optional: add a subtle overlay for text readability */
-    #main-content::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.2);
-      /* adjust opacity */
-      z-index: -1;
-    }
+/* Optional: add a subtle overlay for text readability */
+#main-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2); /* adjust opacity */
+  z-index: -1;
+}
   </style>
 
 
@@ -309,6 +290,11 @@
                   </li>
                   <li>
                     <a href="contact.html">Contact</a>
+                  </li>
+                  <li>
+                     <a href="login.html">
+        <i class="fa-solid fa-user" id="iconic"></i>
+    </a>
                   </li>
                 </ul>
               </div>
