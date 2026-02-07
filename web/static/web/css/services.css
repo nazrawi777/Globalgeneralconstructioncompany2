@@ -89,6 +89,27 @@ body {
   background-color: var(--color-bg) !important;
   min-height: 100vh;
 }
+@media (min-width: 1024px) {
+  .testimonial-card {
+    flex: 0 0 calc((100% / 3) - (1.5rem * 2 / 3));
+
+  }
+  .main-menu__search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: -12px !important;
+  left: -19px;
+}
+#iconic {
+    position: relative;
+    right: -1px !important;
+    color:white !important;
+}
+}
+#iconic {
+    color:white !important;
+}
 
 img {
   max-width: 100%;
