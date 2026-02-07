@@ -24,7 +24,7 @@
 }
 #iconic {
     position: relative;
-    right: 15px;
+    right: -1px !important;
     color: white !important;
 }
 }
