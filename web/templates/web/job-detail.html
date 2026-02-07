@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link href="{% static 'web/css/bootstrap.min1.css' %}" type="text/css" rel="stylesheet" />
     <link href="{% static 'web/css/tobii.min1.css' %}" rel="stylesheet" type="text/css" />
@@ -11,8 +12,8 @@
     <link href="{% static 'web/css/style.min1.css' %}" rel="stylesheet" type="text/css" id="theme-opt" />
 
     <!-- favicons Icons -->
-    <link rel="icon" href="https://globalgeneralconstructionet.com/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="https://globalgeneralconstructionet.com/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://i.postimg.cc/9fnbDhBF/favicon.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="https://i.postimg.cc/9fnbDhBF/favicon.jpg" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="192x192"
         href="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
     <link rel="apple-touch-icon" sizes="180x180"
@@ -96,36 +97,54 @@
     <link rel="stylesheet" href="{% static 'web/assets/css/module-css/team.css' %}" />
     <style>
         .bg-layer {
-            position: fixed;
-            inset: 0;
+  position: fixed;
+  inset: 0;
 
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-image: url('https://i.postimg.cc/HxqBDKYJ/40515512_w11.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            z-index: 0;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-image: url('https://i.postimg.cc/HxqBDKYJ/40515512_w11.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+    z-index: 0;
 
-        }
+}
+@media only screen and (min-width: 1280px) and (max-width: 1499px) {
+    .main-menu__bottom {
+        position: relative;
+        display: flex
+;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        background-color: #1e3cae;
+        padding: 0 17px 0 !important;
+    }
+    .main-menu__search-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-right: 11px;
+    }
+}
 
-        @media only screen and (min-width: 1280px) and (max-width: 1499px) {
-            .main-menu__bottom {
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                flex-wrap: wrap;
-                background-color: #1e3cae;
-                padding: 0 17px 0 !important;
-            }
+@media (min-width: 1024px) {
+  .testimonial-card {
+    flex: 0 0 calc((100% / 3) - (1.5rem * 2 / 3));
 
-            .main-menu__search-box {
-                position: relative;
-                display: flex;
-                align-items: center;
-                margin-right: 11px;
-            }
-        }
+  }
+  .main-menu__search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: -12px !important;
+  left: -19px;
+}
+#iconic {
+    position: relative;
+    right: -5px !important;
+    color: white ;
+}
+}
     </style>
 
 
@@ -184,7 +203,7 @@
                                             <li><a href="ourteam.html">Our Team</a></li>
 
                                             <li><a href="finance.html">Financial Records</a></li>
-                                            <li><a href="finance.html">Financial Records</a></li>
+                                            
                                         </ul>
                                     </li>
 
@@ -216,6 +235,11 @@
                                     </li>
                                     <li>
                                         <a href="contact.html">Contact</a>
+                                    </li>
+                                    <li>
+                                        <a href="login.html">
+        <i class="fa-solid fa-user" id="iconic"></i>
+    </a>
                                     </li>
                                 </ul>
                             </div>
