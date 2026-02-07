@@ -5,7 +5,7 @@
   let teamData = null;
   let expandedNodes = new Set();
   let highlightedId = null;
-  let currentZoom = 0.7;
+  let currentZoom = 0.6;
   let isCompact = false;
   let isDragging = false;
   let dragStart = { x: 0, y: 0 };
@@ -32,7 +32,6 @@
     modalRole: document.getElementById('modal-role'),
     modalPhone: document.getElementById('modal-phone'),
     modalEmail: document.getElementById('modal-email'),
-    socialLinks: document.getElementById('social-links'),
     copyPhone: document.getElementById('copy-phone'),
     copyEmail: document.getElementById('copy-email'),
     callBtn: document.getElementById('call-btn'),
@@ -266,7 +265,7 @@
       if (member.children.length > 1) {
         const horizConnector = document.createElement('div');
         horizConnector.className = 'connector-horizontal';
-        horizConnector.style.width = `${Math.min(member.children.length * 100, 400)}px`;
+        horizConnector.style.width = `${Math.min(member.children.length * 100, 1800)}px`;
         horizConnector.style.display = isExpanded ? 'block' : 'none';
         branch.appendChild(horizConnector);
       }
@@ -341,29 +340,9 @@
       <img src="${member.avatar}" alt="" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
     `;
 
-    // Social links
-    const socialIcons = {
-      linkedin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>',
-      twitter: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>',
-      facebook: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
-      instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'
-    };
+   
 
-    elements.socialLinks.innerHTML = '';
-    if (member.social) {
-      Object.entries(member.social).forEach(([platform, url]) => {
-        if (url && socialIcons[platform]) {
-          const link = document.createElement('a');
-          link.href = url;
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.className = 'social-link';
-          link.setAttribute('aria-label', `Visit ${member.name}'s ${platform} profile`);
-          link.innerHTML = socialIcons[platform];
-          elements.socialLinks.appendChild(link);
-        }
-      });
-    }
+ 
 
     // Show modal
     elements.modal.style.display = 'flex';
@@ -672,3 +651,28 @@
     init();
   }
 })();
+// Listen for Delete key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Delete' && currentMember) {
+    // Recursive delete from JSON
+    function deleteById(node, targetId) {
+      if (!node.children) return false;
+
+      const index = node.children.findIndex(child => child.id === targetId);
+      if (index !== -1) {
+        node.children.splice(index, 1); // remove from JSON
+        return true;
+      }
+
+      for (const child of node.children) {
+        if (deleteById(child, targetId)) return true;
+      }
+
+      return false;
+    }
+
+    deleteById(teamData.orgChart, currentMember.id); // remove from JSON
+    currentMember = null; // clear selection
+    renderChart(); // refresh chart
+  }
+});
