@@ -154,7 +154,7 @@ body {
   width: 100%;
   padding: 0.625rem 2.5rem;
   background-color:#fff;
-  color: hsl(var(--card-foreground));
+  color: #000;
   border: 1px solid hsl(var(--border));
   border-radius: var(--radius);
   font-size: 0.875rem;
@@ -403,6 +403,7 @@ body {
 
 .connector-horizontal {
   height: 2px;
+  width: 800px !important;
   background: hsl(var(--org-connector));
   animation: drawHorizontal 0.5s ease-out;
 }
@@ -707,12 +708,12 @@ body {
 .modal-name {
   font-size: 1.25rem;
   font-weight: 700;
-  color: hsl(var(--foreground));
+  color: #000 !important;
   margin-bottom: 0rem;
 }
 
 .modal-role {
-  color: hsl(var(--muted-foreground));
+  color: #000 !important;
   margin-bottom: .5rem;
 }
 
