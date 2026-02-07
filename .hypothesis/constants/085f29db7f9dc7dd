@@ -1,0 +1,4 @@
+# file: C:\Users\User_2\Desktop\chaos_projects\nazra_pro\frontend\nazra_project\web\context_processors.py
+# hypothesis_version: 6.150.3
+
+['active_partners', 'navigation_services', 'order', 'site_statistics']

@@ -1,0 +1,4 @@
+# file: C:\Users\User_2\Desktop\chaos_projects\nazra_pro\frontend\nazra_project\nazra_project\settings.py
+# hypothesis_version: 6.150.3
+
+['.env', 'APP_DIRS', 'BACKEND', 'DIRS', 'ENGINE', 'ERROR', 'GEMINI_API_KEY', 'INFO', 'NAME', 'OPTIONS', 'UTC', 'class', 'console', 'context_processors', 'db.sqlite3', 'default', 'django', 'django.contrib.admin', 'django.contrib.auth', 'django_errors.log', 'en-us', 'file', 'filename', 'format', 'formatter', 'formatters', 'handlers', 'level', 'loggers', 'logging.FileHandler', 'logs', 'nazra_project.urls', 'propagate', 'simple', 'static', 'static/', 'staticfiles', 'style', 'verbose', 'version', 'web', '{']
