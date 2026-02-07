@@ -14,25 +14,21 @@
   <meta property="og:description"
     content="Building communities and changing lives through sustainable social welfare programs.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="{% static 'web/assets/images/resources/12.png' %}">
+  <meta property="og:image" content="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
   <meta property="og:url" content="{% url 'web:socialwalfare' %}">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="{% static 'web/favicon.ico' %}" type="image/x-icon">
-  <link rel="shortcut icon" href="{% static 'web/favicon.ico' %}" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="192x192"
-    href="{% static 'web/assets/images/resources/12.png' %}">
-  <link rel="apple-touch-icon" sizes="180x180"
-    href="{% static 'web/assets/images/resources/12.png' %}">
-  <link rel="icon" type="image/png" sizes="32x32"
-    href="{% static 'web/assets/images/resources/12.png' %}">
-  <link rel="icon" type="image/png" sizes="16x16"
-    href="{% static 'web/assets/images/resources/12.png' %}">
+ <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="https://i.postimg.cc/9fnbDhBF/favicon.jpg" type="image/x-icon">
+<link rel="shortcut icon" href="https://i.postimg.cc/9fnbDhBF/favicon.jpg" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="192x192" href="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
 
-  <meta property="og:image" content="{% static 'web/assets/images/resources/12.png' %}">
-  <meta property="og:logo" content="{% static 'web/assets/images/resources/12.png' %}">
-  <meta name="image" content="{% static 'web/assets/images/resources/12.png' %}">
-  <link rel="image_src" href="{% static 'web/assets/images/resources/12.png' %}">
+ <meta property="og:image" content="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
+<meta property="og:logo" content="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
+<meta name="image" content="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
+<link rel="image_src" href="https://globalgeneralconstructionet.com/assets/images/resources/12.png">
 
   <script type="application/ld+json">
 {
@@ -60,7 +56,8 @@
   <meta name="description" content="tecture Laravel  Template " />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="{% static 'web/assets/favicon.ico' %}">
+  <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/9fnbDhBF/favicon.jpg">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,76 +113,86 @@
   <link rel="stylesheet" href="{% static 'web/assets/css/responsive.css' %}" />
   <link rel="stylesheet" href="{% static 'web/css/socialwalfare.css' %}">
   <style>
-    #hover {
-      background-color: hsl(222, 73%, 87%);
-      /* lighter */
+     #hover {
+      background-color: hsl(222, 73%, 87%); /* lighter */
       height: 43px;
       border-radius: 3px;
-      color: #1e3cae;
+      color:#1e3cae;
     }
-
     .bg-layer {
-      position: fixed;
-      inset: 0;
+  position: fixed;
+  inset: 0;
 
-      background-position: center top;
-      background-repeat: no-repeat;
-      background-image: url("{% static 'web/assets/images/backgrounds/image-1.jpg' %}");
-      background-size: cover;
-      background-repeat: no-repeat;
-      z-index: 0;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-image: url('https://i.postimg.cc/SsVGn5dR/153698511-a7395e40-2054-4147-8314-728e940a8063.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+    z-index: 0;
 
-    }
+}
+@media (min-width: 1024px) {
+  .testimonial-card {
+    flex: 0 0 calc((100% / 3) - (1.5rem * 2 / 3));
 
-    @media only screen and (max-width: 767px) {
-      .section {
-        padding: 1rem;
-        overflow: hidden;
-      }
-
-      .lightbox-close {
-        position: absolute;
-        top: 9rem;
-        right: 1rem;
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        background: hsla(220, 15%, 20%, 0.8);
-        color: var(--foreground);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999999;
-        transition: background var(--transition-base);
-      }
-
-      .mosaic-section {
-        padding-top: 6rem;
-      }
-
-      .section-title {
-        font-size: clamp(1.6rem, 5vw, 3rem);
-        color: var(--foreground);
-        margin-bottom: 1.3rem;
-      }
-
-      .carousel-slide-title {
-        font-size: clamp(.5rem, 4vw, 2rem);
-        color: var(--foreground);
-        margin-bottom: 1rem;
-        position: relative;
-        top: -10px;
-      }
-
-      .carousel-slide-summary {
-        font-size: .9rem;
-        color: hsla(40, 20%, 95%, 0.8);
-        max-width: 640px;
-        margin-bottom: 0rem;
-        line-height: 24x;
-
-      }
-    }
+  }
+  .main-menu__search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: -12px !important;
+  left: -19px;
+}
+#iconic {
+    position: relative;
+    right: -5px !important;
+    color: white;
+}
+}
+@media only screen and (max-width: 767px) {
+.section {
+    padding: 1rem ;
+    overflow: hidden;
+}
+.lightbox-close {
+    position: absolute;
+    top: 9rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: hsla(220, 15%, 20%, 0.8);
+    color: var(--foreground);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999999;
+    transition: background var(--transition-base);
+}
+.mosaic-section {
+    padding-top: 6rem;
+}
+.section-title {
+    font-size: clamp(1.6rem, 5vw, 3rem);
+    color: var(--foreground);
+    margin-bottom: 1.3rem;
+}
+.carousel-slide-title {
+    font-size: clamp(.5rem, 4vw, 2rem);
+    color: var(--foreground);
+    margin-bottom: 1rem;
+    position: relative;
+    top: -10px;
+}
+.carousel-slide-summary {
+  font-size: .9rem;
+  color: hsla(40, 20%, 95%, 0.8);
+  max-width: 640px;
+  margin-bottom: 0rem;
+  line-height: 24x;
+ 
+}
+}
   </style>
 
 
@@ -261,7 +268,7 @@
                     <ul>
                       <li><a href="blog.html">Blog and News</a></li>
                       <li><a href="project.html">Our Projects </a></li>
-                      <li><a href="socialwalfare.html" id="hover">Social-walfare. </a></li>
+                      <li><a href="socialwalfare.html" id="hover">Social-walfare</a></li>
 
 
 
@@ -280,6 +287,11 @@
                   </li>
                   <li>
                     <a href="contact.html">Contact</a>
+                  </li>
+                  <li>
+                     <a href="login.html">
+        <i class="fa-solid fa-user" id="iconic"></i>
+    </a>
                   </li>
                 </ul>
               </div>
