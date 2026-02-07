@@ -10,7 +10,27 @@
   border-style: solid;
   border-color: hsl(200 15% 18%);
 }
+@media (min-width: 1024px) {
+  .testimonial-card {
+    flex: 0 0 calc((100% / 3) - (1.5rem * 2 / 3));
 
+  }
+  .main-menu__search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: -12px !important;
+  left: -19px;
+}
+#iconic {
+    position: relative;
+    right: 15px;
+    color: white !important;
+}
+}
+li a{
+  color: black;
+}
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
