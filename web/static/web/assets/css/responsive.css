@@ -859,8 +859,9 @@
 
 
     .section-title__title {
-        font-size: 25px;
+        font-size: 25px !important;
         line-height: 35px;
+        top: 10px !important;
     }
 
     .section-title__title br {
@@ -1089,9 +1090,7 @@ display: none;
     .footer-widget__instagram {
 display: none;          
     }
-   .hero-bg, .hero-grid, .section-shape-1{
-    max-height: 50vh;
-   }
+
    .hero-content{
     position: relative;
     top: 10px;
