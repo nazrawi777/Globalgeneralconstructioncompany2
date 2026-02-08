@@ -1,9 +1,8 @@
 /**
- * Gemini Chat Integration
+ * Django Chat Integration
  */
 
-const GEMINI_API_KEY = 'AIzaSyCL0pOKSv0OZAaD6vUH7XYxX36K5ZDZ5fs';
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY}`;
+const API_URL = '/api/chat/';
 
 // Company Context for AI Assistant
 const COMPANY_CONTEXT = `You are a helpful AI assistant for GLOBAL GENERAL CONSTRUCTION, a Grade-1 general construction company in Ethiopia. 
@@ -98,12 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    system_instruction: {
-                        parts: [{ text: COMPANY_CONTEXT }]
-                    },
-                    contents: [{
-                        parts: [{ text: message }]
-                    }]
+                    message: message,
                 })
             });
 
@@ -120,19 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Parse the response correctly
-            if (data.candidates && data.candidates.length > 0) {
-                const candidate = data.candidates[0];
-                if (candidate.content && candidate.content.parts && candidate.content.parts.length > 0) {
-                    const botResponse = candidate.content.parts[0].text;
-                    appendMessage('bot', botResponse);
-                } else {
-                    console.error('Unexpected response structure:', data);
-                    appendMessage('bot', "I'm sorry, I received an unexpected response format.");
-                }
+            if (data.response) {
+                appendMessage('bot', data.response);
             } else {
-                console.error('No candidates in response:', data);
-                appendMessage('bot', "I'm sorry, I couldn't generate a response.");
+                console.error('Unexpected response structure:', data);
+                appendMessage('bot', "I'm sorry, I received an unexpected response format.");
             }
         } catch (error) {
             console.error('Gemini API Error:', error);

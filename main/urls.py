@@ -23,4 +23,5 @@ urlpatterns = [
     path('jobs/', views.job_list_view, name='job_list'),
     path('jobs/<int:job_id>/', views.job_detail_view, name='job_detail'),
     path('jobs/<int:job_id>/apply/', views.job_apply_view, name='job_apply'),
+    path('api/chat/', views.ChatView.as_view(), name='chat_api'),
 ]

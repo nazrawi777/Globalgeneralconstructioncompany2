@@ -1,7 +1,11 @@
 import json
 from django.contrib import messages
-from django.shortcuts import get_object_or_404, redirect, render
 from django.core.serializers.json import DjangoJSONEncoder
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.decorators import method_decorator
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import (
     ChatBotConfig,
@@ -18,6 +22,24 @@ from .models import (
     SocialWelfareStory,
     Testimonial,
 )
+from .chatbot import get_gemini_response
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+class ChatView(View):
+    def post(self, request, *args, **kwargs):
+        try:
+            data = json.loads(request.body)
+            user_message = data.get("message")
+            if not user_message:
+                return JsonResponse({"error": "No message provided"}, status=400)
+
+            response_text = get_gemini_response(user_message)
+            return JsonResponse({"response": response_text})
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
 
 
 def home_view(request):
@@ -161,7 +183,7 @@ def social_welfare_view(request):
 
     context = {
         'media_items_json': media_items_json,
-        'story_items': [
+        'story_items': json.dumps([
             {
                 'id': str(story.id),
                 'title': story.title,
@@ -170,7 +192,7 @@ def social_welfare_view(request):
                 'link': story.link,
             }
             for story in story_items
-        ],
+        ]),
     }
     return render(request, 'socialwalfare.html', context)
 

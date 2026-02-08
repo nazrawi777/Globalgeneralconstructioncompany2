@@ -620,7 +620,7 @@
 
   async function init() {
     try {
-      const response = await fetch('data/team.json');
+      const response = await fetch('./data/team.json');
       if (!response.ok) throw new Error('Failed to load team data');
       teamData = await response.json();
 
