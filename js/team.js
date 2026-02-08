@@ -139,6 +139,18 @@
   }
 
   /**
+   * Resolve static asset paths for avatars.
+   */
+  function resolveAvatarPath(path) {
+    if (!path) return path;
+    if (/^https?:\/\//i.test(path) || path.startsWith('/')) {
+      return path;
+    }
+    const base = (window.STATIC_BASE_URL || '/static/').replace(/\/?$/, '/');
+    return base + path.replace(/^\/+/, '');
+  }
+
+  /**
    * Create SVG avatar placeholder
    */
   function createAvatarPlaceholder(name) {
@@ -181,10 +193,11 @@
     }
     node.dataset.id = member.id;
 
+    const avatarSrc = resolveAvatarPath(member.avatar);
     node.innerHTML = `
       <div class="org-node-glow" aria-hidden="true"></div>
       <div class="org-avatar">
-        <img src="${member.avatar}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
+        <img src="${avatarSrc}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
       </div>
       <div class="org-info">
         <div class="org-name">${member.name}</div>
@@ -336,8 +349,9 @@
     elements.emailBtn.href = `mailto:${member.email}`;
 
     // Avatar
+    const avatarSrc = resolveAvatarPath(member.avatar);
     elements.modalAvatar.innerHTML = `
-      <img src="${member.avatar}" alt="" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
+      <img src="${avatarSrc}" alt="" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
     `;
 
    
@@ -620,7 +634,8 @@
 
   async function init() {
     try {
-      const response = await fetch('./data/team.json');
+      const dataUrl = window.TEAM_DATA_URL || '/static/data/team.json';
+      const response = await fetch(dataUrl);
       if (!response.ok) throw new Error('Failed to load team data');
       teamData = await response.json();
 
