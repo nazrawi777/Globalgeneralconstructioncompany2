@@ -132,13 +132,59 @@ const mosaicItems = JSON.parse(
   },
 ];
 
-const carouselStories = mosaicItems.filter((item) => item.type === "image");
+const carouselStories = JSON.parse(
+  JSON.parse(document.getElementById("story-items-data").textContent),
+) ?? [
+  {
+    id: "1",
+    image:
+      "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1200",
+    title: "Maria's Dream Home Becomes Reality",
+    summary:
+      "After years of waiting, Maria and her family moved into their new home built through our affordable housing initiative.",
+    link: "/contact",
+  },
+  {
+    id: "2",
+    image: "https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=1200",
+    title: "From Streets to Stadium: Ahmed's Journey",
+    summary:
+      "Young Ahmed discovered his passion for football through our youth program and now plays for the regional team.",
+    link: "/contact",
+  },
+  {
+    id: "3",
+    image:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200",
+    title: "Scholarship Opens Doors for Rural Students",
+    summary:
+      "Our education fund has helped 500 students from underserved communities pursue higher education.",
+    link: "/contact",
+  },
+  {
+    id: "4",
+    image:
+      "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1200",
+    title: "Community Center: A Hub of Hope",
+    summary:
+      "The new community center serves as a gathering place for events, training, and social support programs.",
+    link: "/contact",
+  },
+  {
+    id: "5",
+    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200",
+    title: "Volunteers Building Futures Together",
+    summary:
+      "Over 1,000 volunteers have contributed 50,000+ hours to our community building projects.",
+    link: "/contact",
+  },
+];
 
 // ========================================
 // State
 // ========================================
 
-let currentMosaicFilter = 'all';
+let currentMosaicFilter = "all";
 let currentCarouselIndex = 0;
 let carouselInterval = null;
 let lightboxItems = [];
@@ -148,23 +194,23 @@ let lightboxIndex = 0;
 // DOM Elements
 // ========================================
 
-const topNav = document.getElementById('top-nav');
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const mosaicGrid = document.getElementById('mosaic-grid');
-const carouselEl = document.getElementById('featured-carousel');
-const carouselDots = document.getElementById('carousel-dots');
-const carouselPrev = document.getElementById('carousel-prev');
-const carouselNext = document.getElementById('carousel-next');
-const lightbox = document.getElementById('lightbox');
-const lightboxClose = document.getElementById('lightbox-close');
-const lightboxPrev = document.getElementById('lightbox-prev');
-const lightboxNext = document.getElementById('lightbox-next');
-const lightboxImage = document.getElementById('lightbox-image');
-const lightboxVideo = document.getElementById('lightbox-video');
-const lightboxTitle = document.getElementById('lightbox-title');
-const lightboxDescription = document.getElementById('lightbox-description');
-const lightboxCounter = document.getElementById('lightbox-counter');
+const topNav = document.getElementById("top-nav");
+const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+const mosaicGrid = document.getElementById("mosaic-grid");
+const carouselEl = document.getElementById("featured-carousel");
+const carouselDots = document.getElementById("carousel-dots");
+const carouselPrev = document.getElementById("carousel-prev");
+const carouselNext = document.getElementById("carousel-next");
+const lightbox = document.getElementById("lightbox");
+const lightboxClose = document.getElementById("lightbox-close");
+const lightboxPrev = document.getElementById("lightbox-prev");
+const lightboxNext = document.getElementById("lightbox-next");
+const lightboxImage = document.getElementById("lightbox-image");
+const lightboxVideo = document.getElementById("lightbox-video");
+const lightboxTitle = document.getElementById("lightbox-title");
+const lightboxDescription = document.getElementById("lightbox-description");
+const lightboxCounter = document.getElementById("lightbox-counter");
 
 // ========================================
 // Utility Functions
@@ -172,9 +218,9 @@ const lightboxCounter = document.getElementById('lightbox-counter');
 
 function formatNumber(num) {
   if (num >= 10000) {
-    return Math.floor(num / 1000) + 'K';
+    return Math.floor(num / 1000) + "K";
   } else if (num >= 1000) {
-    return (num / 1000).toFixed(1) + 'K';
+    return (num / 1000).toFixed(1) + "K";
   }
   return num.toString();
 }
@@ -182,20 +228,20 @@ function formatNumber(num) {
 function animateCounter(element, target) {
   const duration = 2000;
   const startTime = performance.now();
-  
+
   function update(currentTime) {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
     const easeOut = 1 - Math.pow(1 - progress, 3);
     const current = Math.floor(target * easeOut);
-    
+
     element.textContent = formatNumber(current);
-    
+
     if (progress < 1) {
       requestAnimationFrame(update);
     }
   }
-  
+
   requestAnimationFrame(update);
 }
 
@@ -205,38 +251,38 @@ function animateCounter(element, target) {
 
 function initNavigation() {
   // Scroll effect
-  window.addEventListener('scroll', () => {
+  window.addEventListener("scroll", () => {
     if (window.scrollY > 20) {
-      topNav.classList.add('scrolled');
+      topNav.classList.add("scrolled");
     } else {
-      topNav.classList.remove('scrolled');
+      topNav.classList.remove("scrolled");
     }
   });
-  
+
   // Mobile menu toggle
   if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      const isOpen = !mobileMenu.classList.contains('hidden');
-      
+    mobileMenuBtn.addEventListener("click", () => {
+      const isOpen = !mobileMenu.classList.contains("hidden");
+
       if (isOpen) {
-        mobileMenu.classList.add('hidden');
-        mobileMenuBtn.querySelector('.menu-icon').classList.remove('hidden');
-        mobileMenuBtn.querySelector('.close-icon').classList.add('hidden');
+        mobileMenu.classList.add("hidden");
+        mobileMenuBtn.querySelector(".menu-icon").classList.remove("hidden");
+        mobileMenuBtn.querySelector(".close-icon").classList.add("hidden");
       } else {
-        mobileMenu.classList.remove('hidden');
-        mobileMenuBtn.querySelector('.menu-icon').classList.add('hidden');
-        mobileMenuBtn.querySelector('.close-icon').classList.remove('hidden');
+        mobileMenu.classList.remove("hidden");
+        mobileMenuBtn.querySelector(".menu-icon").classList.add("hidden");
+        mobileMenuBtn.querySelector(".close-icon").classList.remove("hidden");
       }
     });
   }
-  
+
   // Close mobile menu on link click
-  document.querySelectorAll('.mobile-nav-link, .mobile-cta').forEach(link => {
-    link.addEventListener('click', () => {
-      if (mobileMenu) mobileMenu.classList.add('hidden');
+  document.querySelectorAll(".mobile-nav-link, .mobile-cta").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (mobileMenu) mobileMenu.classList.add("hidden");
       if (mobileMenuBtn) {
-        mobileMenuBtn.querySelector('.menu-icon').classList.remove('hidden');
-        mobileMenuBtn.querySelector('.close-icon').classList.add('hidden');
+        mobileMenuBtn.querySelector(".menu-icon").classList.remove("hidden");
+        mobileMenuBtn.querySelector(".close-icon").classList.add("hidden");
       }
     });
   });
@@ -247,15 +293,15 @@ function initNavigation() {
 // ========================================
 
 function createMediaCard(item, originalIndex) {
-  const card = document.createElement('div');
-  card.className = 'media-card';
+  const card = document.createElement("div");
+  card.className = "media-card";
   card.dataset.category = item.category;
   card.dataset.id = item.id;
-  
+
   card.innerHTML = `
     <img src="${item.thumbnail}" alt="${item.title}" loading="lazy">
     <div class="media-card-overlay">
-      <span class="media-card-category">${item.category.replace('-', ' ')}</span>
+      <span class="media-card-category">${item.category.replace("-", " ")}</span>
       <h3 class="media-card-title">${item.title}</h3>
       <span class="media-card-action">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -266,47 +312,50 @@ function createMediaCard(item, originalIndex) {
       </span>
     </div>
   `;
-  
+
   // Add click event to open lightbox
-  card.addEventListener('click', () => {
+  card.addEventListener("click", () => {
     openLightbox(mosaicItems, originalIndex);
   });
-  
+
   return card;
 }
 
-function renderMosaicGrid(filter = 'all') {
+function renderMosaicGrid(filter = "all") {
   if (!mosaicGrid) return;
-  
+
   // Clear the grid
-  mosaicGrid.innerHTML = '';
-  
+  mosaicGrid.innerHTML = "";
+
   // Filter items
-  const filteredItems = filter === 'all' 
-    ? mosaicItems 
-    : mosaicItems.filter(item => item.category === filter);
-  
+  const filteredItems =
+    filter === "all"
+      ? mosaicItems
+      : mosaicItems.filter((item) => item.category === filter);
+
   // Render each item
   filteredItems.forEach((item) => {
     // Find the original index in the mosaicItems array
-    const originalIndex = mosaicItems.findIndex(m => m.id === item.id);
+    const originalIndex = mosaicItems.findIndex((m) => m.id === item.id);
     mosaicGrid.appendChild(createMediaCard(item, originalIndex));
   });
-  
+
   // Log for debugging
   console.log(`Filter: ${filter}, Showing: ${filteredItems.length} items`);
 }
 
 function initMosaicFilters() {
-  document.querySelectorAll('.filter-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
+  document.querySelectorAll(".filter-chip").forEach((chip) => {
+    chip.addEventListener("click", () => {
       const filter = chip.dataset.filter;
       currentMosaicFilter = filter;
-      
+
       // Update active state
-      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      
+      document
+        .querySelectorAll(".filter-chip")
+        .forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+
       // Re-render grid
       renderMosaicGrid(filter);
     });
@@ -319,9 +368,11 @@ function initMosaicFilters() {
 
 function renderCarousel() {
   if (!carouselEl || !carouselDots) return;
-  
-  carouselEl.innerHTML = carouselStories.map((story, index) => `
-    <div class="carousel-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
+
+  carouselEl.innerHTML = carouselStories
+    .map(
+      (story, index) => `
+    <div class="carousel-slide ${index === 0 ? "active" : ""}" data-index="${index}">
       <img src="${story.image}" alt="${story.title}" loading="lazy">
       <div class="carousel-slide-overlay"></div>
       <div class="carousel-slide-content">
@@ -336,26 +387,32 @@ function renderCarousel() {
         </a>
       </div>
     </div>
-  `).join('');
-  
+  `,
+    )
+    .join("");
+
   // Render dots
-  carouselDots.innerHTML = carouselStories.map((_, index) => `
-    <button class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="Go to slide ${index + 1}"></button>
-  `).join('');
+  carouselDots.innerHTML = carouselStories
+    .map(
+      (_, index) => `
+    <button class="carousel-dot ${index === 0 ? "active" : ""}" data-index="${index}" aria-label="Go to slide ${index + 1}"></button>
+  `,
+    )
+    .join("");
 }
 
 function goToSlide(index) {
-  const slides = carouselEl?.querySelectorAll('.carousel-slide');
-  const dots = carouselDots?.querySelectorAll('.carousel-dot');
-  
+  const slides = carouselEl?.querySelectorAll(".carousel-slide");
+  const dots = carouselDots?.querySelectorAll(".carousel-dot");
+
   if (!slides || !dots) return;
-  
-  slides.forEach(slide => slide.classList.remove('active'));
-  dots.forEach(dot => dot.classList.remove('active'));
-  
-  slides[index].classList.add('active');
-  dots[index].classList.add('active');
-  
+
+  slides.forEach((slide) => slide.classList.remove("active"));
+  dots.forEach((dot) => dot.classList.remove("active"));
+
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+
   currentCarouselIndex = index;
 }
 
@@ -365,18 +422,20 @@ function nextSlide() {
 }
 
 function prevSlide() {
-  const prevIndex = (currentCarouselIndex - 1 + carouselStories.length) % carouselStories.length;
+  const prevIndex =
+    (currentCarouselIndex - 1 + carouselStories.length) %
+    carouselStories.length;
   goToSlide(prevIndex);
 }
 
 function initCarousel() {
   if (!carouselPrev || !carouselNext) return;
-  
+
   renderCarousel();
-  
+
   // Add dot click handlers
-  carouselDots?.querySelectorAll('.carousel-dot').forEach(dot => {
-    dot.addEventListener('click', () => {
+  carouselDots?.querySelectorAll(".carousel-dot").forEach((dot) => {
+    dot.addEventListener("click", () => {
       goToSlide(parseInt(dot.dataset.index));
       if (carouselInterval) {
         clearInterval(carouselInterval);
@@ -384,24 +443,24 @@ function initCarousel() {
       }
     });
   });
-  
+
   // Navigation buttons
-  carouselPrev.addEventListener('click', () => {
+  carouselPrev.addEventListener("click", () => {
     prevSlide();
     if (carouselInterval) {
       clearInterval(carouselInterval);
       carouselInterval = null;
     }
   });
-  
-  carouselNext.addEventListener('click', () => {
+
+  carouselNext.addEventListener("click", () => {
     nextSlide();
     if (carouselInterval) {
       clearInterval(carouselInterval);
       carouselInterval = null;
     }
   });
-  
+
   // Auto-play
   carouselInterval = setInterval(nextSlide, 6000);
 }
@@ -411,20 +470,23 @@ function initCarousel() {
 // ========================================
 
 function initCounters() {
-  const counterCards = document.querySelectorAll('.counter-card');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const counterValue = entry.target.querySelector('.counter-value');
-        const target = parseInt(counterValue.dataset.target);
-        animateCounter(counterValue, target);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  
-  counterCards.forEach(card => observer.observe(card));
+  const counterCards = document.querySelectorAll(".counter-card");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counterValue = entry.target.querySelector(".counter-value");
+          const target = parseInt(counterValue.dataset.target);
+          animateCounter(counterValue, target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  counterCards.forEach((card) => observer.observe(card));
 }
 
 // ========================================
@@ -434,63 +496,64 @@ function initCounters() {
 function openLightbox(items, index) {
   lightboxItems = items;
   lightboxIndex = index;
-  
+
   updateLightbox();
-  lightbox.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
+  lightbox.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
 }
 
 function closeLightbox() {
-  lightbox.classList.add('hidden');
-  document.body.style.overflow = '';
+  lightbox.classList.add("hidden");
+  document.body.style.overflow = "";
   if (lightboxVideo) {
     lightboxVideo.pause();
-    lightboxVideo.classList.add('hidden');
+    lightboxVideo.classList.add("hidden");
   }
 }
 
 function updateLightbox() {
   const item = lightboxItems[lightboxIndex];
-  
-  if (item.type === 'video') {
-    lightboxImage.classList.add('hidden');
-    lightboxVideo.classList.remove('hidden');
+
+  if (item.type === "video") {
+    lightboxImage.classList.add("hidden");
+    lightboxVideo.classList.remove("hidden");
     lightboxVideo.src = item.src;
   } else {
-    if (lightboxVideo) lightboxVideo.classList.add('hidden');
-    lightboxImage.classList.remove('hidden');
+    if (lightboxVideo) lightboxVideo.classList.add("hidden");
+    lightboxImage.classList.remove("hidden");
     lightboxImage.src = item.src;
     lightboxImage.alt = item.title;
   }
-  
+
   lightboxTitle.textContent = item.title;
   lightboxDescription.textContent = item.description || item.category;
   lightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxItems.length}`;
-  
+
   // Update button states
   if (lightboxPrev) lightboxPrev.disabled = lightboxIndex === 0;
-  if (lightboxNext) lightboxNext.disabled = lightboxIndex === lightboxItems.length - 1;
+  if (lightboxNext)
+    lightboxNext.disabled = lightboxIndex === lightboxItems.length - 1;
 }
 
 function initLightbox() {
   if (!lightbox || !lightboxClose) return;
-  
+
   // Close button
-  lightboxClose.addEventListener('click', (e) => {
+  lightboxClose.addEventListener("click", (e) => {
     e.stopPropagation();
     closeLightbox();
   });
-  
+
   // Close on overlay click
-  lightbox.addEventListener('click', (e) => {
+  lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) {
       closeLightbox();
     }
   });
-  
+
   // Navigation buttons
   if (lightboxPrev) {
-    lightboxPrev.addEventListener('click', (e) => {
+    lightboxPrev.addEventListener("click", (e) => {
       e.stopPropagation();
       if (lightboxIndex > 0) {
         lightboxIndex--;
@@ -498,9 +561,9 @@ function initLightbox() {
       }
     });
   }
-  
+
   if (lightboxNext) {
-    lightboxNext.addEventListener('click', (e) => {
+    lightboxNext.addEventListener("click", (e) => {
       e.stopPropagation();
       if (lightboxIndex < lightboxItems.length - 1) {
         lightboxIndex++;
@@ -508,22 +571,22 @@ function initLightbox() {
       }
     });
   }
-  
+
   // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (lightbox.classList.contains('hidden')) return;
-    
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.classList.contains("hidden")) return;
+
     switch (e.key) {
-      case 'Escape':
+      case "Escape":
         closeLightbox();
         break;
-      case 'ArrowLeft':
+      case "ArrowLeft":
         if (lightboxIndex > 0) {
           lightboxIndex--;
           updateLightbox();
         }
         break;
-      case 'ArrowRight':
+      case "ArrowRight":
         if (lightboxIndex < lightboxItems.length - 1) {
           lightboxIndex++;
           updateLightbox();
@@ -538,49 +601,56 @@ function initLightbox() {
 // ========================================
 
 function initScrollAnimations() {
-  const fadeElements = document.querySelectorAll('.fade-in');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '-50px' });
-  
-  fadeElements.forEach(el => observer.observe(el));
+  const fadeElements = document.querySelectorAll(".fade-in");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "-50px" },
+  );
+
+  fadeElements.forEach((el) => observer.observe(el));
 }
 
 // ========================================
 // Initialize Everything
 // ========================================
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Initializing Social Welfare Page...');
-  
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Initializing Social Welfare Page...");
+
   // Initialize all components
   initNavigation();
-  
+
   if (mosaicGrid) {
-    console.log('Rendering mosaic grid with', mosaicItems.length, 'items');
+    console.log("Rendering mosaic grid with", mosaicItems.length, "items");
     renderMosaicGrid();
     initMosaicFilters();
   }
-  
+
   if (carouselEl) {
-    console.log('Initializing carousel with', carouselStories.length, 'stories');
+    console.log(
+      "Initializing carousel with",
+      carouselStories.length,
+      "stories",
+    );
     initCarousel();
   }
-  
-  if (document.querySelector('.counter-card')) {
-    console.log('Initializing counters');
+
+  if (document.querySelector(".counter-card")) {
+    console.log("Initializing counters");
     initCounters();
   }
-  
+
   if (lightbox) {
-    console.log('Initializing lightbox');
+    console.log("Initializing lightbox");
     initLightbox();
   }
-  
+
   initScrollAnimations();
 });

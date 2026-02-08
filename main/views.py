@@ -144,8 +144,8 @@ def finance_view(request):
 
 def social_welfare_view(request):
     media_items = MediaMosaicItem.objects.filter(is_active=True).order_by("order")
-    #media_items = MediaMosaicItem.objects.filter(is_active=True).order_by("order", "-created_at")
-
+    story_items = SocialWelfareStory.objects.filter(is_active=True).order_by("order", "-created_at")
+    
     media_items_json = json.dumps([
         {
             "id": str(item.id),
@@ -161,6 +161,16 @@ def social_welfare_view(request):
 
     context = {
         'media_items_json': media_items_json,
+        'story_items': [
+            {
+                'id': str(story.id),
+                'title': story.title,
+                'summary': story.description,
+                'image': story.image.url if story.image else '',
+                'link': story.link,
+            }
+            for story in story_items
+        ],
     }
     return render(request, 'socialwalfare.html', context)
 
