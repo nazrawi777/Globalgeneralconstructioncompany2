@@ -756,14 +756,7 @@
 <script src="{% static 'assets/js/countdown.min.js' %}"></script>
 {{ projects_json|json_script:"projects-data" }}
 {{ project_categories_json|json_script:"project-categories-data" }}
-<script>
-  window.PROJECTS_DATA = JSON.parse(
-    document.getElementById("projects-data").textContent
-  );
-  window.PROJECT_CATEGORIES = JSON.parse(
-    document.getElementById("project-categories-data").textContent
-  );
-</script>
+
   
   <!-- Scripts -->
   <script src="{% static 'assets/js/projects.js' %}"></script>

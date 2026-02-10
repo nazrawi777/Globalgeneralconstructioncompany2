@@ -117,6 +117,8 @@ def blog_view(request):
     for post in posts_qs:
         words_count = len(post.content.split())
         reading_time = max(1, math.ceil(words_count / 200))
+        thumbnail_url = post.image.url if post.image else ''
+        thumbnail_url = request.build_absolute_uri(thumbnail_url) if thumbnail_url else ''
         blog_posts_json.append(
             {
                 'id': str(post.id),
@@ -128,7 +130,7 @@ def blog_view(request):
                 'date': post.date.isoformat(),
                 'readingTime': reading_time,
                 'author': post.author,
-                'thumbnail': post.image.url if post.image else '',
+                'thumbnail': thumbnail_url,
                 'mediaType': 'image',
                 'media': [],
             }
@@ -151,22 +153,25 @@ def project_view(request):
     for project in projects_qs:
         media = []
         if project.image:
+            image_url = request.build_absolute_uri(project.image.url)
             media.append(
                 {
                     'id': f"{project.id}-img",
                     'type': 'image',
-                    'src': project.image.url,
+                    'src': image_url,
                     'alt': project.title,
                     'aspectRatio': 1.33,
                 }
             )
         if project.video:
+            video_url = request.build_absolute_uri(project.video.url)
+            thumb_url = request.build_absolute_uri(project.image.url) if project.image else ''
             media.append(
                 {
                     'id': f"{project.id}-vid",
                     'type': 'video',
-                    'src': project.video.url,
-                    'thumbnail': project.image.url if project.image else '',
+                    'src': video_url,
+                    'thumbnail': thumb_url,
                     'alt': project.title,
                     'aspectRatio': 1.78,
                 }
@@ -187,8 +192,8 @@ def project_view(request):
 
     context = {
         'media_items': MediaMosaicItem.objects.filter(is_active=True),
-        'projects_json': projects_json,
-        'project_categories_json': (
+        'projects_json': json.dumps(projects_json),
+        'project_categories_json': json.dumps(
             [{'id': 'all', 'label': 'All'}]
             + [
                 {'id': key, 'label': label}
@@ -198,31 +203,30 @@ def project_view(request):
     }
     return render(request, 'project.html', context)
 
-
 class FinanceView(BaseDynamicView):
     template_name = "finance.html"
 
     def get_dynamic_context(self):
         """Provide finance-specific context data"""
         context = {}
-
+        
         # Get fiscal years ordered by display order
         context["fiscal_years"] = safe_model_query(FiscalYear, is_active=True).order_by('order', '-year')
-
+        
         # Get all finance projects
         context["finance_projects"] = safe_model_query(FinanceProject).order_by('fiscal_year__order', 'order', '-value')
-
+        
         # Get outstanding projects (for sidebar)
         context["outstanding_projects"] = safe_model_query(FinanceProject, is_outstanding=True).order_by('-value')
-
+        
         # Get financial metrics (overview stats)
         metrics = safe_model_query(FinancialMetrics, is_active=True).first()
         context["financial_metrics"] = metrics
-
+        
         # Get portfolio status
         portfolio_status = safe_model_query(PortfolioStatus, is_active=True).first()
         context["portfolio_status"] = portfolio_status
-
+        
         # Prepare data for JavaScript
         financial_years_data = []
         for fy in context["fiscal_years"]:
@@ -231,7 +235,7 @@ class FinanceView(BaseDynamicView):
                 'turnover': float(fy.turnover),
                 'formatted': fy.formatted_turnover(),
             })
-
+        
         projects_data = []
         for project in context["finance_projects"]:
             projects_data.append({
@@ -247,10 +251,10 @@ class FinanceView(BaseDynamicView):
                 'isOutstanding': project.is_outstanding,
                 'fiscalYear': project.fiscal_year.year if project.fiscal_year else None,
             })
-
+        
         context["financial_years_json"] = json.dumps(financial_years_data, cls=DjangoJSONEncoder)
         context["projects_json"] = json.dumps(projects_data, cls=DjangoJSONEncoder)
-
+        
         return context
 
     def get_fallback_context(self):

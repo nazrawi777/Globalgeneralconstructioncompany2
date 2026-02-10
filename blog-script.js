@@ -21,6 +21,7 @@ const BLOG_POSTS = JSON.parse(
   JSON.parse(document.getElementById("blog-posts-data").textContent),
 );
 console.log(`log items ${BLOG_POSTS.length}`);
+console.log(BLOG_POSTS);
 
 const posts =
   BLOG_POSTS && BLOG_POSTS.length

@@ -65,37 +65,18 @@ class JobApplicationAdmin(admin.ModelAdmin):
     ordering = ('-applied_date',)
 
 
-""" @admin.register(FinancialMetrics)
-class FinancialMetricsAdmin(admin.ModelAdmin):
-    list_display = ('total_budget', 'total_expenditure', 'total_projects', 'is_active', 'updated_at')
-    list_filter = ('is_active',)
-
-
-class FinanceProjectInline(admin.TabularInline):
-    model = FinanceProject
-    fields = ('title', 'value', 'status', 'progress', 'is_outstanding', 'order')
-    extra = 0
 
 
 @admin.register(FiscalYear)
 class FiscalYearAdmin(admin.ModelAdmin):
-    list_display = ('year', 'turnover', 'is_active', 'order')
-    list_filter = ('is_active',)
-    list_editable = ('order', 'is_active')
-    inlines = (FinanceProjectInline,)
-    ordering = ('order', '-year') """
-
-
-@admin.register(FiscalYear)
-class FiscalYearAdmin(admin.ModelAdmin):
-    list_display = ('year', 'turnover', 'is_active', 'order')
+    list_display = ('year', 'turnover', 'formatted_turnover', 'is_active', 'order')
     list_filter = ('is_active',)
     search_fields = ('year',)
     list_editable = ('is_active', 'order')
     ordering = ('order', '-year')
     fieldsets = (
         ('Fiscal Year Information', {
-            'fields': ('year', 'turnover', 'start_date', 'end_date')
+            'fields': ('year', 'turnover', 'year_start', 'year_end')
         }),
         ('Display Settings', {
             'fields': ('is_active', 'order')
@@ -105,7 +86,8 @@ class FiscalYearAdmin(admin.ModelAdmin):
 
 @admin.register(FinanceProject)
 class FinanceProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'client', 'status', 'value', 'progress', 'is_outstanding', 'fiscal_year', 'order')
+    list_display = ('title', 'client', 'status', 'formatted_value', 'progress', 'is_outstanding', 'fiscal_year', 'order')
+    list_editable = ('status', 'progress', 'is_outstanding', 'order', 'formatted_value')
     list_filter = ('status', 'is_outstanding', 'fiscal_year')
     search_fields = ('title', 'client', 'description')
     list_editable = ('status', 'progress', 'is_outstanding', 'order')
@@ -125,12 +107,18 @@ class FinanceProjectAdmin(admin.ModelAdmin):
 
 @admin.register(FinancialMetrics)
 class FinancialMetricsAdmin(admin.ModelAdmin):
-    list_display = ('total_budget', 'total_expenditure', 'total_projects', 'is_active', 'updated_at')
+    list_display = ('current_turnover_year', 'formatted_turnover', 'total_projects', 'formatted_portfolio_value', 'is_active', 'updated_at')
     list_filter = ('is_active',)
     list_editable = ('is_active',)
     fieldsets = (
-        ('Financial Metrics', {
-            'fields': ('total_budget', 'total_expenditure', 'total_projects')
+        ('Current Fiscal Year', {
+            'fields': ('current_turnover_year', 'current_turnover', 'yoy_growth')
+        }),
+        ('Project Metrics', {
+            'fields': ('total_projects', 'completed_projects', 'active_works')
+        }),
+        ('Portfolio Value', {
+            'fields': ('portfolio_value',)
         }),
         ('Display Settings', {
             'fields': ('is_active',)
@@ -144,6 +132,32 @@ class FinancialMetricsAdmin(admin.ModelAdmin):
         return super().has_add_permission(request)
 
 
+@admin.register(PortfolioStatus)
+class PortfolioStatusAdmin(admin.ModelAdmin):
+    list_display = ('snapshot_date', 'completed_count', 'ongoing_count', 'priority_count', 'formatted_total_value', 'is_active', 'updated_at')
+    list_filter = ('is_active', 'snapshot_date')
+    list_editable = ('is_active',)
+    ordering = ('-snapshot_date',)
+    fieldsets = (
+        ('Snapshot Information', {
+            'fields': ('snapshot_date',)
+        }),
+        ('Completed Projects', {
+            'fields': ('completed_count', 'completed_value')
+        }),
+        ('Ongoing Projects', {
+            'fields': ('ongoing_count', 'ongoing_value')
+        }),
+        ('Priority Projects', {
+            'fields': ('priority_count', 'priority_value')
+        }),
+        ('Total Portfolio', {
+            'fields': ('total_value',)
+        }),
+        ('Display Settings', {
+            'fields': ('is_active',)
+        }),
+    )
 
 
 @admin.register(Project)
@@ -160,12 +174,6 @@ class BlogPostAdmin(admin.ModelAdmin):
     list_filter = ('category', 'date')
     search_fields = ('title', 'content', 'author', 'category')
     ordering = ('-date', 'title')
-
-
-@admin.register(PortfolioStatus)
-class PortfolioStatusAdmin(admin.ModelAdmin):
-    list_display = ('snapshot_date', 'completed_count', 'ongoing_count', 'priority_count', 'total_value', 'is_active')
-    list_filter = ('is_active',)
 
 
 @admin.register(MediaMosaicItem)

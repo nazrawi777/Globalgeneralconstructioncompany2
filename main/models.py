@@ -134,129 +134,112 @@ class JobApplication(models.Model):
         return f"{self.full_name} - {self.job_title}"
 
 
-class FinancialMetrics(models.Model):
-    """Overall financial metrics (singleton pattern)."""
-    total_budget = models.DecimalField(max_digits=15, decimal_places=2)
-    total_expenditure = models.DecimalField(max_digits=15, decimal_places=2)
-    total_projects = models.IntegerField(default=0)
-    is_active = models.BooleanField(default=True)
+
+class FiscalYear(models.Model):
+    """Represents a fiscal year with annual turnover"""
+    year = models.CharField(max_length=20, unique=True, help_text="e.g., '2020/21'")
+    turnover = models.DecimalField(max_digits=15, decimal_places=2, help_text="Annual turnover in ETB")
+    year_start = models.DateField(blank=True, null=True, help_text="Start date of fiscal year")
+    year_end = models.DateField(blank=True, null=True, help_text="End date of fiscal year")
+    is_active = models.BooleanField(default=True, help_text="Whether this fiscal year is currently active")
+    order = models.IntegerField(default=0, help_text="Order for display (lower numbers first)")
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name_plural = 'Financial Metrics'
-
-    def __str__(self):
-        return f"Financial Metrics (Updated: {self.updated_at.strftime('%Y-%m-%d')})"
-
-    def save(self, *args, **kwargs):
-        """Ensure only one active instance exists."""
-        if self.is_active:
-            FinancialMetrics.objects.filter(is_active=True).exclude(pk=self.pk).update(is_active=False)
-        super().save(*args, **kwargs)
-
-    def format_budget(self):
-        """Format budget in billions or millions."""
-        value = float(self.total_budget)
-        if value >= 1_000_000_000:
-            return f"{value / 1_000_000_000:.2f}B ETB"
-        elif value >= 1_000_000:
-            return f"{value / 1_000_000:.2f}M ETB"
-        return f"{value:,.2f} ETB"
-
-    def format_expenditure(self):
-        """Format expenditure in billions or millions."""
-        value = float(self.total_expenditure)
-        if value >= 1_000_000_000:
-            return f"{value / 1_000_000_000:.2f}B ETB"
-        elif value >= 1_000_000:
-            return f"{value / 1_000_000:.2f}M ETB"
-        return f"{value:,.2f} ETB"
-
-
-class FiscalYear(models.Model):
-    """Fiscal year periods."""
-    year = models.CharField(max_length=20)
-    turnover = models.DecimalField(max_digits=15, decimal_places=2, default=0)
-    start_date = models.DateField()
-    end_date = models.DateField()
-    is_active = models.BooleanField(default=True)
-    order = models.IntegerField(default=0)
-
-    class Meta:
         ordering = ['order', '-year']
+        verbose_name = "Fiscal Year"
+        verbose_name_plural = "Fiscal Years"
 
     def __str__(self):
-        return self.year
+        return f"FY {self.year}"
 
     def formatted_turnover(self):
-        """Return formatted turnover value."""
-        if self.turnover >= 1_000_000_000:
-            return f"{(self.turnover / 1_000_000_000):.2f}B ETB"
-        if self.turnover >= 1_000_000:
-            return f"{(self.turnover / 1_000_000):.2f}M ETB"
+        """Return formatted turnover string"""
         return f"{self.turnover:,.0f} ETB"
 
 
 class FinanceProject(models.Model):
-    """Individual finance projects."""
-    fiscal_year = models.ForeignKey(FiscalYear, on_delete=models.CASCADE, related_name='projects')
-    title = models.CharField(max_length=300)
-    description = models.TextField(blank=True)
-    value = models.DecimalField(max_digits=15, decimal_places=2, default=0)
-    contract_date = models.DateField(null=True, blank=True)
-    status = models.CharField(max_length=100, blank=True)
-    progress = models.IntegerField(default=0)
-    client = models.CharField(max_length=200, blank=True)
-    is_outstanding = models.BooleanField(default=False)
-    order = models.IntegerField(default=0)
+    """Represents a financial project with status and progress"""
+    STATUS_CHOICES = [
+        ('Completed', 'Completed'),
+        ('Ongoing', 'Ongoing'),
+        ('Priority', 'Priority'),
+    ]
+
+    title = models.CharField(max_length=500)
+    description = models.TextField(blank=True, help_text="Project description")
+    client = models.CharField(max_length=300, help_text="Client/Administration name")
+    value = models.DecimalField(max_digits=15, decimal_places=2, help_text="Project value in ETB")
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='Ongoing')
+    progress = models.IntegerField(default=0, help_text="Progress percentage (0-100)")
+    fiscal_year = models.ForeignKey(FiscalYear, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
+    is_outstanding = models.BooleanField(default=False, help_text="Show in outstanding works section")
+    contract_date = models.CharField(max_length=100, blank=True, help_text="e.g., 'Feb 14, 2017 E.C.'")
+    order = models.IntegerField(default=0, help_text="Order for display within fiscal year")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['fiscal_year__order', 'order', '-value']
+        verbose_name = "Finance Project"
+        verbose_name_plural = "Finance Projects"
 
     def __str__(self):
-        return f"{self.title} ({self.fiscal_year.year})"
+        return self.title
 
     def formatted_value(self):
-        """Return formatted project value."""
-        if self.value >= 1_000_000_000:
-            return f"{(self.value / 1_000_000_000):.2f}B ETB"
-        if self.value >= 1_000_000:
-            return f"{(self.value / 1_000_000):.2f}M ETB"
-        return f"{self.value:,.0f} ETB"
+        """Return formatted value string"""
+        if self.value >= 1000000000:
+            return f"{(self.value / 1000000000):.2f}B ETB"
+        elif self.value >= 1000000:
+            return f"{(self.value / 1000000):.1f}M ETB"
+        else:
+            return f"{self.value:,.0f} ETB"
 
 
-class Project(models.Model):
-    CATEGORY_CHOICES = [
-        ('road', 'Road Construction'),
-        ('building', 'Building Works'),
-        ('water', 'Water Supply & Sewerage'),
-        ('corridor', 'Corridor Development'),
-        ('other', 'Other'),
-    ]
-    title = models.CharField(max_length=200)
-    subtitle = models.CharField(max_length=200)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
-    location = models.CharField(max_length=200)
-    year = models.IntegerField()
-    image = models.ImageField(upload_to='projects/')
-    video = models.FileField(upload_to='projects/videos/', blank=True, null=True)
-    description = models.TextField()
-    is_featured = models.BooleanField(default=False)
+class FinancialMetrics(models.Model):
+    """Stores key financial metrics for the overview section"""
+    current_turnover = models.DecimalField(max_digits=15, decimal_places=2, help_text="Current fiscal year turnover in ETB")
+    current_turnover_year = models.CharField(max_length=20, help_text="e.g., '2024/25'")
+    total_projects = models.IntegerField(default=0, help_text="Total number of projects")
+    portfolio_value = models.DecimalField(max_digits=15, decimal_places=2, help_text="Total portfolio value in ETB")
+    completed_projects = models.IntegerField(default=0, help_text="Number of completed projects")
+    active_works = models.IntegerField(default=0, help_text="Number of active/ongoing projects")
+    yoy_growth = models.DecimalField(max_digits=10, decimal_places=2, help_text="Year-over-year growth percentage")
+    is_active = models.BooleanField(default=True, help_text="Whether this is the active metrics set")
+    updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.title
-
-
-class BlogPost(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    image = models.ImageField(upload_to='blog/')
-    category = models.CharField(max_length=100)
-    date = models.DateField()
-    author = models.CharField(max_length=100)
+    class Meta:
+        verbose_name = "Financial Metrics"
+        verbose_name_plural = "Financial Metrics"
 
     def __str__(self):
-        return self.title
+        return f"Financial Metrics - {self.current_turnover_year}"
+
+    def save(self, *args, **kwargs):
+        if self.is_active:
+            # Ensure only one metrics set is active
+            FinancialMetrics.objects.filter(is_active=True).exclude(pk=self.pk).update(is_active=False)
+        super().save(*args, **kwargs)
+
+    def formatted_turnover(self):
+        """Return formatted turnover string"""
+        if self.current_turnover >= 1000000000:
+            return f"{(self.current_turnover / 1000000000):.2f}B ETB"
+        elif self.current_turnover >= 1000000:
+            return f"{(self.current_turnover / 1000000):.1f}M ETB"
+        else:
+            return f"{self.current_turnover:,.0f} ETB"
+
+    def formatted_portfolio_value(self):
+        """Return formatted portfolio value string"""
+        if self.portfolio_value >= 1000000000:
+            return f"{(self.portfolio_value / 1000000000):.2f}B ETB"
+        elif self.portfolio_value >= 1000000:
+            return f"{(self.portfolio_value / 1000000):.1f}M ETB"
+        else:
+            return f"{self.portfolio_value:,.0f} ETB"
 
 
 class PortfolioStatus(models.Model):
@@ -269,7 +252,7 @@ class PortfolioStatus(models.Model):
     priority_count = models.IntegerField(default=0)
     priority_value = models.DecimalField(max_digits=15, decimal_places=2, help_text="Total value of priority projects in ETB")
     total_value = models.DecimalField(max_digits=15, decimal_places=2, help_text="Total portfolio value in ETB")
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, help_text="Whether this is the active snapshot")
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -309,35 +292,72 @@ class PortfolioStatus(models.Model):
 
     def formatted_completed_value(self):
         """Return formatted completed value"""
-        if self.completed_value >= 1_000_000_000:
-            return f"{(self.completed_value / 1_000_000_000):.1f}B ETB"
-        if self.completed_value >= 1_000_000:
-            return f"{(self.completed_value / 1_000_000):.1f}M ETB"
-        return f"{self.completed_value:,.0f} ETB"
+        if self.completed_value >= 1000000000:
+            return f"{(self.completed_value / 1000000000):.1f}B ETB"
+        elif self.completed_value >= 1000000:
+            return f"{(self.completed_value / 1000000):.1f}M ETB"
+        else:
+            return f"{self.completed_value:,.0f} ETB"
 
     def formatted_ongoing_value(self):
         """Return formatted ongoing value"""
-        if self.ongoing_value >= 1_000_000_000:
-            return f"{(self.ongoing_value / 1_000_000_000):.1f}B ETB"
-        if self.ongoing_value >= 1_000_000:
-            return f"{(self.ongoing_value / 1_000_000):.1f}M ETB"
-        return f"{self.ongoing_value:,.0f} ETB"
+        if self.ongoing_value >= 1000000000:
+            return f"{(self.ongoing_value / 1000000000):.1f}B ETB"
+        elif self.ongoing_value >= 1000000:
+            return f"{(self.ongoing_value / 1000000):.1f}M ETB"
+        else:
+            return f"{self.ongoing_value:,.0f} ETB"
 
     def formatted_priority_value(self):
         """Return formatted priority value"""
-        if self.priority_value >= 1_000_000_000:
-            return f"{(self.priority_value / 1_000_000_000):.1f}B ETB"
-        if self.priority_value >= 1_000_000:
-            return f"{(self.priority_value / 1_000_000):.1f}M ETB"
-        return f"{self.priority_value:,.0f} ETB"
+        if self.priority_value >= 1000000000:
+            return f"{(self.priority_value / 1000000000):.1f}B ETB"
+        elif self.priority_value >= 1000000:
+            return f"{(self.priority_value / 1000000):.1f}M ETB"
+        else:
+            return f"{self.priority_value:,.0f} ETB"
 
     def formatted_total_value(self):
         """Return formatted total value"""
-        if self.total_value >= 1_000_000_000:
-            return f"{(self.total_value / 1_000_000_000):.2f}B ETB"
-        if self.total_value >= 1_000_000:
-            return f"{(self.total_value / 1_000_000):.1f}M ETB"
-        return f"{self.total_value:,.0f} ETB"
+        if self.total_value >= 1000000000:
+            return f"{(self.total_value / 1000000000):.2f}B ETB"
+        elif self.total_value >= 1000000:
+            return f"{(self.total_value / 1000000):.1f}M ETB"
+        else:
+            return f"{self.total_value:,.0f} ETB"
+
+class Project(models.Model):
+    CATEGORY_CHOICES = [
+        ('road', 'Road Construction'),
+        ('building', 'Building Works'),
+        ('water', 'Water Supply & Sewerage'),
+        ('corridor', 'Corridor Development'),
+        ('other', 'Other'),
+    ]
+    title = models.CharField(max_length=200)
+    subtitle = models.CharField(max_length=200)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    location = models.CharField(max_length=200)
+    year = models.IntegerField()
+    image = models.ImageField(upload_to='projects/')
+    video = models.FileField(upload_to='projects/videos/', blank=True, null=True)
+    description = models.TextField()
+    is_featured = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    image = models.ImageField(upload_to='blog/')
+    category = models.CharField(max_length=100)
+    date = models.DateField()
+    author = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
 
 
 class MediaMosaicItem(models.Model):
