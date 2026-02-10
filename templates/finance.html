@@ -1200,6 +1200,12 @@
 <script src="{% static 'assets/js/script.js' %}"></script>
 <script src="{% static 'assets/js/countdown.min.js' %}"></script>
 <script src="{% static 'assets/js/gemini-chat.js' %}"></script>
+  <script>
+    // Financial data from Django
+    window.financialYearsData = {{ financial_years_json|safe }};
+    window.projectsData = {{ projects_json|safe }};
+  </script>
+
   <script src="{% static './final.js' %}"></script>
 </body>
 </html>
