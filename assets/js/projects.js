@@ -20,7 +20,9 @@
     drone1: 'https://xgmbwiggqvpcezeqlajv.supabase.co/storage/v1/object/public/hero/video_2026-01-02_12-06-25.mp4',
   };
 
-const PROJECTS = [
+const PROJECTS = (window.PROJECTS_DATA && window.PROJECTS_DATA.length)
+  ? window.PROJECTS_DATA
+  : [
   {
     id: '1',
     title: '2B+G+15 Tower — Structural Delivery',
@@ -208,7 +210,7 @@ const PROJECTS = [
 
 
 
-const CATEGORIES = [
+const CATEGORIES = window.PROJECT_CATEGORIES || [
   { id: 'all', label: 'All' },
   { id: 'public', label: 'Public & Government' },
   { id: 'infrastructure', label: 'Roads & Infrastructure' },

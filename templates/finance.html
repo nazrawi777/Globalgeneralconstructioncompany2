@@ -344,12 +344,14 @@
   <main>
     <!-- Hero Section -->
     <section class="hero-section">
-      <div class="section-shape-1" style="background-image: url('https://i.postimg.cc/CL7cZRvP/Gemini-Generated-Image-h4cidbh4cidbh4ci.png');"></div>
+      <div class="section-shape-1"
+        style="background-image: url('https://i.postimg.cc/CL7cZRvP/Gemini-Generated-Image-h4cidbh4cidbh4ci.png');">
+      </div>
       <div class="hero-bg"></div>
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
-      
-      
+
+
 
       <div class="hero-content">
         <div class="animate-on-scroll">
@@ -357,85 +359,151 @@
         </div>
 
         <h1 class="hero-title animate-on-scroll">
-           Financial
+          Financial
           <span class="text-gradient">Performance Overview</span>
         </h1>
 
         <p class="hero-subtitle animate-on-scroll">
-          A comprehensive view of audited financials and project portfolio across government and private sector engagements.
+          A comprehensive view of audited financials and project portfolio across government and private sector
+          engagements.
         </p>
 
         <div class="hero-stats animate-on-scroll">
           <div class="hero-stat glass-panel glow-border">
             <div class="hero-stat-icon text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                <polyline points="16 7 22 7 22 13" />
+              </svg>
             </div>
-            <p class="hero-stat-value stat-value text-gradient">1.07B ETB</p>
-            <p class="hero-stat-label">2024/25 Turnover</p>
+            <p class="hero-stat-value stat-value text-gradient">
+              {% if financial_metrics %}{{ financial_metrics.formatted_turnover }}{% else %}1.07B ETB{% endif %}
+            </p>
+            <p class="hero-stat-label">
+              {% if financial_metrics %}{{ financial_metrics.current_turnover_year }} Turnover{% else %}2024/25 Turnover{% endif %}
+            </p>
           </div>
           <div class="hero-stat glass-panel">
             <div class="hero-stat-icon text-accent">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+                <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+                <path d="M10 6h4" />
+                <path d="M10 10h4" />
+                <path d="M10 14h4" />
+                <path d="M10 18h4" />
+              </svg>
             </div>
-            <p class="hero-stat-value stat-value">11</p>
+            <p class="hero-stat-value stat-value">{% if financial_metrics %}{{ financial_metrics.total_projects }}{% else %}11{% endif %}</p>
             <p class="hero-stat-label">Total Projects</p>
           </div>
           <div class="hero-stat glass-panel">
             <div class="hero-stat-icon text-mosaic-complete">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" />
+                <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+              </svg>
             </div>
-            <p class="hero-stat-value stat-value">2.57B ETB</p>
+            <p class="hero-stat-value stat-value">
+              {% if financial_metrics %}{{ financial_metrics.formatted_portfolio_value }}{% else %}2.57B ETB{% endif %}
+            </p>
             <p class="hero-stat-label">Portfolio Value</p>
           </div>
         </div>
 
-        
+
       </div>
     </section>
 
     <!-- Financial Highlights Section -->
     <section id="financial-highlights" class="highlights-section">
-      
+
       <div class="highlights-container">
-        
+
         <div class="section-header">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16h8"/><path d="M7 11h12"/><path d="M7 6h3"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+            <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+            <path d="M7 16h8" />
+            <path d="M7 11h12" />
+            <path d="M7 6h3" />
+          </svg>
           <h2 class="section-title1">Key Financial Indicators</h2>
         </div>
 
         <div class="highlights-grid">
           <div class="highlight-card glass-panel animate-on-scroll" style="border-color: hsl(175 60% 40% / 0.3);">
             <div class="highlight-icon-wrapper" style="background: hsl(175 60% 40% / 0.1);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-primary">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                <polyline points="16 7 22 7 22 13" />
+              </svg>
             </div>
-            <p class="highlight-value stat-value">1.07B ETB</p>
-            <p class="highlight-label">FY 2024/25 Turnover</p>
-            <p class="highlight-subtext">+610.8% YoY Growth</p>
+            <p class="highlight-value stat-value">
+              {% if financial_metrics %}{{ financial_metrics.formatted_turnover }}{% else %}1.07B ETB{% endif %}
+            </p>
+            <p class="highlight-label">
+              FY {% if financial_metrics %}{{ financial_metrics.current_turnover_year }}{% else %}2024/25{% endif %} Turnover
+            </p>
+            <p class="highlight-subtext">
+              {% if financial_metrics and financial_metrics.yoy_growth %}+{{ financial_metrics.yoy_growth }}% YoY Growth{% else %}+610.8% YoY Growth{% endif %}
+            </p>
           </div>
-          
+
           <div class="highlight-card glass-panel animate-on-scroll" style="border-color: hsl(42 85% 55% / 0.3);">
             <div class="highlight-icon-wrapper" style="background: hsl(42 85% 55% / 0.1);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-accent">
+                <path
+                  d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" />
+                <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+              </svg>
             </div>
-            <p class="highlight-value stat-value">2.57B ETB</p>
+            <p class="highlight-value stat-value">
+              {% if financial_metrics %}{{ financial_metrics.formatted_portfolio_value }}{% else %}2.57B ETB{% endif %}
+            </p>
             <p class="highlight-label">Total Portfolio Value</p>
-            <p class="highlight-subtext">11 Projects</p>
+            <p class="highlight-subtext">
+              {% if financial_metrics %}{{ financial_metrics.total_projects }} Projects{% else %}11 Projects{% endif %}
+            </p>
           </div>
-          
+
           <div class="highlight-card glass-panel animate-on-scroll" style="border-color: hsl(150 60% 40% / 0.3);">
             <div class="highlight-icon-wrapper" style="background: hsl(150 60% 40% / 0.1);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-mosaic-complete"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-mosaic-complete">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
             </div>
-            <p class="highlight-value stat-value">7</p>
+            <p class="highlight-value stat-value">
+              {% if financial_metrics %}{{ financial_metrics.completed_projects }}{% else %}7{% endif %}
+            </p>
             <p class="highlight-label">Completed Projects</p>
             <p class="highlight-subtext">Successfully Delivered</p>
           </div>
-          
+
           <div class="highlight-card glass-panel animate-on-scroll" style="border-color: hsl(42 85% 55% / 0.3);">
             <div class="highlight-icon-wrapper" style="background: hsl(42 85% 55% / 0.1);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-mosaic-ongoing"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-mosaic-ongoing">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
             </div>
-            <p class="highlight-value stat-value">4</p>
+            <p class="highlight-value stat-value">
+              {% if financial_metrics %}{{ financial_metrics.active_works }}{% else %}4{% endif %}
+            </p>
             <p class="highlight-label">Active Works</p>
             <p class="highlight-subtext">In Progress</p>
           </div>
@@ -446,132 +514,132 @@
     <!-- Turnover Chart Section -->
     <section id="turnover-section" class="turnover-section">
       <div class="bg-layer13"></div>
-    <div class="turnover-container">
-      <div class="turnover-panel">
-        <!-- Header -->
-        <div class="turnover-header">
-          <div class="turnover-title-wrapper">
-            <svg class="turnover-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-              <polyline points="16 7 22 7 22 13"></polyline>
-            </svg>
-            <h2 class="turnover-title">Historical Turnover Record</h2>
-          </div>
-          <span class="turnover-badge">{{ turnover_range|default:"FY 2020–2024 Archive" }}</span>
-        </div>
-
-        <!-- Description -->
-        <p class="turnover-description">
-          Audited annual turnover in Ethiopian Birr (ETB) — Fiscal years ending June 30
-        </p>
-
-        <!-- Chart Area -->
-        <div id="turnover-chart-area" class="turnover-chart-area">
-          <!-- Y-Axis -->
-          <div class="turnover-y-axis">
-            <span class="turnover-y-label">1.07B ETB</span>
-            <span class="turnover-y-label">800M ETB</span>
-            <span class="turnover-y-label">600M ETB</span>
-            <span class="turnover-y-label">400M ETB</span>
-            <span class="turnover-y-label">200M ETB</span>
-            <span class="turnover-y-label">0</span>
-          </div>
-          
-          <!-- Chart Grid & Bars -->
-          <div class="turnover-chart-grid">
-            <!-- Grid lines -->
-            <div class="turnover-grid-lines">
-              <div class="turnover-grid-line"></div>
-              <div class="turnover-grid-line"></div>
-              <div class="turnover-grid-line"></div>
-              <div class="turnover-grid-line"></div>
-              <div class="turnover-grid-line"></div>
-            </div>
-            
-            <!-- Bars Container -->
-            <div class="turnover-bars-wrapper">
-              {% if year_totals %}
-              {% for year in year_totals %}
-              <div class="turnover-bar-group" data-year="{{ year.year }}" data-value="{{ year.value }}" data-formatted="{{ year.formatted }}">
-                <div class="turnover-bar {% if year.is_latest %}turnover-bar-primary{% else %}turnover-bar-muted{% endif %}"></div>
-                <span class="turnover-x-label">{{ year.year }}</span>
-              </div>
-              {% endfor %}
-              {% else %}
-              <!-- Bar 1: 2020/21 -->
-              <div class="turnover-bar-group" data-year="2020/21" data-value="247500679" data-formatted="247,500,679 ETB">
-                <div class="turnover-bar turnover-bar-muted" id="bar-2020"></div>
-                <span class="turnover-x-label">2020/21</span>
-              </div>
-              
-              <!-- Bar 2: 2021/22 -->
-              <div class="turnover-bar-group" data-year="2021/22" data-value="258134782" data-formatted="258,134,782 ETB">
-                <div class="turnover-bar turnover-bar-muted" id="bar-2021"></div>
-                <span class="turnover-x-label">2021/22</span>
-              </div>
-              
-              <!-- Bar 3: 2022/23 -->
-              <div class="turnover-bar-group" data-year="2022/23" data-value="142378986" data-formatted="142,378,986 ETB">
-                <div class="turnover-bar turnover-bar-muted" id="bar-2022"></div>
-                <span class="turnover-x-label">2022/23</span>
-              </div>
-              
-              <!-- Bar 4: 2023/24 -->
-              <div class="turnover-bar-group" data-year="2023/24" data-value="150345685" data-formatted="150,345,685 ETB">
-                <div class="turnover-bar turnover-bar-muted" id="bar-2023"></div>
-                <span class="turnover-x-label">2023/24</span>
-              </div>
-              
-              <!-- Bar 5: 2024/25 (Primary/Highlighted) -->
-              <div class="turnover-bar-group" data-year="2024/25" data-value="1068648056" data-formatted="1,068,648,056 ETB">
-                <div class="turnover-bar turnover-bar-primary" id="bar-2024"></div>
-                <span class="turnover-x-label">2024/25</span>
-              </div>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-
-        <!-- Tooltip (hidden by default) -->
-        <div id="turnover-tooltip" class="turnover-tooltip">
-          <p class="turnover-tooltip-year"></p>
-          <p class="turnover-tooltip-value"></p>
-        </div>
-
-        <!-- Footer Stats -->
-        <div class="turnover-footer">
-          <div class="turnover-footer-stats">
-            <div class="turnover-base-year">
-              <span class="turnover-stat-label">Base Year (FY {{ base_year|default:"2020/21" }}): </span>
-              <span class="turnover-stat-value">{{ base_value|default:"247,500,679 ETB" }}</span>
-            </div>
-            <div class="turnover-growth">
-              <svg class="turnover-growth-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="turnover-container">
+        <div class="turnover-panel">
+          <!-- Header -->
+          <div class="turnover-header">
+            <div class="turnover-title-wrapper">
+              <svg class="turnover-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
                 <polyline points="16 7 22 7 22 13"></polyline>
               </svg>
-              <span>332% Growth Over Period</span>
+              <h2 class="turnover-title">Historical Turnover Record</h2>
+            </div>
+            <span class="turnover-badge">FY 2020–2024 Archive</span>
+          </div>
+
+          <!-- Description -->
+          <p class="turnover-description">
+            Audited annual turnover in Ethiopian Birr (ETB) — Fiscal years ending June 30
+          </p>
+
+          <!-- Chart Area -->
+          <div id="turnover-chart-area" class="turnover-chart-area">
+            <!-- Y-Axis -->
+            <div class="turnover-y-axis">
+              <span class="turnover-y-label">1.07B ETB</span>
+              <span class="turnover-y-label">800M ETB</span>
+              <span class="turnover-y-label">600M ETB</span>
+              <span class="turnover-y-label">400M ETB</span>
+              <span class="turnover-y-label">200M ETB</span>
+              <span class="turnover-y-label">0</span>
+            </div>
+
+            <!-- Chart Grid & Bars -->
+            <div class="turnover-chart-grid">
+              <!-- Grid lines -->
+              <div class="turnover-grid-lines">
+                <div class="turnover-grid-line"></div>
+                <div class="turnover-grid-line"></div>
+                <div class="turnover-grid-line"></div>
+                <div class="turnover-grid-line"></div>
+                <div class="turnover-grid-line"></div>
+              </div>
+
+              <!-- Bars Container -->
+              <div class="turnover-bars-wrapper">
+                {% for fiscal_year in fiscal_years %}
+                <div class="turnover-bar-group" 
+                     data-year="{{ fiscal_year.year }}" 
+                     data-value="{{ fiscal_year.turnover }}"
+                     data-formatted="{{ fiscal_year.formatted_turnover }}">
+                  <div class="turnover-bar {% if forloop.last %}turnover-bar-primary{% else %}turnover-bar-muted{% endif %}" 
+                       id="bar-{{ fiscal_year.year|slugify }}"></div>
+                  <span class="turnover-x-label">{{ fiscal_year.year }}</span>
+                </div>
+                {% empty %}
+                <!-- Fallback bars if no fiscal years -->
+                <div class="turnover-bar-group" data-year="2020/21" data-value="247500679" data-formatted="247,500,679 ETB">
+                  <div class="turnover-bar turnover-bar-muted" id="bar-2020"></div>
+                  <span class="turnover-x-label">2020/21</span>
+                </div>
+                {% endfor %}
+              </div>
             </div>
           </div>
-          <p class="turnover-footer-note">
-            This record documents the company's audited financial performance for the stated fiscal period and requires no updates.
-          </p>
+
+          <!-- Tooltip (hidden by default) -->
+          <div id="turnover-tooltip" class="turnover-tooltip">
+            <p class="turnover-tooltip-year"></p>
+            <p class="turnover-tooltip-value"></p>
+          </div>
+
+          <!-- Footer Stats -->
+          <div class="turnover-footer">
+            <div class="turnover-footer-stats">
+              <div class="turnover-base-year">
+                <span class="turnover-stat-label">
+                  Base Year (FY {% if fiscal_years %}{{ fiscal_years.first.year }}{% else %}2020/21{% endif %}): 
+                </span>
+                <span class="turnover-stat-value">
+                  {% if fiscal_years %}{{ fiscal_years.first.formatted_turnover }}{% else %}247,500,679 ETB{% endif %}
+                </span>
+              </div>
+              <div class="turnover-growth">
+                <svg class="turnover-growth-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                  <polyline points="16 7 22 7 22 13"></polyline>
+                </svg>
+                <span>
+                  {% if fiscal_years and fiscal_years.count > 1 %}
+                    {% with first=fiscal_years.first last=fiscal_years.last %}
+                      {% widthratio last.turnover first.turnover 100 as growth %}
+                      {{ growth|add:"-100"|floatformat:0 }}% Growth Over Period
+                    {% endwith %}
+                  {% else %}
+                    332% Growth Over Period
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+            <p class="turnover-footer-note">
+              This record documents the company's audited financial performance for the stated fiscal period and
+              requires no updates.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
     <!-- Ledger Flipbook Section -->
     <section class="ledger-section" id="main-content">
       <div class="ledger-container">
         <div class="ledger-header animate-on-scroll">
           <div class="ledger-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
             <span>ANNUAL FINANCIAL RECORDS</span>
           </div>
           <h2 class="ledger-title">Fiscal Year Ledger</h2>
           <p class="ledger-description">
-            Page through audited annual records. Each fiscal year contains turnover data and project portfolio with status indicators.
+            Page through audited annual records. Each fiscal year contains turnover data and project portfolio with
+            status indicators.
           </p>
         </div>
 
@@ -579,14 +647,13 @@
           <!-- Outstanding Works Sidebar -->
           <div class="outstanding-sidebar animate-on-scroll">
             <div class="outstanding-sticky">
-              <div class="outstanding-panel glass-panel">
+                <div class="outstanding-panel glass-panel">
                 <h4 class="outstanding-title">Outstanding Works</h4>
                 <div>
-                  {% if outstanding_projects %}
                   {% for project in outstanding_projects %}
                   <div class="outstanding-item">
-                    <p class="outstanding-item-title">{{ project.name }}</p>
-                    <p class="outstanding-item-value stat-value font-mono">{{ project.budget_formatted }}</p>
+                    <p class="outstanding-item-title">{{ project.title }}</p>
+                    <p class="outstanding-item-value stat-value font-mono">{{ project.formatted_value }}</p>
                     <div class="progress-container">
                       <div class="progress-bar">
                         <div class="progress-fill" data-progress="{{ project.progress }}" style="width: 0%;"></div>
@@ -594,19 +661,11 @@
                       <span class="progress-text">{{ project.progress }}%</span>
                     </div>
                   </div>
-                  {% endfor %}
-                  {% else %}
+                  {% empty %}
                   <div class="outstanding-item">
-                    <p class="outstanding-item-title">No outstanding works recorded</p>
-                    <p class="outstanding-item-value stat-value font-mono">0 ETB</p>
-                    <div class="progress-container">
-                      <div class="progress-bar">
-                        <div class="progress-fill" data-progress="0" style="width: 0%;"></div>
-                      </div>
-                      <span class="progress-text">0%</span>
-                    </div>
+                    <p class="outstanding-item-title">No outstanding works</p>
                   </div>
-                  {% endif %}
+                  {% endfor %}
                 </div>
               </div>
             </div>
@@ -623,24 +682,28 @@
             <!-- Navigation -->
             <div class="flipbook-nav">
               <button id="prev-btn" class="nav-button glass-panel" aria-label="Previous page">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
               </button>
 
               <div class="nav-dots">
-                <button class="nav-dot active" aria-label="Go to page 1"></button>
-                <button class="nav-dot" aria-label="Go to page 2"></button>
-                <button class="nav-dot" aria-label="Go to page 3"></button>
-                <button class="nav-dot" aria-label="Go to page 4"></button>
-                <button class="nav-dot" aria-label="Go to page 5"></button>
+                {% for fiscal_year in fiscal_years %}
+                <button class="nav-dot {% if forloop.first %}active{% endif %}" aria-label="Go to page {{ forloop.counter }}"></button>
+                {% endfor %}
               </div>
 
               <button id="next-btn" class="nav-button glass-panel" aria-label="Next page">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
               </button>
             </div>
 
             <!-- Print Button -->
-            
+
           </div>
         </div>
       </div>
@@ -648,13 +711,20 @@
 
     <!-- Project Status Summary Section -->
     <section class="status-section">
-      
+
       <div class="status-container">
-        
+
         <div class="status-header">
           <div class="section-header" style="margin-bottom: 0;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
-            <h2 class="section-title1">Portfolio Status as of June 2024</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="text-primary">
+              <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+              <path d="M22 12A10 10 0 0 0 12 2v10z" />
+            </svg>
+            <h2 class="section-title1">
+              Portfolio Status as of {% if portfolio_status %}{{ portfolio_status.snapshot_date|date:"F Y" }}{% else %}June 2024{% endif %}
+            </h2>
           </div>
           <span class="turnover-badge">Archived Snapshot</span>
         </div>
@@ -663,51 +733,91 @@
           <div class="status-card glass-panel animate-on-scroll">
             <div class="status-card-header">
               <div class="status-card-label">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-mosaic-complete"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="text-mosaic-complete">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
                 <span>Completed</span>
               </div>
-              <span class="status-card-count text-mosaic-complete">{{ portfolio_status.completed_count|default:"7" }}</span>
+              <span class="status-card-count text-mosaic-complete">
+                {% if portfolio_status %}{{ portfolio_status.completed_count }}{% else %}7{% endif %}
+              </span>
             </div>
             <div class="status-progress">
-              <div class="status-progress-fill bg-mosaic-complete" data-progress="{{ completed_pct|default:64 }}" style="width: 0%;"></div>
+              <div class="status-progress-fill bg-mosaic-complete" 
+                   data-progress="{% if portfolio_status %}{{ portfolio_status.get_completed_percentage }}{% else %}64{% endif %}" 
+                   style="width: 0%;"></div>
             </div>
             <div class="status-card-footer">
-              <span class="text-muted-foreground">{{ completed_pct|default:64 }}% of projects</span>
-              <span class="font-mono">{% if financial_metrics %}{{ completed_value|floatformat:0 }} ETB{% else %}929.3M ETB{% endif %}</span>
+              <span class="text-muted-foreground">
+                {% if portfolio_status %}{{ portfolio_status.get_completed_percentage }}{% else %}64{% endif %}% of projects
+              </span>
+              <span class="font-mono">
+                {% if portfolio_status %}{{ portfolio_status.formatted_completed_value }}{% else %}929.3M ETB{% endif %}
+              </span>
             </div>
           </div>
 
           <div class="status-card glass-panel animate-on-scroll">
             <div class="status-card-header">
               <div class="status-card-label">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-mosaic-ongoing"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="text-mosaic-ongoing">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
                 <span>Ongoing</span>
               </div>
-              <span class="status-card-count text-mosaic-ongoing">{{ portfolio_status.ongoing_count|default:"2" }}</span>
+              <span class="status-card-count text-mosaic-ongoing">
+                {% if portfolio_status %}{{ portfolio_status.ongoing_count }}{% else %}2{% endif %}
+              </span>
             </div>
             <div class="status-progress">
-              <div class="status-progress-fill bg-mosaic-ongoing" data-progress="{{ ongoing_pct|default:18 }}" style="width: 0%;"></div>
+              <div class="status-progress-fill bg-mosaic-ongoing" 
+                   data-progress="{% if portfolio_status %}{{ portfolio_status.get_ongoing_percentage }}{% else %}18{% endif %}" 
+                   style="width: 0%;"></div>
             </div>
             <div class="status-card-footer">
-              <span class="text-muted-foreground">{{ ongoing_pct|default:18 }}% of projects</span>
-              <span class="font-mono">{% if financial_metrics %}{{ ongoing_value|floatformat:0 }} ETB{% else %}236.5M ETB{% endif %}</span>
+              <span class="text-muted-foreground">
+                {% if portfolio_status %}{{ portfolio_status.get_ongoing_percentage }}{% else %}18{% endif %}% of projects
+              </span>
+              <span class="font-mono">
+                {% if portfolio_status %}{{ portfolio_status.formatted_ongoing_value }}{% else %}236.5M ETB{% endif %}
+              </span>
             </div>
           </div>
 
           <div class="status-card glass-panel animate-on-scroll">
             <div class="status-card-header">
               <div class="status-card-label">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-mosaic-priority"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="text-mosaic-priority">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                  <path d="M12 9v4" />
+                  <path d="M12 17h.01" />
+                </svg>
                 <span>Priority Works</span>
               </div>
-              <span class="status-card-count text-mosaic-priority">{{ portfolio_status.priority_count|default:"2" }}</span>
+              <span class="status-card-count text-mosaic-priority">
+                {% if portfolio_status %}{{ portfolio_status.priority_count }}{% else %}2{% endif %}
+              </span>
             </div>
             <div class="status-progress">
-              <div class="status-progress-fill bg-mosaic-priority" data-progress="{{ priority_pct|default:18 }}" style="width: 0%;"></div>
+              <div class="status-progress-fill bg-mosaic-priority" 
+                   data-progress="{% if portfolio_status %}{{ portfolio_status.get_priority_percentage }}{% else %}18{% endif %}" 
+                   style="width: 0%;"></div>
             </div>
             <div class="status-card-footer">
-              <span class="text-muted-foreground">{{ priority_pct|default:18 }}% of projects</span>
-              <span class="font-mono">{% if financial_metrics %}{{ priority_value|floatformat:0 }} ETB{% else %}1.41B ETB{% endif %}</span>
+              <span class="text-muted-foreground">
+                {% if portfolio_status %}{{ portfolio_status.get_priority_percentage }}{% else %}18{% endif %}% of projects
+              </span>
+              <span class="font-mono">
+                {% if portfolio_status %}{{ portfolio_status.formatted_priority_value }}{% else %}1.41B ETB{% endif %}
+              </span>
             </div>
           </div>
         </div>
@@ -715,15 +825,27 @@
         <div class="summary-bar glass-panel animate-on-scroll">
           <div class="summary-bar-header">
             <span class="text-muted-foreground">Total Portfolio Value (as recorded)</span>
-            <span class="font-mono" style="font-weight: 600;">{% if financial_metrics %}{{ financial_metrics.format_budget }}{% else %}2.57B ETB{% endif %}</span>
+            <span class="font-mono" style="font-weight: 600;">
+              {% if portfolio_status %}{{ portfolio_status.formatted_total_value }}{% else %}2.57B ETB{% endif %}
+            </span>
           </div>
           <div class="summary-bar-visual">
-            <div class="summary-bar-segment bg-mosaic-complete" style="width: {{ completed_pct|default:36 }}%;"></div>
-            <div class="summary-bar-segment bg-mosaic-ongoing" style="width: {{ ongoing_pct|default:9 }}%;"></div>
-            <div class="summary-bar-segment bg-mosaic-priority" style="width: {{ priority_pct|default:55 }}%;"></div>
+            {% if portfolio_status %}
+            <div class="summary-bar-segment bg-mosaic-complete" 
+                 style="width: {% widthratio portfolio_status.completed_value portfolio_status.total_value 100 %}%;"></div>
+            <div class="summary-bar-segment bg-mosaic-ongoing" 
+                 style="width: {% widthratio portfolio_status.ongoing_value portfolio_status.total_value 100 %}%;"></div>
+            <div class="summary-bar-segment bg-mosaic-priority" 
+                 style="width: {% widthratio portfolio_status.priority_value portfolio_status.total_value 100 %}%;"></div>
+            {% else %}
+            <div class="summary-bar-segment bg-mosaic-complete" style="width: 36%;"></div>
+            <div class="summary-bar-segment bg-mosaic-ongoing" style="width: 9%;"></div>
+            <div class="summary-bar-segment bg-mosaic-priority" style="width: 55%;"></div>
+            {% endif %}
           </div>
           <p class="summary-note">
-            This snapshot reflects the portfolio composition at the stated date and serves as a permanent historical record.
+            This snapshot reflects the portfolio composition at the stated date and serves as a permanent historical
+            record.
           </p>
         </div>
       </div>
@@ -733,9 +855,9 @@
     <!-- Client Sectors Section -->
     <section class="sectors-section">
       <div class="bg-layer"></div>
-       
+
       <div class="sectors-container">
-        
+
         <div class="sectors-header animate-on-scroll">
           <h2 class="sectors-title">Client Sectors</h2>
           <p class="sectors-description">
@@ -746,7 +868,16 @@
         <div class="sectors-grid">
           <div class="sector-card glass-panel animate-on-scroll">
             <div class="sector-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-accent">
+                <line x1="3" x2="21" y1="22" y2="22" />
+                <line x1="6" x2="6" y1="18" y2="11" />
+                <line x1="10" x2="10" y1="18" y2="11" />
+                <line x1="14" x2="14" y1="18" y2="11" />
+                <line x1="18" x2="18" y1="18" y2="11" />
+                <polygon points="12 2 20 7 4 7" />
+              </svg>
             </div>
             <h7 class="sector-name">Federal Government</h7>
             <p class="sector-description">Palace Administration, national infrastructure projects</p>
@@ -754,7 +885,17 @@
 
           <div class="sector-card glass-panel animate-on-scroll">
             <div class="sector-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-accent">
+                <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+                <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+                <path d="M10 6h4" />
+                <path d="M10 10h4" />
+                <path d="M10 14h4" />
+                <path d="M10 18h4" />
+              </svg>
             </div>
             <h7 class="sector-name">Municipal Authorities</h7>
             <p class="sector-description">City administrations, urban development bureaus</p>
@@ -762,7 +903,14 @@
 
           <div class="sector-card glass-panel animate-on-scroll">
             <div class="sector-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-accent">
+                <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                <path d="M17 18h1" />
+                <path d="M12 18h1" />
+                <path d="M7 18h1" />
+              </svg>
             </div>
             <h7 class="sector-name">Public Enterprises</h7>
             <p class="sector-description">Water utilities, education materials production</p>
@@ -770,7 +918,14 @@
 
           <div class="sector-card glass-panel animate-on-scroll">
             <div class="sector-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-accent">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
             </div>
             <h7 class="sector-name">Development Organizations</h7>
             <p class="sector-description">International development partners, community organizations</p>
@@ -786,23 +941,42 @@
         <div class="disclaimer-panel glass-panel animate-on-scroll">
           <div class="disclaimer-content">
             <div class="disclaimer-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-primary">
+                <path
+                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+              </svg>
             </div>
             <div>
               <h3 class="disclaimer-title">Financial Statement Disclosure</h3>
               <p class="disclaimer-text">
-                The financial figures presented herein represent audited annual turnover data for the fiscal years 
-                2020/21 through 2024/25. All amounts are stated in Ethiopian Birr (ETB) and have been prepared in 
-                accordance with applicable accounting standards. Project values reflect contracted amounts at the 
+                The financial figures presented herein represent audited annual turnover data for the fiscal years
+                2020/21 through 2024/25. All amounts are stated in Ethiopian Birr (ETB) and have been prepared in
+                accordance with applicable accounting standards. Project values reflect contracted amounts at the
                 time of agreement and may be subject to variation orders as permitted under respective contract terms.
               </p>
               <div class="disclaimer-badges">
                 <div class="disclaimer-badge">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-mosaic-complete"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="text-mosaic-complete">
+                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                    <path d="m9 15 2 2 4-4" />
+                  </svg>
                   <span>Audited Financial Records</span>
                 </div>
                 <div class="disclaimer-badge">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="text-accent">
+                    <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+                    <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+                    <path d="M7 21h10" />
+                    <path d="M12 3v18" />
+                    <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
+                  </svg>
                   <span>Contract Values as Agreed</span>
                 </div>
               </div>
@@ -812,7 +986,7 @@
       </div>
     </section>
 
-    
+
   </main>
    <footer class="site-footer">
             <div class="site-footer__shape-1 float-bob-x">

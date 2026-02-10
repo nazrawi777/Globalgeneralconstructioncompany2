@@ -1,4 +1,5 @@
 import json
+import math
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib import messages
@@ -6,6 +7,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.decorators import method_decorator
+from django.utils.text import Truncator, slugify
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
@@ -16,15 +18,43 @@ from .models import (
     FinanceProject,
     FiscalYear,
     HomeSlider,
+    BlogPost,
     JobApplication,
     JobVacancy,
     MediaMosaicItem,
     Partner,
     PortfolioStatus,
+    Project,
     SocialWelfareStory,
     Testimonial,
 )
 from .chatbot import get_gemini_response
+
+
+def safe_model_query(model, **filters):
+    """Return a safe queryset for a model, falling back to none() on error."""
+    try:
+        return model.objects.filter(**filters)
+    except Exception:
+        return model.objects.none()
+
+
+class BaseDynamicView(View):
+    """Base class for views that build context dynamically."""
+    template_name = None
+
+    def get_dynamic_context(self):
+        return {}
+
+    def get_fallback_context(self):
+        return {}
+
+    def get(self, request, *args, **kwargs):
+        try:
+            context = self.get_dynamic_context()
+        except Exception:
+            context = self.get_fallback_context()
+        return render(request, self.template_name, context)
 
 
 @method_decorator(csrf_exempt, name="dispatch")
@@ -82,7 +112,32 @@ def team_view(request):
 
 
 def blog_view(request):
-    return render(request, 'blog.html')
+    posts_qs = BlogPost.objects.all().order_by('-date')
+    blog_posts_json = []
+    for post in posts_qs:
+        words_count = len(post.content.split())
+        reading_time = max(1, math.ceil(words_count / 200))
+        blog_posts_json.append(
+            {
+                'id': str(post.id),
+                'slug': slugify(post.title),
+                'title': post.title,
+                'description': Truncator(post.content).words(35, truncate='...'),
+                'fullContent': post.content,
+                'category': post.category,
+                'date': post.date.isoformat(),
+                'readingTime': reading_time,
+                'author': post.author,
+                'thumbnail': post.image.url if post.image else '',
+                'mediaType': 'image',
+                'media': [],
+            }
+        )
+
+    context = {
+        'blog_posts_json': json.dumps(blog_posts_json),
+    }
+    return render(request, 'blog.html', context)
 
 
 def contact_view(request):
@@ -90,80 +145,125 @@ def contact_view(request):
 
 
 def project_view(request):
+    projects_qs = Project.objects.all().order_by('-year', 'title')
+    category_labels = dict(Project.CATEGORY_CHOICES)
+    projects_json = []
+    for project in projects_qs:
+        media = []
+        if project.image:
+            media.append(
+                {
+                    'id': f"{project.id}-img",
+                    'type': 'image',
+                    'src': project.image.url,
+                    'alt': project.title,
+                    'aspectRatio': 1.33,
+                }
+            )
+        if project.video:
+            media.append(
+                {
+                    'id': f"{project.id}-vid",
+                    'type': 'video',
+                    'src': project.video.url,
+                    'thumbnail': project.image.url if project.image else '',
+                    'alt': project.title,
+                    'aspectRatio': 1.78,
+                }
+            )
+
+        projects_json.append(
+            {
+                'id': str(project.id),
+                'title': project.title,
+                'location': project.location,
+                'year': project.year,
+                'category': project.category,
+                'categoryLabel': category_labels.get(project.category, project.category),
+                'featured': project.is_featured,
+                'media': media,
+            }
+        )
+
     context = {
         'media_items': MediaMosaicItem.objects.filter(is_active=True),
+        'projects_json': projects_json,
+        'project_categories_json': (
+            [{'id': 'all', 'label': 'All'}]
+            + [
+                {'id': key, 'label': label}
+                for key, label in Project.CATEGORY_CHOICES
+            ]
+        ),
     }
     return render(request, 'project.html', context)
 
 
-def finance_view(request):
-    fiscal_years = list(
-        FiscalYear.objects.filter(is_active=True).prefetch_related('projects')
-    )
-    year_totals = []
-    for fy in fiscal_years:
-        total_budget = sum((p.budget for p in fy.projects.all()), 0)
-        year_totals.append(
-            {
+class FinanceView(BaseDynamicView):
+    template_name = "finance.html"
+
+    def get_dynamic_context(self):
+        """Provide finance-specific context data"""
+        context = {}
+
+        # Get fiscal years ordered by display order
+        context["fiscal_years"] = safe_model_query(FiscalYear, is_active=True).order_by('order', '-year')
+
+        # Get all finance projects
+        context["finance_projects"] = safe_model_query(FinanceProject).order_by('fiscal_year__order', 'order', '-value')
+
+        # Get outstanding projects (for sidebar)
+        context["outstanding_projects"] = safe_model_query(FinanceProject, is_outstanding=True).order_by('-value')
+
+        # Get financial metrics (overview stats)
+        metrics = safe_model_query(FinancialMetrics, is_active=True).first()
+        context["financial_metrics"] = metrics
+
+        # Get portfolio status
+        portfolio_status = safe_model_query(PortfolioStatus, is_active=True).first()
+        context["portfolio_status"] = portfolio_status
+
+        # Prepare data for JavaScript
+        financial_years_data = []
+        for fy in context["fiscal_years"]:
+            financial_years_data.append({
                 'year': fy.year,
-                'value': int(total_budget) if total_budget else 0,
-                'formatted': f"{total_budget:,.0f} ETB" if total_budget else "0 ETB",
-            }
-        )
-    if year_totals:
-        year_totals[-1]['is_latest'] = True
+                'turnover': float(fy.turnover),
+                'formatted': fy.formatted_turnover(),
+            })
 
-    turnover_range = ''
-    base_year = ''
-    base_value = ''
-    if year_totals:
-        turnover_range = f"FY {year_totals[0]['year']}–{year_totals[-1]['year']}"
-        base_year = year_totals[0]['year']
-        base_value = year_totals[0]['formatted']
+        projects_data = []
+        for project in context["finance_projects"]:
+            projects_data.append({
+                'id': f'project-{project.id}',
+                'title': project.title,
+                'description': project.description,
+                'value': float(project.value),
+                'formattedValue': project.formatted_value(),
+                'contractDate': project.contract_date,
+                'status': project.status,
+                'progress': project.progress,
+                'client': project.client,
+                'isOutstanding': project.is_outstanding,
+                'fiscalYear': project.fiscal_year.year if project.fiscal_year else None,
+            })
 
-    financial_metrics = FinancialMetrics.objects.filter(is_active=True).first()
-    portfolio_status = PortfolioStatus.objects.filter(is_active=True).first()
+        context["financial_years_json"] = json.dumps(financial_years_data, cls=DjangoJSONEncoder)
+        context["projects_json"] = json.dumps(projects_data, cls=DjangoJSONEncoder)
 
-    completed_pct = portfolio_status.get_completed_percentage() if portfolio_status else 0
-    ongoing_pct = portfolio_status.get_ongoing_percentage() if portfolio_status else 0
-    priority_pct = portfolio_status.get_priority_percentage() if portfolio_status else 0
+        return context
 
-    total_budget_value = float(financial_metrics.total_budget) if financial_metrics else 0
-    completed_value = total_budget_value * (completed_pct / 100) if total_budget_value else 0
-    ongoing_value = total_budget_value * (ongoing_pct / 100) if total_budget_value else 0
-    priority_value = total_budget_value * (priority_pct / 100) if total_budget_value else 0
-
-    outstanding_projects = []
-    for project in FinanceProject.objects.filter(is_outstanding=True).order_by('-created_at')[:5]:
-        progress = 0
-        if project.budget and project.expenditure:
-            progress = min(100, round((project.expenditure / project.budget) * 100))
-        outstanding_projects.append(
-            {
-                'name': project.name,
-                'budget': project.budget,
-                'budget_formatted': f"{project.budget:,.0f} ETB" if project.budget else "0 ETB",
-                'progress': progress,
-            }
-        )
-
-    context = {
-        'financial_metrics': financial_metrics,
-        'fiscal_years': fiscal_years,
-        'year_totals': year_totals,
-        'turnover_range': turnover_range,
-        'base_year': base_year,
-        'base_value': base_value,
-        'portfolio_status': portfolio_status,
-        'completed_pct': completed_pct,
-        'ongoing_pct': ongoing_pct,
-        'priority_pct': priority_pct,
-        'completed_value': completed_value,
-        'ongoing_value': ongoing_value,
-        'priority_value': priority_value,
-        'outstanding_projects': outstanding_projects,
-    }
-    return render(request, 'finance.html', context)
+    def get_fallback_context(self):
+        """Provide fallback context when dynamic context fails"""
+        return {
+            "fiscal_years": FiscalYear.objects.none(),
+            "finance_projects": FinanceProject.objects.none(),
+            "outstanding_projects": FinanceProject.objects.none(),
+            "financial_metrics": None,
+            "portfolio_status": None,
+            "financial_years_json": "[]",
+            "projects_json": "[]",
+        }
 
 
 def social_welfare_view(request):
@@ -314,3 +414,4 @@ def job_apply_view(request, job_id):
 
 def not_found_view(request, exception):
     return render(request, '404.html', status=404)
+

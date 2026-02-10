@@ -9,7 +9,7 @@
 const items = JSON.parse(
   JSON.parse(document.getElementById("media-items-data").textContent),
 );
-console.log(items);
+
 
 const mosaicItems =
   items.length > 0

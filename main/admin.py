@@ -10,6 +10,8 @@ from .models import (
     FinancialMetrics,
     FiscalYear,
     FinanceProject,
+    Project,
+    BlogPost,
     PortfolioStatus,
     MediaMosaicItem,
     SocialWelfareStory,
@@ -63,7 +65,7 @@ class JobApplicationAdmin(admin.ModelAdmin):
     ordering = ('-applied_date',)
 
 
-@admin.register(FinancialMetrics)
+""" @admin.register(FinancialMetrics)
 class FinancialMetricsAdmin(admin.ModelAdmin):
     list_display = ('total_budget', 'total_expenditure', 'total_projects', 'is_active', 'updated_at')
     list_filter = ('is_active',)
@@ -71,21 +73,98 @@ class FinancialMetricsAdmin(admin.ModelAdmin):
 
 class FinanceProjectInline(admin.TabularInline):
     model = FinanceProject
+    fields = ('title', 'value', 'status', 'progress', 'is_outstanding', 'order')
     extra = 0
 
 
 @admin.register(FiscalYear)
 class FiscalYearAdmin(admin.ModelAdmin):
-    list_display = ('year', 'start_date', 'end_date', 'is_active', 'order')
+    list_display = ('year', 'turnover', 'is_active', 'order')
     list_filter = ('is_active',)
     list_editable = ('order', 'is_active')
     inlines = (FinanceProjectInline,)
+    ordering = ('order', '-year') """
+
+
+@admin.register(FiscalYear)
+class FiscalYearAdmin(admin.ModelAdmin):
+    list_display = ('year', 'turnover', 'is_active', 'order')
+    list_filter = ('is_active',)
+    search_fields = ('year',)
+    list_editable = ('is_active', 'order')
     ordering = ('order', '-year')
+    fieldsets = (
+        ('Fiscal Year Information', {
+            'fields': ('year', 'turnover', 'start_date', 'end_date')
+        }),
+        ('Display Settings', {
+            'fields': ('is_active', 'order')
+        }),
+    )
+
+
+@admin.register(FinanceProject)
+class FinanceProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'client', 'status', 'value', 'progress', 'is_outstanding', 'fiscal_year', 'order')
+    list_filter = ('status', 'is_outstanding', 'fiscal_year')
+    search_fields = ('title', 'client', 'description')
+    list_editable = ('status', 'progress', 'is_outstanding', 'order')
+    ordering = ('fiscal_year__order', 'order', '-value')
+    fieldsets = (
+        ('Project Information', {
+            'fields': ('title', 'description', 'client', 'contract_date')
+        }),
+        ('Financial Details', {
+            'fields': ('value', 'status', 'progress', 'fiscal_year')
+        }),
+        ('Display Settings', {
+            'fields': ('is_outstanding', 'order')
+        }),
+    )
+
+
+@admin.register(FinancialMetrics)
+class FinancialMetricsAdmin(admin.ModelAdmin):
+    list_display = ('total_budget', 'total_expenditure', 'total_projects', 'is_active', 'updated_at')
+    list_filter = ('is_active',)
+    list_editable = ('is_active',)
+    fieldsets = (
+        ('Financial Metrics', {
+            'fields': ('total_budget', 'total_expenditure', 'total_projects')
+        }),
+        ('Display Settings', {
+            'fields': ('is_active',)
+        }),
+    )
+
+    def has_add_permission(self, request):
+        # Allow only one active metrics set
+        if FinancialMetrics.objects.filter(is_active=True).exists() and not FinancialMetrics.objects.filter(is_active=True, pk=request.resolver_match.kwargs.get('object_id')).exists():
+            return super().has_add_permission(request)
+        return super().has_add_permission(request)
+
+
+
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'location', 'year', 'is_featured')
+    list_filter = ('category', 'is_featured', 'year')
+    search_fields = ('title', 'subtitle', 'location', 'description')
+    ordering = ('-year', 'title')
+
+
+@admin.register(BlogPost)
+class BlogPostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'date', 'author')
+    list_filter = ('category', 'date')
+    search_fields = ('title', 'content', 'author', 'category')
+    ordering = ('-date', 'title')
 
 
 @admin.register(PortfolioStatus)
 class PortfolioStatusAdmin(admin.ModelAdmin):
-    list_display = ('completed_count', 'ongoing_count', 'priority_count', 'is_active', 'updated_at')
+    list_display = ('snapshot_date', 'completed_count', 'ongoing_count', 'priority_count', 'total_value', 'is_active')
     list_filter = ('is_active',)
 
 

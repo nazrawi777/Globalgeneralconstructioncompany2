@@ -8,8 +8,8 @@
    - No fallback guessing. Use direct Unsplash CDN URLs you provided.
 ========================= */
 function resolveThumbnail(thumbnail) {
-  if (!thumbnail) return '';
-  return (typeof thumbnail === 'string' && thumbnail.startsWith('http'))
+  if (!thumbnail) return "";
+  return typeof thumbnail === "string" && thumbnail.startsWith("http")
     ? thumbnail
     : `/assets/blog/${thumbnail}`;
 }
@@ -17,13 +17,22 @@ function resolveThumbnail(thumbnail) {
 /* =========================
    POSTS DATA (thumbnails updated to the direct images you gave)
 ========================= */
-const posts = [
-  {
-    id: 1,
-    slug: 'national-palace-restoration-2024',
-    title: 'Restoring the National Palace: Lessons from Phase I',
-    description: 'Detailed case study of the National Palace Phase I restoration covering contract execution, heritage-sensitive quality control, phased handovers, and multi-stakeholder coordination under strict security. Demonstrates how disciplined project management delivered culturally sensitive outcomes on schedule and to client standards.',
-    fullContent: `
+const BLOG_POSTS = JSON.parse(
+  JSON.parse(document.getElementById("blog-posts-data").textContent),
+);
+console.log(`log items ${BLOG_POSTS.length}`);
+
+const posts =
+  BLOG_POSTS && BLOG_POSTS.length
+    ? BLOG_POSTS
+    : [
+        {
+          id: 1,
+          slug: "national-palace-restoration-2024",
+          title: "Restoring the National Palace: Lessons from Phase I",
+          description:
+            "Detailed case study of the National Palace Phase I restoration covering contract execution, heritage-sensitive quality control, phased handovers, and multi-stakeholder coordination under strict security. Demonstrates how disciplined project management delivered culturally sensitive outcomes on schedule and to client standards.",
+          fullContent: `
     <h2>Scope & Challenges</h2>
     <p>Works included fence and site restoration, fountain area pavement repair, retaining wall stabilization and utility building renovations. High security, heritage sensitivity, and phased handovers were critical constraints.</p>
 
@@ -36,21 +45,23 @@ const posts = [
 
     <h2>Outcomes</h2>
     <p>Project completed with official certificate of satisfactory performance and positive client feedback. Lessons learned improved our approach to complex public projects and informed HSE protocols for future restorations.</p>`,
-    category: 'Projects',
-    date: '2024-07-18',
-    readingTime: 5,
-    author: 'Eng. Kedir Hassen',
-    thumbnail: 'https://i.postimg.cc/FzDp3mLd/Palacio-Nacional-residencia-oficial-do-presidente-da-Etiopia.jpg',
-    mediaType: 'image',
-    media: ['national-palace-1.jpg']
-  },
+          category: "Projects",
+          date: "2024-07-18",
+          readingTime: 5,
+          author: "Eng. Kedir Hassen",
+          thumbnail:
+            "https://i.postimg.cc/FzDp3mLd/Palacio-Nacional-residencia-oficial-do-presidente-da-Etiopia.jpg",
+          mediaType: "image",
+          media: ["national-palace-1.jpg"],
+        },
 
-  {
-    id: 2,
-    slug: 'bim-surveying-digital-construction-2024',
-    title: 'Digital Construction: BIM, Surveying & Project Controls',
-    description: 'How Building Information Modeling, modern surveying and robust project controls improved schedule predictability, reduced on-site rework and sped up payment verification across multi-site road and building contracts—delivering measurable savings in time and materials.',
-    fullContent: `
+        {
+          id: 2,
+          slug: "bim-surveying-digital-construction-2024",
+          title: "Digital Construction: BIM, Surveying & Project Controls",
+          description:
+            "How Building Information Modeling, modern surveying and robust project controls improved schedule predictability, reduced on-site rework and sped up payment verification across multi-site road and building contracts—delivering measurable savings in time and materials.",
+          fullContent: `
     <h2>What Changed</h2>
     <p>Centralized models, weekly coordination cycles, and cloud-based documentation reduced RFI turnaround and cut on-site rework.</p>
 
@@ -60,21 +71,22 @@ const posts = [
       <li>Faster quantity verification for payments</li>
       <li>Better coordination between subcontractors and client stakeholders</li>
     </ul>`,
-    category: 'Technology',
-    date: '2024-10-12',
-    readingTime: 4,
-    author: 'PMO Team - Global General Construction',
-    thumbnail: 'https://i.postimg.cc/N057RgP7/202211.jpg',
-    mediaType: 'image',
-    media: ['bim-1.jpg', 'survey-1.jpg']
-  },
+          category: "Technology",
+          date: "2024-10-12",
+          readingTime: 4,
+          author: "PMO Team - Global General Construction",
+          thumbnail: "https://i.postimg.cc/N057RgP7/202211.jpg",
+          mediaType: "image",
+          media: ["bim-1.jpg", "survey-1.jpg"],
+        },
 
-  {
-    id: 3,
-    slug: 'jimma-corridor-green-works-2024',
-    title: 'Jimma Corridor: Walkways, Bike Lanes & Urban Greening',
-    description: 'Comprehensive summary of the Jimma corridor upgrade detailing integrated walkways, dedicated bike lanes, smart pole lighting and urban greening — designed to improve mobility, pedestrian safety and public space usability while lowering long-term maintenance costs.',
-    fullContent: `
+        {
+          id: 3,
+          slug: "jimma-corridor-green-works-2024",
+          title: "Jimma Corridor: Walkways, Bike Lanes & Urban Greening",
+          description:
+            "Comprehensive summary of the Jimma corridor upgrade detailing integrated walkways, dedicated bike lanes, smart pole lighting and urban greening — designed to improve mobility, pedestrian safety and public space usability while lowering long-term maintenance costs.",
+          fullContent: `
     <h2>Design Approach</h2>
     <p>Combining durable paving, low-maintenance planting, and LED smart poles allowed long-term cost savings and greater public use.</p>
 
@@ -84,21 +96,23 @@ const posts = [
       <li>Reduced nighttime crime through better lighting</li>
       <li>Lower maintenance with native plant species</li>
     </ul>`,
-    category: 'Sustainability',
-    date: '2024-06-05',
-    readingTime: 5,
-    author: 'Project Team - Jimma Works',
-    thumbnail: 'https://i.postimg.cc/HsNFMb5P/corriderjimma.jpg',
-    mediaType: 'image',
-    media: ['jimma-corridor-1.jpg']
-  },
+          category: "Sustainability",
+          date: "2024-06-05",
+          readingTime: 5,
+          author: "Project Team - Jimma Works",
+          thumbnail: "https://i.postimg.cc/HsNFMb5P/corriderjimma.jpg",
+          mediaType: "image",
+          media: ["jimma-corridor-1.jpg"],
+        },
 
-  {
-    id: 4,
-    slug: 'water-infrastructure-resilience-2023',
-    title: 'Construction Resilience: Reservoirs, Pipes and Flood Prevention',
-    description: 'Technical overview of major construction works, covering earthworks, structural concrete, foundations, drainage systems and coordinated site execution methods that improve build quality, reduce delays and ensure long-term performance of infrastructure projects.',
-    fullContent: `
+        {
+          id: 4,
+          slug: "water-infrastructure-resilience-2023",
+          title:
+            "Construction Resilience: Reservoirs, Pipes and Flood Prevention",
+          description:
+            "Technical overview of major construction works, covering earthworks, structural concrete, foundations, drainage systems and coordinated site execution methods that improve build quality, reduce delays and ensure long-term performance of infrastructure projects.",
+          fullContent: `
     <h2>Technical Notes</h2>
     <p>Coordination with utilities, trenchless pipeline methods where appropriate, and staged reservoir commissioning reduced disruption to local services.</p>
 
@@ -108,21 +122,22 @@ const posts = [
       <li>Reservoir linings and overflow control checks</li>
       <li>As-built documentation to handover standards</li>
     </ul>`,
-    category: 'Water',
-    date: '2024-04-22',
-    readingTime: 6,
-    author: 'Civil Works Team',
-    thumbnail: 'https://i.postimg.cc/prTFMkbK/202512.jpg',
-    mediaType: 'image',
-    media: ['water-works-1.jpg']
-  },
+          category: "Water",
+          date: "2024-04-22",
+          readingTime: 6,
+          author: "Civil Works Team",
+          thumbnail: "https://i.postimg.cc/prTFMkbK/202512.jpg",
+          mediaType: "image",
+          media: ["water-works-1.jpg"],
+        },
 
-  {
-    id: 5,
-    slug: '2b-g-15-tower-case-study-2024',
-    title: 'High-Rise Delivery: Case Study of a 2B+G+15 Building',
-    description: 'Practical case study on delivering a 2B+G+15 reinforced concrete building in a constrained urban site. Covers program management, logistics, off-site batching, tower crane sequencing and quality checkpoints used to control risk and maintain the critical path.',
-    fullContent: `
+        {
+          id: 5,
+          slug: "2b-g-15-tower-case-study-2024",
+          title: "High-Rise Delivery: Case Study of a 2B+G+15 Building",
+          description:
+            "Practical case study on delivering a 2B+G+15 reinforced concrete building in a constrained urban site. Covers program management, logistics, off-site batching, tower crane sequencing and quality checkpoints used to control risk and maintain the critical path.",
+          fullContent: `
     <h2>Logistics & Staging</h2>
     <p>Off-site batching, staged deliveries, and tower crane optimization reduced downtime and kept the critical path intact.</p>
 
@@ -132,21 +147,23 @@ const posts = [
       <li>Rebar traceability and bending schedules</li>
       <li>Facade mockups and acceptance tests</li>
     </ul>`,
-    category: 'Projects',
-    date: '2024-09-02',
-    readingTime: 7,
-    author: 'Site Engineering Lead',
-    thumbnail: 'https://i.postimg.cc/D086rHdB/Megenagna-Skyline-Addis-Ababa-(2).jpg',
-    mediaType: 'image',
-    media: ['tower-1.jpg', 'concrete-1.jpg']
-  },
+          category: "Projects",
+          date: "2024-09-02",
+          readingTime: 7,
+          author: "Site Engineering Lead",
+          thumbnail:
+            "https://i.postimg.cc/D086rHdB/Megenagna-Skyline-Addis-Ababa-(2).jpg",
+          mediaType: "image",
+          media: ["tower-1.jpg", "concrete-1.jpg"],
+        },
 
-  {
-    id: 6,
-    slug: 'hse-best-practices-construction-2024',
-    title: 'HSE: Safety Systems That Keep Sites Productive',
-    description: 'Overview of our HSE framework — from daily toolbox talks and site inductions to permit-to-work procedures and equipment inspections — showing how consistent safety practices reduce incidents, support workforce competence and sustain productivity across projects.',
-    fullContent: `
+        {
+          id: 6,
+          slug: "hse-best-practices-construction-2024",
+          title: "HSE: Safety Systems That Keep Sites Productive",
+          description:
+            "Overview of our HSE framework — from daily toolbox talks and site inductions to permit-to-work procedures and equipment inspections — showing how consistent safety practices reduce incidents, support workforce competence and sustain productivity across projects.",
+          fullContent: `
     <h2>Practical Interventions</h2>
     <ul>
       <li>Daily toolbox talks and documented inductions</li>
@@ -156,134 +173,144 @@ const posts = [
 
     <h3>Measuring Success</h3>
     <p>KPIs include lost-time injury frequency, near-miss reporting rates, and timely corrective action closure.</p>`,
-    category: 'Safety',
-    date: '2024-03-10',
-    readingTime: 4,
-    author: 'HSE Manager',
-    thumbnail: 'https://i.postimg.cc/PJxt5Rqh/202312.jpg',
-    mediaType: 'image',
-    media: ['hse-1.jpg']
-  },
+          category: "Safety",
+          date: "2024-03-10",
+          readingTime: 4,
+          author: "HSE Manager",
+          thumbnail: "https://i.postimg.cc/PJxt5Rqh/202312.jpg",
+          mediaType: "image",
+          media: ["hse-1.jpg"],
+        },
 
-  {
-    id: 7,
-    slug: 'earthworks-foundations-best-practices-2024',
-    title: 'Earthworks & Foundations: Efficient Excavation and Soil Management',
-    description: 'Practical guidance on earthworks sequencing, soil classification, stabilization techniques, compaction control and dewatering strategies used on major road and building sites to prevent settlement and protect long-term structural performance.',
-    fullContent: `
+        {
+          id: 7,
+          slug: "earthworks-foundations-best-practices-2024",
+          title:
+            "Earthworks & Foundations: Efficient Excavation and Soil Management",
+          description:
+            "Practical guidance on earthworks sequencing, soil classification, stabilization techniques, compaction control and dewatering strategies used on major road and building sites to prevent settlement and protect long-term structural performance.",
+          fullContent: `
     <h2>Key Practices</h2>
     <ul>
       <li>Soil classification and testing before construction</li>
       <li>Layered compaction with documented density tests</li>
       <li>Dewatering plans and temporary support systems</li>
     </ul>`,
-    category: 'Infrastructure',
-    date: '2024-05-28',
-    readingTime: 6,
-    author: 'Geotech Team',
-    thumbnail: 'https://i.postimg.cc/9fQVpkGD/202413.jpg',
-    mediaType: 'image',
-    media: ['earthworks-1.jpg']
-  },
+          category: "Infrastructure",
+          date: "2024-05-28",
+          readingTime: 6,
+          author: "Geotech Team",
+          thumbnail: "https://i.postimg.cc/9fQVpkGD/202413.jpg",
+          mediaType: "image",
+          media: ["earthworks-1.jpg"],
+        },
 
-  {
-    id: 8,
-    slug: 'low-carbon-materials-bio-cement-2024',
-    title: 'Low-Carbon Materials: Bio-Cement and Sustainable Mixes',
-    description: 'Review of low-carbon concrete mixes and bio-cement trials that reduce embodied emissions while maintaining durability. Covers trial methodology, performance monitoring and early results relevant to infrastructure and durable works.',
-    fullContent: `
+        {
+          id: 8,
+          slug: "low-carbon-materials-bio-cement-2024",
+          title: "Low-Carbon Materials: Bio-Cement and Sustainable Mixes",
+          description:
+            "Review of low-carbon concrete mixes and bio-cement trials that reduce embodied emissions while maintaining durability. Covers trial methodology, performance monitoring and early results relevant to infrastructure and durable works.",
+          fullContent: `
     <h2>Trials & Results</h2>
     <ul>
       <li>Blended cements with supplementary cementitious material (SCMs)</li>
       <li>Use of recycled aggregates in non-structural elements</li>
       <li>Monitoring for long-term strength and durability</li>
     </ul>`,
-    category: 'Sustainability',
-    date: '2024-08-14',
-    readingTime: 5,
-    author: 'Materials Team',
-    thumbnail: 'https://i.postimg.cc/6QbZ66Fd/download-(3).jpg',
-    mediaType: 'image',
-    media: ['materials-1.jpg']
-  },
-  {
-    id: 9,
-    category: 'ourteam',
-    date: '2024-08-14',
-    readingTime: 5,
-    author: 'Materials Team',
-    thumbnail: 'https://i.postimg.cc/CxLY92Tk/photo_2026_01_30_22_44_32.jpg',
-    mediaType: 'image',
-    media: ['materials-1.jpg']
-  },
+          category: "Sustainability",
+          date: "2024-08-14",
+          readingTime: 5,
+          author: "Materials Team",
+          thumbnail: "https://i.postimg.cc/6QbZ66Fd/download-(3).jpg",
+          mediaType: "image",
+          media: ["materials-1.jpg"],
+        },
+        {
+          id: 9,
+          category: "ourteam",
+          date: "2024-08-14",
+          readingTime: 5,
+          author: "Materials Team",
+          thumbnail:
+            "https://i.postimg.cc/CxLY92Tk/photo_2026_01_30_22_44_32.jpg",
+          mediaType: "image",
+          media: ["materials-1.jpg"],
+        },
 
-
-  {
-    id: 10,
-    category: 'ourteam',
-    date: '2024-08-14',
-    readingTime: 5,
-    author: 'Materials Team',
-    thumbnail: 'https://i.postimg.cc/L8zf0nSn/0E7A2284.jpg',
-    mediaType: 'image',
-    media: ['materials-1.jpg']
-  },
-   {
-    id: 10,
-    category: 'ourteam',
-    date: '2024-08-14',
-    readingTime: 5,
-    author: 'Materials Team',
-    thumbnail: 'https://i.postimg.cc/6QbZ66Fd/download-(3).jpg',
-    mediaType: 'image',
-    media: ['materials-1.jpg']
-  },
-   {
-    id: 10,
-    category: 'ourteam',
-    date: '2024-08-14',
-    readingTime: 5,
-    author: 'Materials Team',
-    thumbnail: 'https://i.postimg.cc/xCxzB152/0E7A2421.jpg',
-    mediaType: 'image',
-    media: ['materials-1.jpg']
-  }
-];
-
+        {
+          id: 10,
+          category: "ourteam",
+          date: "2024-08-14",
+          readingTime: 5,
+          author: "Materials Team",
+          thumbnail: "https://i.postimg.cc/L8zf0nSn/0E7A2284.jpg",
+          mediaType: "image",
+          media: ["materials-1.jpg"],
+        },
+        {
+          id: 10,
+          category: "ourteam",
+          date: "2024-08-14",
+          readingTime: 5,
+          author: "Materials Team",
+          thumbnail: "https://i.postimg.cc/6QbZ66Fd/download-(3).jpg",
+          mediaType: "image",
+          media: ["materials-1.jpg"],
+        },
+        {
+          id: 10,
+          category: "ourteam",
+          date: "2024-08-14",
+          readingTime: 5,
+          author: "Materials Team",
+          thumbnail: "https://i.postimg.cc/xCxzB152/0E7A2421.jpg",
+          mediaType: "image",
+          media: ["materials-1.jpg"],
+        },
+      ];
 
 /* =========================
    CATEGORIES
 ========================= */
-const categories = [
-  { id: 'all', name: 'All', count: posts.length },
-  { id: 'projects', name: 'Projects', count: posts.filter(p => p.category === 'Projects').length },
-  { id: 'technology', name: 'Technology', count: posts.filter(p => p.category === 'Technology').length },
-  { id: 'sustainability', name: 'Sustainability', count: posts.filter(p => p.category === 'Sustainability').length },
-  { id: 'water', name: 'Construction', count: posts.filter(p => p.category === 'Water').length },
-  { id: 'safety', name: 'Safety', count: posts.filter(p => p.category === 'Safety').length },
-  { id: 'infrastructure', name: 'Infrastructure', count: posts.filter(p => p.category === 'Infrastructure').length },
-    { id: 'ourteam', name: 'OurTeam', count: posts.filter(p => p.category.toLowerCase() === 'ourteam').length }
-];
+function buildCategories(items) {
+  const byCategory = new Map();
+  items.forEach((post) => {
+    const label = post.category || "Other";
+    const key = label.toLowerCase();
+    byCategory.set(key, {
+      id: key,
+      name: label,
+      count: (byCategory.get(key)?.count || 0) + 1,
+    });
+  });
 
+  return [
+    { id: "all", name: "All", count: items.length },
+    ...Array.from(byCategory.values()),
+  ];
+}
+
+const categories = window.BLOG_CATEGORIES || buildCategories(posts);
 
 /* =========================
    STATE
 ========================= */
-let currentCategory = 'all';
-let currentSort = 'newest';
-let searchQuery = '';
+let currentCategory = "all";
+let currentSort = "newest";
+let searchQuery = "";
 let currentPage = 1;
 const postsPerPage = 6;
 
 /* =========================
    DOM Elements
 ========================= */
-const searchInput = document.getElementById('searchInput');
-const sortSelect = document.getElementById('sortSelect');
-const categoriesContainer = document.getElementById('categoriesContainer');
-const postsGrid = document.getElementById('postsGrid');
-const paginationContainer = document.getElementById('paginationContainer');
-const keyboardHint = document.getElementById('keyboardHint');
+const searchInput = document.getElementById("searchInput");
+const sortSelect = document.getElementById("sortSelect");
+const categoriesContainer = document.getElementById("categoriesContainer");
+const postsGrid = document.getElementById("postsGrid");
+const paginationContainer = document.getElementById("paginationContainer");
+const keyboardHint = document.getElementById("keyboardHint");
 
 /* =========================
    INIT
@@ -300,16 +327,20 @@ function init() {
 ========================= */
 function renderCategories() {
   if (!categoriesContainer) return;
-  
-  categoriesContainer.innerHTML = categories.map(cat => `
+
+  categoriesContainer.innerHTML = categories
+    .map(
+      (cat) => `
     <button 
-      class="category-btn ${cat.id === currentCategory ? 'active' : ''}"
+      class="category-btn ${cat.id === currentCategory ? "active" : ""}"
       data-category="${cat.id}"
       aria-pressed="${cat.id === currentCategory}"
     >
       ${cat.name}<span class="count">(${cat.count})</span>
     </button>
-  `).join('');
+  `,
+    )
+    .join("");
 }
 
 /* =========================
@@ -317,39 +348,42 @@ function renderCategories() {
 ========================= */
 function getFilteredPosts() {
   let filtered = [...posts];
-  
+
   // Filter by category
-  if (currentCategory !== 'all') {
-    filtered = filtered.filter(p => p.category.toLowerCase() === currentCategory);
+  if (currentCategory !== "all") {
+    filtered = filtered.filter(
+      (p) => p.category.toLowerCase() === currentCategory,
+    );
   }
-  
+
   // Filter by search
   if (searchQuery) {
     const query = searchQuery.toLowerCase();
-    filtered = filtered.filter(p => 
-      p.title.toLowerCase().includes(query) ||
-      p.description.toLowerCase().includes(query) ||
-      p.category.toLowerCase().includes(query) ||
-      p.author.toLowerCase().includes(query)
+    filtered = filtered.filter(
+      (p) =>
+        p.title.toLowerCase().includes(query) ||
+        p.description.toLowerCase().includes(query) ||
+        p.category.toLowerCase().includes(query) ||
+        p.author.toLowerCase().includes(query),
     );
   }
-  
+
   // Sort
   switch (currentSort) {
-    case 'newest':
+    case "newest":
       filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
       break;
-    case 'oldest':
+    case "oldest":
       filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
       break;
-    case 'reading-time':
+    case "reading-time":
       filtered.sort((a, b) => a.readingTime - b.readingTime);
       break;
-    case 'title':
+    case "title":
       filtered.sort((a, b) => a.title.localeCompare(b.title));
       break;
   }
-  
+
   return filtered;
 }
 
@@ -358,10 +392,10 @@ function getFilteredPosts() {
 ========================= */
 function formatDate(dateStr) {
   const date = new Date(dateStr);
-  return date.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 }
 
@@ -370,16 +404,16 @@ function formatDate(dateStr) {
 ========================= */
 function renderPosts() {
   if (!postsGrid) return;
-  
+
   const filtered = getFilteredPosts();
   const totalPages = Math.ceil(filtered.length / postsPerPage);
-  
+
   // Adjust current page if needed
   if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
-  
+
   const startIndex = (currentPage - 1) * postsPerPage;
   const paginatedPosts = filtered.slice(startIndex, startIndex + postsPerPage);
-  
+
   if (paginatedPosts.length === 0) {
     postsGrid.innerHTML = `
       <div class="no-results">
@@ -387,13 +421,14 @@ function renderPosts() {
         <p>Try adjusting your search or filter criteria</p>
       </div>
     `;
-    if (paginationContainer) paginationContainer.innerHTML = '';
+    if (paginationContainer) paginationContainer.innerHTML = "";
     return;
   }
-  
-  postsGrid.innerHTML = paginatedPosts.map(post => {
-    const imgSrc = resolveThumbnail(post.thumbnail);
-    return `
+
+  postsGrid.innerHTML = paginatedPosts
+    .map((post) => {
+      const imgSrc = resolveThumbnail(post.thumbnail);
+      return `
     <article class="post-card" data-post-id="${post.id}">
       <div class="post-thumbnail">
         <img 
@@ -443,8 +478,9 @@ function renderPosts() {
       </div>
     </article>
   `;
-  }).join('');
-  
+    })
+    .join("");
+
   renderPagination(totalPages);
 }
 
@@ -453,44 +489,50 @@ function renderPosts() {
 ========================= */
 function renderPagination(totalPages) {
   if (!paginationContainer || totalPages <= 1) {
-    if (paginationContainer) paginationContainer.innerHTML = '';
+    if (paginationContainer) paginationContainer.innerHTML = "";
     return;
   }
-  
+
   let buttons = [];
-  
+
   // Previous button
   buttons.push(`
-    <button class="page-btn" data-page="prev" ${currentPage === 1 ? 'disabled' : ''} aria-label="Previous page">
+    <button class="page-btn" data-page="prev" ${currentPage === 1 ? "disabled" : ""} aria-label="Previous page">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
     </button>
   `);
-  
+
   // Page numbers
   for (let i = 1; i <= totalPages; i++) {
-    if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+    if (
+      i === 1 ||
+      i === totalPages ||
+      (i >= currentPage - 1 && i <= currentPage + 1)
+    ) {
       buttons.push(`
-        <button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}" aria-label="Page ${i}" ${i === currentPage ? 'aria-current="page"' : ''}>
+        <button class="page-btn ${i === currentPage ? "active" : ""}" data-page="${i}" aria-label="Page ${i}" ${i === currentPage ? 'aria-current="page"' : ""}>
           ${i}
         </button>
       `);
     } else if (i === currentPage - 2 || i === currentPage + 2) {
-      buttons.push(`<span class="page-btn" style="pointer-events: none;">...</span>`);
+      buttons.push(
+        `<span class="page-btn" style="pointer-events: none;">...</span>`,
+      );
     }
   }
-  
+
   // Next button
   buttons.push(`
-    <button class="page-btn" data-page="next" ${currentPage === totalPages ? 'disabled' : ''} aria-label="Next page">
+    <button class="page-btn" data-page="next" ${currentPage === totalPages ? "disabled" : ""} aria-label="Next page">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
     </button>
   `);
-  
-  paginationContainer.innerHTML = buttons.join('');
+
+  paginationContainer.innerHTML = buttons.join("");
 }
 
 /* =========================
@@ -499,26 +541,29 @@ function renderPagination(totalPages) {
 function setupEventListeners() {
   // Search
   if (searchInput) {
-    searchInput.addEventListener('input', debounce((e) => {
-      searchQuery = e.target.value;
-      currentPage = 1;
-      renderPosts();
-    }, 300));
+    searchInput.addEventListener(
+      "input",
+      debounce((e) => {
+        searchQuery = e.target.value;
+        currentPage = 1;
+        renderPosts();
+      }, 300),
+    );
   }
-  
+
   // Sort
   if (sortSelect) {
-    sortSelect.addEventListener('change', (e) => {
+    sortSelect.addEventListener("change", (e) => {
       currentSort = e.target.value;
       currentPage = 1;
       renderPosts();
     });
   }
-  
+
   // Categories
   if (categoriesContainer) {
-    categoriesContainer.addEventListener('click', (e) => {
-      const btn = e.target.closest('.category-btn');
+    categoriesContainer.addEventListener("click", (e) => {
+      const btn = e.target.closest(".category-btn");
       if (btn) {
         currentCategory = btn.dataset.category;
         currentPage = 1;
@@ -527,44 +572,46 @@ function setupEventListeners() {
       }
     });
   }
-  
+
   // Pagination
   if (paginationContainer) {
-    paginationContainer.addEventListener('click', (e) => {
-      const btn = e.target.closest('.page-btn');
+    paginationContainer.addEventListener("click", (e) => {
+      const btn = e.target.closest(".page-btn");
       if (btn && !btn.disabled) {
         const page = btn.dataset.page;
-        if (page === 'prev') {
+        if (page === "prev") {
           currentPage = Math.max(1, currentPage - 1);
-        } else if (page === 'next') {
+        } else if (page === "next") {
           currentPage = currentPage + 1;
         } else {
           currentPage = parseInt(page);
         }
         renderPosts();
-        window.scrollTo({ top: postsGrid.offsetTop - 100, behavior: 'smooth' });
+        window.scrollTo({ top: postsGrid.offsetTop - 100, behavior: "smooth" });
       }
     });
   }
-  
+
   // Toggle description (delegated)
   if (postsGrid) {
-    postsGrid.addEventListener('click', (e) => {
-      const toggleBtn = e.target.closest('.toggle-description');
+    postsGrid.addEventListener("click", (e) => {
+      const toggleBtn = e.target.closest(".toggle-description");
       if (toggleBtn) {
         const postId = toggleBtn.dataset.postId;
         const desc = document.getElementById(`desc-${postId}`);
-        const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-        
-        toggleBtn.setAttribute('aria-expanded', !isExpanded);
-        toggleBtn.querySelector('span').textContent = isExpanded ? 'Show more' : 'Show less';
-        
+        const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
+
+        toggleBtn.setAttribute("aria-expanded", !isExpanded);
+        toggleBtn.querySelector("span").textContent = isExpanded
+          ? "Show more"
+          : "Show less";
+
         if (isExpanded) {
-          desc.classList.add('collapsed');
-          desc.classList.remove('expanded');
+          desc.classList.add("collapsed");
+          desc.classList.remove("expanded");
         } else {
-          desc.classList.remove('collapsed');
-          desc.classList.add('expanded');
+          desc.classList.remove("collapsed");
+          desc.classList.add("expanded");
         }
       }
     });
@@ -576,41 +623,41 @@ function setupEventListeners() {
 ========================= */
 function setupKeyboardShortcuts() {
   let hintTimeout;
-  
-  document.addEventListener('keydown', (e) => {
+
+  document.addEventListener("keydown", (e) => {
     // Don't trigger if user is typing in an input
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-    
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+
     switch (e.key) {
-      case '/':
+      case "/":
         e.preventDefault();
         if (searchInput) searchInput.focus();
         break;
-      case 'j':
-      case 'ArrowDown':
-        if (!e.target.closest('.posts-grid')) {
+      case "j":
+      case "ArrowDown":
+        if (!e.target.closest(".posts-grid")) {
           e.preventDefault();
           navigateCards(1);
         }
         break;
-      case 'k':
-      case 'ArrowUp':
-        if (!e.target.closest('.posts-grid')) {
+      case "k":
+      case "ArrowUp":
+        if (!e.target.closest(".posts-grid")) {
           e.preventDefault();
           navigateCards(-1);
         }
         break;
-      case '?':
+      case "?":
         if (keyboardHint) {
-          keyboardHint.classList.add('visible');
+          keyboardHint.classList.add("visible");
           clearTimeout(hintTimeout);
           hintTimeout = setTimeout(() => {
-            keyboardHint.classList.remove('visible');
+            keyboardHint.classList.remove("visible");
           }, 3000);
         }
         break;
-      case 'Escape':
-        if (keyboardHint) keyboardHint.classList.remove('visible');
+      case "Escape":
+        if (keyboardHint) keyboardHint.classList.remove("visible");
         if (searchInput) searchInput.blur();
         break;
     }
@@ -623,17 +670,20 @@ function setupKeyboardShortcuts() {
 let focusedCardIndex = -1;
 
 function navigateCards(direction) {
-  const cards = document.querySelectorAll('.post-card');
+  const cards = document.querySelectorAll(".post-card");
   if (cards.length === 0) return;
-  
-  focusedCardIndex = Math.max(0, Math.min(cards.length - 1, focusedCardIndex + direction));
-  
+
+  focusedCardIndex = Math.max(
+    0,
+    Math.min(cards.length - 1, focusedCardIndex + direction),
+  );
+
   cards.forEach((card, i) => {
     if (i === focusedCardIndex) {
-      card.style.outline = '2px solid var(--accent)';
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      card.style.outline = "2px solid var(--accent)";
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
     } else {
-      card.style.outline = '';
+      card.style.outline = "";
     }
   });
 }
@@ -650,19 +700,19 @@ function debounce(fn, delay) {
 }
 
 function showToast(message) {
-  let toast = document.getElementById('toast');
+  let toast = document.getElementById("toast");
   if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'toast';
-    toast.className = 'toast';
+    toast = document.createElement("div");
+    toast.id = "toast";
+    toast.className = "toast";
     document.body.appendChild(toast);
   }
-  
+
   toast.textContent = message;
-  toast.classList.add('visible');
-  
+  toast.classList.add("visible");
+
   setTimeout(() => {
-    toast.classList.remove('visible');
+    toast.classList.remove("visible");
   }, 3000);
 }
 
@@ -676,45 +726,45 @@ function initPostPage() {
 }
 
 function setupCarousel() {
-  const carousel = document.querySelector('.carousel');
+  const carousel = document.querySelector(".carousel");
   if (!carousel) return;
-  
-  const inner = carousel.querySelector('.carousel-inner');
-  const items = carousel.querySelectorAll('.carousel-item');
+
+  const inner = carousel.querySelector(".carousel-inner");
+  const items = carousel.querySelectorAll(".carousel-item");
   const prevBtn = carousel.querySelector('[data-carousel="prev"]');
   const nextBtn = carousel.querySelector('[data-carousel="next"]');
-  const indicator = carousel.querySelector('.carousel-indicator');
-  
+  const indicator = carousel.querySelector(".carousel-indicator");
+
   let currentIndex = 0;
   const total = items.length;
-  
+
   function updateCarousel() {
     inner.style.transform = `translateX(-${currentIndex * 100}%)`;
     if (indicator) {
       indicator.textContent = `${currentIndex + 1} / ${total}`;
     }
   }
-  
+
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
+    prevBtn.addEventListener("click", () => {
       currentIndex = (currentIndex - 1 + total) % total;
       updateCarousel();
     });
   }
-  
+
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener("click", () => {
       currentIndex = (currentIndex + 1) % total;
       updateCarousel();
     });
   }
-  
+
   // Keyboard navigation
-  carousel.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
+  carousel.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
       currentIndex = (currentIndex - 1 + total) % total;
       updateCarousel();
-    } else if (e.key === 'ArrowRight') {
+    } else if (e.key === "ArrowRight") {
       currentIndex = (currentIndex + 1) % total;
       updateCarousel();
     }
@@ -725,17 +775,20 @@ function setupCarousel() {
    COMMENTS (localStorage)
 ========================= */
 function setupComments() {
-  const commentsSection = document.querySelector('.comments-section');
+  const commentsSection = document.querySelector(".comments-section");
   if (!commentsSection) return;
-  
-  const postSlug = window.location.pathname.split('/').pop().replace('.html', '');
+
+  const postSlug = window.location.pathname
+    .split("/")
+    .pop()
+    .replace(".html", "");
   const storageKey = `comments_${postSlug}`;
-  
-  const commentForm = commentsSection.querySelector('.comment-form');
-  const commentInput = commentsSection.querySelector('.comment-input');
-  const commentsList = commentsSection.querySelector('.comments-list');
-  const commentsCount = commentsSection.querySelector('.comments-count');
-  
+
+  const commentForm = commentsSection.querySelector(".comment-form");
+  const commentInput = commentsSection.querySelector(".comment-input");
+  const commentsList = commentsSection.querySelector(".comments-list");
+  const commentsCount = commentsSection.querySelector(".comments-count");
+
   function getComments() {
     try {
       return JSON.parse(localStorage.getItem(storageKey)) || [];
@@ -743,18 +796,18 @@ function setupComments() {
       return [];
     }
   }
-  
+
   function saveComments(comments) {
     localStorage.setItem(storageKey, JSON.stringify(comments));
   }
-  
+
   function renderComments() {
     const comments = getComments();
-    
+
     if (commentsCount) {
       commentsCount.textContent = comments.length;
     }
-    
+
     if (comments.length === 0) {
       commentsList.innerHTML = `
         <div class="no-comments">
@@ -763,8 +816,10 @@ function setupComments() {
       `;
       return;
     }
-    
-    commentsList.innerHTML = comments.map(comment => `
+
+    commentsList.innerHTML = comments
+      .map(
+        (comment) => `
       <div class="comment">
         <div class="comment-header">
           <div class="comment-avatar">${comment.author.charAt(0).toUpperCase()}</div>
@@ -775,31 +830,33 @@ function setupComments() {
         </div>
         <div class="comment-body">${escapeHtml(comment.text)}</div>
       </div>
-    `).join('');
+    `,
+      )
+      .join("");
   }
-  
+
   if (commentForm) {
-    commentForm.addEventListener('submit', (e) => {
+    commentForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      
+
       const text = commentInput.value.trim();
       if (!text) return;
-      
+
       const comments = getComments();
       comments.unshift({
         id: Date.now(),
-        author: 'Anonymous Reader',
+        author: "Anonymous Reader",
         text: text,
-        date: new Date().toISOString().split('T')[0]
+        date: new Date().toISOString().split("T")[0],
       });
-      
+
       saveComments(comments);
-      commentInput.value = '';
+      commentInput.value = "";
       renderComments();
-      showToast('Comment added successfully!');
+      showToast("Comment added successfully!");
     });
   }
-  
+
   renderComments();
 }
 
@@ -807,44 +864,44 @@ function setupComments() {
    SHARE BUTTONS
 ========================= */
 function setupShareButtons() {
-  const copyBtn = document.querySelector('.copy-link-btn');
+  const copyBtn = document.querySelector(".copy-link-btn");
   if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
+    copyBtn.addEventListener("click", () => {
       navigator.clipboard.writeText(window.location.href).then(() => {
-        copyBtn.classList.add('copied');
-        copyBtn.querySelector('span').textContent = 'Copied!';
-        showToast('Link copied to clipboard!');
-        
+        copyBtn.classList.add("copied");
+        copyBtn.querySelector("span").textContent = "Copied!";
+        showToast("Link copied to clipboard!");
+
         setTimeout(() => {
-          copyBtn.classList.remove('copied');
-          copyBtn.querySelector('span').textContent = 'Copy link';
+          copyBtn.classList.remove("copied");
+          copyBtn.querySelector("span").textContent = "Copy link";
         }, 2000);
       });
     });
   }
-  
+
   // Share buttons
-  document.querySelectorAll('.share-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
+  document.querySelectorAll(".share-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
       const platform = btn.dataset.platform;
       const url = encodeURIComponent(window.location.href);
       const title = encodeURIComponent(document.title);
-      
+
       let shareUrl;
       switch (platform) {
-        case 'twitter':
+        case "twitter":
           shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
           break;
-        case 'linkedin':
+        case "linkedin":
           shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
           break;
-        case 'facebook':
+        case "facebook":
           shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
           break;
       }
-      
+
       if (shareUrl) {
-        window.open(shareUrl, '_blank', 'width=600,height=400');
+        window.open(shareUrl, "_blank", "width=600,height=400");
       }
     });
   });
@@ -854,7 +911,7 @@ function setupShareButtons() {
    ESCAPE HTML
 ========================= */
 function escapeHtml(text) {
-  const div = document.createElement('div');
+  const div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
 }
@@ -862,10 +919,10 @@ function escapeHtml(text) {
 /* =========================
    INIT ON DOM READY
 ========================= */
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('postsGrid')) {
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("postsGrid")) {
     init();
-  } else if (document.querySelector('.post-page')) {
+  } else if (document.querySelector(".post-page")) {
     initPostPage();
   }
 });
@@ -877,5 +934,5 @@ window.blogUtils = {
   posts,
   formatDate,
   showToast,
-  escapeHtml
+  escapeHtml,
 };

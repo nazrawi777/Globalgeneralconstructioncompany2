@@ -176,6 +176,7 @@ class FinancialMetrics(models.Model):
 class FiscalYear(models.Model):
     """Fiscal year periods."""
     year = models.CharField(max_length=20)
+    turnover = models.DecimalField(max_digits=15, decimal_places=2, default=0)
     start_date = models.DateField()
     end_date = models.DateField()
     is_active = models.BooleanField(default=True)
@@ -187,67 +188,156 @@ class FiscalYear(models.Model):
     def __str__(self):
         return self.year
 
+    def formatted_turnover(self):
+        """Return formatted turnover value."""
+        if self.turnover >= 1_000_000_000:
+            return f"{(self.turnover / 1_000_000_000):.2f}B ETB"
+        if self.turnover >= 1_000_000:
+            return f"{(self.turnover / 1_000_000):.2f}M ETB"
+        return f"{self.turnover:,.0f} ETB"
+
 
 class FinanceProject(models.Model):
     """Individual finance projects."""
     fiscal_year = models.ForeignKey(FiscalYear, on_delete=models.CASCADE, related_name='projects')
-    name = models.CharField(max_length=300)
-    budget = models.DecimalField(max_digits=15, decimal_places=2)
-    expenditure = models.DecimalField(max_digits=15, decimal_places=2, default=0)
+    title = models.CharField(max_length=300)
+    description = models.TextField(blank=True)
+    value = models.DecimalField(max_digits=15, decimal_places=2, default=0)
+    contract_date = models.DateField(null=True, blank=True)
+    status = models.CharField(max_length=100, blank=True)
+    progress = models.IntegerField(default=0)
+    client = models.CharField(max_length=200, blank=True)
     is_outstanding = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
+    order = models.IntegerField(default=0)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['fiscal_year__order', 'order', '-value']
 
     def __str__(self):
-        return f"{self.name} ({self.fiscal_year.year})"
+        return f"{self.title} ({self.fiscal_year.year})"
+
+    def formatted_value(self):
+        """Return formatted project value."""
+        if self.value >= 1_000_000_000:
+            return f"{(self.value / 1_000_000_000):.2f}B ETB"
+        if self.value >= 1_000_000:
+            return f"{(self.value / 1_000_000):.2f}M ETB"
+        return f"{self.value:,.0f} ETB"
+
+
+class Project(models.Model):
+    CATEGORY_CHOICES = [
+        ('road', 'Road Construction'),
+        ('building', 'Building Works'),
+        ('water', 'Water Supply & Sewerage'),
+        ('corridor', 'Corridor Development'),
+        ('other', 'Other'),
+    ]
+    title = models.CharField(max_length=200)
+    subtitle = models.CharField(max_length=200)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    location = models.CharField(max_length=200)
+    year = models.IntegerField()
+    image = models.ImageField(upload_to='projects/')
+    video = models.FileField(upload_to='projects/videos/', blank=True, null=True)
+    description = models.TextField()
+    is_featured = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    image = models.ImageField(upload_to='blog/')
+    category = models.CharField(max_length=100)
+    date = models.DateField()
+    author = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
 
 
 class PortfolioStatus(models.Model):
-    """Portfolio status breakdown (singleton pattern)."""
+    """Stores portfolio status breakdown (Completed, Ongoing, Priority)"""
+    snapshot_date = models.DateField(help_text="Date of the portfolio snapshot")
     completed_count = models.IntegerField(default=0)
+    completed_value = models.DecimalField(max_digits=15, decimal_places=2, help_text="Total value of completed projects in ETB")
     ongoing_count = models.IntegerField(default=0)
+    ongoing_value = models.DecimalField(max_digits=15, decimal_places=2, help_text="Total value of ongoing projects in ETB")
     priority_count = models.IntegerField(default=0)
+    priority_value = models.DecimalField(max_digits=15, decimal_places=2, help_text="Total value of priority projects in ETB")
+    total_value = models.DecimalField(max_digits=15, decimal_places=2, help_text="Total portfolio value in ETB")
     is_active = models.BooleanField(default=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name_plural = 'Portfolio Status'
+        ordering = ['-snapshot_date']
+        verbose_name = "Portfolio Status"
+        verbose_name_plural = "Portfolio Status"
 
     def __str__(self):
-        return f"Portfolio Status (Updated: {self.updated_at.strftime('%Y-%m-%d')})"
+        return f"Portfolio Status - {self.snapshot_date}"
 
     def save(self, *args, **kwargs):
-        """Ensure only one active instance exists."""
         if self.is_active:
+            # Ensure only one snapshot is active
             PortfolioStatus.objects.filter(is_active=True).exclude(pk=self.pk).update(is_active=False)
         super().save(*args, **kwargs)
 
-    def get_total(self):
-        """Get total count of all projects."""
-        return self.completed_count + self.ongoing_count + self.priority_count
-
     def get_completed_percentage(self):
-        """Calculate completed percentage."""
-        total = self.get_total()
+        """Calculate percentage of completed projects"""
+        total = self.completed_count + self.ongoing_count + self.priority_count
         if total == 0:
             return 0
-        return round((self.completed_count / total) * 100, 1)
+        return round((self.completed_count / total) * 100)
 
     def get_ongoing_percentage(self):
-        """Calculate ongoing percentage."""
-        total = self.get_total()
+        """Calculate percentage of ongoing projects"""
+        total = self.completed_count + self.ongoing_count + self.priority_count
         if total == 0:
             return 0
-        return round((self.ongoing_count / total) * 100, 1)
+        return round((self.ongoing_count / total) * 100)
 
     def get_priority_percentage(self):
-        """Calculate priority percentage."""
-        total = self.get_total()
+        """Calculate percentage of priority projects"""
+        total = self.completed_count + self.ongoing_count + self.priority_count
         if total == 0:
             return 0
-        return round((self.priority_count / total) * 100, 1)
+        return round((self.priority_count / total) * 100)
+
+    def formatted_completed_value(self):
+        """Return formatted completed value"""
+        if self.completed_value >= 1_000_000_000:
+            return f"{(self.completed_value / 1_000_000_000):.1f}B ETB"
+        if self.completed_value >= 1_000_000:
+            return f"{(self.completed_value / 1_000_000):.1f}M ETB"
+        return f"{self.completed_value:,.0f} ETB"
+
+    def formatted_ongoing_value(self):
+        """Return formatted ongoing value"""
+        if self.ongoing_value >= 1_000_000_000:
+            return f"{(self.ongoing_value / 1_000_000_000):.1f}B ETB"
+        if self.ongoing_value >= 1_000_000:
+            return f"{(self.ongoing_value / 1_000_000):.1f}M ETB"
+        return f"{self.ongoing_value:,.0f} ETB"
+
+    def formatted_priority_value(self):
+        """Return formatted priority value"""
+        if self.priority_value >= 1_000_000_000:
+            return f"{(self.priority_value / 1_000_000_000):.1f}B ETB"
+        if self.priority_value >= 1_000_000:
+            return f"{(self.priority_value / 1_000_000):.1f}M ETB"
+        return f"{self.priority_value:,.0f} ETB"
+
+    def formatted_total_value(self):
+        """Return formatted total value"""
+        if self.total_value >= 1_000_000_000:
+            return f"{(self.total_value / 1_000_000_000):.2f}B ETB"
+        if self.total_value >= 1_000_000:
+            return f"{(self.total_value / 1_000_000):.1f}M ETB"
+        return f"{self.total_value:,.0f} ETB"
 
 
 class MediaMosaicItem(models.Model):
