@@ -18,6 +18,14 @@ echo "Applying database migrations..."
 python manage.py makemigrations
 python manage.py migrate
 
+# Step 3.1: Seed finance data
+echo "Seeding finance data..."
+python manage.py seed_finance_data
+
+# Step 3.2: Create superuser (requires env vars)
+echo "Creating superuser..."
+python manage.py createsuperuser --noinput || true
+
 # Step 4: Verify database tables (for debugging)
 echo "Verifying database tables..."
 python manage.py dbshell <<EOF
