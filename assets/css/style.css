@@ -1383,7 +1383,7 @@ li {
 
 .main-menu .main-menu__list>li+li,
 .stricky-header .main-menu__list>li+li {
-  margin-left: 25px;
+  margin-left: 23px;
 }
 
 .main-menu .main-menu__list>li>a,

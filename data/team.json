@@ -23,7 +23,7 @@
                 "role": "Laboratory Technician",
                 "phone": "+1 (555) 300-0002",
                 "email": "e.anderson@construction.com",
-            "avatar": "assets/images/resources/1.png",
+            "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2",
             "children": [
               {
                 "id": "rso-001",
@@ -31,7 +31,7 @@
                 "role": "Laboratory Technician",
                 "phone": "+1 (555) 300-0002",
                 "email": "e.anderson@construction.com",
-            "avatar": "assets/images/resources/1.png"
+            "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               },
               {
                 "id": "se-001",
@@ -39,7 +39,7 @@
                 "role": "Laboratory Technician", 
                 "phone": "+1 (555) 300-0002",
                 "email": "e.anderson@construction.com",
-                "avatar": "assets/images/resources/1.png"
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               }
             ]
           },
@@ -53,11 +53,11 @@
             "children": [
               {
                 "id": "lt-001",
-               "name": "JSemira Nour",
+               "name": "Semira Nour",
                 "role": "Human Resource Managment(HRM)",
                 "phone": "+1 (555) 200-0003",
                 "email": "j.williams@construction.com",
-                "avatar": "assets/images/resources/1.png"
+                "avatar": "https://i.postimg.cc/vmRD6J95/0E7A2661.jpg"
               },
               {
                 "id": "lt-001",
@@ -65,7 +65,7 @@
                 "role": "Laboratory Technician",
                 "phone": "+1 (555) 300-0002",
                 "email": "e.anderson@construction.com",
-                "avatar": "assets/images/resources/1.png"
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               }
             ]
           },
@@ -84,7 +84,7 @@
                 "role": "Office Engineer",
                 "phone": "+1 (555) 400-0002",
                 "email": "m.taylor@construction.com",
-                "avatar": "assets/images/resources/1.png"
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               },
               {
                 "id": "sur-001",
@@ -92,7 +92,7 @@
                 "role": "Surveyor",
                 "phone": "+1 (555) 400-0003",
                 "email": "d.martinez@construction.com",
-                "avatar": "assets/images/resources/1.png"
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               },
               {
                 "id": "for-001",
@@ -100,7 +100,7 @@
                 "role": "Foreman",
                 "phone": "+1 (555) 400-0004",
                 "email": "k.thompson@construction.com",
-                "avatar": "assets/images/resources/1.png"
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               }
             ]
           },
@@ -110,7 +110,7 @@
             "role": "Supporting Team Lead",
             "phone": "+1 (555) 500-0001",
             "email": "p.white@construction.com",
-            "avatar": "assets/images/resources/1.png",
+            "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2",
             "children": [
               {
                 "id": "sp-001",
@@ -118,7 +118,7 @@
                 "role": "Supply and Purchase",
                 "phone": "+1 (555) 500-0002",
                 "email": "r.harris@construction.com",
-                "avatar": "assets/images/resources/1.png"
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               },
               {
                 "id": "fin-001",
@@ -126,7 +126,7 @@
                 "role": "Finance head",
                 "phone": "+1 (555) 500-0003",
                 "email": "n.clark@construction.com",
-                "avatar": "assets/images/resources/1.png"
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               },
               {
                 "id": "sk-001",
@@ -134,7 +134,7 @@
                 "role": "Store Keeper",
                 "phone": "+1 (555) 500-0004",
                 "email": "s.lewis@construction.com",
-                "avatar": "assets/images/resources/1.png"
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               }
             ]
           }

@@ -371,30 +371,49 @@
   }
 
   // ==================== Search ====================
+function updateSearchResults(query) {
+  if (!teamData) return;
+  
+  const results = searchMembers(teamData.orgChart, query);
+  
+  if (query && results.length > 0) {
+    elements.searchResults.innerHTML = results.map((member, i) => {
+      
+      // DEBUG: Open Console (F12) to see if 'avatar' is undefined here
+      if (member.name.includes("Kedir")) {
+         console.log("Checking Kedir:", member); 
+      }
 
-  function updateSearchResults(query) {
-    if (!teamData) return;
-    
-    const results = searchMembers(teamData.orgChart, query);
-    
-    if (query && results.length > 0) {
-      elements.searchResults.innerHTML = results.map((member, i) => `
+      // LOGIC: If avatar exists (and isn't empty), use Image. Else use Initials.
+      const hasAvatar = member.avatar && member.avatar !== "";
+      
+      const avatarContent = hasAvatar
+        ? `<img src="${member.avatar}" alt="${member.name}" class="search-avatar-img">`
+        : getInitials(member.name);
+
+      // STYLE: Remove blue background if image exists, keep it for initials
+      const bgStyle = hasAvatar ? 'background: transparent;' : '';
+
+      return `
         <li class="search-result-item" data-index="${i}" data-id="${member.id}" role="option">
-          <div class="search-result-avatar">${getInitials(member.name)}</div>
+          <div class="search-result-avatar" style="${bgStyle}">
+            ${avatarContent}
+          </div>
           <div class="search-result-info">
             <div class="search-result-name">${member.name}</div>
             <div class="search-result-role">${member.role}</div>
           </div>
         </li>
-      `).join('');
-      elements.searchResults.style.display = 'block';
-      elements.searchClear.style.display = 'block';
-    } else {
-      elements.searchResults.style.display = 'none';
-      elements.searchClear.style.display = query ? 'block' : 'none';
-    }
+      `;
+    }).join('');
+    
+    elements.searchResults.style.display = 'block';
+    elements.searchClear.style.display = 'block';
+  } else {
+    elements.searchResults.style.display = 'none';
+    elements.searchClear.style.display = query ? 'block' : 'none';
   }
-
+}
   function selectSearchResult(memberId) {
     if (!teamData) return;
 

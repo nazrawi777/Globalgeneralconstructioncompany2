@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. Create Logo
   const logo = document.createElement('img');
   // Use relative path matching the final expected structure
-  logo.src = 'assets/images/resources/1.png'; 
+  logo.src = 'https://i.postimg.cc/59XSxZwz/1.png?v=2'; 
   logo.className = 'preloader-logo';
   logo.alt = 'Global General Construction Logo';
   logo.onerror = () => {

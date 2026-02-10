@@ -20,11 +20,11 @@
   display: flex;
   align-items: center;
   margin-right: -12px !important;
-  left: -19px;
+  left: -12px;
 }
 #iconic {
     position: relative;
-    right: 15px;
+    right: -3px;
     color: white !important;
 }
 }
