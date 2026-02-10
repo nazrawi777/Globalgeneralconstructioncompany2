@@ -169,7 +169,7 @@
   display: flex;
   align-items: center;
   margin-right: -12px !important;
-  left: -19px;
+  left: -2px;
 }
 #iconic {
     position: relative;
@@ -314,11 +314,11 @@
                         <ul class="list-unstyled mb-0">
                             <li class="d-inline-flex align-items-center text-muted me-2" style="color: white !important;">
                                 <i data-feather="layout" class="fea icon-sm text-primary me-1"></i>
-                                ABC Grade 1 Construction PLC
+                                
                             </li>
                             <li class="d-inline-flex align-items-center text-muted" style="color: white !important;">
                                 <i data-feather="map-pin" class="fea icon-sm text-primary me-1"></i>
-                                Addis Ababa, Ethiopia
+                                
                             </li>
                         </ul>
                     </div>
@@ -422,7 +422,7 @@
                     <h5 class="mt-4">Responsibilities and Duties:</h5>
                     <ul class="list-unstyled" style="color:#fff !important">
                         {% for item in requirements_list %}
-                        <li class="text-muted mt-2" style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>{{ item }}</li>
+                        <li class="text-muted mt-2" style="color:#fff !important;"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>{{ item }}</li>
                         {% empty %}
                         <li class="text-muted mt-2" style="color:#fff !important"><i data-feather="arrow-right" class="fea icon-sm text-primary me-2"></i>No requirements listed.</li>
                         {% endfor %}
@@ -438,7 +438,7 @@
                     </ul>
 
                     <div class="mt-4">
-                        <a href="{% url 'job_apply' job.id %}" class="btn btn-outline-primary"style="background-color:#fff !important">
+                        <a href="{% url 'job_apply' job.id %}" class="btn btn-outline-primary"style="background-color: #fff !important; color: #229e22 !important; border-radius: 10px;">
                             Apply Now <i class="mdi mdi-send"></i>
                         </a>
                     </div>
