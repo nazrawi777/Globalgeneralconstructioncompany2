@@ -1,4 +1,6 @@
 import json
+from django.core.paginator import Paginator
+from django.db.models import Q
 from django.contrib import messages
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import JsonResponse
@@ -193,6 +195,10 @@ def social_welfare_view(request):
             }
             for story in story_items
         ]),
+        "categories":  (
+            media_items.values_list("category", flat=True)
+            .distinct()
+        )
     }
     return render(request, 'socialwalfare.html', context)
 
@@ -222,8 +228,48 @@ def job_post_view(request):
 
 
 def job_list_view(request):
+    jobs_qs = JobVacancy.objects.filter(is_active=True)
+
+    search_term = request.GET.get('s', '').strip()
+    job_type = request.GET.get('job_type', '').strip()
+    location = request.GET.get('location', '').strip()
+
+    if search_term:
+        jobs_qs = jobs_qs.filter(
+            Q(title__icontains=search_term)
+            | Q(description__icontains=search_term)
+            | Q(requirements__icontains=search_term)
+            | Q(qualifications__icontains=search_term)
+            | Q(location__icontains=search_term)
+            | Q(industry__icontains=search_term)
+        )
+
+    if job_type:
+        jobs_qs = jobs_qs.filter(job_type=job_type)
+
+    if location:
+        jobs_qs = jobs_qs.filter(location=location)
+
+    paginator = Paginator(jobs_qs, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    params = request.GET.copy()
+    if 'page' in params:
+        del params['page']
+    querystring = params.urlencode()
+
     context = {
-        'jobs': JobVacancy.objects.filter(is_active=True),
+        'jobs': page_obj.object_list,
+        'page_obj': page_obj,
+        'paginator': paginator,
+        'querystring': querystring,
+        'job_types': JobVacancy.JOB_TYPE_CHOICES,
+        'locations': JobVacancy.objects.filter(is_active=True)
+            .exclude(location__exact='')
+            .values_list('location', flat=True)
+            .distinct()
+            .order_by('location'),
     }
     return render(request, 'job-list.html', context)
 

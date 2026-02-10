@@ -366,14 +366,16 @@
         </div>
         
         <!-- Filter Chips -->
-        <div class="filter-chips fade-in">
-          <button class="filter-chip active" data-filter="all">All</button>
-          <button class="filter-chip" data-filter="philanthropy">Philanthropy</button>
-          <button class="filter-chip" data-filter="housing">Housing</button>
-          <button class="filter-chip" data-filter="education">Education</button>
-          <button class="filter-chip" data-filter="football-club">Football Club</button>
-          <button class="filter-chip" data-filter="events">Events</button>
-        </div>
+    <div class="filter-chips fade-in">
+      <button class="filter-chip active" data-filter="all">All</button>
+
+      {% for category in categories %}
+        <button class="filter-chip" data-filter="{{ category }}">
+          {{ category|title|cut:"-" }}
+        </button>
+      {% endfor %}
+    </div>
+
         
         <!-- Masonry Grid -->
         <div class="masonry-grid" id="mosaic-grid">

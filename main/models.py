@@ -266,7 +266,8 @@ class MediaMosaicItem(models.Model):
 
     title = models.CharField(max_length=200)
     type = models.CharField(max_length=10, choices=MEDIA_TYPE_CHOICES)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='all')
+    category = models.CharField(max_length=50,default='all')
+    description = models.TextField(default="description")
     src = models.FileField(upload_to='media_mosaic/')
     thumbnail = models.ImageField(upload_to='media_mosaic/thumbnails/', blank=True)
     is_active = models.BooleanField(default=True)

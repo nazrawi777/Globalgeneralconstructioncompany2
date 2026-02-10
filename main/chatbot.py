@@ -4,7 +4,7 @@ from .models import ChatBotConfig
 
 
 def get_gemini_response(user_message):
-    api_key = os.environ.get("GEMINI_API_KEY")
+    api_key = os.get("GEMINI_API_KEY")
     print(f"DEBUG: API Key loaded: {'Yes' if api_key else 'No'}")
     print(f"DEBUG: API Key length: {len(api_key) if api_key else 0}")\
 
