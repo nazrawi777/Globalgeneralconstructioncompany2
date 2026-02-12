@@ -427,6 +427,11 @@ body {
   background: hsl(var(--org-connector));
   animation: drawVertical 0.5s ease-out;
 }
+.org-children, 
+.org-branch, 
+.child-wrapper {
+    overflow: visible !important;
+}
 /* ADD this new rule */
 .child-wrapper[data-child-id="legal-001"] {
   position: relative;
@@ -446,13 +451,20 @@ body {
 }
 .child-wrapper[data-child-id="hr-001"] {
   position: relative;
-   /* Moves the Node + The line connecting to parent */
-}
-.child-wrapper[data-child-id="office-001"] {
-  position: relative;
+   right: -550px !important;
    /* Moves the Node + The line connecting to parent */
 }
 
+.child-wrapper[data-child-id="oe-001"] {
+  position: relative;
+  right: 550px !important;
+   
+}
+.child-wrapper[data-child-id="om-001"] {
+  position: relative;
+  right: -10px !important;
+   
+}
 
 
 .connector-horizontal {
@@ -475,8 +487,8 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 2.75rem 3.5rem;
-  min-width: 180px;
+  padding: 1.75rem 2.5rem;
+  min-width: 280px;
   background: hsl(207, 74%, 53%);
   color: hsl(var(--primary-foreground));
   border-radius: var(--radius);
@@ -531,9 +543,10 @@ body {
 /* Avatar */
 .org-avatar {
   position: relative;
-  width: 3.5rem;
-  left:-40px;
-  height: 4.5rem;
+  width: 4rem;
+  height: 4.1rem;
+  right: 6%;
+  bottom: 6%;
   border-radius: 50%;
   overflow: hidden;
   background: white;
@@ -562,7 +575,7 @@ body {
 
 .org-name {
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 2.875rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -570,7 +583,7 @@ body {
 
 @media (min-width: 640px) {
   .org-name {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -584,7 +597,7 @@ body {
 
 @media (min-width: 640px) {
   .org-role {
-    font-size: 0.875rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -652,7 +665,12 @@ body {
   width: 2rem;
   height: 2rem;
 }
-
+.org-avatar img {
+  width: 100%;       /* fill the avatar container */
+  height: 100%;
+  object-fit: cover; /* keeps aspect ratio and crops overflow */
+  image-rendering: auto; /* ensures smooth scaling for photos */
+}
 .compact .org-name {
   font-size: 0.75rem;
 }
