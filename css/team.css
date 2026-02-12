@@ -474,7 +474,7 @@ body {
 
 .connector-horizontal {
   height: 2px;
-  top: 400px;
+  top: 40px;
   background: hsl(var(--org-connector));
   animation: drawHorizontal 0.5s ease-out;
 
