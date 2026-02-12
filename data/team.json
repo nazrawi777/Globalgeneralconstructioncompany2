@@ -3,123 +3,80 @@
   "lastUpdated": "2025-01-05",
   "orgChart": {
     "id": "pm-001",
-    "name": "David Mitchell",
-    "role": "Project Manager",
-    "phone": "+1 (555) 100-0001",
-    "email": "d.mitchell@construction.com",
-    "avatar": "assets/images/resources/1.png",
-    "social": {
-      "linkedin": "https://linkedin.com/in/davidmitchell",
-      "twitter": "https://twitter.com/dmitchell",
-      "facebook": "https://facebook.com/davidmitchell",
-      "instagram": "https://instagram.com/dmitchell"
-    },
+    "name": "Kedir hassen",
+    "role": "General manager",
+    "phone": "0911-29-00-37",
+    "email": "Kedirhass7122@gmail.com",
+    "avatar": "https://i.postimg.cc/L8zf0nSn/0E7A2284.jpg",
     "children": [
       {
         "id": "sec-001",
-        "name": "Sarah Johnson",
-        "role": "Secretary",
-        "phone": "+1 (555) 100-0002",
-        "email": "s.johnson@construction.com",
-        "avatar": "assets/images/resources/1.png",
-        "social": {
-          "linkedin": "https://linkedin.com/in/sarahjohnson",
-          "twitter": "https://twitter.com/sjohnson"
-        },
+        "name": "Kalid abdurezak",
+        "role": "deputy manager ",
+        "phone": "0911-80-88-06",
+        "email": "Kalidnuru5@gmail.com",
+        "avatar": "https://i.postimg.cc/WbVkK0pc/0E7A2629.jpg",
         "children": [
           {
-            "id": "ce-001",
-            "name": "Michael Chen",
-            "role": "Construction Engineer",
-            "phone": "+1 (555) 200-0001",
-            "email": "m.chen@construction.com",
-            "avatar": "assets/images/resources/1.png",
-            "social": {
-              "linkedin": "https://linkedin.com/in/michaelchen"
-            },
+            "id": "me-001",
+             "name": "Emily Anderson",
+                "role": "Laboratory Technician",
+                "phone": "+1 (555) 300-0002",
+                "email": "e.anderson@construction.com",
+            "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2",
             "children": [
               {
                 "id": "rso-001",
-                "name": "Robert Garcia",
-                "role": "Road Safety Officer",
-                "phone": "+1 (555) 200-0002",
-                "email": "r.garcia@construction.com",
-                "avatar": "assets/images/resources/1.png",
-                "social": {
-                  "linkedin": "https://linkedin.com/in/robertgarcia"
-                }
+                "name": "Emily Anderson",
+                "role": "Laboratory Technician",
+                "phone": "+1 (555) 300-0002",
+                "email": "e.anderson@construction.com",
+            "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               },
               {
                 "id": "se-001",
-                "name": "Jennifer Williams",
-                "role": "Site Engineer",
-                "phone": "+1 (555) 200-0003",
-                "email": "j.williams@construction.com",
-                "avatar": "assets/images/resources/1.png",
-                "social": {
-                  "linkedin": "https://linkedin.com/in/jenniferwilliams"
-                },
-                "children": [
-                  {
-                    "id": "cs-001",
-                    "name": "Thomas Brown",
-                    "role": "Chief Surveyor",
-                    "phone": "+1 (555) 200-0004",
-                    "email": "t.brown@construction.com",
-                    "avatar": "assets/images/resources/1.png",
-                    "social": {
-                      "linkedin": "https://linkedin.com/in/thomasbrown"
-                    }
-                  },
-                  {
-                    "id": "sup-001",
-                    "name": "Amanda Davis",
-                    "role": "Superintendent",
-                    "phone": "+1 (555) 200-0005",
-                    "email": "a.davis@construction.com",
-                    "avatar": "assets/images/resources/1.png",
-                    "social": {
-                      "linkedin": "https://linkedin.com/in/amandadavis"
-                    }
-                  }
-                ]
+                 "name": "Emily Anderson",
+                "role": "Laboratory Technician", 
+                "phone": "+1 (555) 300-0002",
+                "email": "e.anderson@construction.com",
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               }
             ]
           },
           {
-            "id": "me-001",
-            "name": "James Wilson",
-            "role": "Material Engineer",
-            "phone": "+1 (555) 300-0001",
-            "email": "j.wilson@construction.com",
-            "avatar": "assets/images/resources/1.png",
-            "social": {
-              "linkedin": "https://linkedin.com/in/jameswilson"
-            },
+            "id": "it-001",
+             "name": "Mitiku lega",
+            "role": "project manager",
+            "phone": "0913656709",
+            "email": "abrshmt@gmail.com",
+            "avatar": "https://i.postimg.cc/KYTcxsQM/0E7A2645.jpg",
             "children": [
+              {
+                "id": "lt-001",
+               "name": "Semira Nour",
+                "role": "Human Resource Managment(HRM)",
+                "phone": "+1 (555) 200-0003",
+                "email": "j.williams@construction.com",
+                "avatar": "https://i.postimg.cc/vmRD6J95/0E7A2661.jpg"
+              },
               {
                 "id": "lt-001",
                 "name": "Emily Anderson",
                 "role": "Laboratory Technician",
                 "phone": "+1 (555) 300-0002",
                 "email": "e.anderson@construction.com",
-                "avatar": "assets/images/resources/1.png",
-                "social": {
-                  "linkedin": "https://linkedin.com/in/emilyanderson"
-                }
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               }
             ]
           },
           {
             "id": "ste-001",
-            "name": "Christopher Lee",
-            "role": "Structural Engineer",
-            "phone": "+1 (555) 400-0001",
-            "email": "c.lee@construction.com",
-            "avatar": "assets/images/resources/1.png",
-            "social": {
-              "linkedin": "https://linkedin.com/in/christopherlee"
-            },
+            "name": "Hewan Kebede",
+                "role": "Finance Head",
+                "phone": "+1 (555) 200-0002",
+                "email": "r.garcia@construction.com",
+           
+            "avatar": "https://i.postimg.cc/Vv63LJmf/0E7A2693.jpg",
             "children": [
               {
                 "id": "oe-001",
@@ -127,10 +84,7 @@
                 "role": "Office Engineer",
                 "phone": "+1 (555) 400-0002",
                 "email": "m.taylor@construction.com",
-                "avatar": "assets/images/resources/1.png",
-                "social": {
-                  "linkedin": "https://linkedin.com/in/michelletaylor"
-                }
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               },
               {
                 "id": "sur-001",
@@ -138,10 +92,7 @@
                 "role": "Surveyor",
                 "phone": "+1 (555) 400-0003",
                 "email": "d.martinez@construction.com",
-                "avatar": "assets/images/resources/1.png",
-                "social": {
-                  "linkedin": "https://linkedin.com/in/danielmartinez"
-                }
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               },
               {
                 "id": "for-001",
@@ -149,10 +100,7 @@
                 "role": "Foreman",
                 "phone": "+1 (555) 400-0004",
                 "email": "k.thompson@construction.com",
-                "avatar": "assets/images/resources/1.png",
-                "social": {
-                  "linkedin": "https://linkedin.com/in/kevinthompson"
-                }
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               }
             ]
           },
@@ -162,10 +110,7 @@
             "role": "Supporting Team Lead",
             "phone": "+1 (555) 500-0001",
             "email": "p.white@construction.com",
-            "avatar": "assets/images/resources/1.png",
-            "social": {
-              "linkedin": "https://linkedin.com/in/patriciawhite"
-            },
+            "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2",
             "children": [
               {
                 "id": "sp-001",
@@ -173,21 +118,15 @@
                 "role": "Supply and Purchase",
                 "phone": "+1 (555) 500-0002",
                 "email": "r.harris@construction.com",
-                "avatar": "assets/images/resources/1.png",
-                "social": {
-                  "linkedin": "https://linkedin.com/in/richardharris"
-                }
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               },
               {
                 "id": "fin-001",
                 "name": "Nancy Clark",
-                "role": "Finance",
+                "role": "Finance head",
                 "phone": "+1 (555) 500-0003",
                 "email": "n.clark@construction.com",
-                "avatar": "assets/images/resources/1.png",
-                "social": {
-                  "linkedin": "https://linkedin.com/in/nancyclark"
-                }
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               },
               {
                 "id": "sk-001",
@@ -195,10 +134,7 @@
                 "role": "Store Keeper",
                 "phone": "+1 (555) 500-0004",
                 "email": "s.lewis@construction.com",
-                "avatar": "assets/images/resources/1.png",
-                "social": {
-                  "linkedin": "https://linkedin.com/in/stevenlewis"
-                }
+                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
               }
             ]
           }
