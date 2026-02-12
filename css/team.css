@@ -436,12 +436,32 @@ body {
 /* ADD this new rule */
 .child-wrapper[data-child-id="legal-001"] {
   position: relative;
+  bottom: 9px !important;
   left: 500px; /* Moves the Node + The line connecting to parent */
   
 }
 .child-wrapper[data-child-id="aud-001"] {
   position: relative;
+  bottom: 9px !important;
   right: 500px !important; /* Moves the Node + The line connecting to parent */
+  
+}
+.child-wrapper[data-child-id="dgm-001"] {
+  position: relative;
+  bottom: 9px !important;
+ 
+  
+}
+.child-wrapper[data-child-id="pm-001"] {
+  position: relative;
+  bottom: 9px !important;
+ 
+  
+}
+.child-wrapper[data-child-id="fh-001"] {
+  position: relative;
+  bottom: 9px !important;
+ 
   
 }
 .child-wrapper[data-child-id="finance-001"] {

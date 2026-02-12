@@ -288,7 +288,7 @@ if (member.children && member.children.length > 1) {
 
   // Level keys must match your 'level' variable
   const rowWidths = {
-    0: 980,   // root's children
+    0: 940,   // root's children
     1: 1340,   // second row
     2: 1700   // third row
     
