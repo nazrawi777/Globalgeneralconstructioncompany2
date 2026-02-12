@@ -5,12 +5,11 @@
   let teamData = null;
   let expandedNodes = new Set();
   let highlightedId = null;
-  let currentZoom = 0.7;
+  let currentZoom = 0.6;
   let isCompact = false;
   let isDragging = false;
   let dragStart = { x: 0, y: 0 };
   let scrollStart = { x: 0, y: 0 };
-
   // DOM Elements
   const elements = {
     app: document.getElementById('app'),
@@ -26,7 +25,6 @@
     expandAll: document.getElementById('expand-all'),
     collapseAll: document.getElementById('collapse-all'),
     compactToggle: document.getElementById('compact-toggle'),
-    printBtn: document.getElementById('print-btn'),
     modal: document.getElementById('modal-backdrop'),
     modalClose: document.getElementById('modal-close'),
     modalAvatar: document.getElementById('modal-avatar'),
@@ -34,7 +32,6 @@
     modalRole: document.getElementById('modal-role'),
     modalPhone: document.getElementById('modal-phone'),
     modalEmail: document.getElementById('modal-email'),
-    socialLinks: document.getElementById('social-links'),
     copyPhone: document.getElementById('copy-phone'),
     copyEmail: document.getElementById('copy-email'),
     callBtn: document.getElementById('call-btn'),
@@ -42,11 +39,7 @@
     vcardBtn: document.getElementById('vcard-btn')
   };
 
-  // ==================== Utilities ====================
-
-  /**
-   * Flatten org tree to array for searching
-   */
+ 
   function flattenTree(node, result = []) {
     result.push(node);
     if (node.children) {
@@ -55,9 +48,6 @@
     return result;
   }
 
-  /**
-   * Search members by name or role
-   */
   function searchMembers(root, query) {
     const allMembers = flattenTree(root);
     const lowerQuery = query.toLowerCase().trim();
@@ -149,6 +139,18 @@
   }
 
   /**
+   * Resolve static asset paths for avatars.
+   */
+  function resolveAvatarPath(path) {
+    if (!path) return path;
+    if (/^https?:\/\//i.test(path) || path.startsWith('/')) {
+      return path;
+    }
+    const base = (window.STATIC_BASE_URL || '/static/').replace(/\/?$/, '/');
+    return base + path.replace(/^\/+/, '');
+  }
+
+  /**
    * Create SVG avatar placeholder
    */
   function createAvatarPlaceholder(name) {
@@ -191,10 +193,11 @@
     }
     node.dataset.id = member.id;
 
+    const avatarSrc = resolveAvatarPath(member.avatar);
     node.innerHTML = `
       <div class="org-node-glow" aria-hidden="true"></div>
       <div class="org-avatar">
-        <img src="${member.avatar}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
+        <img src="${avatarSrc}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
       </div>
       <div class="org-info">
         <div class="org-name">${member.name}</div>
@@ -275,7 +278,7 @@
       if (member.children.length > 1) {
         const horizConnector = document.createElement('div');
         horizConnector.className = 'connector-horizontal';
-        horizConnector.style.width = `${Math.min(member.children.length * 100, 400)}px`;
+        horizConnector.style.width = `${Math.min(member.children.length * 100, 1800)}px`;
         horizConnector.style.display = isExpanded ? 'block' : 'none';
         branch.appendChild(horizConnector);
       }
@@ -346,33 +349,14 @@
     elements.emailBtn.href = `mailto:${member.email}`;
 
     // Avatar
+    const avatarSrc = resolveAvatarPath(member.avatar);
     elements.modalAvatar.innerHTML = `
-      <img src="${member.avatar}" alt="" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
+      <img src="${avatarSrc}" alt="" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
     `;
 
-    // Social links
-    const socialIcons = {
-      linkedin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>',
-      twitter: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>',
-      facebook: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
-      instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'
-    };
+   
 
-    elements.socialLinks.innerHTML = '';
-    if (member.social) {
-      Object.entries(member.social).forEach(([platform, url]) => {
-        if (url && socialIcons[platform]) {
-          const link = document.createElement('a');
-          link.href = url;
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.className = 'social-link';
-          link.setAttribute('aria-label', `Visit ${member.name}'s ${platform} profile`);
-          link.innerHTML = socialIcons[platform];
-          elements.socialLinks.appendChild(link);
-        }
-      });
-    }
+ 
 
     // Show modal
     elements.modal.style.display = 'flex';
@@ -387,30 +371,49 @@
   }
 
   // ==================== Search ====================
+function updateSearchResults(query) {
+  if (!teamData) return;
+  
+  const results = searchMembers(teamData.orgChart, query);
+  
+  if (query && results.length > 0) {
+    elements.searchResults.innerHTML = results.map((member, i) => {
+      
+      // DEBUG: Open Console (F12) to see if 'avatar' is undefined here
+      if (member.name.includes("Kedir")) {
+         console.log("Checking Kedir:", member); 
+      }
 
-  function updateSearchResults(query) {
-    if (!teamData) return;
-    
-    const results = searchMembers(teamData.orgChart, query);
-    
-    if (query && results.length > 0) {
-      elements.searchResults.innerHTML = results.map((member, i) => `
+      // LOGIC: If avatar exists (and isn't empty), use Image. Else use Initials.
+      const hasAvatar = member.avatar && member.avatar !== "";
+      
+      const avatarContent = hasAvatar
+        ? `<img src="${member.avatar}" alt="${member.name}" class="search-avatar-img">`
+        : getInitials(member.name);
+
+      // STYLE: Remove blue background if image exists, keep it for initials
+      const bgStyle = hasAvatar ? 'background: transparent;' : '';
+
+      return `
         <li class="search-result-item" data-index="${i}" data-id="${member.id}" role="option">
-          <div class="search-result-avatar">${getInitials(member.name)}</div>
+          <div class="search-result-avatar" style="${bgStyle}">
+            ${avatarContent}
+          </div>
           <div class="search-result-info">
             <div class="search-result-name">${member.name}</div>
             <div class="search-result-role">${member.role}</div>
           </div>
         </li>
-      `).join('');
-      elements.searchResults.style.display = 'block';
-      elements.searchClear.style.display = 'block';
-    } else {
-      elements.searchResults.style.display = 'none';
-      elements.searchClear.style.display = query ? 'block' : 'none';
-    }
+      `;
+    }).join('');
+    
+    elements.searchResults.style.display = 'block';
+    elements.searchClear.style.display = 'block';
+  } else {
+    elements.searchResults.style.display = 'none';
+    elements.searchClear.style.display = query ? 'block' : 'none';
   }
-
+}
   function selectSearchResult(memberId) {
     if (!teamData) return;
 
@@ -596,10 +599,7 @@
       updateCompactMode();
     });
 
-    // Print
-    elements.printBtn.addEventListener('click', () => {
-      window.print();
-    });
+
 
     // Drag to pan
     elements.container.addEventListener('mousedown', (e) => {
@@ -653,7 +653,8 @@
 
   async function init() {
     try {
-      const response = await fetch('data/team.json');
+      const dataUrl = window.TEAM_DATA_URL || '/static/data/team.json';
+      const response = await fetch(dataUrl);
       if (!response.ok) throw new Error('Failed to load team data');
       teamData = await response.json();
 
@@ -684,3 +685,28 @@
     init();
   }
 })();
+// Listen for Delete key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Delete' && currentMember) {
+    // Recursive delete from JSON
+    function deleteById(node, targetId) {
+      if (!node.children) return false;
+
+      const index = node.children.findIndex(child => child.id === targetId);
+      if (index !== -1) {
+        node.children.splice(index, 1); // remove from JSON
+        return true;
+      }
+
+      for (const child of node.children) {
+        if (deleteById(child, targetId)) return true;
+      }
+
+      return false;
+    }
+
+    deleteById(teamData.orgChart, currentMember.id); // remove from JSON
+    currentMember = null; // clear selection
+    renderChart(); // refresh chart
+  }
+});
