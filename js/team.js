@@ -1,4 +1,3 @@
-
 (function() {
   'use strict';
 
@@ -10,6 +9,7 @@
   let isDragging = false;
   let dragStart = { x: 0, y: 0 };
   let scrollStart = { x: 0, y: 0 };
+
   // DOM Elements
   const elements = {
     app: document.getElementById('app'),
@@ -39,7 +39,7 @@
     vcardBtn: document.getElementById('vcard-btn')
   };
 
- 
+  // Helper: flatten tree for searches & expand operations
   function flattenTree(node, result = []) {
     result.push(node);
     if (node.children) {
@@ -52,15 +52,13 @@
     const allMembers = flattenTree(root);
     const lowerQuery = query.toLowerCase().trim();
     if (!lowerQuery) return [];
-    return allMembers.filter(member => 
-      member.name.toLowerCase().includes(lowerQuery) ||
-      member.role.toLowerCase().includes(lowerQuery)
+    return allMembers.filter(member =>
+      (member.name || '').toLowerCase().includes(lowerQuery) ||
+      (member.role || '').toLowerCase().includes(lowerQuery)
     );
   }
 
-  /**
-   * Find path to a member
-   */
+  // Find path from root to a member id
   function findPathToMember(root, targetId, path = []) {
     path.push(root.id);
     if (root.id === targetId) return path;
@@ -73,16 +71,10 @@
     return null;
   }
 
-  /**
-   * Get initials from name
-   */
-  function getInitials(name) {
-    return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+  function getInitials(name = '') {
+    return name.split(' ').map(w => w[0] || '').join('').toUpperCase().slice(0, 2);
   }
 
-  /**
-   * Copy text to clipboard
-   */
   async function copyToClipboard(text) {
     try {
       if (navigator.clipboard) {
@@ -103,17 +95,14 @@
     }
   }
 
-  /**
-   * Generate vCard
-   */
   function generateVCard(member) {
     const lines = [
       'BEGIN:VCARD',
       'VERSION:3.0',
-      `FN:${member.name}`,
-      `TITLE:${member.role}`,
-      `TEL;TYPE=WORK,VOICE:${member.phone}`,
-      `EMAIL;TYPE=WORK,INTERNET:${member.email}`
+      `FN:${member.name || ''}`,
+      `TITLE:${member.role || ''}`,
+      `TEL;TYPE=WORK,VOICE:${member.phone || ''}`,
+      `EMAIL;TYPE=WORK,INTERNET:${member.email || ''}`
     ];
     if (member.social?.linkedin) {
       lines.push(`URL;TYPE=LinkedIn:${member.social.linkedin}`);
@@ -122,25 +111,19 @@
     return lines.join('\n');
   }
 
-  /**
-   * Download vCard
-   */
   function downloadVCard(member) {
     const vcardData = generateVCard(member);
     const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `${member.name.replace(/\s+/g, '_')}.vcf`;
+    link.download = `${(member.name || 'contact').replace(/\s+/g, '_')}.vcf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   }
 
-  /**
-   * Resolve static asset paths for avatars.
-   */
   function resolveAvatarPath(path) {
     if (!path) return path;
     if (/^https?:\/\//i.test(path) || path.startsWith('/')) {
@@ -150,9 +133,6 @@
     return base + path.replace(/^\/+/, '');
   }
 
-  /**
-   * Create SVG avatar placeholder
-   */
   function createAvatarPlaceholder(name) {
     const initials = getInitials(name);
     return `
@@ -174,9 +154,7 @@
 
   // ==================== Rendering ====================
 
-  /**
-   * Create an org node element
-   */
+  // Create node element and assign real id so CSS can target it
   function createOrgNode(member, delay = 0) {
     const hasChildren = member.children && member.children.length > 0;
     const isExpanded = expandedNodes.has(member.id);
@@ -187,29 +165,48 @@
     node.style.animationDelay = `${delay}ms`;
     node.setAttribute('role', 'button');
     node.setAttribute('tabindex', '0');
-    node.setAttribute('aria-label', `${member.name}, ${member.role}. Click to view details.`);
+    node.setAttribute('aria-label', `${member.name || ''}, ${member.role || ''}. Click to view details.`);
     if (hasChildren) {
       node.setAttribute('aria-expanded', isExpanded);
     }
+
+    // IMPORTANT: give the element the same id as the JSON node so you can target it with CSS
+    if (member.id) {
+      node.id = member.id;
+    }
+    // keep data-id as well for existing selectors
     node.dataset.id = member.id;
 
+    // If JSON specifies a manual position, apply it (safe, optional)
+    // Example in JSON: "position": { "x": -40, "y": 10 }
+    if (member.position && (member.position.x || member.position.y)) {
+      // use transform so layout of connectors is less likely to break
+      const x = Number(member.position.x) || 0;
+      const y = Number(member.position.y) || 0;
+      node.style.position = 'relative';
+      node.style.transform = `translate(${x}px, ${y}px)`;
+      node.dataset.position = `${x},${y}`;
+    }
+
     const avatarSrc = resolveAvatarPath(member.avatar);
+    // onerror inline contains single quotes; escape carefully by using JSON.stringify for placeholder
+    const placeholder = createAvatarPlaceholder(member.name || '').replace(/'/g, "\\'");
+
     node.innerHTML = `
       <div class="org-node-glow" aria-hidden="true"></div>
       <div class="org-avatar">
-        <img src="${avatarSrc}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
+        <img src="${avatarSrc || ''}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${placeholder}'" />
       </div>
       <div class="org-info">
-        <div class="org-name">${member.name}</div>
-        <div class="org-role">${member.role}</div>
+        <div class="org-name">${member.name || ''}</div>
+        <div class="org-role">${member.role || ''}</div>
         <div class="quick-contact">
-         <a href="tel:${member.phone}"
-              onclick="event.stopPropagation()"
-              aria-label="Call ${member.name}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-call-icon lucide-phone-call"><path d="M13 2a9 9 0 0 1 9 9"/><path d="M13 6a5 5 0 0 1 5 5"/><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>  </a>
-
-          <a href="mailto:${member.email}" onclick="event.stopPropagation()" aria-label="Email ${member.name}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-check-icon lucide-mail-check"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><path d="m16 19 2 2 4-4"/></svg>
+          <a href="tel:${member.phone || ''}" onclick="event.stopPropagation()" aria-label="Call ${member.name || ''}">
+            <!-- phone svg small -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+          </a>
+          <a href="mailto:${member.email || ''}" onclick="event.stopPropagation()" aria-label="Email ${member.name || ''}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><path d="m16 19 2 2 4-4"/></svg>
           </a>
         </div>
       </div>
@@ -222,9 +219,8 @@
       ` : ''}
     `;
 
-    // Click handler
+    // Add ripple + open modal handlers
     node.addEventListener('click', (e) => {
-      // Add ripple effect
       const rect = node.getBoundingClientRect();
       const ripple = document.createElement('span');
       ripple.className = 'ripple';
@@ -240,7 +236,6 @@
       openModal(member);
     });
 
-    // Keyboard handler
     node.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -251,114 +246,137 @@
     return node;
   }
 
-  /**
-   * Create an org branch (node + children)
-   */
+  // Create branch (node + connectors + children)
   function createOrgBranch(member, level = 0, index = 0) {
-    const hasChildren = member.children && member.children.length > 0;
-    const isExpanded = expandedNodes.has(member.id);
-    const delay = level * 100 + index * 50;
+  const hasChildren = member.children && member.children.length > 0;
+  const isExpanded = expandedNodes.has(member.id);
+  const delay = level * 100 + index * 50;
 
-    const branch = document.createElement('div');
-    branch.className = 'org-branch';
-    branch.dataset.id = member.id;
+  const branch = document.createElement('div');
+  branch.className = 'org-branch';
+  branch.dataset.id = member.id;
 
-    // Add the node
-    branch.appendChild(createOrgNode(member, delay));
+  // --- START NEW WRAPPER ---
+  // We create a container to hold BOTH the box and the vertical line
+  const nodeGroup = document.createElement('div');
+  nodeGroup.className = 'node-group';
+  nodeGroup.style.display = 'flex';
+  nodeGroup.style.flexDirection = 'column';
+  nodeGroup.style.alignItems = 'center';
 
-    // Add children if any
-    if (hasChildren) {
-      // Vertical connector from node
-      const vertConnector = document.createElement('div');
-      vertConnector.className = 'connector-vertical';
-      vertConnector.style.display = isExpanded ? 'block' : 'none';
-      branch.appendChild(vertConnector);
+  // Add the node box to the group
+  nodeGroup.appendChild(createOrgNode(member, delay));
 
-      // Horizontal connector
-      if (member.children.length > 1) {
-        const horizConnector = document.createElement('div');
-        horizConnector.className = 'connector-horizontal';
-        horizConnector.style.width = `${Math.min(member.children.length * 100, 1800)}px`;
-        horizConnector.style.display = isExpanded ? 'block' : 'none';
-        branch.appendChild(horizConnector);
-      }
-
-      // Children container
-      const childrenContainer = document.createElement('div');
-      childrenContainer.className = `org-children${isExpanded ? '' : ' collapsed'}`;
-
-      member.children.forEach((child, childIndex) => {
-        const childWrapper = document.createElement('div');
-        childWrapper.style.display = 'flex';
-        childWrapper.style.flexDirection = 'column';
-        childWrapper.style.alignItems = 'center';
-
-        // Down connector
-        const downConnector = document.createElement('div');
-        downConnector.className = 'connector-down';
-        childWrapper.appendChild(downConnector);
-
-        // Child branch
-        childWrapper.appendChild(createOrgBranch(child, level + 1, childIndex));
-        childrenContainer.appendChild(childWrapper);
-      });
-
-      branch.appendChild(childrenContainer);
-    }
-
-    return branch;
+  if (hasChildren) {
+    // We add the Vertical line to the group so it follows the box
+    const vertConnector = document.createElement('div');
+    vertConnector.className = 'connector-vertical';
+    vertConnector.style.display = isExpanded ? 'block' : 'none';
+    nodeGroup.appendChild(vertConnector);
   }
 
-  /**
-   * Render the entire chart
-   */
- function renderChart() {
-  if (!teamData) return;
+  // Add the whole group to the branch
+  branch.appendChild(nodeGroup);
+  // --- END NEW WRAPPER ---
 
-  elements.chart.innerHTML = '';
-  elements.chart.appendChild(createOrgBranch(teamData.orgChart));
+  if (hasChildren) {
+    // Horizontal connector (the long bridge) stays outside the group
+// Horizontal connector - manual per-level widths
+if (member.children && member.children.length > 1) {
+  const horizConnector = document.createElement('div');
+  horizConnector.className = 'connector-horizontal';
 
-  // Set zoom first
-  updateZoom();
-  updateCompactMode();
+  // Level keys must match your 'level' variable
+  const rowWidths = {
+    0: 500,   // root's children
+    1: 750,   // second row
+    2: 1000   // third row
+    // add more levels if needed
+  };
 
-  // Center chart in container
-  requestAnimationFrame(() => {
-    const container = elements.container;
-    container.scrollLeft = (elements.chart.scrollWidth - container.clientWidth) / 2;
-    container.scrollTop = (elements.chart.scrollHeight - container.clientHeight) / 2;
-  });
+  const baseWidth = 500;
+  const step = 250;
+
+  // width fallback: rowWidths[level] if defined, otherwise base+level*step
+  const width = rowWidths[level] || (baseWidth + level * step);
+
+  horizConnector.style.width = width + 'px';
+  horizConnector.style.display = expandedNodes.has(member.id) ? 'block' : 'none';
+
+  branch.appendChild(horizConnector);
 }
 
 
-  // ==================== Modal ====================
+    // Children container
+// ... inside createOrgBranch function ...
 
+    // children container
+    const childrenContainer = document.createElement('div');
+    childrenContainer.className = `org-children${isExpanded ? '' : ' collapsed'}`;
+
+    member.children.forEach((child, childIndex) => {
+      const childWrapper = document.createElement('div');
+      
+      // --- NEW CODE HERE ---
+      // We give this wrapper an ID so we can move the Node AND the line above it
+      childWrapper.className = 'child-wrapper'; 
+      childWrapper.dataset.childId = child.id;
+      // --------------------
+
+      childWrapper.style.display = 'flex';
+      childWrapper.style.flexDirection = 'column';
+      childWrapper.style.alignItems = 'center';
+
+      // This is the line ABOVE the child (that was getting left behind)
+      const downConnector = document.createElement('div');
+      downConnector.className = 'connector-down';
+      childWrapper.appendChild(downConnector);
+
+      childWrapper.appendChild(createOrgBranch(child, level + 1, childIndex));
+      childrenContainer.appendChild(childWrapper);
+    });
+
+    branch.appendChild(childrenContainer);
+  }
+
+  return branch;
+}
+
+  function renderChart() {
+    if (!teamData) return;
+    elements.chart.innerHTML = '';
+    elements.chart.appendChild(createOrgBranch(teamData.orgChart));
+
+    updateZoom();
+    updateCompactMode();
+
+    // Center chart
+    requestAnimationFrame(() => {
+      const container = elements.container;
+      container.scrollLeft = (elements.chart.scrollWidth - container.clientWidth) / 2;
+      container.scrollTop = (elements.chart.scrollHeight - container.clientHeight) / 2;
+    });
+  }
+
+  // ==================== Modal ====================
   let currentMember = null;
 
   function openModal(member) {
     currentMember = member;
 
-    // Set content
-    elements.modalTitle.textContent = member.name;
-    elements.modalRole.textContent = member.role;
-    elements.modalPhone.textContent = member.phone;
-    elements.modalPhone.href = `tel:${member.phone}`;
-    elements.modalEmail.textContent = member.email;
-    elements.modalEmail.href = `mailto:${member.email}`;
-    elements.callBtn.href = `tel:${member.phone}`;
-    elements.emailBtn.href = `mailto:${member.email}`;
+    elements.modalTitle.textContent = member.name || '';
+    elements.modalRole.textContent = member.role || '';
+    elements.modalPhone.textContent = member.phone || '';
+    elements.modalPhone.href = `tel:${member.phone || ''}`;
+    elements.modalEmail.textContent = member.email || '';
+    elements.modalEmail.href = `mailto:${member.email || ''}`;
+    elements.callBtn.href = `tel:${member.phone || ''}`;
+    elements.emailBtn.href = `mailto:${member.email || ''}`;
 
-    // Avatar
     const avatarSrc = resolveAvatarPath(member.avatar);
-    elements.modalAvatar.innerHTML = `
-      <img src="${avatarSrc}" alt="" onerror="this.parentElement.innerHTML='${createAvatarPlaceholder(member.name).replace(/'/g, "\\'")}'" />
-    `;
+    const placeholder = createAvatarPlaceholder(member.name || '').replace(/'/g, "\\'");
+    elements.modalAvatar.innerHTML = `<img src="${avatarSrc || ''}" alt="" onerror="this.parentElement.innerHTML='${placeholder}'" />`;
 
-   
-
- 
-
-    // Show modal
     elements.modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     elements.modalClose.focus();
@@ -370,92 +388,66 @@
     currentMember = null;
   }
 
-  // ==================== Search ====================
-function updateSearchResults(query) {
-  if (!teamData) return;
-  
-  const results = searchMembers(teamData.orgChart, query);
-  
-  if (query && results.length > 0) {
-    elements.searchResults.innerHTML = results.map((member, i) => {
-      
-      // DEBUG: Open Console (F12) to see if 'avatar' is undefined here
-      if (member.name.includes("Kedir")) {
-         console.log("Checking Kedir:", member); 
-      }
-
-      // LOGIC: If avatar exists (and isn't empty), use Image. Else use Initials.
-      const hasAvatar = member.avatar && member.avatar !== "";
-      
-      const avatarContent = hasAvatar
-        ? `<img src="${member.avatar}" alt="${member.name}" class="search-avatar-img">`
-        : getInitials(member.name);
-
-      // STYLE: Remove blue background if image exists, keep it for initials
-      const bgStyle = hasAvatar ? 'background: transparent;' : '';
-
-      return `
-        <li class="search-result-item" data-index="${i}" data-id="${member.id}" role="option">
-          <div class="search-result-avatar" style="${bgStyle}">
-            ${avatarContent}
-          </div>
-          <div class="search-result-info">
-            <div class="search-result-name">${member.name}</div>
-            <div class="search-result-role">${member.role}</div>
-          </div>
-        </li>
-      `;
-    }).join('');
-    
-    elements.searchResults.style.display = 'block';
-    elements.searchClear.style.display = 'block';
-  } else {
-    elements.searchResults.style.display = 'none';
-    elements.searchClear.style.display = query ? 'block' : 'none';
-  }
-}
-  function selectSearchResult(memberId) {
+  // ==================== Search & select ====================
+  function updateSearchResults(query) {
     if (!teamData) return;
 
+    const results = searchMembers(teamData.orgChart, query);
+
+    if (query && results.length > 0) {
+      elements.searchResults.innerHTML = results.map((member, i) => {
+        const hasAvatar = member.avatar && member.avatar !== '';
+        const avatarContent = hasAvatar
+          ? `<img src="${member.avatar}" alt="${member.name}" class="search-avatar-img">`
+          : getInitials(member.name || '');
+        const bgStyle = hasAvatar ? 'background: transparent;' : '';
+        return `
+          <li class="search-result-item" data-index="${i}" data-id="${member.id}" role="option">
+            <div class="search-result-avatar" style="${bgStyle}">${avatarContent}</div>
+            <div class="search-result-info">
+              <div class="search-result-name">${member.name || ''}</div>
+              <div class="search-result-role">${member.role || ''}</div>
+            </div>
+          </li>
+        `;
+      }).join('');
+
+      elements.searchResults.style.display = 'block';
+      elements.searchClear.style.display = 'block';
+    } else {
+      elements.searchResults.style.display = 'none';
+      elements.searchClear.style.display = query ? 'block' : 'none';
+    }
+  }
+
+  function selectSearchResult(memberId) {
+    if (!teamData) return;
     const allMembers = flattenTree(teamData.orgChart);
     const member = allMembers.find(m => m.id === memberId);
     if (!member) return;
 
-    // Expand path to member
     const path = findPathToMember(teamData.orgChart, memberId);
-    if (path) {
-      path.forEach(id => expandedNodes.add(id));
-    }
+    if (path) path.forEach(id => expandedNodes.add(id));
 
-    // Highlight
     highlightedId = memberId;
     renderChart();
 
-    // Clear highlight after delay
     setTimeout(() => {
       highlightedId = null;
       const highlightedNode = document.querySelector('.org-node.highlighted');
-      if (highlightedNode) {
-        highlightedNode.classList.remove('highlighted');
-      }
+      if (highlightedNode) highlightedNode.classList.remove('highlighted');
     }, 3000);
 
-    // Scroll to node
     setTimeout(() => {
-      const node = document.querySelector(`[data-id="${memberId}"].org-node`);
-      if (node) {
-        node.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+      const node = document.querySelector(`#${CSS.escape(memberId)}.org-node`);
+      if (node) node.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 300);
-
-    // Clear search
     elements.searchInput.value = '';
     elements.searchResults.style.display = 'none';
     elements.searchClear.style.display = 'none';
   }
 
   // ==================== Controls ====================
-
   function updateZoom() {
     elements.chart.style.transform = `scale(${currentZoom})`;
     elements.zoomLevel.textContent = Math.round(currentZoom * 100) + '%';
@@ -464,29 +456,22 @@ function updateSearchResults(query) {
   function updateCompactMode() {
     elements.chart.classList.toggle('compact', isCompact);
     elements.compactToggle.classList.toggle('active', isCompact);
-    elements.compactToggle.querySelector('.compact-label').textContent = isCompact ? 'Normal' : 'Compact';
+    const lbl = elements.compactToggle.querySelector('.compact-label');
+    if (lbl) lbl.textContent = isCompact ? 'Normal' : 'Compact';
   }
 
-  // ==================== Event Listeners ====================
-
+  // ==================== Event listeners initializer ====================
   function initEventListeners() {
-    // Modal
     elements.modalClose.addEventListener('click', closeModal);
-    elements.modal.addEventListener('click', (e) => {
-      if (e.target === elements.modal) closeModal();
-    });
+    elements.modal.addEventListener('click', (e) => { if (e.target === elements.modal) closeModal(); });
 
-    // Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && elements.modal.style.display === 'flex') {
-        closeModal();
-      }
+      if (e.key === 'Escape' && elements.modal.style.display === 'flex') closeModal();
     });
 
-    // Copy buttons
     elements.copyPhone.addEventListener('click', async () => {
       if (currentMember) {
-        const success = await copyToClipboard(currentMember.phone);
+        const success = await copyToClipboard(currentMember.phone || '');
         if (success) {
           elements.copyPhone.querySelector('.copy-icon').style.display = 'none';
           elements.copyPhone.querySelector('.check-icon').style.display = 'block';
@@ -500,7 +485,7 @@ function updateSearchResults(query) {
 
     elements.copyEmail.addEventListener('click', async () => {
       if (currentMember) {
-        const success = await copyToClipboard(currentMember.email);
+        const success = await copyToClipboard(currentMember.email || '');
         if (success) {
           elements.copyEmail.querySelector('.copy-icon').style.display = 'none';
           elements.copyEmail.querySelector('.check-icon').style.display = 'block';
@@ -512,15 +497,9 @@ function updateSearchResults(query) {
       }
     });
 
-    // vCard download
-    elements.vcardBtn.addEventListener('click', () => {
-      if (currentMember) downloadVCard(currentMember);
-    });
+    elements.vcardBtn.addEventListener('click', () => { if (currentMember) downloadVCard(currentMember); });
 
-    // Search
-    elements.searchInput.addEventListener('input', (e) => {
-      updateSearchResults(e.target.value);
-    });
+    elements.searchInput.addEventListener('input', (e) => updateSearchResults(e.target.value || ''));
 
     elements.searchInput.addEventListener('keydown', (e) => {
       const items = elements.searchResults.querySelectorAll('.search-result-item');
@@ -542,9 +521,7 @@ function updateSearchResults(query) {
           break;
         case 'Enter':
           e.preventDefault();
-          if (activeItem) {
-            selectSearchResult(activeItem.dataset.id);
-          }
+          if (activeItem) selectSearchResult(activeItem.dataset.id);
           break;
         case 'Escape':
           elements.searchResults.style.display = 'none';
@@ -554,9 +531,7 @@ function updateSearchResults(query) {
 
     elements.searchResults.addEventListener('click', (e) => {
       const item = e.target.closest('.search-result-item');
-      if (item) {
-        selectSearchResult(item.dataset.id);
-      }
+      if (item) selectSearchResult(item.dataset.id);
     });
 
     elements.searchClear.addEventListener('click', () => {
@@ -566,18 +541,9 @@ function updateSearchResults(query) {
       elements.searchInput.focus();
     });
 
-    // Zoom
-    elements.zoomIn.addEventListener('click', () => {
-      currentZoom = Math.min(currentZoom + 0.1, 2);
-      updateZoom();
-    });
+    elements.zoomIn.addEventListener('click', () => { currentZoom = Math.min(currentZoom + 0.1, 2); updateZoom(); });
+    elements.zoomOut.addEventListener('click', () => { currentZoom = Math.max(currentZoom - 0.1, 0.5); updateZoom(); });
 
-    elements.zoomOut.addEventListener('click', () => {
-      currentZoom = Math.max(currentZoom - 0.1, 0.5);
-      updateZoom();
-    });
-
-    // Expand/Collapse
     elements.expandAll.addEventListener('click', () => {
       if (teamData) {
         flattenTree(teamData.orgChart).forEach(m => expandedNodes.add(m.id));
@@ -593,13 +559,7 @@ function updateSearchResults(query) {
       }
     });
 
-    // Compact mode
-    elements.compactToggle.addEventListener('click', () => {
-      isCompact = !isCompact;
-      updateCompactMode();
-    });
-
-
+    elements.compactToggle.addEventListener('click', () => { isCompact = !isCompact; updateCompactMode(); });
 
     // Drag to pan
     elements.container.addEventListener('mousedown', (e) => {
@@ -634,79 +594,72 @@ function updateSearchResults(query) {
         updateZoom();
       }
     }, { passive: false });
-  }
 
-  // ==================== Global API ====================
+    // Delete key: safely remove currently selected member from tree (Delete listener must be inside IIFE)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Delete' && currentMember && teamData) {
+        function deleteById(node, targetId) {
+          if (!node.children) return false;
+          const index = node.children.findIndex(child => child.id === targetId);
+          if (index !== -1) {
+            node.children.splice(index, 1);
+            return true;
+          }
+          for (const child of node.children) {
+            if (deleteById(child, targetId)) return true;
+          }
+          return false;
+        }
+        if (deleteById(teamData.orgChart, currentMember.id)) {
+          currentMember = null;
+          renderChart();
+        }
+      }
+    });
+  } // end initEventListeners
 
+  // Global API to toggle nodes
   window.orgChart = {
     toggleNode(id) {
-      if (expandedNodes.has(id)) {
-        expandedNodes.delete(id);
-      } else {
-        expandedNodes.add(id);
-      }
+      if (expandedNodes.has(id)) expandedNodes.delete(id);
+      else expandedNodes.add(id);
       renderChart();
     }
   };
 
   // ==================== Initialize ====================
-
   async function init() {
     try {
-      const dataUrl = window.TEAM_DATA_URL || '/static/data/team.json';
+      const dataUrl = 'data/team.json';
       const response = await fetch(dataUrl);
       if (!response.ok) throw new Error('Failed to load team data');
       teamData = await response.json();
 
-      // Update header
-      document.querySelector('.header1-title').textContent = teamData.company;
-       
-      // Initialize expanded nodes
+      // update header title (if present)
+      const titleEl = document.querySelector('.header1-title');
+      if (titleEl && teamData.company) titleEl.textContent = teamData.company;
+
+      // initialize expanded nodes (root expanded)
       flattenTree(teamData.orgChart).forEach(m => expandedNodes.add(m.id));
 
-      // Render
       renderChart();
       initEventListeners();
-
     } catch (error) {
       console.error('Error initializing org chart:', error);
-      elements.chart.innerHTML = `
-        <div style="text-align: center; padding: 2rem;">
-          <p style="color: hsl(var(--muted-foreground));">Failed to load organization chart data.</p>
-        </div>
-      `;
+      if (elements.chart) {
+        elements.chart.innerHTML = `
+          <div style="text-align:center;padding:2rem;">
+            <p style="color: hsl(var(--muted-foreground));">Failed to load organization chart data.</p>
+          </div>
+        `;
+      }
     }
   }
 
-  // Start when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
-})();
-// Listen for Delete key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Delete' && currentMember) {
-    // Recursive delete from JSON
-    function deleteById(node, targetId) {
-      if (!node.children) return false;
 
-      const index = node.children.findIndex(child => child.id === targetId);
-      if (index !== -1) {
-        node.children.splice(index, 1); // remove from JSON
-        return true;
-      }
-
-      for (const child of node.children) {
-        if (deleteById(child, targetId)) return true;
-      }
-
-      return false;
-    }
-
-    deleteById(teamData.orgChart, currentMember.id); // remove from JSON
-    currentMember = null; // clear selection
-    renderChart(); // refresh chart
-  }
-});
+})(); // end IIFE
