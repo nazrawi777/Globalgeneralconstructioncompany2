@@ -288,10 +288,10 @@ if (member.children && member.children.length > 1) {
 
   // Level keys must match your 'level' variable
   const rowWidths = {
-    0: 500,   // root's children
-    1: 750,   // second row
-    2: 1000   // third row
-    // add more levels if needed
+    0: 980,   // root's children
+    1: 1340,   // second row
+    2: 1700   // third row
+    
   };
 
   const baseWidth = 500;
