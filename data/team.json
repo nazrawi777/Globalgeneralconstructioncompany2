@@ -7,15 +7,15 @@
     "role": "General Manager",
     "phone": "0911-29-00-37",
     "email": "Kedirhass7122@gmail.com",
-    "avatar": "https://i.postimg.cc/L8zf0nSn/0E7A2284.jpg",
+    "avatar": "https://i.postimg.cc/nz1yLFmC/0E7A2284-(1).jpg",
     "children": [
       {
         "id": "legal-001",
-        "name": "Emily Anderson",
+        "name": "Zelalem Rufael",
         "role": "Legal Advisor",
-        "phone": "+1 (555) 300-0002",
-        "email": "e.anderson@construction.com",
-        "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
+        "phone": "",
+        "email": "",
+        "avatar": "https://i.postimg.cc/vH3mQRdX/IMG_20260212_022132_594.jpg"
       },
       {
         "id": "dgm-001",
@@ -23,7 +23,7 @@
         "role": "Deputy General Manager",
         "phone": "0911-80-88-06",
         "email": "Kalidnuru5@gmail.com",
-        "avatar": "https://i.postimg.cc/WbVkK0pc/0E7A2629.jpg",
+        "avatar": "https://i.postimg.cc/Xqb9sW1H/0E7A2461-(1).jpg",
         "children": [
           {
             "id": "pm-001",
@@ -71,19 +71,19 @@
             "id": "fh-001",
             "name": "Hewan Kebede",
             "role": "Finance Head",
-            "phone": "+1 (555) 200-0002",
-            "email": "r.garcia@construction.com",
-            "avatar": "https://i.postimg.cc/Vv63LJmf/0E7A2693.jpg"
+            "phone": "",
+            "email": "",
+            "avatar": "https://i.postimg.cc/8zZQDPh5/0E7A2492.jpg"
           }
         ]
       },
       {
         "id": "aud-001",
-        "name": "Emily Anderson",
+        "name": "Jemal Hassen",
         "role": "Auditor",
-        "phone": "+1 (555) 300-0002",
-        "email": "e.anderson@construction.com",
-        "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
+        "phone": "",
+        "email": "",
+        "avatar": "https://i.postimg.cc/MGcHP9g2/IMG_20260212_022131_035.jpg"
       }
     ]
   }
