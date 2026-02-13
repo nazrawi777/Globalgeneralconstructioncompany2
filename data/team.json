@@ -35,35 +35,35 @@
           },
           {
             "id": "om-001",
-            "name": "Emily Anderson",
+            "name": "Kelelaw Wolde",
             "role": "Operation Manager",
-            "phone": "+1 (555) 300-0002",
-            "email": "e.anderson@construction.com",
-            "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2",
+            "phone": "",
+            "email": "",
+            "avatar": "https://i.postimg.cc/L6B1L0FV/IMG_20260212_022128_884.jpg",
             "children": [
               {
                 "id": "oe-001",
-                "name": "Michelle Taylor",
+                "name": "Ikiram Kasim",
                 "role": "Office Engineer",
-                "phone": "+1 (555) 400-0002",
-                "email": "m.taylor@construction.com",
-                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
+                "phone": "",
+                "email": "",
+                "avatar": "https://i.postimg.cc/R0D5Psdg/IMG_20260211_090328_959.jpg"
               },
               {
                 "id": "proc-001",
-                "name": "Richard Harris",
+                "name": "Hanan Ahmed",
                 "role": "Procurement Manager",
-                "phone": "+1 (555) 500-0002",
-                "email": "r.harris@construction.com",
-                "avatar": "https://i.postimg.cc/59XSxZwz/1.png?v=2"
+                "phone": "",
+                "email": "",
+                "avatar": "https://i.postimg.cc/yYw3jsJP/photo_2026_02_13_09_33_02.jpg"
               },
               {
                 "id": "hr-001",
                 "name": "Semira Nour",
                 "role": "HR Manager",
-                "phone": "+1 (555) 200-0003",
-                "email": "j.williams@construction.com",
-                "avatar": "https://i.postimg.cc/vmRD6J95/0E7A2661.jpg"
+                "phone": "",
+                "email": "",
+                "avatar": "https://i.postimg.cc/GhZTKdBK/photo_2026_02_13_09_32_58.jpg"
               }
             ]
           },

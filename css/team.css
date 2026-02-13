@@ -446,6 +446,7 @@ body {
 .child-wrapper[data-child-id="aud-001"] {
   position: relative;
   bottom: 9px !important;
+  z-index: 100 !important;
   right: 500px !important; /* Moves the Node + The line connecting to parent */
   
 }
