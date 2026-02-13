@@ -290,29 +290,15 @@
 if (member.children && member.children.length > 1) {
   const horizConnector = document.createElement('div');
   horizConnector.className = 'connector-horizontal';
+  
+  // Tag the connector with its level (0, 1, or 2) so CSS can find it
+  horizConnector.dataset.level = level; 
+  
   horizConnector.style.pointerEvents = 'none';
-
-  // Check if the screen is mobile (less than 768px)
-  const isMobile = window.innerWidth < 768;
-
-  const rowWidths = isMobile ? {
-    0: 490,   // Mobile width for first row
-    1: 730,   // Mobile width for second row
-    2: 980    // Mobile width for third row
-  } : {
-    0: 940,   // PC width
-    1: 1290,
-    2: 1780
-  };
-
-  const width = rowWidths[level] || (isMobile ? 300 : 500);
-
-  horizConnector.style.width = width + 'px';
   horizConnector.style.display = expandedNodes.has(member.id) ? 'block' : 'none';
 
   branch.appendChild(horizConnector);
 }
-
 
     // Children container
 // ... inside createOrgBranch function ...

@@ -598,6 +598,22 @@ body {
   background: white;
   flex-shrink: 0;
 }
+/* --- PC SETTINGS (Default) --- */
+.connector-horizontal[data-level="0"] { width: 940px; }
+.connector-horizontal[data-level="1"] { width: 1290px; }
+.connector-horizontal[data-level="2"] { width: 1780px; }
+
+/* --- MOBILE SETTINGS (Only for screens smaller than 768px) --- */
+@media (max-width: 767px) {
+  .connector-horizontal[data-level="0"] { width: 490px; }
+  .connector-horizontal[data-level="1"] { width: 730px; }
+  .connector-horizontal[data-level="2"] { width: 980px; }
+  
+  /* If mobile still looks too wide, you can also shrink the zoom here */
+  #org-chart {
+    transform: scale(0.5) !important; 
+  }
+}
 
 @media (max-width: 640px) {
   .org-avatar {
