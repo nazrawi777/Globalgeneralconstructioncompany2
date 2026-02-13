@@ -272,6 +272,10 @@
     const vertConnector = document.createElement('div');
     vertConnector.className = 'connector-vertical';
     vertConnector.style.display = isExpanded ? 'block' : 'none';
+    
+    // FIX: Prevents vertical lines from overlapping the cards
+    vertConnector.style.pointerEvents = 'none'; 
+    
     nodeGroup.appendChild(vertConnector);
   }
 
@@ -282,23 +286,26 @@
   if (hasChildren) {
     // Horizontal connector (the long bridge) stays outside the group
 // Horizontal connector - manual per-level widths
+// Horizontal connector - Responsive widths
 if (member.children && member.children.length > 1) {
   const horizConnector = document.createElement('div');
   horizConnector.className = 'connector-horizontal';
+  horizConnector.style.pointerEvents = 'none';
 
-  // Level keys must match your 'level' variable
-  const rowWidths = {
-    0: 940,   // root's children
-    1: 1290,   // second row
-    2: 1780   // third row
-    
+  // Check if the screen is mobile (less than 768px)
+  const isMobile = window.innerWidth < 768;
+
+  const rowWidths = isMobile ? {
+    0: 20,   // Mobile width for first row
+    1: 50,   // Mobile width for second row
+    2: 60    // Mobile width for third row
+  } : {
+    0: 940,   // PC width
+    1: 1290,
+    2: 1780
   };
 
-  const baseWidth = 500;
-  const step = 250;
-
-  // width fallback: rowWidths[level] if defined, otherwise base+level*step
-  const width = rowWidths[level] || (baseWidth + level * step);
+  const width = rowWidths[level] || (isMobile ? 300 : 500);
 
   horizConnector.style.width = width + 'px';
   horizConnector.style.display = expandedNodes.has(member.id) ? 'block' : 'none';
@@ -330,6 +337,10 @@ if (member.children && member.children.length > 1) {
       // This is the line ABOVE the child (that was getting left behind)
       const downConnector = document.createElement('div');
       downConnector.className = 'connector-down';
+      
+      // FIX: Prevents the top connector line from blocking clicks
+      downConnector.style.pointerEvents = 'none';
+      
       childWrapper.appendChild(downConnector);
 
       childWrapper.appendChild(createOrgBranch(child, level + 1, childIndex));
@@ -627,18 +638,12 @@ if (member.children && member.children.length > 1) {
     }
   };
 
-  // ==================== Initialize ====================
- async function init() {
+  /// ==================== Initialize ====================
+  async function init() {
     try {
-      // FIX: Changed path from '/static/data/' to '/static/datafolder/'
-      const dataUrl = window.TEAM_DATA_URL || '/static/data/team.json';
-      
+      const dataUrl = 'data/team.json';
       const response = await fetch(dataUrl);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
+      if (!response.ok) throw new Error('Failed to load team data');
       teamData = await response.json();
 
       // update header title (if present)
@@ -646,9 +651,7 @@ if (member.children && member.children.length > 1) {
       if (titleEl && teamData.company) titleEl.textContent = teamData.company;
 
       // initialize expanded nodes (root expanded)
-      if (teamData.orgChart) {
-        flattenTree(teamData.orgChart).forEach(m => expandedNodes.add(m.id));
-      }
+      flattenTree(teamData.orgChart).forEach(m => expandedNodes.add(m.id));
 
       renderChart();
       initEventListeners();
@@ -657,8 +660,7 @@ if (member.children && member.children.length > 1) {
       if (elements.chart) {
         elements.chart.innerHTML = `
           <div style="text-align:center;padding:2rem;">
-            <p style="color: #666;">Failed to load organization chart data.</p>
-            <p style="font-size: 0.8rem; color: #999;">Check if /static/datafolder/team.json exists.</p>
+            <p style="color: hsl(var(--muted-foreground));">Failed to load organization chart data.</p>
           </div>
         `;
       }
@@ -671,4 +673,4 @@ if (member.children && member.children.length > 1) {
     init();
   }
 
-})(); // end
+})(); // end IIFE

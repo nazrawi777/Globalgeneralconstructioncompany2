@@ -438,8 +438,11 @@ body {
   position: relative;
   bottom: 9px !important;
   left: 500px; /* Moves the Node + The line connecting to parent */
-  
+  cursor: pointer !important;
+  z-index: 100;
 }
+
+  
 .child-wrapper[data-child-id="aud-001"] {
   position: relative;
   bottom: 9px !important;
@@ -449,6 +452,7 @@ body {
 .child-wrapper[data-child-id="dgm-001"] {
   position: relative;
   bottom: 9px !important;
+  z-index: 2;
  
   
 }
@@ -597,9 +601,112 @@ body {
 
 @media (max-width: 640px) {
   .org-avatar {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2.1rem;
+    height: 2.1rem;
+    right: 0%;
+  bottom: 0%;
   }
+  .connector-horizontal {
+  height: 2px !important;
+  color:chartreuse !important;
+  top: 120px !important;
+}
+  .org-info {
+    min-width: 10px !important;
+    flex: 1 1 0%;
+}
+.org-name {
+    font-weight: 600;
+    font-size: 0.875rem !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.org-node {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem !important;
+    padding: 0.25rem 0.75rem !important;
+    min-width: 80px !important;
+    background: hsl(207, 74%, 53%);
+    color: hsl(var(--primary-foreground));
+    border-radius: var(--radius);
+    cursor: pointer;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+    animation: bounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+/* ADD this new rule */
+.child-wrapper[data-child-id="legal-001"] {
+  position: relative;
+  bottom: 9px !important;
+  left: 100px !important; /* Moves the Node + The line connecting to parent */
+  cursor: pointer !important;
+  z-index: 100;
+}
+
+  
+.child-wrapper[data-child-id="aud-001"] {
+  position: relative;
+  bottom: 9px !important;
+  right: 0px !important; /* Moves the Node + The line connecting to parent */
+  
+}
+.child-wrapper[data-child-id="dgm-001"] {
+  position: relative;
+  bottom: 9px !important;
+  z-index: 2;
+ 
+  
+}
+.child-wrapper[data-child-id="pm-001"] {
+  position: relative;
+  bottom: 9px !important;
+  left: 3px !important;
+ 
+  
+}
+.child-wrapper[data-child-id="fh-001"] {
+  position: relative;
+  bottom: 9px !important;
+ 
+  
+}
+.child-wrapper[data-child-id="finance-001"] {
+  position: relative;
+   /* Moves the Node + The line connecting to parent */
+}
+.child-wrapper[data-child-id="project-001"] {
+  position: relative;
+   /* Moves the Node + The line connecting to parent */
+}
+.child-wrapper[data-child-id="hr-001"] {
+  position: relative;
+   right: 0px !important;
+    bottom: 9px !important;
+   
+   /* Moves the Node + The line connecting to parent */
+}
+
+.child-wrapper[data-child-id="oe-001"] {
+  position: relative;
+  right: 5px !important;
+  bottom: 9px !important;
+   
+}
+.child-wrapper[data-child-id="om-001"] {
+  position: relative;
+  right: -6px !important;
+  bottom: 10px !important;  
+}
+.child-wrapper[data-child-id="proc-001"] {
+  position: relative;
+  right: 10px !important;
+  bottom: 10px !important;  
+}
+
 }
 
 
