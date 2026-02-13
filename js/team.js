@@ -289,8 +289,8 @@ if (member.children && member.children.length > 1) {
   // Level keys must match your 'level' variable
   const rowWidths = {
     0: 940,   // root's children
-    1: 1340,   // second row
-    2: 1700   // third row
+    1: 1290,   // second row
+    2: 1780   // third row
     
   };
 
@@ -628,11 +628,17 @@ if (member.children && member.children.length > 1) {
   };
 
   // ==================== Initialize ====================
-  async function init() {
+ async function init() {
     try {
-      const dataUrl = 'data/team.json';
+      // FIX: Changed path from '/static/data/' to '/static/datafolder/'
+      const dataUrl = window.TEAM_DATA_URL || '/static/data/team.json';
+      
       const response = await fetch(dataUrl);
-      if (!response.ok) throw new Error('Failed to load team data');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       teamData = await response.json();
 
       // update header title (if present)
@@ -640,7 +646,9 @@ if (member.children && member.children.length > 1) {
       if (titleEl && teamData.company) titleEl.textContent = teamData.company;
 
       // initialize expanded nodes (root expanded)
-      flattenTree(teamData.orgChart).forEach(m => expandedNodes.add(m.id));
+      if (teamData.orgChart) {
+        flattenTree(teamData.orgChart).forEach(m => expandedNodes.add(m.id));
+      }
 
       renderChart();
       initEventListeners();
@@ -649,7 +657,8 @@ if (member.children && member.children.length > 1) {
       if (elements.chart) {
         elements.chart.innerHTML = `
           <div style="text-align:center;padding:2rem;">
-            <p style="color: hsl(var(--muted-foreground));">Failed to load organization chart data.</p>
+            <p style="color: #666;">Failed to load organization chart data.</p>
+            <p style="font-size: 0.8rem; color: #999;">Check if /static/datafolder/team.json exists.</p>
           </div>
         `;
       }
@@ -662,4 +671,4 @@ if (member.children && member.children.length > 1) {
     init();
   }
 
-})(); // end IIFE
+})(); // end
