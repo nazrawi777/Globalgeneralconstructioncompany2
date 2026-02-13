@@ -296,9 +296,9 @@ if (member.children && member.children.length > 1) {
   const isMobile = window.innerWidth < 768;
 
   const rowWidths = isMobile ? {
-    0: 20,   // Mobile width for first row
-    1: 50,   // Mobile width for second row
-    2: 60    // Mobile width for third row
+    0: 490,   // Mobile width for first row
+    1: 730,   // Mobile width for second row
+    2: 980    // Mobile width for third row
   } : {
     0: 940,   // PC width
     1: 1290,

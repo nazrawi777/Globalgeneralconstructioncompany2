@@ -642,7 +642,7 @@ body {
 .child-wrapper[data-child-id="legal-001"] {
   position: relative;
   bottom: 9px !important;
-  left: 100px !important; /* Moves the Node + The line connecting to parent */
+  left: 300px !important; /* Moves the Node + The line connecting to parent */
   cursor: pointer !important;
   z-index: 100;
 }
@@ -651,7 +651,7 @@ body {
 .child-wrapper[data-child-id="aud-001"] {
   position: relative;
   bottom: 9px !important;
-  right: 0px !important; /* Moves the Node + The line connecting to parent */
+  right: 300px !important; /* Moves the Node + The line connecting to parent */
   
 }
 .child-wrapper[data-child-id="dgm-001"] {
@@ -684,7 +684,7 @@ body {
 }
 .child-wrapper[data-child-id="hr-001"] {
   position: relative;
-   right: 0px !important;
+   right: -300px !important;
     bottom: 9px !important;
    
    /* Moves the Node + The line connecting to parent */
@@ -692,18 +692,18 @@ body {
 
 .child-wrapper[data-child-id="oe-001"] {
   position: relative;
-  right: 5px !important;
+  right: 300px !important;
   bottom: 9px !important;
    
 }
 .child-wrapper[data-child-id="om-001"] {
   position: relative;
-  right: -6px !important;
+  right: -3px !important;
   bottom: 10px !important;  
 }
 .child-wrapper[data-child-id="proc-001"] {
   position: relative;
-  right: 10px !important;
+  right: 7px !important;
   bottom: 10px !important;  
 }
 
