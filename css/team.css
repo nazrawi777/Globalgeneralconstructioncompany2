@@ -400,6 +400,7 @@ body {
 
 /* Org Branch */
 .org-branch {
+  position: relative; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -427,17 +428,97 @@ body {
   background: hsl(var(--org-connector));
   animation: drawVertical 0.5s ease-out;
 }
+.org-children, 
+.org-branch, 
+.child-wrapper {
+    overflow: visible !important;
+}
+/* ADD this new rule */
+.child-wrapper[data-child-id="legal-001"] {
+  position: relative;
+  bottom: 9px !important;
+  left: 500px; /* Moves the Node + The line connecting to parent */
+  
+}
+.child-wrapper[data-child-id="aud-001"] {
+  position: relative;
+  bottom: 9px !important;
+  right: 500px !important; /* Moves the Node + The line connecting to parent */
+  
+}
+.child-wrapper[data-child-id="dgm-001"] {
+  position: relative;
+  bottom: 9px !important;
+ 
+  
+}
+.child-wrapper[data-child-id="pm-001"] {
+  position: relative;
+  bottom: 9px !important;
+  left: 3px !important;
+ 
+  
+}
+.child-wrapper[data-child-id="fh-001"] {
+  position: relative;
+  bottom: 9px !important;
+ 
+  
+}
+.child-wrapper[data-child-id="finance-001"] {
+  position: relative;
+   /* Moves the Node + The line connecting to parent */
+}
+.child-wrapper[data-child-id="project-001"] {
+  position: relative;
+   /* Moves the Node + The line connecting to parent */
+}
+.child-wrapper[data-child-id="hr-001"] {
+  position: relative;
+   right: -550px !important;
+    bottom: 9px !important;
+   
+   /* Moves the Node + The line connecting to parent */
+}
+
+.child-wrapper[data-child-id="oe-001"] {
+  position: relative;
+  right: 565px !important;
+  bottom: 9px !important;
+   
+}
+.child-wrapper[data-child-id="om-001"] {
+  position: relative;
+  right: -6px !important;
+  bottom: 10px !important;  
+}
+.child-wrapper[data-child-id="proc-001"] {
+  position: relative;
+  right: 10px !important;
+  bottom: 10px !important;  
+}
+
 
 .connector-horizontal {
   height: 2px;
-  width: 800px !important;
+  top: 170px;
   background: hsl(var(--org-connector));
   animation: drawHorizontal 0.5s ease-out;
+
+
+  position: absolute;
+  
+ 
+  height: 2px;
+  background: hsl(var(--org-connector));
+  z-index: 1;
+  /* Prevent width from affecting parent size */
+  pointer-events: none; 
 }
 
 .connector-down {
   width: 2px;
-  height: 1rem;
+  height: 2rem;
   background: hsl(var(--org-connector));
   animation: drawVertical 0.3s ease-out;
 }
@@ -448,8 +529,8 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  min-width: 180px;
+  padding: 1.75rem 2.5rem;
+  min-width: 280px;
   background: hsl(207, 74%, 53%);
   color: hsl(var(--primary-foreground));
   border-radius: var(--radius);
@@ -504,18 +585,20 @@ body {
 /* Avatar */
 .org-avatar {
   position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 4rem;
+  height: 4.1rem;
+  right: 6%;
+  bottom: 6%;
   border-radius: 50%;
   overflow: hidden;
   background: white;
   flex-shrink: 0;
 }
 
-@media (min-width: 640px) {
+@media (max-width: 640px) {
   .org-avatar {
-    width: 3rem;
-    height: 3rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }
 
@@ -529,12 +612,12 @@ body {
 /* Node info */
 .org-info {
   flex: 1;
-  min-width: 0;
+  min-width: 50px;
 }
 
 .org-name {
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 2.875rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -542,7 +625,7 @@ body {
 
 @media (min-width: 640px) {
   .org-name {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -556,7 +639,7 @@ body {
 
 @media (min-width: 640px) {
   .org-role {
-    font-size: 0.875rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -624,7 +707,12 @@ body {
   width: 2rem;
   height: 2rem;
 }
-
+.org-avatar img {
+  width: 100%;       /* fill the avatar container */
+  height: 100%;
+  object-fit: cover; /* keeps aspect ratio and crops overflow */
+  image-rendering: auto; /* ensures smooth scaling for photos */
+}
 .compact .org-name {
   font-size: 0.75rem;
 }
