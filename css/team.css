@@ -455,6 +455,7 @@ body {
 .child-wrapper[data-child-id="pm-001"] {
   position: relative;
   bottom: 9px !important;
+  left: 3px !important;
  
   
 }
@@ -475,19 +476,25 @@ body {
 .child-wrapper[data-child-id="hr-001"] {
   position: relative;
    right: -550px !important;
+    bottom: 9px !important;
    
    /* Moves the Node + The line connecting to parent */
 }
 
 .child-wrapper[data-child-id="oe-001"] {
   position: relative;
-  right: 550px !important;
-  bottom: 50px !important;
+  right: 565px !important;
+  bottom: 9px !important;
    
 }
 .child-wrapper[data-child-id="om-001"] {
   position: relative;
   right: -6px !important;
+  bottom: 10px !important;  
+}
+.child-wrapper[data-child-id="proc-001"] {
+  position: relative;
+  right: 10px !important;
   bottom: 10px !important;  
 }
 
